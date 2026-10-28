@@ -1,0 +1,16 @@
+# Godot editor/import cache
+.godot/
+
+# Local exports, captures, and profiling output
+/build/
+/exports/
+/captures/
+/profiling/
+/test-results/
+*.log
+
+# macOS
+.DS_Store
+
+# Editor-local overrides
+override.cfg

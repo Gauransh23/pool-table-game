@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/app/game_controller.gd" id="1_controller"]
+[ext_resource type="Script" path="res://scripts/presentation/table_presentation.gd" id="2_table"]
+[ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="3_hud"]
+
+[node name="LongRail" type="Node3D"]
+script = ExtResource("1_controller")
+
+[node name="TablePresentation" type="Node3D" parent="."]
+script = ExtResource("2_table")
+
+[node name="GameHUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_hud")
