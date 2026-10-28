@@ -6,7 +6,8 @@ WPA-oriented 8-ball rules model, and a 3D practice table. Match UI, AI, audio, a
 release systems are still being built.
 
 The current build is an engineering alpha. It is not a complete 8-ball match or a
-release candidate.
+release candidate. Jump shots, rules-to-physics event integration, AI, and audio are
+not yet implemented.
 
 ## Current build
 

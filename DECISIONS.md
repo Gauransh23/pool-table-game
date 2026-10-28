@@ -22,10 +22,11 @@ measured. Profile realistic breaks and AI search before considering one.
 
 ## Rules: event-driven profile, separate from simulation
 
-The first rules profile follows WPA 8-ball called-shot behavior and returns turn,
-foul, break-choice, and rack-outcome data. It consumes shot events; it never changes
-ball trajectories. The rules module is isolated and tested, and integration with a
-real collision/pocket event stream is a separate step.
+The first rules profile follows core WPA 8-ball called-shot behavior, including the
+temporary cleared-group claim for an open-table 8-ball shot, and returns turn, foul,
+break-choice, and rack-outcome data. It consumes shot events; it never changes ball
+trajectories. The rules module is isolated and tested, and integration with a real
+collision/pocket event stream is a separate step.
 
 ## Time stepping: 480 Hz baseline plus adaptive collision substeps
 

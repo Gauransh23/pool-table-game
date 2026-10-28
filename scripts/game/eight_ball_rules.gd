@@ -126,11 +126,17 @@ func _apply_normal_shot(match_state: EightBallMatch, shot: EightBallShotEvent, o
 	var called_valid := shot.is_safety or _called_ball_is_valid(match_state, shot)
 	var foul_reason := _normal_foul_reason(match_state, shot)
 	if eight_potted:
-		var group_cleared := match_state.player_groups[shot.shooter] != OPEN and match_state.remaining_group_count(shot.shooter) == 0
+		var shooter_group: int = match_state.player_groups[shot.shooter]
+		if shooter_group == OPEN:
+			shooter_group = match_state.temporarily_claimable_group()
+		var group_cleared := shooter_group != OPEN and match_state.remaining_count_for_group(shooter_group) == 0
 		var called_eight := shot.called_ball_number == 8 and shot.pocket_ids.has(8) and int(shot.pocket_ids[8]) == shot.called_pocket_id
 		if foul_reason.is_empty() and group_cleared and called_eight and not shot.is_safety:
 			match_state.remove_ball(8)
 			_remove_pocketed(match_state, shot)
+			if match_state.player_groups[shot.shooter] == OPEN:
+				match_state.player_groups[shot.shooter] = shooter_group
+				match_state.player_groups[1 - shot.shooter] = STRIPES if shooter_group == SOLIDS else SOLIDS
 			match_state.game_over = true
 			match_state.winner = shot.shooter
 			outcome["game_over"] = true
@@ -176,7 +182,7 @@ func _normal_foul_reason(match_state: EightBallMatch, shot: EightBallShotEvent) 
 	var shooter_group: int = match_state.player_groups[shot.shooter]
 	var own_remaining := match_state.remaining_group_count(shot.shooter)
 	if shot.first_contact_number == 8:
-		if shooter_group == OPEN or own_remaining > 0:
+		if (shooter_group == OPEN and match_state.temporarily_claimable_group() == OPEN) or own_remaining > 0:
 			return "wrong_ball_first"
 	elif shooter_group != OPEN and own_remaining > 0 and match_state.group_for_ball(shot.first_contact_number) != shooter_group:
 		return "wrong_ball_first"
@@ -203,7 +209,7 @@ func _called_ball_is_valid(match_state: EightBallMatch, shot: EightBallShotEvent
 		return false
 	var group: int = match_state.player_groups[shot.shooter]
 	if group == OPEN:
-		return number != 8
+		return number != 8 or match_state.temporarily_claimable_group() != OPEN
 	if match_state.remaining_group_count(shot.shooter) == 0:
 		return number == 8
 	return match_state.group_for_ball(number) == group

@@ -16,11 +16,13 @@ Source: [WPA Recommended Equipment Specifications](https://wpapool.com/wp-conten
 ## 8-ball rules
 
 The current WPA Rules of Play linked from the WPA rules page are effective
-2025-09-15. They define called shots, open-table group assignment, legal break
-handling, ball-in-hand fouls, and 8-ball win/loss conditions. The first rules model
-will implement a documented WPA rules profile and keep casual variants separate.
+2025-09-15. They define called shots, open-table group assignment (including a
+temporary group claim when one group is already cleared), legal break handling,
+ball-in-hand fouls, and 8-ball win/loss conditions. The current rules module covers
+common cases but remains incomplete; the full WPA profile and casual variants need
+separate verification.
 
-Sources: [WPA Rules of Play](https://wpapool.com/wp-content/uploads/2025/09/2025.09.15-WPA-Rules.pdf),
+Sources: [WPA Rules of Play, current official download](https://wpapool.com/wp-content/uploads/2026/01/2026.01.02-WPA-Rules.pdf),
 [WPA rule index](https://wpapool.com/rules/)
 
 ## Dynamics references
@@ -39,7 +41,9 @@ Sources: [WPA Rules of Play](https://wpapool.com/wp-content/uploads/2025/09/2025
   [arXiv:2402.13258](https://arxiv.org/abs/2402.13258)
 
 These papers inform model structure and future reference tests. The current solver
-does not yet reproduce or validate against their numerical results.
+does not yet reproduce or validate against their numerical results. Elevated cue
+contact currently does not create an upward jump impulse; a validated cue/table impact
+model is needed before jump shots are exposed.
 
 ## Engine source
 

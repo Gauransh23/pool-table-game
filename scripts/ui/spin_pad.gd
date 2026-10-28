@@ -24,6 +24,14 @@ func _draw() -> void:
 	draw_arc(center + spin * _radius, 6.2, 0.0, TAU, 32, Color("#fff5df"), 1.2, true)
 
 
+static func normalized_tip_offset(point: Vector2, control_size: Vector2) -> Vector2:
+	var radius := minf(control_size.x, control_size.y) * 0.41
+	if radius <= 0.0:
+		return Vector2.ZERO
+	var screen_offset := point - control_size * 0.5
+	return Vector2(screen_offset.x / radius, -screen_offset.y / radius).limit_length(0.72)
+
+
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_button := event as InputEventMouseButton
@@ -38,9 +46,6 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _update_spin(point: Vector2) -> void:
-	var center := size * 0.5
-	if _radius <= 0.0:
-		_radius = minf(size.x, size.y) * 0.41
-	spin = ((point - center) / _radius).limit_length(0.72)
+	spin = normalized_tip_offset(point, size)
 	queue_redraw()
 	spin_changed.emit(spin)

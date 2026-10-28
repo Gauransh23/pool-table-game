@@ -16,7 +16,7 @@ func apply(
 		return false
 	var planar_direction := direction.normalized()
 	var elevation := clampf(cue_elevation, 0.0, deg_to_rad(65.0))
-	var axis := Vector3(planar_direction.x * cos(elevation), sin(elevation), planar_direction.y * cos(elevation)).normalized()
+	var axis := Vector3(planar_direction.x * cos(elevation), -sin(elevation), planar_direction.y * cos(elevation)).normalized()
 	var lateral := Vector3(-planar_direction.y, 0.0, planar_direction.x)
 	var tip := tip_offset.limit_length(MAX_TIP_OFFSET)
 	var contact_up := Vector3.UP - axis * Vector3.UP.dot(axis)

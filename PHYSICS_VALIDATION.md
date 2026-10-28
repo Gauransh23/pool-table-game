@@ -6,9 +6,15 @@ Last updated: 2026-10-27
 
 The headless suite checks equal-mass head-on momentum transfer, no-contact-reversal
 sliding transition, cushion direction and bounds, identical state under different
-frame chunking, centered and elevated cue contact, gravity-driven jump motion,
-side-pocket fall state, rack composition, and 9-foot starting dimensions. The checks
-are regression guards for the implemented model; they do not prove realism.
+frame chunking, centered and spin-offset cue contact, conservative elevated contact,
+airborne cushion clearance, off-table fall termination, side-pocket fall state, rack
+composition, and 9-foot starting dimensions. These checks are regression guards for
+the implemented model; they do not prove realism. Physical jump-shot initiation and
+landing remain unimplemented.
+
+The current suite also checks that airborne balls clear a cushion above its nose,
+off-table balls reach a terminal falling state, and touch-pad top/bottom input maps to
+the expected cue-tip side.
 
 The separate rules tests exercise group assignment, called pockets, wrong-first
 fouls, ball-in-hand, safeties, break choices, out-of-turn shots, and 8-ball outcomes.
@@ -22,6 +28,7 @@ physical events or UI.
 | Table playing surface | 2.54 × 1.27 m | WPA recommended 9-foot size |
 | Ball diameter | 0.05715 m | WPA equipment specification |
 | Ball mass | 0.168 kg | Inside WPA 0.156–0.170 kg range |
+| Cushion nose height | 0.03629 m | 63.5% of ball diameter, WPA recommended range |
 | Corner pocket mouth | 0.116 m | Inside WPA 0.1143–0.1175 m range |
 | Side pocket mouth | 0.129 m | Inside WPA 0.1270–0.130175 m range |
 | Fixed simulation interval | 1/480 s | Baseline; convergence not measured |

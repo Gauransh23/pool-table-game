@@ -6,7 +6,7 @@ Last updated: 2026-10-27
 
 **M0 — simulation foundation and 3D practice table: in progress.** Godot imports the
 project and the main scene runs on the current Apple Silicon macOS host. The practice
-table is visible in the desktop build. The headless suite currently passes 72
+table is visible in the desktop build. The headless suite currently passes 79
 simulation, geometry, rack, and rules assertions.
 
 ## Working now
@@ -18,8 +18,8 @@ simulation, geometry, rack, and rules assertions.
   falling-ball state.
 - Isolated WPA-oriented 8-ball match/rules model with called-shot checks, group
   assignment, standard fouls, safety turns, break-choice states, and 8-ball outcomes.
-- Momentum-transfer cue strike with center, top/back, side, and elevated contact
-  parameters.
+- Momentum-transfer cue strike with center, top/back, side, and conservative elevated
+  contact parameters. The model does not initiate a jump shot yet.
 - Regulation-style 9-foot table scale, a 16-ball rack, procedural 3D materials,
   pointer aiming, shot speed, tip-position control, and re-rack.
 - Offline physics tests that run without the rendered game.
@@ -34,6 +34,7 @@ simulation, geometry, rack, and rules assertions.
   macOS packaging, or mobile input path yet.
 - Contact coefficients, cue parameters, table pocket geometry, and numerical
   convergence still need source-grounded calibration and empirical validation.
+- Physical jump-shot initiation and landing interaction have not been implemented.
 - No break stress batch, long-run simulation, performance profile, or hardware
   thermal measurement has been completed.
 - Android, Linux, and iOS have not been built or tested.

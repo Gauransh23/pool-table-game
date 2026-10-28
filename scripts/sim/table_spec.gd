@@ -8,6 +8,7 @@ var half_size: Vector2 = Vector2(NINE_FOOT_LENGTH * 0.5, NINE_FOOT_WIDTH * 0.5)
 var corner_mouth: float = 0.116
 var side_mouth: float = 0.129
 var pocket_depth: float = 0.13
+var cushion_nose_height: float = BallState.RADIUS * 1.27
 
 
 func rail_segments() -> Array[Dictionary]:

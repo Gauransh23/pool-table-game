@@ -47,11 +47,27 @@ func reset_rack(starting_player: int) -> void:
 func remaining_group_count(player: int) -> int:
 	if player < 0 or player > 1 or player_groups[player] == Group.OPEN:
 		return 0
+	return remaining_count_for_group(player_groups[player])
+
+
+func remaining_count_for_group(group: Group) -> int:
+	if group == Group.OPEN:
+		return 0
 	var count := 0
 	for number in remaining_balls:
-		if group_for_ball(number) == player_groups[player]:
+		if group_for_ball(number) == group:
 			count += 1
 	return count
+
+
+func temporarily_claimable_group() -> Group:
+	if player_groups[0] != Group.OPEN or player_groups[1] != Group.OPEN:
+		return Group.OPEN
+	if remaining_count_for_group(Group.SOLIDS) == 0:
+		return Group.SOLIDS
+	if remaining_count_for_group(Group.STRIPES) == 0:
+		return Group.STRIPES
+	return Group.OPEN
 
 
 func group_for_ball(number: int) -> Group:

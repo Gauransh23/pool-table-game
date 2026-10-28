@@ -106,6 +106,8 @@ func _any_ball_moving() -> bool:
 	for ball in balls:
 		if ball.phase == BallState.Phase.AIRBORNE or ball.phase == BallState.Phase.FALLING:
 			return true
+		if ball.phase == BallState.Phase.OFF_TABLE and ball.height > BallState.OFF_TABLE_TERMINAL_HEIGHT:
+			return true
 		if ball.phase == BallState.Phase.IN_PLAY and (ball.velocity.length() > physics_config.sleep_speed_threshold or ball.angular_velocity.length() > physics_config.sleep_spin_threshold):
 			return true
 	return false

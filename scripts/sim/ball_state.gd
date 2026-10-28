@@ -4,6 +4,7 @@ class_name BallState
 const RADIUS := 0.028575
 const MASS := 0.168
 const INERTIA := 0.4 * MASS * RADIUS * RADIUS
+const OFF_TABLE_TERMINAL_HEIGHT := -0.12
 
 enum Phase { IN_PLAY, AIRBORNE, FALLING, POCKETED, OFF_TABLE }
 

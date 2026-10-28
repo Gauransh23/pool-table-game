@@ -65,10 +65,21 @@ func _integrate_balls(balls: Array, delta: float, config: PhysicsConfig, table: 
 		if ball.phase == BallState.Phase.POCKETED:
 			continue
 		if ball.phase == BallState.Phase.OFF_TABLE:
+			if ball.height <= BallState.OFF_TABLE_TERMINAL_HEIGHT:
+				ball.height = BallState.OFF_TABLE_TERMINAL_HEIGHT
+				ball.velocity = Vector2.ZERO
+				ball.vertical_velocity = 0.0
+				ball.angular_velocity = Vector3.ZERO
+				continue
 			ball.vertical_velocity -= config.gravity * delta
 			ball.height += ball.vertical_velocity * delta
 			ball.position += ball.velocity * delta
 			ball.advance_orientation(delta)
+			if ball.height < BallState.OFF_TABLE_TERMINAL_HEIGHT:
+				ball.height = BallState.OFF_TABLE_TERMINAL_HEIGHT
+				ball.velocity = Vector2.ZERO
+				ball.vertical_velocity = 0.0
+				ball.angular_velocity = Vector3.ZERO
 			continue
 		if ball.phase == BallState.Phase.FALLING:
 			ball.vertical_velocity -= config.gravity * delta
@@ -178,6 +189,9 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 	var ball_velocity := Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
 	var mass := config.ball_mass
 	var inertia := 0.4 * mass * BallState.RADIUS * BallState.RADIUS
+	var nose_offset := table.cushion_nose_height - ball.height
+	if absf(nose_offset) >= BallState.RADIUS:
+		return false
 	for segment in table.rail_segments():
 		var a: Vector2 = segment["a"]
 		var b: Vector2 = segment["b"]
@@ -196,9 +210,8 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 		ball.position += planar_normal * correction
 		# WPA's recommended nose height is about 63.5% of a ball diameter.
 		# In this center-relative contact model that is 0.27 ball radii above center.
-		var contact_height := BallState.RADIUS * 0.27
-		var arm_horizontal := sqrt(maxf(0.0, BallState.RADIUS * BallState.RADIUS - contact_height * contact_height))
-		var arm := Vector3(-planar_normal.x * arm_horizontal, contact_height, -planar_normal.y * arm_horizontal)
+		var arm_horizontal := sqrt(maxf(0.0, BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset))
+		var arm := Vector3(-planar_normal.x * arm_horizontal, nose_offset, -planar_normal.y * arm_horizontal)
 		var contact_velocity := ball_velocity + ball.angular_velocity.cross(arm)
 		var normal_speed := contact_velocity.dot(normal)
 		if normal_speed < 0.0:

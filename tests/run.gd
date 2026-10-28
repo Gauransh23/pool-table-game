@@ -6,6 +6,7 @@ const PhysicsStepper = preload("res://scripts/sim/physics_stepper.gd")
 const TableSpec = preload("res://scripts/sim/table_spec.gd")
 const CueStrikeModel = preload("res://scripts/sim/cue_strike_model.gd")
 const RackBuilder = preload("res://scripts/game/rack_builder.gd")
+const SpinPad = preload("res://scripts/ui/spin_pad.gd")
 const EightBallMatch = preload("res://scripts/game/eight_ball_match.gd")
 const EightBallShotEvent = preload("res://scripts/game/eight_ball_shot_event.gd")
 const EightBallRules = preload("res://scripts/game/eight_ball_rules.gd")
@@ -25,7 +26,7 @@ func _run() -> void:
 	_test_fixed_step_results_ignore_frame_chunking()
 	_test_center_strike_has_no_spin_and_top_strike_adds_follow()
 	_test_side_pocket_is_a_drop_event_not_a_trigger_teleport()
-	_test_elevated_cue_produces_a_gravity_driven_airborne_ball()
+	_test_elevated_cue_does_not_invent_an_upward_launch()
 	_test_eight_ball_rack_has_sixteen_separate_states()
 	_test_nine_foot_table_uses_wpa_playing_surface_and_pocket_ranges()
 	_test_open_table_assigns_group_only_on_called_pocket()
@@ -33,6 +34,8 @@ func _run() -> void:
 	_test_called_pocket_mismatch_does_not_assign_a_group()
 	_test_early_eight_loses_the_rack()
 	_test_legal_called_eight_wins_after_group_is_cleared()
+	_test_open_table_temporary_group_claim_can_win_on_eight()
+	_test_open_table_eight_first_is_foul_without_a_cleared_group()
 	_test_called_safety_passes_turn_after_legal_pot()
 	_test_legal_break_pot_keeps_table_open_and_shooter_at_table()
 	_test_legal_break_without_a_pot_passes_turn()
@@ -45,6 +48,9 @@ func _run() -> void:
 	_test_no_rail_after_contact_is_a_standard_foul()
 	_test_wrong_pocket_on_eight_loses_the_rack()
 	_test_scratch_while_pocketing_eight_loses_the_rack()
+	_test_spin_pad_top_position_maps_to_top_contact()
+	_test_airborne_ball_clears_cushion_nose()
+	_test_off_table_ball_falls_to_a_terminal_state()
 	if failures == 0:
 		print("PASS: %d simulation and rules assertions" % assertions)
 		quit(0)
@@ -139,16 +145,16 @@ func _test_side_pocket_is_a_drop_event_not_a_trigger_teleport() -> void:
 	_assert_true(ball.phase == BallState.Phase.POCKETED, "ball is captured only after falling into the pocket")
 
 
-func _test_elevated_cue_produces_a_gravity_driven_airborne_ball() -> void:
+func _test_elevated_cue_does_not_invent_an_upward_launch() -> void:
 	var config = _quiet_config()
 	var ball = BallState.new(0, 0, Vector2.ZERO)
 	var strike = CueStrikeModel.new()
 	strike.apply(ball, Vector2.RIGHT, 3.0, Vector2.ZERO, deg_to_rad(22.0), config)
+	_assert_true(ball.vertical_velocity < 0.0, "elevated cue force follows the descending shaft direction")
 	var stepper = PhysicsStepper.new()
 	stepper.advance([ball], 0.12, config, TableSpec.new())
-	_assert_true(ball.phase == BallState.Phase.AIRBORNE, "elevated cue strike produces an airborne cue ball")
-	_assert_true(ball.height > BallState.RADIUS + 0.05, "airborne trajectory rises above the cloth")
-	_assert_true(ball.vertical_velocity < 2.0, "gravity reduces vertical speed during flight")
+	_assert_true(ball.phase == BallState.Phase.IN_PLAY, "unsupported jump behavior does not enter an arcade airborne state")
+	_assert_near(ball.height, BallState.RADIUS, 0.001, "table contact prevents a downward cue impulse from launching the ball")
 
 
 func _test_eight_ball_rack_has_sixteen_separate_states() -> void:
@@ -244,6 +250,34 @@ func _test_legal_called_eight_wins_after_group_is_cleared() -> void:
 	var result = EightBallRules.new().apply_shot(match_state, shot)
 	_assert_true(result["game_over"], "legal called eight completes the rack")
 	_assert_true(match_state.winner == 0, "shooter wins after clearing their group")
+
+
+func _test_open_table_temporary_group_claim_can_win_on_eight() -> void:
+	var match_state = _normal_match()
+	match_state.remaining_balls = PackedInt32Array([8, 9, 10, 11, 12, 13, 14, 15])
+	var shot = EightBallShotEvent.new(0)
+	shot.first_contact_number = 8
+	shot.called_ball_number = 8
+	shot.called_pocket_id = 3
+	shot.pocketed_numbers = PackedInt32Array([8])
+	shot.pocket_ids[8] = 3
+	var result = EightBallRules.new().apply_shot(match_state, shot)
+	_assert_true(result["game_over"] and match_state.winner == 0,
+		"open-table player may temporarily claim a cleared group to shoot the eight")
+	_assert_true(match_state.player_groups[0] == EightBallMatch.Group.SOLIDS,
+		"temporary group claim is recorded for the winning rack")
+
+
+func _test_open_table_eight_first_is_foul_without_a_cleared_group() -> void:
+	var match_state = _normal_match()
+	var shot = EightBallShotEvent.new(0)
+	shot.first_contact_number = 8
+	shot.called_ball_number = 8
+	shot.called_pocket_id = 1
+	shot.rail_after_contact = true
+	var result = EightBallRules.new().apply_shot(match_state, shot)
+	_assert_true(result["foul"] and result["foul_reason"] == "wrong_ball_first",
+		"open-table eight-first contact fouls when no group is cleared")
 
 
 func _test_called_safety_passes_turn_after_legal_pot() -> void:
@@ -408,6 +442,38 @@ func _test_scratch_while_pocketing_eight_loses_the_rack() -> void:
 	_assert_true(result["game_over"] and result["winner"] == 1,
 		"cue-ball scratch while pocketing the eight loses the rack")
 	_assert_true(result["foul"], "eight-ball loss also reports the foul")
+
+
+func _test_spin_pad_top_position_maps_to_top_contact() -> void:
+	var offset: Vector2 = SpinPad.normalized_tip_offset(Vector2(50.0, 25.0), Vector2(100.0, 100.0))
+	_assert_true(offset.y > 0.0, "touching above the spin pad center selects top contact")
+	var lower_offset: Vector2 = SpinPad.normalized_tip_offset(Vector2(50.0, 75.0), Vector2(100.0, 100.0))
+	_assert_true(lower_offset.y < 0.0, "touching below the spin pad center selects bottom contact")
+
+
+func _test_airborne_ball_clears_cushion_nose() -> void:
+	var config = _quiet_config()
+	var table = TableSpec.new()
+	var ball = BallState.new(0, 0, Vector2(table.half_size.x - BallState.RADIUS - 0.002, 0.0))
+	ball.height = BallState.RADIUS * 2.5
+	ball.velocity = Vector2(1.0, 0.0)
+	ball.phase = BallState.Phase.AIRBORNE
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], 0.00625, config, table)
+	_assert_true(ball.velocity.x > 0.9, "ball above the cushion nose continues over the rail")
+	_assert_true(ball.phase == BallState.Phase.AIRBORNE, "cleared cushion does not recapture airborne ball")
+
+
+func _test_off_table_ball_falls_to_a_terminal_state() -> void:
+	var config = _quiet_config()
+	var table = TableSpec.new()
+	var ball = BallState.new(0, 1, Vector2(table.half_size.x + 0.01, 0.0))
+	ball.phase = BallState.Phase.OFF_TABLE
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], 0.5, config, table)
+	_assert_true(ball.phase == BallState.Phase.OFF_TABLE, "off-table phase remains available for rules")
+	_assert_near(ball.height, -0.12, 0.0001, "off-table ball reaches a bounded terminal height")
+	_assert_near(ball.vertical_velocity, 0.0, 1.0e-8, "terminal off-table ball stops advancing")
 
 
 func _normal_match():
