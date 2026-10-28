@@ -44,7 +44,7 @@ The contact coefficients are provisional, table-condition-dependent model inputs
 ## Missing validation before the physics milestone
 
 - Fixed-step convergence at increasing tick/substep quality for rolling, spin,
-  collision, rail, pocket, jump, and break scenarios.
+  collision, rail, pocket, future jump-shot, and break scenarios.
 - Rail response matrix across speed, incidence, and spin, compared with the
   Mathavan/Jackson/Parkin cushion model and measured table behavior.
 - Ball-ball cut, throw, low-speed, high-speed, cluster, and moving-contact cases.

@@ -46,9 +46,10 @@ simulation, geometry, rack, and rules assertions.
    and break-option UI.
 3. Validate rail, ball-ball, jaw, pocket, and airborne behavior against published
    reference cases; add convergence and stress harnesses before tuning coefficients.
-4. Add a legal offline opponent and practice/replay tooling after rules events are
+4. Develop a source-grounded cue/table impact model before exposing jump shots.
+5. Add a legal offline opponent and practice/replay tooling after rules events are
    stable.
-5. Add restrained, varied contact audio and inspect the visual identity at full-size
+6. Add restrained, varied contact audio and inspect the visual identity at full-size
    macOS window and Retina scales.
 
 ## Release blockers

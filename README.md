@@ -44,8 +44,9 @@ godot --headless --path . --script res://tests/run.gd
 ```
 
 The suite covers analytic head-on impact, sliding-to-rolling transition, cushion
-rebound, fixed-step frame-chunk determinism, cue spin, pocket fall, jump trajectory,
-rack composition, WPA starting dimensions, and hand-authored 8-ball rules scenarios.
+rebound, fixed-step frame-chunk determinism, cue spin, pocket fall, elevated-cue
+guards, airborne cushion clearance, rack composition, WPA starting dimensions, and
+hand-authored 8-ball rules scenarios.
 These tests do not establish that the current coefficients or pocket model match a
 measured table.
 
