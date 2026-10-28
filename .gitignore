@@ -7,10 +7,21 @@
 /captures/
 /profiling/
 /test-results/
+/native/build/
 *.log
+REVIEW_AND_GUIDANCE_FROM_OPUS.md
 
 # macOS
 .DS_Store
 
 # Editor-local overrides
 override.cfg
+
+# Local credentials and signing material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx

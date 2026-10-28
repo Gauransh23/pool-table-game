@@ -20,18 +20,23 @@ not yet implemented.
 - A separate WPA-oriented 8-ball rules module for called shots, groups, fouls,
   ball-in-hand, break choices, and win/loss outcomes. It is tested but not yet
   connected to the practice-table UI or physics event stream.
-- No network requirement, external asset, third-party code library, or analytics
-  dependency.
+- A standalone C++17 double-precision simulation experiment with ball-ball and
+  cushion time-of-impact estimates, timestamped events, and a dense cut-angle sweep.
+  It is not connected to the Godot runtime; GDScript remains the playable path.
+- No runtime network requirement, external asset, third-party code library, or
+  analytics dependency.
 
 ## Run
 
-Install the Godot 4.7.2 stable Standard editor from the [official release
-page](https://godotengine.org/download/archive/4.7.2-stable/), then open this folder
-or run:
+Run the pinned macOS bootstrap to download and verify Godot 4.7.2 Standard into
+`~/Applications/Godot-4.7.2.app`, then open the project:
 
 ```sh
-godot --editor --path .
+bash tools/godot.sh --editor --path .
 ```
+
+The script verifies the official archive's SHA-256 before installing. Set `GODOT` to
+an existing editor executable to skip the download.
 
 The main scene is `res://scenes/main.tscn`. Move the pointer over the table to aim,
 set shot speed and tip position in the HUD, then select **Take Shot** or press
@@ -40,15 +45,33 @@ Space. Select **Re-rack** or press R to reset the practice table.
 ## Headless physics checks
 
 ```sh
-godot --headless --path . --script res://tests/run.gd
+bash tools/godot.sh --headless --path . --script res://tests/run.gd
 ```
 
-The suite covers analytic head-on impact, sliding-to-rolling transition, cushion
-rebound, fixed-step frame-chunk determinism, cue spin, pocket fall, elevated-cue
-guards, airborne cushion clearance, rack composition, WPA starting dimensions, and
-hand-authored 8-ball rules scenarios.
+The separate 16-ball break microbenchmark runs with:
+
+```sh
+bash tools/godot.sh --headless --path . --script res://tests/benchmark_breaks.gd
+```
+
+The suite covers analytic head-on impact, stun-to-roll transition, rolling and spin
+friction, cushion normals/rebound, fixed-step frame-chunk determinism, cue speed,
+energy and squirt, miscue bounds, pocket fall, airborne clearance, rack and WPA
+geometry, and hand-authored 8-ball rules scenarios.
 These tests do not establish that the current coefficients or pocket model match a
 measured table.
+
+The native core has its own checks and 16-ball benchmark:
+
+```sh
+bash tools/run_native_tests.sh
+bash tools/run_native_tests.sh --benchmark
+```
+
+Its 1,601-sample cut-angle sweep checks a center-height equal-mass collision against
+an analytic reference at 0.0001-radian aim increments. This is a narrow solver
+regression, not evidence that the complete table model is calibrated or that the
+standalone core matches the GDScript runtime.
 
 ## Project notes
 

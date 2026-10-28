@@ -18,13 +18,13 @@ func advance(balls: Array, elapsed: float, config: PhysicsConfig, table: TableSp
 		step_fixed(balls, config.fixed_step, config, table)
 		_accumulator -= config.fixed_step
 		ticks += 1
-	tick_count += 1
 	return ticks
 
 
 func step_fixed(balls: Array, delta: float, config: PhysicsConfig, table: TableSpec) -> void:
 	if delta <= 0.0:
 		return
+	tick_count += 1
 	var fastest := 0.0
 	for ball in balls:
 		if ball.is_on_table():
@@ -58,6 +58,17 @@ func contact_slip(ball: BallState) -> Vector2:
 		ball.velocity.x + BallState.RADIUS * ball.angular_velocity.z,
 		ball.velocity.y - BallState.RADIUS * ball.angular_velocity.x
 	)
+
+
+func are_balls_settled(balls: Array, config: PhysicsConfig) -> bool:
+	for ball in balls:
+		if ball.phase == BallState.Phase.AIRBORNE or ball.phase == BallState.Phase.FALLING:
+			return false
+		if ball.phase == BallState.Phase.OFF_TABLE and ball.height > BallState.OFF_TABLE_TERMINAL_HEIGHT:
+			return false
+		if ball.phase == BallState.Phase.IN_PLAY and (ball.velocity.length() > config.sleep_speed_threshold or ball.angular_velocity.length() > config.sleep_spin_threshold):
+			return false
+	return true
 
 
 func _integrate_balls(balls: Array, delta: float, config: PhysicsConfig, table: TableSpec) -> void:
@@ -127,9 +138,17 @@ func _apply_cloth_friction(ball: BallState, delta: float, config: PhysicsConfig)
 	else:
 		var speed := ball.velocity.length()
 		if speed > 1.0e-7:
-			var rolling_impulse := minf(config.rolling_resistance * mass * config.gravity * delta, speed * mass)
-			_apply_cloth_impulse(ball, -ball.velocity.normalized() * rolling_impulse, inertia, mass)
-	ball.angular_velocity.y *= exp(-config.spin_decay_rate * delta)
+			var new_speed := maxf(0.0, speed - config.rolling_resistance * config.gravity * delta)
+			ball.velocity = ball.velocity.normalized() * new_speed
+			ball.angular_velocity.x = ball.velocity.y / BallState.RADIUS
+			ball.angular_velocity.z = -ball.velocity.x / BallState.RADIUS
+		else:
+			ball.velocity = Vector2.ZERO
+			ball.angular_velocity.x = 0.0
+			ball.angular_velocity.z = 0.0
+	var spin_speed := absf(ball.angular_velocity.y)
+	var spin_deceleration := 5.0 * config.spinning_friction * config.gravity / (2.0 * BallState.RADIUS)
+	ball.angular_velocity.y = signf(ball.angular_velocity.y) * maxf(0.0, spin_speed - spin_deceleration * delta)
 
 
 func _apply_cloth_impulse(ball: BallState, planar_impulse: Vector2, inertia: float, mass: float) -> void:
@@ -185,13 +204,13 @@ func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConf
 
 func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) -> bool:
 	var touched := false
-	var ball_center := Vector3(ball.position.x, ball.height, ball.position.y)
 	var ball_velocity := Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
 	var mass := config.ball_mass
 	var inertia := 0.4 * mass * BallState.RADIUS * BallState.RADIUS
 	var nose_offset := table.cushion_nose_height - ball.height
 	if absf(nose_offset) >= BallState.RADIUS:
 		return false
+	var horizontal_radius := sqrt(BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset)
 	for segment in table.rail_segments():
 		var a: Vector2 = segment["a"]
 		var b: Vector2 = segment["b"]
@@ -199,19 +218,21 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 		var closest := Geometry2D.get_closest_point_to_segment(ball.position, a, b)
 		var offset := ball.position - closest
 		var signed_distance := offset.dot(inward)
-		if signed_distance < -0.001 or offset.length_squared() >= BallState.RADIUS * BallState.RADIUS:
+		if signed_distance < -0.001 or offset.length_squared() >= horizontal_radius * horizontal_radius:
 			continue
 		var planar_normal := offset.normalized() if offset.length_squared() > CONTACT_EPSILON else inward
 		if planar_normal.dot(inward) < 0.0:
 			planar_normal = inward
-		var normal := Vector3(planar_normal.x, 0.0, planar_normal.y)
+		var normal := Vector3(
+			planar_normal.x * horizontal_radius / BallState.RADIUS,
+			-nose_offset / BallState.RADIUS,
+			planar_normal.y * horizontal_radius / BallState.RADIUS
+		)
 		var distance := offset.length()
-		var correction := maxf(0.0, BallState.RADIUS - distance)
+		var correction := maxf(0.0, horizontal_radius - distance)
 		ball.position += planar_normal * correction
-		# WPA's recommended nose height is about 63.5% of a ball diameter.
-		# In this center-relative contact model that is 0.27 ball radii above center.
-		var arm_horizontal := sqrt(maxf(0.0, BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset))
-		var arm := Vector3(-planar_normal.x * arm_horizontal, nose_offset, -planar_normal.y * arm_horizontal)
+		# The cushion normal is radial to the ball at the WPA nose height, not horizontal.
+		var arm := Vector3(-planar_normal.x * horizontal_radius, nose_offset, -planar_normal.y * horizontal_radius)
 		var contact_velocity := ball_velocity + ball.angular_velocity.cross(arm)
 		var normal_speed := contact_velocity.dot(normal)
 		if normal_speed < 0.0:

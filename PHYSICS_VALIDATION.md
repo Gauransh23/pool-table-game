@@ -4,13 +4,21 @@ Last updated: 2026-10-27
 
 ## Current evidence
 
-The headless suite checks equal-mass head-on momentum transfer, no-contact-reversal
-sliding transition, cushion direction and bounds, identical state under different
-frame chunking, centered and spin-offset cue contact, conservative elevated contact,
-airborne cushion clearance, off-table fall termination, side-pocket fall state, rack
-composition, and 9-foot starting dimensions. These checks are regression guards for
-the implemented model; they do not prove realism. Physical jump-shot initiation and
-landing remain unimplemented.
+The GDScript headless suite passes 109 assertions for equal-mass head-on momentum
+transfer, analytic stun-to-roll speed and displacement, rolling deceleration and
+stopping distance, constant sidespin decay, cushion direction/normal/clearance,
+frame-chunk invariance, cue speed/energy/squirt/miscue bounds, off-table fall
+termination, side-pocket fall state, rack composition and position, and 9-foot table
+dimensions. These are regression references; they do not prove full-table realism.
+Physical jump-shot initiation and landing remain unimplemented.
+
+The standalone C++17 experiment passes 4,869 checks. A 1,601-point center-height
+half-ball cut sweep advances aim in 0.0001-radian steps and compares equal-mass
+object-ball departure angles with the analytic collision curve. Maximum measured
+error is 2.89e-15 radians. It also checks analytic rolling and stun references,
+sidespin decay, cue energy and squirt, rack placement, fixed-step chunking, and exact
+ball-ball and ball-cushion contact timestamps. This validates a narrow frictionless
+contact case, not GDScript parity, cluster stability, or a measured table.
 
 The current suite also checks that airborne balls clear a cushion above its nose,
 off-table balls reach a terminal falling state, and touch-pad top/bottom input maps to
@@ -35,11 +43,17 @@ physical events or UI.
 | Ball restitution | 0.94 | Untuned starting value |
 | Ball friction | 0.055 | Untuned starting value |
 | Sliding friction | 0.19 | Untuned starting value |
+| Rolling resistance | 0.012 | Within the reported 0.005–0.015 pool range; calibration pending |
+| Spinning friction | 0.0127 m | Pooltool default scale value; calibration pending |
+| Cue collision efficiency | 0.87 | Alciatore TP A.30 typical leather-tip value |
+| Cue effective end mass | 0.008 kg | Inside Alciatore's typical 5–15 g range |
+| Stable tip offset bound | 0.50 R | Alciatore TP A.30 cites this as a typical miscue boundary |
 | Cushion restitution | 0.84 | Untuned starting value; requires rail matrix |
 | Cushion friction | 0.12 | Untuned starting value |
 
 The values for mass, geometry, and mouth widths are grounded in the WPA document.
-The contact coefficients are provisional, table-condition-dependent model inputs.
+Rolling/spinning defaults and cue parameters are reference starting points, not
+calibrated properties of a specific pool table or cue.
 
 ## Missing validation before the physics milestone
 
@@ -53,3 +67,5 @@ The contact coefficients are provisional, table-condition-dependent model inputs
   checks.
 - Long-duration create/simulate/clear and serialization stress.
 - Calibration preset ranges instead of a universal coefficient claim.
+- Native/GDScript state and event parity on shared named scenarios.
+- GDExtension bridge behavior and target builds before any runtime migration.

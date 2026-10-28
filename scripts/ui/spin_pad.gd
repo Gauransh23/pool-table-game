@@ -3,6 +3,8 @@ class_name SpinPad
 
 signal spin_changed(value: Vector2)
 
+const MAX_STABLE_TIP_OFFSET := 0.5
+
 var spin: Vector2 = Vector2.ZERO
 var _radius: float = 0.0
 
@@ -29,7 +31,7 @@ static func normalized_tip_offset(point: Vector2, control_size: Vector2) -> Vect
 	if radius <= 0.0:
 		return Vector2.ZERO
 	var screen_offset := point - control_size * 0.5
-	return Vector2(screen_offset.x / radius, -screen_offset.y / radius).limit_length(0.72)
+	return Vector2(screen_offset.x / radius, -screen_offset.y / radius).limit_length(MAX_STABLE_TIP_OFFSET)
 
 
 func _gui_input(event: InputEvent) -> void:

@@ -15,7 +15,7 @@ static func create_eight_ball_rack(table: TableSpec) -> Array[BallState]:
 	balls.append(BallState.new(0, 0, Vector2(-0.82, 0.0)))
 	var diameter := BallState.RADIUS * 2.0 + 0.00015
 	var row_step := diameter * sqrt(3.0) * 0.5
-	var foot_x := table.half_size.x * 0.64
+	var foot_x := table.half_size.x * 0.5
 	var next_id := 1
 	for row in range(RACK_PATTERN.size()):
 		var numbers: Array = RACK_PATTERN[row]

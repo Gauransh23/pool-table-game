@@ -13,6 +13,11 @@ geometry, not as a complete measured table profile.
 
 Source: [WPA Recommended Equipment Specifications](https://wpapool.com/wp-content/uploads/2024/01/RECOMMENDED-EQUIPMENT-SPECIFICATIONS.pdf)
 
+The same document specifies 12–15° vertical pocket back draft, 142° (+1°) corner
+and 104° (+1°) side horizontal cut angles, and shelf depths of 25.4–57.15 mm for
+corner pockets and 0–9.525 mm for side pockets. These are geometric constraints for
+the pocket model; exact jaw profile and fall-edge implementation remain open.
+
 ## 8-ball rules
 
 The current WPA Rules of Play linked from the WPA rules page are effective

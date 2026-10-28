@@ -23,6 +23,7 @@ func _run() -> void:
 	_test_equal_mass_head_on_collision_transfers_motion()
 	_test_sliding_friction_transitions_to_rolling_without_reversal()
 	_test_cushion_contact_reverses_normal_motion()
+	_test_cushion_normal_is_radial_and_press_downward()
 	_test_fixed_step_results_ignore_frame_chunking()
 	_test_center_strike_has_no_spin_and_top_strike_adds_follow()
 	_test_side_pocket_is_a_drop_event_not_a_trigger_teleport()
@@ -36,6 +37,13 @@ func _run() -> void:
 	_test_legal_called_eight_wins_after_group_is_cleared()
 	_test_open_table_temporary_group_claim_can_win_on_eight()
 	_test_open_table_eight_first_is_foul_without_a_cleared_group()
+	_test_rolling_resistance_matches_constant_deceleration()
+	_test_sliding_to_rolling_matches_analytic_stun_reference()
+	_test_sidespin_has_bounded_constant_torque_decay()
+	_test_corner_pocket_mouth_matches_jaw_tip_geometry()
+	_test_off_center_cue_speed_and_energy_follow_alciatore_tp_a30()
+	_test_cue_squirt_matches_endmass_model()
+	_test_out_of_range_tip_reports_miscue()
 	_test_called_safety_passes_turn_after_legal_pot()
 	_test_legal_break_pot_keeps_table_open_and_shooter_at_table()
 	_test_legal_break_without_a_pot_passes_turn()
@@ -101,6 +109,22 @@ func _test_cushion_contact_reverses_normal_motion() -> void:
 		"cushion contact keeps the ball inside the playing boundary")
 
 
+func _test_cushion_normal_is_radial_and_press_downward() -> void:
+	var config = _quiet_config()
+	config.cushion_friction = 0.0
+	var table = TableSpec.new()
+	var nose_offset: float = table.cushion_nose_height - BallState.RADIUS
+	var horizontal_radius: float = sqrt(BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset)
+	var ball = BallState.new(0, 1, Vector2(table.half_size.x - horizontal_radius + 0.0001, 0.0))
+	ball.velocity = Vector2(2.0, 0.0)
+	var stepper = PhysicsStepper.new()
+	stepper.step_fixed([ball], 0.0001, config, table)
+	_assert_true(ball.velocity.x < 2.0, "cushion normal impulse slows the incoming ball")
+	_assert_near(ball.angular_velocity.length(), 0.0, 1.0e-4,
+		"frictionless cushion normal passes through the ball center without inventing spin")
+	_assert_true(ball.vertical_velocity < 0.0, "inclined cushion normal presses into the table cloth")
+
+
 func _test_fixed_step_results_ignore_frame_chunking() -> void:
 	var config = _quiet_config()
 	config.sliding_friction = 0.17
@@ -117,6 +141,8 @@ func _test_fixed_step_results_ignore_frame_chunking() -> void:
 		"fixed simulation gives identical position across render-frame chunking")
 	_assert_near(one_frame_ball.velocity.distance_to(split_frame_ball.velocity), 0.0, 1.0e-9,
 		"fixed simulation gives identical velocity across render-frame chunking")
+	_assert_true(one_frame_stepper.tick_count == 240 and split_frame_stepper.tick_count == 240,
+		"tick counter records fixed simulation steps rather than render calls")
 
 
 func _test_center_strike_has_no_spin_and_top_strike_adds_follow() -> void:
@@ -158,13 +184,16 @@ func _test_elevated_cue_does_not_invent_an_upward_launch() -> void:
 
 
 func _test_eight_ball_rack_has_sixteen_separate_states() -> void:
-	var balls: Array[BallState] = RackBuilder.create_eight_ball_rack(TableSpec.new())
+	var table = TableSpec.new()
+	var balls: Array[BallState] = RackBuilder.create_eight_ball_rack(table)
 	_assert_true(balls.size() == 16, "eight-ball rack contains the cue ball and fifteen object balls")
 	var numbers := {}
 	for ball in balls:
 		numbers[ball.number] = true
 	_assert_true(numbers.size() == 16, "rack contains each ball number exactly once")
 	_assert_true(numbers.has(8), "eight ball is present in the center row")
+	_assert_near(balls[1].position.x, table.half_size.x * 0.5, 1.0e-7,
+		"rack apex is placed on the WPA foot spot")
 
 
 func _test_nine_foot_table_uses_wpa_playing_surface_and_pocket_ranges() -> void:
@@ -278,6 +307,128 @@ func _test_open_table_eight_first_is_foul_without_a_cleared_group() -> void:
 	var result = EightBallRules.new().apply_shot(match_state, shot)
 	_assert_true(result["foul"] and result["foul_reason"] == "wrong_ball_first",
 		"open-table eight-first contact fouls when no group is cleared")
+
+
+func _test_rolling_resistance_matches_constant_deceleration() -> void:
+	var config = _quiet_config()
+	config.rolling_resistance = 0.012
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	ball.velocity = Vector2(0.5, 0.0)
+	ball.angular_velocity.z = -ball.velocity.x / BallState.RADIUS
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], 1.0, config, TableSpec.new())
+	var expected_speed: float = 0.5 - config.rolling_resistance * config.gravity
+	var expected_distance: float = 0.5 - 0.5 * config.rolling_resistance * config.gravity
+	_assert_near(ball.velocity.x, expected_speed, 0.005,
+		"pure rolling decelerates at rolling_resistance times gravity")
+	_assert_near(ball.position.x, expected_distance, 0.002,
+		"rolling distance follows constant-deceleration kinematics")
+	stepper.advance([ball], 5.0, config, TableSpec.new())
+	var expected_stop_distance: float = 0.5 * 0.5 / (2.0 * config.rolling_resistance * config.gravity)
+	_assert_near(ball.velocity.length(), 0.0, 0.001, "rolling ball eventually stops")
+	_assert_near(ball.position.x, expected_stop_distance, 0.003,
+		"rolling stopping distance follows the analytic result")
+
+
+func _test_sliding_to_rolling_matches_analytic_stun_reference() -> void:
+	var config = _quiet_config()
+	config.sliding_friction = 0.2
+	var transition_time := 80.0 / 480.0
+	var initial_speed: float = transition_time * 7.0 * config.sliding_friction * config.gravity / 2.0
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	ball.velocity = Vector2(initial_speed, 0.0)
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], transition_time, config, TableSpec.new())
+	var expected_speed: float = 5.0 / 7.0 * initial_speed
+	var expected_distance: float = 12.0 * initial_speed * initial_speed / (49.0 * config.sliding_friction * config.gravity)
+	_assert_near(ball.velocity.x, expected_speed, 0.01, "stun-to-roll final speed follows the 5/7 reference")
+	_assert_near(ball.position.x, expected_distance, 0.002, "stun-to-roll displacement matches analytic reference")
+
+
+func _test_sidespin_has_bounded_constant_torque_decay() -> void:
+	var config = PhysicsConfig.new()
+	var spin_friction_reference := 0.0127
+	var initial_spin := 30.0
+	var angular_deceleration: float = 5.0 * spin_friction_reference * config.gravity / (2.0 * BallState.RADIUS)
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	ball.angular_velocity.y = initial_spin
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], 1.0, config, TableSpec.new())
+	_assert_near(ball.angular_velocity.y, initial_spin - angular_deceleration, 0.05,
+		"sidespin loses angular speed at a bounded frictional rate")
+	stepper.advance([ball], 2.0, config, TableSpec.new())
+	_assert_near(ball.angular_velocity.y, 0.0, 0.08,
+		"in-place sidespin settles within a few seconds")
+
+
+func _test_corner_pocket_mouth_matches_jaw_tip_geometry() -> void:
+	var table = TableSpec.new()
+	var corner_tips: Array[Vector2] = []
+	for segment in table.rail_segments():
+		if not segment["jaw"]:
+			continue
+		var tip: Vector2 = segment["a"]
+		if absf(tip.x) <= table.half_size.x * 0.7 or absf(tip.y) <= table.half_size.y * 0.7:
+			continue
+		corner_tips.append(tip)
+	var corner_count := 0
+	for x_sign in [-1.0, 1.0]:
+		for z_sign in [-1.0, 1.0]:
+			var tips: Array[Vector2] = []
+			for tip in corner_tips:
+				if signf(tip.x) == x_sign and signf(tip.y) == z_sign:
+					tips.append(tip)
+			corner_count += 1 if tips.size() == 2 else 0
+			_assert_true(tips.size() == 2, "each corner has two jaw tips")
+			var actual_mouth: float = tips[0].distance_to(tips[1]) if tips.size() == 2 else 0.0
+			_assert_true(actual_mouth >= 0.1143 and actual_mouth <= 0.1175,
+				"corner mouth tip-to-tip width remains within the WPA range")
+	_assert_true(corner_count == 4, "four physical corner jaw pairs are generated")
+
+
+func _test_off_center_cue_speed_and_energy_follow_alciatore_tp_a30() -> void:
+	var config = _quiet_config()
+	var cue_speed := 5.0
+	var ball_to_cue_mass: float = config.ball_mass / config.cue_mass
+	var offset_fraction: float = CueStrikeModel.MAX_TIP_OFFSET
+	var efficiency: float = 0.87
+	var denominator: float = 1.0 + ball_to_cue_mass + 2.5 * offset_fraction * offset_fraction
+	var discriminant: float = 1.0 - denominator * (1.0 - efficiency) / ball_to_cue_mass
+	var expected_speed: float = cue_speed * (1.0 + sqrt(discriminant)) / denominator
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	var strike = CueStrikeModel.new()
+	strike.apply(ball, Vector2.RIGHT, cue_speed, Vector2(offset_fraction, 0.0), 0.0, config)
+	var ball_energy: float = 0.5 * config.ball_mass * Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y).length_squared()
+	ball_energy += 0.5 * BallState.INERTIA * ball.angular_velocity.length_squared()
+	var cue_energy: float = 0.5 * config.cue_mass * cue_speed * cue_speed
+	_assert_true(ball_energy <= cue_energy * efficiency * 1.0001,
+		"cue strike transfers no more kinetic energy than the cue supplied")
+	_assert_near(ball.velocity.length(), expected_speed, 0.02,
+		"off-center cue speed follows the effective-mass impact model")
+
+
+func _test_cue_squirt_matches_endmass_model() -> void:
+	var config = _quiet_config()
+	var cue_end_mass: float = 0.008
+	var ball_mass: float = config.ball_mass
+	var offset_fraction: float = 0.5
+	var denominator: float = 1.0 + ball_mass / cue_end_mass + 2.5 * (1.0 - offset_fraction * offset_fraction)
+	var expected_angle: float = atan((2.5 * offset_fraction * sqrt(1.0 - offset_fraction * offset_fraction)) / denominator)
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	var strike = CueStrikeModel.new()
+	strike.apply(ball, Vector2.RIGHT, 5.0, Vector2(offset_fraction, 0.0), 0.0, config)
+	var actual_angle: float = atan2(-ball.velocity.y, ball.velocity.x)
+	_assert_near(actual_angle, expected_angle, 0.002,
+		"side-tip offset produces squirt consistent with the cue end-mass formula")
+
+
+func _test_out_of_range_tip_reports_miscue() -> void:
+	var config = _quiet_config()
+	var ball = BallState.new(0, 0, Vector2.ZERO)
+	var strike = CueStrikeModel.new()
+	var applied := strike.apply(ball, Vector2.RIGHT, 4.0, Vector2(0.6, 0.0), 0.0, config)
+	_assert_true(not applied and strike.last_miscue, "tip beyond stable offset is reported as a miscue")
+	_assert_near(ball.velocity.length(), 0.0, 1.0e-8, "rejected miscue does not masquerade as a clean strike")
 
 
 func _test_called_safety_passes_turn_after_legal_pot() -> void:
@@ -494,7 +645,7 @@ func _quiet_config():
 	config.fixed_step = 1.0 / 480.0
 	config.sliding_friction = 0.0
 	config.rolling_resistance = 0.0
-	config.spin_decay_rate = 0.0
+	config.spinning_friction = 0.0
 	config.ball_restitution = 0.98
 	config.ball_friction = 0.04
 	config.cushion_restitution = 0.86

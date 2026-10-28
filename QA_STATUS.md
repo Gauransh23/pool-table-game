@@ -6,8 +6,13 @@ Last updated: 2026-10-27
 
 - Godot 4.7.2 stable imported the project.
 - Main scene completed a 3-frame headless startup without runtime script errors.
-- Headless test harness passed 82 assertions across physics, table geometry, rack
+- Headless test harness passed 109 assertions across physics, table geometry, rack
   setup, and hand-authored 8-ball rules scenarios.
+- Native standalone regression harness passed 4,869 checks, including a 1,601-point
+  cut-angle sweep and exact analytic ball/cushion contact-time cases.
+- The standalone optimized C++ break benchmark completed seven four-second 16-ball
+  runs in 3.76–6.19 ms (median 4.25 ms); GDScript took 288.4–291.6 ms. Physics-state
+  parity and GDExtension overhead are not measured.
 - A desktop debug run visibly rendered the table, rack, cue, aim guide, and HUD on
   the current Apple Silicon macOS host.
 
@@ -19,8 +24,8 @@ Last updated: 2026-10-27
 - Save/load, suspend/resume, accessibility, audio, or replay.
 - Signed/exported macOS package, offline first launch, or long-duration stability.
 - Android, Linux, or iOS runtime or builds.
-- Reference physics accuracy, large break stress batch, performance, and thermal
-  behavior.
+- Reference physics accuracy, large break stress batch, release-build performance,
+  and thermal behavior.
 - Physical jump-shot initiation and landing behavior.
 
 ## Current defects and risks

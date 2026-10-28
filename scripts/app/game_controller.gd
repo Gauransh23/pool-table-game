@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _shot_in_motion:
 		stepper.advance(balls, minf(delta, 0.12), physics_config, table)
-		if not _any_ball_moving():
+		if stepper.are_balls_settled(balls, physics_config):
 			_shot_in_motion = false
 			hud.set_can_shoot(true)
 			hud.set_status("BALLS SETTLED · TAKE THE NEXT SHOT")
@@ -85,6 +85,8 @@ func _on_shoot_requested(selected_power: float, selected_spin: Vector2) -> void:
 	var cue_speed := 1.8 + power * 6.2
 	var applied := strike_model.apply(cue_ball, aim_direction, cue_speed, spin, 0.0, physics_config)
 	if not applied:
+		if strike_model.last_miscue:
+			hud.set_status("MISCUE · MOVE THE TIP BACK TOWARD CENTER")
 		return
 	_shot_in_motion = true
 	hud.set_can_shoot(false)
@@ -103,14 +105,7 @@ func _on_spin_changed(value: Vector2) -> void:
 
 
 func _any_ball_moving() -> bool:
-	for ball in balls:
-		if ball.phase == BallState.Phase.AIRBORNE or ball.phase == BallState.Phase.FALLING:
-			return true
-		if ball.phase == BallState.Phase.OFF_TABLE and ball.height > BallState.OFF_TABLE_TERMINAL_HEIGHT:
-			return true
-		if ball.phase == BallState.Phase.IN_PLAY and (ball.velocity.length() > physics_config.sleep_speed_threshold or ball.angular_velocity.length() > physics_config.sleep_spin_threshold):
-			return true
-	return false
+	return not stepper.are_balls_settled(balls, physics_config)
 
 
 func _cue_ball() -> BallState:

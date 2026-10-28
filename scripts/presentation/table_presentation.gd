@@ -369,7 +369,7 @@ func _first_rail_distance(position: Vector2, direction: Vector2) -> float:
 
 func _update_cue(cue_position: Vector3, direction: Vector2, power: float) -> void:
 	var aim := Vector3(direction.x, 0.0, direction.y).normalized()
-	var elevation := deg_to_rad(10.0)
+	var elevation := 0.0
 	var cue_axis := Vector3(aim.x * cos(elevation), -sin(elevation), aim.z * cos(elevation)).normalized()
 	var retract := 0.025 + clampf(power, 0.0, 1.0) * 0.075
 	var cue_end := cue_position - aim * retract + Vector3.UP * 0.008

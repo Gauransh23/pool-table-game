@@ -9,13 +9,28 @@ var corner_mouth: float = 0.116
 var side_mouth: float = 0.129
 var pocket_depth: float = 0.13
 var cushion_nose_height: float = BallState.RADIUS * 1.27
+var _cached_segments: Array[Dictionary] = []
+var _cached_half_size: Vector2 = Vector2.ZERO
+var _cached_corner_mouth: float = -1.0
+var _cached_side_mouth: float = -1.0
+var _cached_pocket_depth: float = -1.0
 
 
 func rail_segments() -> Array[Dictionary]:
+	if _cached_segments.is_empty() or _cached_half_size != half_size or not is_equal_approx(_cached_corner_mouth, corner_mouth) or not is_equal_approx(_cached_side_mouth, side_mouth) or not is_equal_approx(_cached_pocket_depth, pocket_depth):
+		_cached_segments = _build_rail_segments()
+		_cached_half_size = half_size
+		_cached_corner_mouth = corner_mouth
+		_cached_side_mouth = side_mouth
+		_cached_pocket_depth = pocket_depth
+	return _cached_segments
+
+
+func _build_rail_segments() -> Array[Dictionary]:
 	var segments: Array[Dictionary] = []
 	var half_x := half_size.x
 	var half_z := half_size.y
-	var corner_gap := corner_mouth * 0.5
+	var corner_gap := corner_mouth / sqrt(2.0)
 	var side_gap := side_mouth * 0.5
 	for side_sign in [-1, 1]:
 		var side_sign_value: float = float(side_sign)
@@ -67,7 +82,7 @@ func _add_jaw(segments: Array[Dictionary], a: Vector2, b: Vector2) -> void:
 func _add_corner_jaws(segments: Array[Dictionary]) -> void:
 	var half_x := half_size.x
 	var half_z := half_size.y
-	var mouth_half := corner_mouth * 0.5
+	var mouth_half := corner_mouth / sqrt(2.0)
 	var throat_offset := pocket_depth
 	for x_sign in [-1.0, 1.0]:
 		for z_sign in [-1.0, 1.0]:

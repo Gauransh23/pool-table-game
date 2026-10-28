@@ -13,12 +13,24 @@ presentation stack for the four requested targets. The Standard build avoids the
 **Revisit when:** a representative build or benchmark exposes a material platform,
 physics, performance, or maintenance limitation.
 
-## Simulation: plain GDScript state, separate from the scene tree
+## Simulation: GDScript runtime, standalone C++ experiment
 
-Use small reference-counted state classes and deterministic functions first. This
-keeps the core headless and makes snapshots available to tests, AI, replays, and
-analysis. A native extension would add build and ABI work before the 16-ball cost is
-measured. Profile realistic breaks and AI search before considering one.
+The GDScript core remains the playable reference. Its latest four-second 16-ball
+break took 288.4–291.6 ms (median 289.9 ms) in Godot's headless editor/debug build on
+this M4 host. A separate C++17 core with double-precision state and no Godot types now
+builds through the system C++ compiler. It uses 1/480-second ticks, adaptive
+substeps, time-of-impact normals and timestamps for ball and cushion contacts, and a
+standalone event stream. Its seven-run optimized 16-ball benchmark took 3.76–6.19 ms
+(median 4.25 ms). This is about 68× faster on these measured paths, but the builds
+and outputs are not yet parity-verified, and the C++ core is not integrated into the
+game.
+
+The 1,601-point analytic cut sweep is smooth to floating-point precision at
+0.0001-radian increments. The native solver still advances a full substep before
+resolving overlaps and applies position correction; it is not yet a full event-driven
+or continuous collision solver. Next compare its state and event output against the
+GDScript reference, then test a GDExtension bridge and measure both the wrapper and
+the game runtime. Keep AI search behind those gates.
 
 ## Rules: event-driven profile, separate from simulation
 
