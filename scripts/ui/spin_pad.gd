@@ -22,8 +22,8 @@ func _draw() -> void:
 	draw_line(center + Vector2(-_radius * 0.72, 0.0), center + Vector2(_radius * 0.72, 0.0), Color("#c7bda7"), 1.0, true)
 	draw_line(center + Vector2(0.0, -_radius * 0.72), center + Vector2(0.0, _radius * 0.72), Color("#c7bda7"), 1.0, true)
 	draw_circle(center, 2.4, Color("#8d8067"))
-	draw_circle(center + spin * _radius, 6.2, Color("#b5783f"))
-	draw_arc(center + spin * _radius, 6.2, 0.0, TAU, 32, Color("#fff5df"), 1.2, true)
+	draw_circle(center + Vector2(spin.x, -spin.y) * _radius, 6.2, Color("#b5783f"))
+	draw_arc(center + Vector2(spin.x, -spin.y) * _radius, 6.2, 0.0, TAU, 32, Color("#fff5df"), 1.2, true)
 
 
 static func normalized_tip_offset(point: Vector2, control_size: Vector2) -> Vector2:

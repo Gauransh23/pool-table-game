@@ -59,6 +59,13 @@ func _run() -> void:
 	_test_spin_pad_top_position_maps_to_top_contact()
 	_test_airborne_ball_clears_cushion_nose()
 	_test_off_table_ball_falls_to_a_terminal_state()
+	_test_physics_events_record_first_contact_in_order()
+	_test_physics_events_report_one_rail_impulse()
+	_test_physics_events_report_pocket_and_off_table_once()
+	_test_position_correction_does_not_emit_contact_events()
+	_test_half_ball_cut_angle_sweep_at_low_and_high_speed()
+	_test_cue_energy_is_bounded_across_stable_offsets()
+	_test_ordinary_practice_shots_settle_in_bounded_time()
 	if failures == 0:
 		print("PASS: %d simulation and rules assertions" % assertions)
 		quit(0)
@@ -625,6 +632,152 @@ func _test_off_table_ball_falls_to_a_terminal_state() -> void:
 	_assert_true(ball.phase == BallState.Phase.OFF_TABLE, "off-table phase remains available for rules")
 	_assert_near(ball.height, -0.12, 0.0001, "off-table ball reaches a bounded terminal height")
 	_assert_near(ball.vertical_velocity, 0.0, 1.0e-8, "terminal off-table ball stops advancing")
+
+
+func _test_physics_events_record_first_contact_in_order() -> void:
+	var config = _quiet_config()
+	config.ball_restitution = 1.0
+	config.ball_friction = 0.0
+	var cue = BallState.new(0, 0, Vector2(-0.15, 0.0))
+	var first = BallState.new(1, 3, Vector2.ZERO)
+	var second = BallState.new(2, 12, Vector2(0.15, 0.0))
+	cue.velocity = Vector2(2.0, 0.0)
+	var stepper = PhysicsStepper.new()
+	stepper.advance([cue, first, second], 0.18, config, TableSpec.new())
+	var contacts := _events_of_kind(stepper.drain_events(), "ball_contact")
+	_assert_true(contacts.size() == 2, "three-ball chain emits exactly two physical impacts")
+	if contacts.size() >= 2:
+		_assert_true(contacts[0]["a"] == 0 and contacts[0]["b"] == 3,
+			"first-contact event identifies cue ball and first object by number")
+		_assert_true(contacts[1]["a"] == 3 and contacts[1]["b"] == 12,
+			"later chain impact retains object-ball identities")
+		_assert_true(int(contacts[0]["tick"]) < int(contacts[1]["tick"]),
+			"separated impacts retain their chronological fixed-tick order")
+		_assert_true(float(contacts[0]["speed"]) > 0.0,
+			"contact event carries positive incoming relative speed")
+	_assert_true(stepper.drain_events().is_empty(), "draining events consumes them exactly once")
+
+
+func _test_physics_events_report_one_rail_impulse() -> void:
+	var config = _quiet_config()
+	config.cushion_friction = 0.0
+	var table = TableSpec.new()
+	var ball = BallState.new(6, 7, Vector2(table.half_size.x - BallState.RADIUS - 0.01, 0.0))
+	ball.velocity = Vector2(2.0, 0.0)
+	var stepper = PhysicsStepper.new()
+	stepper.advance([ball], 0.025, config, table)
+	var rails := _events_of_kind(stepper.drain_events(), "rail")
+	_assert_true(rails.size() == 1, "one cushion rebound emits one event despite solver iterations")
+	if rails.size() == 1:
+		_assert_true(rails[0]["number"] == 7 and not rails[0]["jaw"],
+			"rail event distinguishes ball number and cushion from jaw")
+
+
+func _test_physics_events_report_pocket_and_off_table_once() -> void:
+	var config = _quiet_config()
+	var table = TableSpec.new()
+	var potted = BallState.new(1, 4, Vector2(0.0, table.half_size.y - BallState.RADIUS - 0.012))
+	potted.velocity = Vector2(0.0, 1.4)
+	var pocket_stepper = PhysicsStepper.new()
+	pocket_stepper.advance([potted], 0.3, config, table)
+	var pockets := _events_of_kind(pocket_stepper.drain_events(), "pocket")
+	_assert_true(pockets.size() == 1, "pocket entry and subsequent fall emit one scoring event")
+	if pockets.size() == 1:
+		_assert_true(pockets[0]["number"] == 4 and pockets[0]["pocket_id"] == potted.pocket_id,
+			"pocket event retains ball number and actual pocket identity")
+	var escaped = BallState.new(2, 6, Vector2(table.half_size.x + 0.04, 0.0))
+	var escape_stepper = PhysicsStepper.new()
+	escape_stepper.advance([escaped], 0.5, config, table)
+	var escapes := _events_of_kind(escape_stepper.drain_events(), "off_table")
+	_assert_true(escapes.size() == 1, "off-table transition emits only once during the fall")
+	if escapes.size() == 1:
+		_assert_true(escapes[0]["number"] == 6, "off-table event retains ball number")
+
+
+func _test_position_correction_does_not_emit_contact_events() -> void:
+	var first = BallState.new(1, 1, Vector2.ZERO)
+	var second = BallState.new(2, 2, Vector2(2.0 * BallState.RADIUS - 0.0002, 0.0))
+	var stepper = PhysicsStepper.new()
+	stepper.step_fixed([first, second], 1.0 / 480.0, _quiet_config(), TableSpec.new())
+	_assert_true(stepper.drain_events().is_empty(),
+		"resting overlap correction does not invent a physical impact or sound event")
+
+
+func _test_half_ball_cut_angle_sweep_at_low_and_high_speed() -> void:
+	var config = _quiet_config()
+	config.ball_restitution = 1.0
+	config.ball_friction = 0.0
+	var distance := 0.1
+	var center_aim := asin(BallState.RADIUS / distance)
+	var low_speed_departures: Array[float] = []
+	for speed in [0.2, 8.0]:
+		var previous_departure := INF
+		var maximum_error := 0.0
+		for sample in range(81):
+			var aim: float = center_aim + float(sample - 40) * 0.0001
+			var cue = BallState.new(0, 0, Vector2(-distance, 0.0))
+			var object_ball = BallState.new(1, 1, Vector2.ZERO)
+			cue.velocity = Vector2(cos(aim), sin(aim)) * speed
+			var stepper = PhysicsStepper.new()
+			stepper.advance([cue, object_ball], distance / speed, config, TableSpec.new())
+			var contacts := _events_of_kind(stepper.drain_events(), "ball_contact")
+			_assert_true(contacts.size() == 1, "analytic cut sweep produces one clean impact")
+			var departure := atan2(object_ball.velocity.y, object_ball.velocity.x)
+			var analytic: float = aim - asin(distance * sin(aim) / (2.0 * BallState.RADIUS))
+			maximum_error = maxf(maximum_error, absf(departure - analytic))
+			_assert_true(departure < previous_departure,
+				"half-ball departure is monotonic at 0.0001-radian aim spacing")
+			previous_departure = departure
+			if speed == 0.2:
+				low_speed_departures.append(departure)
+			else:
+				_assert_near(departure, low_speed_departures[sample], 0.0002,
+					"clean cut direction is invariant between 0.2 and 8 m/s")
+		_assert_true(maximum_error < 0.0002,
+			"cut sweep matches analytic departure within 0.012 degrees (error %.8f rad)" % maximum_error)
+		print("GDScript cut sweep: speed=%.1f m/s points=81 max_error=%.8f rad" % [speed, maximum_error])
+
+
+func _test_cue_energy_is_bounded_across_stable_offsets() -> void:
+	var config = PhysicsConfig.new()
+	for speed in [0.5, 3.0, 8.0]:
+		for elevation in [0.0, 15.0, 40.0, 65.0]:
+			for sample in range(17):
+				var angle := float(sample) * TAU / 16.0
+				var tip := Vector2(cos(angle), sin(angle)) * 0.5 if sample < 16 else Vector2.ZERO
+				var ball = BallState.new(0, 0, Vector2.ZERO)
+				var applied := CueStrikeModel.new().apply(ball, Vector2.RIGHT, speed, tip, deg_to_rad(elevation), config)
+				var linear := Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
+				var ball_energy: float = 0.5 * config.ball_mass * linear.length_squared() + 0.5 * BallState.INERTIA * ball.angular_velocity.length_squared()
+				var cue_energy: float = 0.5 * config.cue_mass * speed * speed
+				_assert_true(applied and ball_energy <= cue_energy * 1.00001,
+					"stable offset/elevation cue strike respects supplied kinetic energy")
+
+
+func _test_ordinary_practice_shots_settle_in_bounded_time() -> void:
+	var config = PhysicsConfig.new()
+	for speed in [1.0, 4.0, 8.0]:
+		for tip in [Vector2.ZERO, Vector2(0.45, 0.0), Vector2(0.0, -0.4), Vector2(0.0, 0.4)]:
+			var ball = BallState.new(0, 0, Vector2.ZERO)
+			CueStrikeModel.new().apply(ball, Vector2(1.0, 0.17), speed, tip, 0.0, config)
+			var stepper = PhysicsStepper.new()
+			for interval in range(350):
+				stepper.advance([ball], 0.1, config, TableSpec.new())
+				stepper.drain_events()
+				if stepper.are_balls_settled([ball], config):
+					break
+			_assert_true(stepper.are_balls_settled([ball], config),
+				"ordinary practice shot settles within 35 simulated seconds")
+			for value in ball.canonical_state():
+				_assert_true(is_finite(value), "settled practice-shot state remains finite")
+
+
+func _events_of_kind(events: Array[Dictionary], kind: String) -> Array[Dictionary]:
+	var filtered: Array[Dictionary] = []
+	for event in events:
+		if event["kind"] == kind:
+			filtered.append(event)
+	return filtered
 
 
 func _normal_match():

@@ -66,3 +66,12 @@ and event timestamps but also applies post-overlap correction. Compare this appr
 with full event-driven analytic motion using cut-angle smoothness, break cost, and
 event-count measurements. Full pocket-shelf geometry, a complete miscue response,
 replay format, and cross-platform native builds remain open.
+
+## Preview runtime update — 2026-10-28
+
+The playable GDScript stepper now predicts within-substep ball-pair contact normals
+and emits drainable impulse/exit dictionaries. The practice controller consumes them
+for contact audio and pocket counts, owns pre-shot snapshots and validated settled
+session saves, and coordinates cue animation/input gating. The HUD supplies player
+intent; its current public preview only exposes practice. Presentation now has wrapped
+number textures, contact shadows, overhead/lounge camera transitions, and a cue stroke.

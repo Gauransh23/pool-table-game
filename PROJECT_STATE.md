@@ -1,92 +1,44 @@
 # Project state
 
-Last updated: 2026-10-27
+Updated 2026-10-28. Mac practice preview 0.2.0 is built and ready for owner playtesting.
 
-## Current checkpoint
+## This checkpoint
 
-**M0 — simulation foundation and 3D practice table: in progress.** Godot imports the
-project and the main scene runs on the current Apple Silicon macOS host. The practice
-table is visible in the desktop build. The headless GDScript suite passes 109
-simulation, geometry, rack, and rules assertions; a separate C++17 experiment passes
-4,869 native checks.
+The owner prioritized presentation and implemented shot quality over feature count.
+The preview is a focused practice room: a regulation-scale table, force and tip control,
+accurate clean cut response, rolling/sliding/spin decay, pocket drops, scratch placement,
+exact shot undo, auto-resume of settled sessions, contact audio, and two camera views.
+It opens with a menu and exports as a universal, locally ad-hoc-signed Mac application.
 
-## Working now
+The playable GDScript core now emits impulse/exit events and uses within-substep
+TOI estimates for ball-ball normals. It retains overlap position correction. The
+standalone native core remains an experiment and is not loaded by the game.
 
-- Deterministic state objects and canonical ball snapshots.
-- Fixed-step simulation with adaptive substeps based on travel distance.
-- Sliding friction, rolling transition, ball-ball friction/restitution, cushion
-  contact with spin, airborne motion, and geometric pocket openings with jaws and
-  falling-ball state.
-- Isolated WPA-oriented 8-ball match/rules model with called-shot checks, group
-  assignment, standard fouls, safety turns, break-choice states, and 8-ball outcomes.
-- Momentum-transfer cue strike with center, top/back, side, and conservative elevated
-  contact parameters. The model does not initiate a jump shot yet.
-- Regulation-style 9-foot table scale, a 16-ball rack, procedural 3D materials,
-  pointer aiming, shot speed, tip-position control, and re-rack.
-- Offline physics and rules tests that run without the rendered game.
-- A pinned, SHA-256-verified Godot 4.7.2 macOS bootstrap installed under the user's
-  Applications folder; the repository contains only the bootstrap scripts.
-- A standalone, double-precision C++17 core with ball-ball and cushion time-of-impact
-  estimates, timestamped events, and a native regression harness. It is not used by
-  the playable Godot scene yet.
-- A 1,601-sample native cut-angle sweep at 0.0001-radian aim spacing; maximum
-  departure-angle error against the analytic equal-mass reference is
-  2.89e-15 radians for this clean, center-height case.
+## Evidence
 
-## Important gaps
+- 949 physics/rules assertions, including slow/fast half-ball sweeps, 204 cue-energy
+  cases, event collection, and bounded settling across twelve representative shots.
+- 41 practice-flow assertions: break, settle, exact undo, placement rejection,
+  save/load, corrupt data rejection, and cancellation of a stroke during rack reset.
+- 4,869 standalone native checks.
+- Actual Metal-rendered views reviewed; overhead light obstruction, pocket visual
+  clipping, wrong cut guide, floating labels, and protruding jaw meshes corrected.
+- Exported app launched on this Apple M4 Mac. Menu, power slider + Space shot,
+  ball scattering, Undo, and camera switching exercised in the actual release app.
+- Universal binary export, codesign verification, release startup, and DMG creation passed.
 
-- The current build is a practice table, not a complete 8-ball game. The tested rules
-  model is not connected to shot event generation, table UI, or ball-in-hand controls.
-- The rules model covers core 8-ball flow and common break choices, but not every WPA
-  officiating foul, shot-call correction, stalemate, or match set.
-- There is no AI, audio, replay UI, save migration, tutorial, accessibility settings,
-  macOS packaging, or mobile input path yet.
-- Contact coefficients, table pocket depth/facings, and numerical convergence still
-  need source-grounded calibration and empirical validation.
-- Native state and event output have not been compared directly with the GDScript
-  path; the extension is not integrated or built for any target yet.
-- Physical jump-shot initiation and landing interaction have not been implemented.
-- No thousands-of-break stress batch, long-run simulation, full performance profile,
-  or hardware thermal measurement has been completed. Three GDScript and seven
-  native 16-ball break microbenchmark runs are recorded in `PERFORMANCE.md`.
-- Android, Linux, and iOS have not been built or tested.
+## Material gaps
 
-## Next highest-value work
+This is a practice preview, not a complete 8-ball match. Match rules remain isolated;
+AI, match flow, jump/masse shots, full pocket shelf/jaw calibration, large stress batches,
+mobile builds and full accessibility are open. Pocket entry still relies on regions
+and gravity drop; it is not a fully validated shelf/liner contact model. Cross-platform
+bitwise determinism is not established. The Mac bundle is locally ad-hoc signed, with
+no Developer ID notarization. Visual/feel parity with commercial games needs owner
+playtesting; it is not established by our narrow analytic tests.
 
-1. Compare native and GDScript canonical states and contact events over named shots,
-   then close parity defects before switching runtime paths.
-2. Build a thin GDExtension prototype for macOS and check Android, Linux, and iOS
-   build feasibility; keep the current GDScript path until verified.
-3. Build source-grounded pocket shelf/jaw geometry and validate fall-edge behavior.
-4. Connect physical contact, rail, and pocket events to the tested rules model.
-5. Add cue-ball-in-hand placement, called-shot selection, score/turn presentation,
-   and break-option UI.
-6. Validate rail, ball-ball, jaw, pocket, and airborne behavior against published
-   reference cases; add convergence and stress harnesses before tuning coefficients.
-7. Develop a source-grounded cue/table impact model before exposing jump shots.
-8. Add a legal offline opponent and practice/replay tooling after rules events are
-   stable.
-9. Add restrained, varied contact audio and inspect the visual identity at full-size
-   macOS window and Retina scales.
+## Next
 
-## Evidence ledger
-
-- **Confirmed by this host:** Godot 4.7.2 scene startup; 109 headless assertions;
-  desktop practice-table rendering and one simulated shot.
-- **Native experiment:** 4,869 standalone C++ checks; a 1,601-point cut-angle sweep
-  and ball/cushion time-of-impact event checks pass. Native/GDScript parity is open.
-- **Confirmed from Opus's review by permanent tests:** rolling-resistance cancellation,
-  slow exponential sidespin decay, narrow derived corner-mouth geometry, and cue
-  strike energy above the cue's available energy. Each has a regression test and fix.
-- **Current performance observation:** three 4-second GDScript break runs took
-  288.4–291.6 ms each in headless editor/debug mode; seven standalone optimized C++
-  runs took 3.76–6.19 ms (median 4.25 ms) on the same Apple M4. This is not an
-  apples-to-apples runtime or output-parity result. AI cost projections are estimates.
-- **Still uncertain:** whether TOI-informed fixed substeps are sufficient, or whether
-  event-driven analytic motion is needed for AI throughput and shot accuracy.
-
-## Release blockers
-
-Every item listed in “Important gaps” is still open for the corresponding milestone.
-No platform is considered supported merely because Godot can theoretically export
-to it.
+Get feedback on aiming, lowest/highest stroke power, speed of roll, spin, table readability,
+audio, and camera comfort. Then refine the pocket contact model and measured rail
+response, establish native integration/parity, and build full match flow.

@@ -7,6 +7,20 @@ const POSITION_CORRECTION := 0.82
 
 var _accumulator: float = 0.0
 var tick_count: int = 0
+var _events: Array[Dictionary] = []
+var _previous_positions: PackedVector3Array = PackedVector3Array()
+var _previous_velocities: PackedVector3Array = PackedVector3Array()
+
+
+func drain_events() -> Array[Dictionary]:
+	var pending := _events
+	_events = []
+	return pending
+
+
+func _record_event(event: Dictionary) -> void:
+	event["tick"] = tick_count
+	_events.append(event)
 
 
 func advance(balls: Array, elapsed: float, config: PhysicsConfig, table: TableSpec) -> int:
@@ -32,7 +46,13 @@ func step_fixed(balls: Array, delta: float, config: PhysicsConfig, table: TableS
 	var travel_limit := maxf(0.006, BallState.RADIUS * config.max_substep_travel_fraction)
 	var substeps := maxi(1, ceili(fastest * delta / travel_limit))
 	var sub_delta := delta / float(substeps)
+	_previous_positions.resize(balls.size())
+	_previous_velocities.resize(balls.size())
 	for substep in range(substeps):
+		for index in range(balls.size()):
+			var ball: BallState = balls[index]
+			_previous_positions[index] = Vector3(ball.position.x, ball.height, ball.position.y)
+			_previous_velocities[index] = Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
 		_integrate_balls(balls, sub_delta, config, table)
 		for iteration in range(config.max_collision_iterations):
 			var any_contact := false
@@ -44,7 +64,10 @@ func step_fixed(balls: Array, delta: float, config: PhysicsConfig, table: TableS
 					var second: BallState = balls[second_index]
 					if not second.is_on_table():
 						continue
-					any_contact = _resolve_ball_pair(first, second, config) or any_contact
+					any_contact = _resolve_ball_pair(first, second, config,
+						_previous_positions[second_index] - _previous_positions[first_index],
+						_previous_velocities[second_index] - _previous_velocities[first_index],
+						sub_delta) or any_contact
 			for ball in balls:
 				if ball.is_on_table():
 					any_contact = _resolve_rails(ball, config, table) or any_contact
@@ -158,7 +181,24 @@ func _apply_cloth_impulse(ball: BallState, planar_impulse: Vector2, inertia: flo
 	ball.angular_velocity += arm.cross(impulse_3d) / inertia
 
 
-func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConfig) -> bool:
+func _predicted_impact_normal(relative_position: Vector3, relative_velocity: Vector3, duration: float) -> Vector3:
+	var diameter := 2.0 * BallState.RADIUS
+	var c := relative_position.length_squared() - diameter * diameter
+	var a := relative_velocity.length_squared()
+	var b := 2.0 * relative_position.dot(relative_velocity)
+	if c <= 1.0e-10 or a <= 1.0e-12 or b >= 0.0:
+		return Vector3.ZERO
+	var discriminant := b * b - 4.0 * a * c
+	if discriminant < 0.0:
+		return Vector3.ZERO
+	var time := (-b - sqrt(discriminant)) / (2.0 * a)
+	if time < 0.0 or time > duration:
+		return Vector3.ZERO
+	return (relative_position + relative_velocity * time).normalized()
+
+
+func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConfig,
+	previous_separation: Vector3, previous_relative_velocity: Vector3, sub_delta: float) -> bool:
 	var first_position := Vector3(first.position.x, first.height, first.position.y)
 	var second_position := Vector3(second.position.x, second.height, second.position.y)
 	var separation := second_position - first_position
@@ -167,13 +207,15 @@ func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConf
 	if distance_sq >= diameter * diameter:
 		return false
 	var distance := sqrt(maxf(distance_sq, CONTACT_EPSILON))
-	var normal := separation / distance if distance_sq > CONTACT_EPSILON else Vector3.RIGHT
+	var correction_normal := separation / distance if distance_sq > CONTACT_EPSILON else Vector3.RIGHT
+	var predicted_normal := _predicted_impact_normal(previous_separation, previous_relative_velocity, sub_delta)
+	var normal := predicted_normal if predicted_normal.length_squared() > 0.5 else correction_normal
 	var penetration := diameter - distance
 	var correction := maxf(0.0, penetration - POSITION_SLOP) * POSITION_CORRECTION * 0.5
-	first.position -= Vector2(normal.x, normal.z) * correction
-	second.position += Vector2(normal.x, normal.z) * correction
-	first.height -= normal.y * correction
-	second.height += normal.y * correction
+	first.position -= Vector2(correction_normal.x, correction_normal.z) * correction
+	second.position += Vector2(correction_normal.x, correction_normal.z) * correction
+	first.height -= correction_normal.y * correction
+	second.height += correction_normal.y * correction
 	var first_arm := normal * BallState.RADIUS
 	var second_arm := -normal * BallState.RADIUS
 	var relative := _contact_velocity(second, second_arm) - _contact_velocity(first, first_arm)
@@ -187,6 +229,8 @@ func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConf
 	var normal_vector := normal * normal_impulse
 	_apply_impulse(first, -normal_vector, first_arm, config.ball_mass, inverse_inertia)
 	_apply_impulse(second, normal_vector, second_arm, config.ball_mass, inverse_inertia)
+	_record_event({"kind": "ball_contact", "a": first.number, "b": second.number,
+		"speed": -normal_speed, "position": (first.position + second.position) * 0.5})
 	var tangent_velocity := relative - normal * normal_speed
 	var tangent_speed := tangent_velocity.length()
 	if tangent_speed > CONTACT_EPSILON and config.ball_friction > 0.0:
@@ -250,6 +294,8 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 				var tangent_impulse := minf(desired_tangent_impulse, config.cushion_friction * normal_impulse)
 				impulse -= tangent * tangent_impulse
 			_apply_impulse(ball, impulse, arm, mass, 1.0 / inertia)
+			_record_event({"kind": "rail", "number": ball.number, "speed": -normal_speed,
+				"jaw": bool(segment["jaw"]), "position": ball.position})
 		ball_velocity = Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
 		touched = true
 	return touched
@@ -264,8 +310,12 @@ func _classify_exits(balls: Array, table: TableSpec) -> void:
 			ball.phase = BallState.Phase.FALLING
 			ball.pocket_id = pocket
 			ball.vertical_velocity = minf(ball.vertical_velocity, -maxf(0.28, ball.velocity.length() * 0.08))
+			_record_event({"kind": "pocket", "number": ball.number,
+				"pocket_id": pocket, "speed": ball.velocity.length(), "position": ball.position})
 		elif table.outside_table(ball.position):
 			ball.phase = BallState.Phase.OFF_TABLE
+			_record_event({"kind": "off_table", "number": ball.number,
+				"speed": ball.velocity.length(), "position": ball.position})
 
 
 func _contact_velocity(ball: BallState, arm: Vector3) -> Vector3:

@@ -17,3 +17,7 @@ or account services are included.
 No reuse license has been selected for Long Rail. The repository is public for
 inspection, but no permission to redistribute or modify Long Rail code is granted
 by this notice.
+
+The 0.2.0 preview adds original SVG icon artwork and synthesized contact sounds.
+`tools/generate_audio.py` records the sound generation recipe using only Python's
+standard library. No third-party audio or competitor artwork is used.

@@ -86,3 +86,11 @@ Measure empty table, ordinary shot, full break, clustered contacts, pocket jaw
 interaction, airborne shots, rack reset, and sustained play. Record device class,
 Godot version, build mode, renderer, resolution, test duration, CPU/GPU frame time,
 simulation step time, memory, and observed thermal or power state when available.
+
+## Mac preview 0.2.0 — 2026-10-28
+
+The playable GDScript TOI-normal/event version takes 308.8, 308.5, and 309.5 ms for
+the same four-second headless break workload. This supersedes the previous GDScript
+numbers. Event/snapshot work adds cost. Idle aim geometry now rebuilds only when its
+inputs change; the app caps rendering at 60 fps. Full GPU/frame pacing and thermal
+profiling is still open. Universal app: approximately 162 MB; DMG: 64 MB.

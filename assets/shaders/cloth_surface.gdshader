@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode diffuse_burley, specular_schlick_ggx;
 
-uniform vec4 cloth_tint : source_color = vec4(0.09, 0.30, 0.265, 1.0);
+uniform vec4 cloth_tint : source_color = vec4(0.055, 0.235, 0.175, 1.0);
 
 void fragment() {
 	float cross_weave = sin(UV.x * 810.0) * sin(UV.y * 770.0);

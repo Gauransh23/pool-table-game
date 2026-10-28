@@ -1,193 +1,193 @@
 extends CanvasLayer
 class_name GameHUD
 
-const SpinPadScript = preload("res://scripts/ui/spin_pad.gd")
-
 signal shoot_requested(power: float, spin: Vector2)
 signal rack_requested
 signal power_changed(value: float)
 signal spin_changed(value: Vector2)
+signal mode_requested(mode: String)
+signal undo_requested
+signal view_requested
+signal sound_changed(enabled: bool)
+signal guide_changed(enabled: bool)
+signal resume_requested
 
-var power: float = 0.42
-var selected_spin: Vector2 = Vector2.ZERO
+var power := 0.42
+var selected_spin := Vector2.ZERO
+var called_ball := 1
+var called_pocket := 0
+var safety := false
 var _status: Label
-var _power_readout: Label
-var _power_slider: HSlider
-var _spin_pad: SpinPad
-var _shoot_button: Button
-var _rack_button: Button
-
+var _score: Label
+var _detail: Label
+var _shoot: Button
+var _call_ball: OptionButton
+var _call_pocket: OptionButton
+var _overlay: ColorRect
+var _card: VBoxContainer
+var _root: Control
+var _spin: SpinPad
+var _power: HSlider
+var _readout: Label
+var _mode_label: Label
 
 func _ready() -> void:
 	_build()
 
-
-func set_status(text: String) -> void:
-	if is_instance_valid(_status):
-		_status.text = text
-
-
-func set_can_shoot(can_shoot: bool) -> void:
-	if is_instance_valid(_shoot_button):
-		_shoot_button.disabled = not can_shoot
-
-
 func _build() -> void:
-	var root := Control.new()
-	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(root)
+	_root = Control.new()
+	_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_root)
 	var brand := VBoxContainer.new()
-	brand.position = Vector2(44.0, 34.0)
-	brand.add_theme_constant_override("separation", 1)
-	root.add_child(brand)
-	var title := _label("LONG RAIL", 25, Color("#f1e8d6"))
-	title.add_theme_constant_override("outline_size", 0)
-	brand.add_child(title)
-	var subtitle := _label("THE PRACTICE TABLE", 11, Color("#c3a878"))
-	brand.add_child(subtitle)
-	var right := VBoxContainer.new()
-	right.anchor_left = 1.0
-	right.anchor_right = 1.0
-	right.offset_left = -312.0
-	right.offset_right = -44.0
-	right.offset_top = 38.0
-	right.offset_bottom = 122.0
-	right.alignment = BoxContainer.ALIGNMENT_END
-	right.add_theme_constant_override("separation", 4)
-	root.add_child(right)
-	var status_label := _label("PRACTICE  /  9-FOOT TABLE", 14, Color("#f1e8d6"))
-	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	right.add_child(status_label)
-	_status = _label("MOVE TO AIM · SET SPIN · TAKE YOUR TIME", 10, Color("#b5ad98"))
-	_status.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	right.add_child(_status)
-	var footer := PanelContainer.new()
-	footer.anchor_left = 0.025
-	footer.anchor_right = 0.975
-	footer.anchor_top = 1.0
-	footer.anchor_bottom = 1.0
-	footer.offset_top = -164.0
-	footer.offset_bottom = -28.0
-	footer.add_theme_stylebox_override("panel", _panel_style())
-	root.add_child(footer)
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 24)
-	footer.add_child(row)
-	var spin_column := VBoxContainer.new()
-	spin_column.add_theme_constant_override("separation", 3)
-	row.add_child(spin_column)
-	spin_column.add_child(_label("TIP POSITION", 10, Color("#c7b998")))
-	_spin_pad = SpinPadScript.new()
-	_spin_pad.spin_changed.connect(_on_spin_changed)
-	spin_column.add_child(_spin_pad)
-	var power_column := VBoxContainer.new()
-	power_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	power_column.add_theme_constant_override("separation", 8)
-	row.add_child(power_column)
-	var power_header := HBoxContainer.new()
-	power_column.add_child(power_header)
-	power_header.add_child(_label("SHOT SPEED", 10, Color("#c7b998")))
+	brand.position = Vector2(38, 28)
+	_root.add_child(brand)
+	brand.add_child(label("L O N G   R A I L", 27, Color("e9d9b8")))
+	_mode_label = label("BILLIARDS CLUB  /  MAC EDITION", 11, Color("ad9468"))
+	brand.add_child(_mode_label)
+	var score_box := VBoxContainer.new()
+	score_box.position = Vector2(430, 29)
+	_root.add_child(score_box)
+	_score = label("YOUR TABLE. YOUR NEXT SHOT.", 23)
+	score_box.add_child(_score)
+	_detail = label("", 13, Color("b6b9aa"))
+	score_box.add_child(_detail)
+	var side := PanelContainer.new()
+	side.anchor_left = 1; side.anchor_right = 1
+	side.offset_left = -310; side.offset_right = -24
+	side.offset_top = 112; side.anchor_bottom = 1; side.offset_bottom = -60
+	side.add_theme_stylebox_override("panel", panel())
+	_root.add_child(side)
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 15)
+	side.add_child(column)
+	column.add_child(label("THE STROKE", 12, Color("bda577")))
+	_status = label("Move the pointer over the cloth to aim.", 15)
+	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_status.custom_minimum_size.y = 76
+	column.add_child(_status)
+	var power_row := HBoxContainer.new()
+	column.add_child(power_row)
+	power_row.add_child(label("POWER", 11, Color("b6b9aa")))
+	_readout = label("42%", 13)
+	_readout.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_readout.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	power_row.add_child(_readout)
+	_power = HSlider.new()
+	_power.focus_mode = Control.FOCUS_NONE
+	_power.min_value = 0.01; _power.max_value = 1; _power.step = .005; _power.value = power
+	_power.value_changed.connect(func(value: float):
+		power = value; _readout.text = "%d%%" % roundi(value * 100); power_changed.emit(value))
+	column.add_child(_power)
+	var spin_row := HBoxContainer.new()
+	column.add_child(spin_row)
+	_spin = SpinPad.new()
+	_spin.custom_minimum_size = Vector2(100, 100)
+	_spin.spin_changed.connect(func(value: Vector2): selected_spin = value; spin_changed.emit(value))
+	spin_row.add_child(_spin)
+	var spin_words := VBoxContainer.new()
+	spin_words.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	spin_row.add_child(spin_words)
+	spin_words.add_child(label("TIP POSITION", 11, Color("bda577")))
+	spin_words.add_child(label("Top: follow\nBottom: draw\nSides: english", 12, Color("b6b9aa")))
+	column.add_child(label("PURE PRACTICE", 11, Color("bda577")))
+	var explanation := label("Take your time. Explore speed and spin.\nUse Undo to try a shot again.\nScratch? Click the cloth to place it.", 13, Color("a7b6a9"))
+	column.add_child(explanation)
 	var spacer := Control.new()
-	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	power_header.add_child(spacer)
-	_power_readout = _label("42%", 12, Color("#f1e8d6"))
-	power_header.add_child(_power_readout)
-	_power_slider = HSlider.new()
-	_power_slider.min_value = 0.08
-	_power_slider.max_value = 1.0
-	_power_slider.step = 0.01
-	_power_slider.value = power
-	_power_slider.size_flags_vertical = Control.SIZE_SHRINK_CENTER
-	_power_slider.value_changed.connect(_on_power_changed)
-	power_column.add_child(_power_slider)
-	var note := _label("Drag the slider for a measured stroke. Spin stays honest to the contact point.", 10, Color("#aba38f"))
-	power_column.add_child(note)
-	var action_spacer := Control.new()
-	action_spacer.custom_minimum_size.x = 32.0
-	row.add_child(action_spacer)
-	var actions := VBoxContainer.new()
-	actions.custom_minimum_size.x = 202.0
-	actions.add_theme_constant_override("separation", 8)
-	row.add_child(actions)
-	_shoot_button = Button.new()
-	_shoot_button.text = "TAKE SHOT  ↗"
-	_shoot_button.custom_minimum_size = Vector2(202.0, 48.0)
-	_shoot_button.add_theme_font_size_override("font_size", 13)
-	_shoot_button.add_theme_color_override("font_color", Color("#171a18"))
-	_shoot_button.add_theme_color_override("font_hover_color", Color("#171a18"))
-	_shoot_button.add_theme_stylebox_override("normal", _button_style(Color("#d6b578")))
-	_shoot_button.add_theme_stylebox_override("hover", _button_style(Color("#e5c58a")))
-	_shoot_button.add_theme_stylebox_override("pressed", _button_style(Color("#ba9257")))
-	_shoot_button.add_theme_stylebox_override("disabled", _button_style(Color("#75654c")))
-	_shoot_button.pressed.connect(_on_shoot_pressed)
-	actions.add_child(_shoot_button)
-	_rack_button = Button.new()
-	_rack_button.text = "RE-RACK"
-	_rack_button.custom_minimum_size = Vector2(202.0, 32.0)
-	_rack_button.add_theme_font_size_override("font_size", 10)
-	_rack_button.add_theme_color_override("font_color", Color("#d3cbb8"))
-	_rack_button.add_theme_stylebox_override("normal", _button_style(Color(0.1, 0.13, 0.12, 0.6)))
-	_rack_button.add_theme_stylebox_override("hover", _button_style(Color(0.2, 0.24, 0.21, 0.82)))
-	_rack_button.add_theme_stylebox_override("pressed", _button_style(Color(0.12, 0.16, 0.14, 0.82)))
-	_rack_button.pressed.connect(func() -> void: rack_requested.emit())
-	actions.add_child(_rack_button)
-	var instruction := _label("AIM WITH THE POINTER  ·  SPACE TO SHOOT", 10, Color("#a6a08f"))
-	instruction.position = Vector2(44.0, 112.0)
-	root.add_child(instruction)
+	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	column.add_child(spacer)
+	_shoot = button("TAKE SHOT    ↗", func(): shoot_requested.emit(power, selected_spin), true)
+	_shoot.custom_minimum_size.y = 50
+	column.add_child(_shoot)
+	var actions := HBoxContainer.new()
+	column.add_child(actions)
+	actions.add_child(button("Undo", func(): undo_requested.emit()))
+	actions.add_child(button("Camera", func(): view_requested.emit()))
+	actions.add_child(button("Menu", func(): show_home(true)))
+	var sound := CheckBox.new()
+	sound.focus_mode = Control.FOCUS_NONE
+	sound.text = "Table sound"; sound.button_pressed = true
+	sound.toggled.connect(func(value: bool): sound_changed.emit(value))
+	column.add_child(sound)
+	var guides := CheckBox.new()
+	guides.focus_mode = Control.FOCUS_NONE
+	guides.text = "Aim assistance"; guides.button_pressed = true
+	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
+	column.add_child(guides)
+	var footer := label("POINTER  Aim     ← →  Fine aim     SPACE  Shoot     V  Camera     U  Undo     ESC  Menu", 12, Color("a8ac9c"))
+	footer.anchor_top = 1; footer.anchor_bottom = 1
+	footer.offset_left = 38; footer.offset_top = -36; footer.offset_bottom = -12
+	_root.add_child(footer)
+	_overlay = ColorRect.new()
+	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_overlay.color = Color(.015,.025,.024,.88)
+	_root.add_child(_overlay)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_overlay.add_child(center)
+	var card_panel := PanelContainer.new()
+	card_panel.custom_minimum_size = Vector2(540, 0)
+	card_panel.add_theme_stylebox_override("panel", panel())
+	center.add_child(card_panel)
+	_card = VBoxContainer.new()
+	_card.add_theme_constant_override("separation", 18)
+	card_panel.add_child(_card)
+	_overlay.hide()
 
+func set_status(text: String) -> void: _status.text = text
+func set_can_shoot(value: bool) -> void: _shoot.disabled = not value
+func set_score(title: String, detail: String, mode: String) -> void:
+	_score.text = title; _detail.text = detail; _mode_label.text = mode
+func select_call(number: int, pocket: int) -> void:
+	called_ball = number; called_pocket = pocket
+	if is_instance_valid(_call_ball): _call_ball.select(clampi(number-1,0,14))
+	if is_instance_valid(_call_pocket): _call_pocket.select(pocket)
+func reset_spin() -> void:
+	selected_spin = Vector2.ZERO; _spin.spin = Vector2.ZERO; _spin.queue_redraw()
+	spin_changed.emit(Vector2.ZERO)
+func menu_visible() -> bool: return _overlay.visible
+func hide_menu() -> void: _overlay.hide()
+func _clear_card() -> void:
+	for child in _card.get_children(): _card.remove_child(child); child.queue_free()
+func show_home(can_resume: bool = false) -> void:
+	_clear_card(); _overlay.show()
+	_card.add_child(label("L O N G   R A I L", 36, Color("e9d9b8")))
+	_card.add_child(label("A quiet room. A precise stroke. One more rack.", 16, Color("b6b9aa")))
+	if can_resume: _card.add_child(button("Return to the table", func(): hide_menu(); resume_requested.emit(), true))
+	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
+	_card.add_child(label("Pure practice • Offline • 9-foot table\nClick the cloth to aim. Use power and tip position to shape the shot.\nFor ball in hand, click a clear place on the cloth.", 13, Color("9da898")))
+	_card.add_child(button("Quit", func(): get_tree().quit()))
+func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:
+	_clear_card(); _overlay.show()
+	_card.add_child(label(title, 28, Color("e9d9b8")))
+	var text := label(detail, 15); text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	text.custom_minimum_size.x = 480; _card.add_child(text)
+	for choice in choices:
+		_card.add_child(button(choice["label"], func(): hide_menu(); callback.call(choice["id"])))
 
-func _on_power_changed(value: float) -> void:
-	power = value
-	_power_readout.text = "%d%%" % roundi(power * 100.0)
-	power_changed.emit(power)
-
-
-func _on_spin_changed(value: Vector2) -> void:
-	selected_spin = value
-	spin_changed.emit(selected_spin)
-
-
-func _on_shoot_pressed() -> void:
-	shoot_requested.emit(power, selected_spin)
-
-
-func _label(text: String, font_size: int, color: Color) -> Label:
-	var label := Label.new()
-	label.text = text
-	label.add_theme_font_size_override("font_size", font_size)
-	label.add_theme_color_override("font_color", color)
-	return label
-
-
-func _panel_style() -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.035, 0.052, 0.047, 0.91)
-	style.border_color = Color(0.55, 0.44, 0.29, 0.56)
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.corner_radius_top_left = 9
-	style.corner_radius_top_right = 9
-	style.corner_radius_bottom_left = 9
-	style.corner_radius_bottom_right = 9
-	style.content_margin_left = 20.0
-	style.content_margin_right = 20.0
-	style.content_margin_top = 12.0
-	style.content_margin_bottom = 12.0
-	return style
-
-
-func _button_style(color: Color) -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = color
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_left = 6
-	style.corner_radius_bottom_right = 6
-	style.content_margin_left = 14.0
-	style.content_margin_right = 14.0
-	style.content_margin_top = 7.0
-	style.content_margin_bottom = 7.0
+func label(text: String, pixels: int, color: Color = Color("eee7d8")) -> Label:
+	var value := Label.new(); value.text = text
+	value.add_theme_font_size_override("font_size", pixels)
+	value.add_theme_color_override("font_color", color)
+	return value
+func button(text: String, action: Callable, primary: bool = false) -> Button:
+	var value := Button.new(); value.focus_mode = Control.FOCUS_NONE; value.text = text; value.custom_minimum_size.y = 40
+	value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	value.add_theme_font_size_override("font_size", 14)
+	value.add_theme_color_override("font_color", Color("18251e") if primary else Color("e2d9c6"))
+	for state in ["normal", "hover", "pressed", "disabled"]:
+		var style := StyleBoxFlat.new()
+		style.bg_color = (Color("c9ac73") if primary else Color("233c33")).lightened(.12 if state=="hover" else 0)
+		if state=="disabled": style.bg_color = Color("526052")
+		style.corner_radius_top_left = 7; style.corner_radius_top_right = 7
+		style.corner_radius_bottom_left = 7; style.corner_radius_bottom_right = 7
+		style.content_margin_left = 15; style.content_margin_right = 15
+		value.add_theme_stylebox_override(state, style)
+	value.pressed.connect(action)
+	return value
+func panel() -> StyleBoxFlat:
+	var style := StyleBoxFlat.new(); style.bg_color = Color("101f1c")
+	style.border_color = Color("625940"); style.set_border_width_all(1)
+	style.set_corner_radius_all(12); style.content_margin_left = 24; style.content_margin_right = 24
+	style.content_margin_top = 24; style.content_margin_bottom = 24
 	return style

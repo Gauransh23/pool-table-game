@@ -1,40 +1,21 @@
-# QA status
+# QA status — Mac preview 0.2.0
 
-Last updated: 2026-10-27
+Updated 2026-10-28.
 
-## Verified on this host
+Verified on Apple M4 macOS using Godot 4.7.2 Standard:
 
-- Godot 4.7.2 stable imported the project.
-- Main scene completed a 3-frame headless startup without runtime script errors.
-- Headless test harness passed 109 assertions across physics, table geometry, rack
-  setup, and hand-authored 8-ball rules scenarios.
-- Native standalone regression harness passed 4,869 checks, including a 1,601-point
-  cut-angle sweep and exact analytic ball/cushion contact-time cases.
-- The standalone optimized C++ break benchmark completed seven four-second 16-ball
-  runs in 3.76–6.19 ms (median 4.25 ms); GDScript took 288.4–291.6 ms. Physics-state
-  parity and GDExtension overhead are not measured.
-- A desktop debug run visibly rendered the table, rack, cue, aim guide, and HUD on
-  the current Apple Silicon macOS host.
+- 949 headless physics/rules assertions; 41 practice-flow assertions.
+- 4,869 native experiment checks.
+- Exported universal app starts without runtime script errors.
+- Actual release UI: fresh rack, power slider followed by keyboard shot, break
+  dispersion, Undo and Camera/V shortcuts work.
+- Source-rendered overhead/lounge views reviewed at 1600×900 with 4× MSAA.
+- Official export template archive SHA-512 verified; Mac app signature verifies.
+- DMG created successfully; app is approximately 162 MB, compressed installer 64 MB.
 
-## Not yet verified
-
-- Full match from rack to win/loss.
-- End-to-end mapping of physics events into the rules engine.
-- Input interaction under varied window sizes, Retina scaling, and trackpad use.
-- Save/load, suspend/resume, accessibility, audio, or replay.
-- Signed/exported macOS package, offline first launch, or long-duration stability.
-- Android, Linux, or iOS runtime or builds.
-- Reference physics accuracy, large break stress batch, release-build performance,
-  and thermal behavior.
-- Physical jump-shot initiation and landing behavior.
-
-## Current defects and risks
-
-- Pointer aiming can target beyond the playing surface for rail shots; the guide
-  ends at the first object ball or cushion boundary.
-- The practice build cannot recover cue-ball-in-hand after a scratch; re-rack is the
-  current recovery action.
-- Ball numbers currently use one small top-facing marking; WPA markings need two
-  opposite decals and the 6/9 underline.
-- Cue elevation is deliberately conservative and does not produce jump shots yet.
-- No production audio or final icon is present.
+Not established: physical table calibration, full pocket rattles/shelves, many-thousand
+break stability, hardware thermal/battery results, accessibility completeness, or
+Android/Linux/iOS builds. The isolated rules model is not yet a playable match mode.
+Some headless flow-test shutdowns report retained GDScript resources; release startup
+and the actual release interaction run have no corresponding runtime error. This
+needs a longer lifecycle/leak investigation before a release candidate.

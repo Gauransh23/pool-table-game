@@ -2,72 +2,63 @@ extends Node3D
 class_name BallVisual
 
 const BALL_SHADER := preload("res://assets/shaders/ball_surface.gdshader")
-
-var _number: int = 0
-
+const DIGITS := ["111101101101111", "010110010010111", "111001111100111", "111001111001111", "101101111001001", "111100111001111", "111100111101111", "111001010010010", "111101111101111", "111101111001111"]
+var _shadow: MeshInstance3D
 
 func configure(number: int) -> void:
-	_number = number
 	var sphere := MeshInstance3D.new()
-	var sphere_mesh := SphereMesh.new()
-	sphere_mesh.radius = BallState.RADIUS
-	sphere_mesh.height = BallState.RADIUS * 2.0
-	sphere_mesh.radial_segments = 40
-	sphere_mesh.rings = 24
-	sphere.mesh = sphere_mesh
-	sphere.material_override = _make_ball_material(number)
-	add_child(sphere)
+	var mesh := SphereMesh.new()
+	mesh.radius = BallState.RADIUS
+	mesh.height = BallState.RADIUS * 2.0
+	mesh.radial_segments = 48
+	mesh.rings = 32
+	sphere.mesh = mesh
+	var material := ShaderMaterial.new()
+	material.shader = BALL_SHADER
+	material.set_shader_parameter("ball_base", _ball_color(number))
+	material.set_shader_parameter("striped", number >= 9)
+	material.set_shader_parameter("numbered", number > 0)
 	if number > 0:
-		_add_number_mark(number)
-
+		material.set_shader_parameter("number_texture", _number_texture(number))
+	sphere.material_override = material
+	add_child(sphere)
+	_shadow = MeshInstance3D.new()
+	var shadow_mesh := PlaneMesh.new()
+	shadow_mesh.size = Vector2.ONE * BallState.RADIUS * 3.4
+	_shadow.mesh = shadow_mesh
+	var shadow_shader := Shader.new()
+	shadow_shader.code = "shader_type spatial; render_mode unshaded, blend_mix, depth_draw_never, cull_disabled; void fragment(){float d=length(UV-vec2(0.5))*2.0; ALBEDO=vec3(0.005,0.012,0.009); ALPHA=pow(max(0.0,1.0-d),2.0)*0.48;}"
+	var shadow_material := ShaderMaterial.new()
+	shadow_material.shader = shadow_shader
+	_shadow.material_override = shadow_material
+	_shadow.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(_shadow)
+	_shadow.top_level = true
 
 func sync_from(state: BallState) -> void:
 	position = Vector3(state.position.x, state.height, state.position.y)
 	quaternion = state.orientation
 	visible = state.phase != BallState.Phase.POCKETED and state.height > -0.08
-
-
-func _make_ball_material(number: int) -> ShaderMaterial:
-	var material := ShaderMaterial.new()
-	material.shader = BALL_SHADER
-	material.set_shader_parameter("ball_base", _ball_color(number))
-	material.set_shader_parameter("stripe_base", Color("#f5f0df"))
-	material.set_shader_parameter("striped", number >= 9)
-	return material
-
+	_shadow.global_position = Vector3(state.position.x, 0.0032, state.position.y)
+	_shadow.visible = visible and state.is_on_table()
+	_shadow.scale = Vector3.ONE * clampf(1.0 + (state.height - BallState.RADIUS) * 2.0, 1.0, 1.6)
 
 func _ball_color(number: int) -> Color:
-	var colors: Array[Color] = [
-		Color("#f3eee0"), Color("#f2c230"), Color("#2869b2"), Color("#be4038"),
-		Color("#6a4c91"), Color("#e67832"), Color("#428255"), Color("#713c42"),
-		Color("#17191a"), Color("#f2c230"), Color("#2869b2"), Color("#be4038"),
-		Color("#6a4c91"), Color("#e67832"), Color("#428255"), Color("#713c42"),
-	]
-	return colors[clampi(number, 0, colors.size() - 1)]
+	var colors: Array[Color] = [Color("f3eee0"), Color("efb719"), Color("174ea4"), Color("ba2527"), Color("633591"), Color("e76b17"), Color("176b43"), Color("701d30"), Color("121718")]
+	return colors[number if number <= 8 else number - 8]
 
-
-func _add_number_mark(number: int) -> void:
-	var plate := MeshInstance3D.new()
-	var plate_mesh := SphereMesh.new()
-	plate_mesh.radius = BallState.RADIUS * 0.245
-	plate_mesh.height = BallState.RADIUS * 0.07
-	plate_mesh.radial_segments = 24
-	plate_mesh.rings = 8
-	plate.mesh = plate_mesh
-	var plate_material := StandardMaterial3D.new()
-	plate_material.albedo_color = Color("#f5f0df")
-	plate_material.roughness = 0.58
-	plate.material_override = plate_material
-	plate.position = Vector3(0.0, BallState.RADIUS * 0.96, 0.0)
-	add_child(plate)
-	var label := Label3D.new()
-	label.text = str(number)
-	label.font_size = 18
-	label.pixel_size = 0.00055
-	label.modulate = Color("#151718")
-	label.outline_size = 0
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.rotation_degrees.x = -90.0
-	label.position = Vector3(0.0, BallState.RADIUS * 1.1, 0.0)
-	add_child(label)
+func _number_texture(number: int) -> ImageTexture:
+	var image := Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	image.fill(Color("f7f1df"))
+	var text := str(number)
+	var pixel := 9 if number < 10 else 7
+	var width := (text.length() * 4 - 1) * pixel
+	var start := Vector2i((128 - width) / 2, (128 - 5 * pixel) / 2)
+	for digit_index in range(text.length()):
+		var pattern: String = DIGITS[int(text[digit_index])]
+		for cell in range(15):
+			if pattern[cell] == "1":
+				image.fill_rect(Rect2i(start + Vector2i(digit_index * 4 * pixel + (cell % 3) * pixel, (cell / 3) * pixel), Vector2i(pixel, pixel)), Color("17201c"))
+	if number == 6 or number == 9:
+		image.fill_rect(Rect2i(46, 96, 36, 5), Color("17201c"))
+	return ImageTexture.create_from_image(image)

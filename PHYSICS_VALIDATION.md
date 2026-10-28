@@ -69,3 +69,14 @@ calibrated properties of a specific pool table or cue.
 - Calibration preset ranges instead of a universal coefficient claim.
 - Native/GDScript state and event parity on shared named scenarios.
 - GDExtension bridge behavior and target builds before any runtime migration.
+
+## Mac practice preview 0.2.0 — 2026-10-28
+
+The playable GDScript path now uses TOI-informed ball-ball normals and emits actual
+impulse/exit events. Current suite: 949 assertions. Half-ball sweeps around a true
+half-ball contact at 0.2 and 8 m/s, in 0.0001 rad aim increments, are monotonic;
+maximum departure errors against the analytic clean equal-mass case are 2.02e-6 and
+9e-8 rad. A 204-case cue speed/offset/elevation matrix respects the available cue
+kinetic energy. Twelve ordinary center/draw/follow/side shots settle with finite
+state within 35 simulated seconds. These are bounded model regressions, not full
+calibration, convergence, pocket realism, or cross-platform validation.
