@@ -1,5 +1,11 @@
 # Project state
 
+**2026-10-28 quality review: owner rejected 0.2.0.** It does not meet the requested
+visual, physics, sound or control bar. See `SOL_TASK.md` and `docs/quality/` for the
+new acceptance contract and four reproduced failing tests. Earlier preview-readiness
+claims below describe build availability, not owner quality acceptance.
+
+
 Updated 2026-10-28. Mac practice preview 0.2.0 is built and ready for owner playtesting.
 
 ## This checkpoint
