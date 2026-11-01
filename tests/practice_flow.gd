@@ -1,19 +1,22 @@
 extends SceneTree
 var checks := 0
+var failures := 0
 func check(value: bool, description: String) -> void:
 	checks += 1
 	if not value:
-		printerr("FAIL: "+description); quit(1)
+		printerr("FAIL: "+description); failures += 1
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
 	var scene = load("res://scenes/main.tscn").instantiate()
-	scene.session_path="/tmp/longrail-flow-session.json"
+	scene.session_path="/tmp/longrail-flow-%d.json" % Time.get_ticks_usec()
 	root.add_child(scene)
-	scene.set_process(false); scene.hud.hide_menu(); scene._new_rack()
+	scene.set_process(false); scene.hud.hide_menu()
+	await scene.table_view._camera_tween.finished
+	scene._new_rack()
 	var original: Array=[]
 	for ball in scene.balls: original.append(ball.canonical_state())
 	scene._on_shoot_requested(.65,Vector2.ZERO)
-	await create_timer(.12).timeout
+	await create_timer(.20).timeout
 	check(scene._shot_in_motion,"shot starts after cue animation")
 	for frame in range(2400):
 		scene._process(1.0/60.0)
@@ -47,11 +50,11 @@ func run() -> void:
 	check(not scene._shot_in_motion and scene._strokes == 0,"re-rack cancels pending stroke safely")
 	var image:=Image.new()
 	image.load_svg_from_string(FileAccess.get_file_as_string("res://assets/icon.svg"))
-	image.save_png("/tmp/longrail-icon.png")
+	check(not image.is_empty(), "project icon loads")
 	scene.queue_free()
 	await process_frame
 	call_deferred("finish")
 
 func finish() -> void:
-	print("PASS: %d practice flow checks" % checks)
-	quit()
+	print("PRACTICE FLOW: %d checks, %d failures" % [checks, failures])
+	quit(1 if failures else 0)

@@ -1,3 +1,13 @@
+# QA status — local 0.3.0 candidate
+
+Updated 2026-10-31. Current evidence: [continuation report](docs/quality-roadmap/reports/continuation-progress.md), [test results](docs/quality-roadmap/reports/continuation-checks/results.json), [source/artifact hashes](docs/quality-roadmap/reports/candidate-manifest.json).
+
+Original four quality targets pass. The source regression suite passes 950 assertions; focused controls, recovery and geometry checks pass. A 90-entry pocket matrix, 20 short break seeds and 3 exact replays pass. A source-rendered contact-to-motion check is 1 frame. Local macOS export/signature and packaged startup pass.
+
+Open gates: calibrated physical response; production solver precision (prototype staged only); full 1000/10000 stress; listening and competitor/owner review; exported frame pacing; native/installed interaction; aim-test teardown resource warning. No commercial-quality signoff.
+
+## Previous0.2.0 record
+
 # QA status — Mac preview 0.2.0
 
 Updated 2026-10-28.

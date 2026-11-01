@@ -1,16 +1,18 @@
 # Long Rail
 
 An original, offline pool game in development. The current Mac preview concentrates
-on a polished practice room and a precise stroke rather than a complete match system.
+on practice-table quality and expressive stroke control rather than a complete match system.
 
 ## Try the Mac preview
 
-Build output: `build/Long Rail-0.2.0-mac.dmg`. Open it and drag **Long Rail** into
+Build output: `build/Long Rail-0.3.0-mac.dmg`. Open it and drag **Long Rail** into
 **Applications**, then open the app. This local preview uses an ad-hoc signature;
 Developer ID notarization is not configured.
 
-Aim with the pointer, choose power and tip position, then click **Take Shot** or
-press **Space**. Left/right arrows fine-tune aim; hold Shift for finer steps.
+Click and drag on the cloth to aim; release to retain your line. Choose power and
+tip position, then click **Take Shot** or press **Space**. Zero power does not fire; the low end supports delicate taps. Left/right arrows
+fine-tune aim; hold Shift for finer steps. Shift-drag the tip pad for small
+adjustments; double-click it to center the tip.
 **U** restores the last shot exactly. **V** switches between overhead and lounge
 cameras. **Escape** opens the menu. After a scratch, click a clear place on the cloth
 to put the cue ball back in play. The last settled table saves automatically.
@@ -18,6 +20,10 @@ to put the cue ball back in play. The last settled table saves automatically.
 The preview includes original procedural table/ball materials and contact sounds,
 soft-to-hard stroke control, follow/draw/english, collision and friction models,
 ball-in-hand recovery, shot undo, and aim-assistance and sound toggles.
+
+The initial-path guide includes launch deflection and first contact; it does not predict
+throw, later spin, or rebounds. Cue contact now triggers the strike, and pocket shelves
+share their geometry with the rendered slate.
 
 Full match flow, AI, advanced jump/masse behavior, and final pocket calibration remain
 in development. The independent WPA-oriented rules model and native C++ experiment
@@ -41,6 +47,11 @@ for local code signing and DMG creation. Set `GODOT` to use an existing editor.
 bash tools/godot.sh --headless --path . --script tests/run.gd
 bash tools/godot.sh --headless --path . --script tests/practice_flow.gd
 bash tools/run_native_tests.sh
+bash tools/godot.sh --headless --path . --script tests/stroke_power.gd
+bash tools/godot.sh --headless --path . --script tests/stroke_contact.gd
+bash tools/godot.sh --headless --path . --script tests/save_recovery.gd
+bash tools/godot.sh --headless --path . --script tests/table_geometry.gd
+bash tools/godot.sh --headless --path . --script tests/pocket_support.gd
 ```
 
 See [Project state](PROJECT_STATE.md), [Physics validation](PHYSICS_VALIDATION.md),

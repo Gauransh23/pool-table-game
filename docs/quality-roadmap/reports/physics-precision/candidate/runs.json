@@ -1,0 +1,8191 @@
+{
+	"solver": "current GDScript PhysicsStepper",
+	"resolutions_hz": [
+		240,
+		480,
+		960,
+		1920
+	],
+	"table": {
+		"half_size_m": [
+			1.26999998092651,
+			0.634999990463257
+		],
+		"ball_radius_m": 0.028575
+	},
+	"source_sha256": {
+		"physics_stepper.gd": "4e9b5508d784b7903304f9231d85ca04e8841b6916113b75fd17a9fa96fff000",
+		"table_spec.gd": "2743b3814f9b5bd0997b596bdfecf96cc182c703295052b84ec6e874ebd595d0",
+		"physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
+		"physics_precision.gd": "75b0c246ead22815a4a092c3487d5f976d0a552c48ead8c3fa06f56a84e1638c"
+	},
+	"godot_version": "4.7.2-stable (official)",
+	"records": [
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": 0.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.257149994373322,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0571498945355415,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.699999690055847,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028575, 0.0)",
+					"tick": 24
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 24,
+				"first_contact_time_s": 0.1,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": 0.25,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.259233325719833,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.053984846919775,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.69475132226944,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.02545, 0.0)",
+					"tick": 25
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 25,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": 0.5,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.261316657066345,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0550265461206436,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.693709671497345,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.026492, 0.0)",
+					"tick": 25
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 25,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": 0.75,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.263399988412857,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560682453215122,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.69266802072525,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 25
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 25,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0154400803148746,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.110056817531586,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-3.85150718688965
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.46791610121727,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.16828966140747,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-40.8850288391113
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.77477884292603,
+					"position": "(-0.026205, 0.0)",
+					"tick": 29
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 29,
+				"first_contact_time_s": 0.120833333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.161936759517839,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.115669111827088,
+				"rotation_j": 0.046267647690751,
+				"vertical_j": 0.0,
+				"total_j": 0.161936759517839
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.214762195944786,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "cut_positive",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0742370262742043,
+						0.178754433989525
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.368873178958893,
+						0.431253373622894
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						15.0919818878174,
+						2.68810725212097,
+						-12.9089479446411
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.375660568475723,
+						-0.162013873457909
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.974183320999146,
+						-0.418565303087234
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-14.6479549407959,
+						2.5972740650177,
+						-34.092155456543
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.58897733688354,
+					"position": "(-0.022524, 0.0125)",
+					"tick": 30
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 30,
+				"first_contact_time_s": 0.125,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.170465492511405,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.121487263823335,
+				"rotation_j": 0.0489782286880698,
+				"vertical_j": 0.0,
+				"total_j": 0.170465492511405
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22563348710537,
+				0.0,
+				0.00213159620761871
+			]
+		},
+		{
+			"case": "cut_negative",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						-0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0742370262742043,
+						-0.178754433989525
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.368873178958893,
+						-0.431253373622894
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-15.0919818878174,
+						-2.68810725212097,
+						-12.9089479446411
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.375660568475723,
+						0.162013873457909
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.974183320999146,
+						0.418565303087234
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						14.6479549407959,
+						-2.5972740650177,
+						-34.092155456543
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.58897733688354,
+					"position": "(-0.022524, -0.0125)",
+					"tick": 30
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 30,
+				"first_contact_time_s": 0.125,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.170465492511405,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.121487263823335,
+				"rotation_j": 0.0489782286880698,
+				"vertical_j": 0.0,
+				"total_j": 0.170465492511405
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22563348710537,
+				0.0,
+				-0.00213159620761871
+			]
+		},
+		{
+			"case": "pure_rolling",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 1.5,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.200000002980232,
+						0.100000001490116
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.5,
+						0.300000011920929
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						10.4986877441406,
+						0.0,
+						-17.4978122711182
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.436125755310059,
+						0.481675386428833
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.34858837723732,
+						0.209152668714523
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						7.31942844390869,
+						0.0,
+						-12.199068069458
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.0399840001647034,
+			"terminal_energy_j": 0.0194344224190433,
+			"initial_energy_components_j": {
+				"translation_j": 0.0285600006008148,
+				"rotation_j": 0.0114239995638886,
+				"vertical_j": 0.0,
+				"total_j": 0.0399840001647034
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0138817304283298,
+				"rotation_j": 0.00555269199071344,
+				"vertical_j": 0.0,
+				"total_j": 0.0194344224190433
+			},
+			"initial_momentum_kg_m_s": [
+				0.0839999988675117,
+				0.0,
+				0.0504000000655651
+			],
+			"terminal_momentum_kg_m_s": [
+				0.058562844991684,
+				0.0,
+				0.0351376496255398
+			]
+		},
+		{
+			"case": "rail_spin_positive",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.1625,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.316867023706436,
+						0.514392256736755
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						-0.125209391117096,
+						-0.64631849527359
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6183204650879,
+						4.54949569702148,
+						4.38178110122681
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09560990333557,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 8
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 8,
+				"first_rail_time_s": 0.0333333333333333
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.051536283325953,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0364060190723571,
+				"rotation_j": 0.0151302642535959,
+				"vertical_j": 0.0,
+				"total_j": 0.051536283325953
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				-0.0210351776331663,
+				0.0,
+				-0.108581505715847
+			]
+		},
+		{
+			"case": "rail_spin_negative",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.1625,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						-18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.283133000135422,
+						0.514392256736755
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.125209391117096,
+						-0.64631849527359
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6183204650879,
+						-4.54949569702148,
+						-4.38178110122681
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09560990333557,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 8
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 8,
+				"first_rail_time_s": 0.0333333333333333
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.051536283325953,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0364060190723571,
+				"rotation_j": 0.0151302642535959,
+				"vertical_j": 0.0,
+				"total_j": 0.051536283325953
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0210351776331663,
+				0.0,
+				-0.108581505715847
+			]
+		},
+		{
+			"case": "analytic_head_on",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560349263250828,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.676034688949585,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.0275, 0.0)",
+					"tick": 27
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 27,
+				"first_contact_time_s": 0.1125,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "analytic_cut",
+			"resolution_hz": 240,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00416666666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0790860801935196,
+						0.288221925497055
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.382716774940491,
+						0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.540914356708527,
+						-0.263222008943558
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.61728322505951,
+						-0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.79849004745483,
+					"position": "(-0.023333, 0.0125)",
+					"tick": 28
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 28,
+				"first_contact_time_s": 0.116666666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336000017403964,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336000017403963,
+				"rotation_j": 0.000000000000000987958007539342,
+				"vertical_j": 0.0,
+				"total_j": 0.336000017403964
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": 0.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.257149994373322,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0550266280770302,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.69787609577179,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.026492, 0.0)",
+					"tick": 49
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 49,
+				"first_contact_time_s": 0.102083333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": 0.25,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.259233325719833,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683310031891,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.696834444999695,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 49
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 49,
+				"first_contact_time_s": 0.102083333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": 0.5,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.261316657066345,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0550266280770302,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.693709433078766,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.026492, 0.0)",
+					"tick": 50
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 50,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": 0.75,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.263399988412857,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683310031891,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.692667782306671,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 50
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 50,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0176361165940762,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.108112134039402,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-3.783451795578
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.470436781644821,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.17172610759735,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-41.0052871704102
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.77866196632385,
+					"position": "(-0.027936, 0.0)",
+					"tick": 57
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 57,
+				"first_contact_time_s": 0.11875,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.162832521743631,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.116308945599151,
+				"rotation_j": 0.0465235761444805,
+				"vertical_j": 0.0,
+				"total_j": 0.162832521743631
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.215012818574905,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "cut_positive",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0722987875342369,
+						0.179210886359215
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.366594910621643,
+						0.431353271007538
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						15.095477104187,
+						2.71530866622925,
+						-12.8292179107666
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.377853333950043,
+						-0.162633717060089
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.976421236991882,
+						-0.419226676225662
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-14.6710996627808,
+						2.62447500228882,
+						-34.1704711914062
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.59246921539307,
+					"position": "(-0.024243, 0.0125)",
+					"tick": 59
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 59,
+				"first_contact_time_s": 0.122916666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.170865020911821,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.121766980524888,
+				"rotation_j": 0.0490980403869336,
+				"vertical_j": 0.0,
+				"total_j": 0.170865020911821
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.225626707077026,
+				0.0,
+				0.00203727185726166
+			]
+		},
+		{
+			"case": "cut_negative",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						-0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0722987875342369,
+						-0.179210886359215
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.366594910621643,
+						-0.431353271007538
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-15.095477104187,
+						-2.71530866622925,
+						-12.8292179107666
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.377853333950043,
+						0.162633717060089
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.976421236991882,
+						0.419226676225662
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						14.6710996627808,
+						-2.62447500228882,
+						-34.1704711914062
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.59246921539307,
+					"position": "(-0.024243, -0.0125)",
+					"tick": 59
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 59,
+				"first_contact_time_s": 0.122916666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.170865020911821,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.121766980524888,
+				"rotation_j": 0.0490980403869336,
+				"vertical_j": 0.0,
+				"total_j": 0.170865020911821
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.225626707077026,
+				0.0,
+				-0.00203727185726166
+			]
+		},
+		{
+			"case": "pure_rolling",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 1.5,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.200000002980232,
+						0.100000001490116
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.5,
+						0.300000011920929
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						10.4986877441406,
+						0.0,
+						-17.4978122711182
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.436273217201233,
+						0.481763929128647
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.348578572273254,
+						0.209147468209267
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						7.31924629211426,
+						0.0,
+						-12.1987247467041
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.0399840001647034,
+			"terminal_energy_j": 0.0194333625258919,
+			"initial_energy_components_j": {
+				"translation_j": 0.0285600006008148,
+				"rotation_j": 0.0114239995638886,
+				"vertical_j": 0.0,
+				"total_j": 0.0399840001647034
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0138809734985382,
+				"rotation_j": 0.00555238902735369,
+				"vertical_j": 0.0,
+				"total_j": 0.0194333625258919
+			},
+			"initial_momentum_kg_m_s": [
+				0.0839999988675117,
+				0.0,
+				0.0504000000655651
+			],
+			"terminal_momentum_kg_m_s": [
+				0.058561198413372,
+				0.0,
+				0.0351367741823196
+			]
+		},
+		{
+			"case": "rail_spin_positive",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.316618651151657,
+						0.51554799079895
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						-0.125209182500839,
+						-0.646319150924683
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6183433532715,
+						4.57219839096069,
+						4.38177347183228
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09560990333557,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 16
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 16,
+				"first_rail_time_s": 0.0333333333333333
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.0515420582226637,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0364060858757006,
+				"rotation_j": 0.0151359723469631,
+				"vertical_j": 0.0,
+				"total_j": 0.0515420582226637
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				-0.0210351422429085,
+				0.0,
+				-0.108581617474556
+			]
+		},
+		{
+			"case": "rail_spin_negative",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						-18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.283381372690201,
+						0.51554799079895
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.125209182500839,
+						-0.646319150924683
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6183433532715,
+						-4.57219839096069,
+						-4.38177347183228
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09560990333557,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 16
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 16,
+				"first_rail_time_s": 0.0333333333333333
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.0515420582226637,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0364060858757006,
+				"rotation_j": 0.0151359723469631,
+				"vertical_j": 0.0,
+				"total_j": 0.0515420582226637
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0210351422429085,
+				0.0,
+				-0.108581617474556
+			]
+		},
+		{
+			"case": "analytic_head_on",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560350120067596,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.676034450531006,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.0275, 0.0)",
+					"tick": 54
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 54,
+				"first_contact_time_s": 0.1125,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "analytic_cut",
+			"resolution_hz": 480,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0773470401763916,
+						0.288978666067123
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.382716774940491,
+						0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.542652368545532,
+						-0.263978749513626
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.61728322505951,
+						-0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.79849004745483,
+					"position": "(-0.025417, 0.0125)",
+					"tick": 55
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 55,
+				"first_contact_time_s": 0.114583333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336000017403964,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336000017403963,
+				"rotation_j": 0.000000000000000987958007539342,
+				"vertical_j": 0.0,
+				"total_j": 0.336000017403964
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": 0.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.257149994373322,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683868825436,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.698920488357544,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 97
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 97,
+				"first_contact_time_s": 0.101041666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": 0.25,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.259233325719833,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683868825436,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.69683712720871,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 98
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 98,
+				"first_contact_time_s": 0.102083333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": 0.5,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.261316657066345,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683868825436,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.694753766059875,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 99
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 99,
+				"first_contact_time_s": 0.103125,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": 0.75,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.263399988412857,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0560683868825436,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.692670404911041,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.027533, 0.0)",
+					"tick": 100
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 100,
+				"first_contact_time_s": 0.104166666666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0176964402198792,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.108112543821335,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-3.78346610069275
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.470777153968811,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.17160081863403,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-41.000904083252
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.77866196632385,
+					"position": "(-0.027879, 0.0)",
+					"tick": 114
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 114,
+				"first_contact_time_s": 0.11875,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.162798008945719,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.116284291229858,
+				"rotation_j": 0.0465137177158604,
+				"vertical_j": 0.0,
+				"total_j": 0.162798008945719
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.214991837739944,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "cut_positive",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0713505893945694,
+						0.179467290639877
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.365464568138123,
+						0.431408196687698
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						15.0973997116089,
+						2.72894096374512,
+						-12.7896614074707
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.378923237323761,
+						-0.162970319390297
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.97752583026886,
+						-0.419555574655533
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-14.6826095581055,
+						2.63810729980469,
+						-34.2091293334961
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.59421515464783,
+					"position": "(-0.025106, 0.0125)",
+					"tick": 117
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 117,
+				"first_contact_time_s": 0.121875,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.171063552411624,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.12190592499129,
+				"rotation_j": 0.0491576274203336,
+				"vertical_j": 0.0,
+				"total_j": 0.171063552411624
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22562238574028,
+				0.0,
+				0.00199123471975327
+			]
+		},
+		{
+			"case": "cut_negative",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						-0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0713505893945694,
+						-0.179467290639877
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.365464568138123,
+						-0.431408196687698
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-15.0973997116089,
+						-2.72894096374512,
+						-12.7896614074707
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.378923237323761,
+						0.162970319390297
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.97752583026886,
+						0.419555574655533
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						14.6826095581055,
+						-2.63810729980469,
+						-34.2091293334961
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.59421515464783,
+					"position": "(-0.025106, -0.0125)",
+					"tick": 117
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 117,
+				"first_contact_time_s": 0.121875,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.171063552411624,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.12190592499129,
+				"rotation_j": 0.0491576274203336,
+				"vertical_j": 0.0,
+				"total_j": 0.171063552411624
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22562238574028,
+				0.0,
+				-0.00199123471975327
+			]
+		},
+		{
+			"case": "pure_rolling",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 1.5,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.200000002980232,
+						0.100000001490116
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.5,
+						0.300000011920929
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						10.4986877441406,
+						0.0,
+						-17.4978122711182
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.436368197202682,
+						0.481820970773697
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.348585575819016,
+						0.209151908755302
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						7.31940174102783,
+						0.0,
+						-12.1989698410034
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.0399840001647034,
+			"terminal_energy_j": 0.0194341551818153,
+			"initial_energy_components_j": {
+				"translation_j": 0.0285600006008148,
+				"rotation_j": 0.0114239995638886,
+				"vertical_j": 0.0,
+				"total_j": 0.0399840001647034
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0138815396668251,
+				"rotation_j": 0.00555261551499016,
+				"vertical_j": 0.0,
+				"total_j": 0.0194341551818153
+			},
+			"initial_momentum_kg_m_s": [
+				0.0839999988675117,
+				0.0,
+				0.0504000000655651
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0585623756051064,
+				0.0,
+				0.0351375192403793
+			]
+		},
+		{
+			"case": "rail_spin_positive",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.316766113042831,
+						0.514636337757111
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						-0.125267490744591,
+						-0.647441685199738
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6576271057129,
+						4.56471109390259,
+						4.38381433486938
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.0974794626236,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 31
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 31,
+				"first_rail_time_s": 0.0322916666666667
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.051712688317329,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0365293051176247,
+				"rotation_j": 0.0151833831997043,
+				"vertical_j": 0.0,
+				"total_j": 0.051712688317329
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				-0.0210449378937483,
+				0.0,
+				-0.108770199120045
+			]
+		},
+		{
+			"case": "rail_spin_negative",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						-18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.283233910799026,
+						0.514636337757111
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.125267490744591,
+						-0.647441685199738
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6576271057129,
+						-4.56471109390259,
+						-4.38381433486938
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.0974794626236,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 31
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 31,
+				"first_rail_time_s": 0.0322916666666667
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.051712688317329,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0365293051176247,
+				"rotation_j": 0.0151833831997043,
+				"vertical_j": 0.0,
+				"total_j": 0.051712688317329
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0210449378937483,
+				0.0,
+				-0.108770199120045
+			]
+		},
+		{
+			"case": "analytic_head_on",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.057083535939455,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.677085280418396,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028542, 0.0)",
+					"tick": 107
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 107,
+				"first_contact_time_s": 0.111458333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "analytic_cut",
+			"resolution_hz": 960,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.00104166666666667,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0773468986153603,
+						0.288979053497314
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.382716774940491,
+						0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.542651951313019,
+						-0.263978719711304
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.61728322505951,
+						-0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.79849004745483,
+					"position": "(-0.025417, 0.0125)",
+					"tick": 110
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 110,
+				"first_contact_time_s": 0.114583333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336000017403964,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336000017403963,
+				"rotation_j": 0.000000000000000987958007539342,
+				"vertical_j": 0.0,
+				"total_j": 0.336000017403964
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": 0.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.257149994373322,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0565891973674297,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.699439227581024,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028054, 0.0)",
+					"tick": 193
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 193,
+				"first_contact_time_s": 0.100520833333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": 0.25,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.259233325719833,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0565891824662685,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.697355926036835,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028054, 0.0)",
+					"tick": 195
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 195,
+				"first_contact_time_s": 0.1015625,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": 0.5,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.261316657066345,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0565891675651073,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.695272624492645,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028054, 0.0)",
+					"tick": 197
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 197,
+				"first_contact_time_s": 0.102604166666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "phase_head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": 0.75,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.263399988412857,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0565891526639462,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.693189322948456,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028054, 0.0)",
+					"tick": 199
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 199,
+				"first_contact_time_s": 0.103645833333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0182191543281078,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.107562832534313,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-3.7642285823822
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.471398562192917,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.17243206501007,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						-41.0299949645996
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.77961921691895,
+					"position": "(-0.028313, 0.0)",
+					"tick": 227
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 227,
+				"first_contact_time_s": 0.118229166666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.163013208329473,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.116438003640553,
+				"rotation_j": 0.0465752046889197,
+				"vertical_j": 0.0,
+				"total_j": 0.163013208329473
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.215039134025574,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "cut_positive",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.070871114730835,
+						0.179693669080734
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.364926040172577,
+						0.431466728448868
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						15.0994482040405,
+						2.74127864837646,
+						-12.7708148956299
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.379461526870728,
+						-0.163151130080223
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.978246331214905,
+						-0.419801861047745
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-14.6912288665771,
+						2.64476990699768,
+						-34.2343406677246
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.5950756072998,
+					"position": "(-0.025538, 0.0125)",
+					"tick": 233
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 233,
+				"first_contact_time_s": 0.121354166666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.171216072172578,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.122012859328834,
+				"rotation_j": 0.0492032128437434,
+				"vertical_j": 0.0,
+				"total_j": 0.171216072172578
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22565296292305,
+				0.0,
+				0.00195969641208649
+			]
+		},
+		{
+			"case": "cut_negative",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						-0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.070871114730835,
+						-0.179693669080734
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.364926040172577,
+						-0.431466728448868
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-15.0994482040405,
+						-2.74127864837646,
+						-12.7708148956299
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.379461526870728,
+						0.163151130080223
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.978246331214905,
+						0.419801861047745
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						14.6912288665771,
+						-2.64476990699768,
+						-34.2343406677246
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.5950756072998,
+					"position": "(-0.025538, -0.0125)",
+					"tick": 233
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 233,
+				"first_contact_time_s": 0.121354166666667,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.171216072172578,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.122012859328834,
+				"rotation_j": 0.0492032128437434,
+				"vertical_j": 0.0,
+				"total_j": 0.171216072172578
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.22565296292305,
+				0.0,
+				-0.00195969641208649
+			]
+		},
+		{
+			"case": "pure_rolling",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 1.5,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.200000002980232,
+						0.100000001490116
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.5,
+						0.300000011920929
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						10.4986877441406,
+						0.0,
+						-17.4978122711182
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.436378121376038,
+						0.481825232505798
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.348577320575714,
+						0.20914314687252
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						7.31909513473511,
+						0.0,
+						-12.1986818313599
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.0399840001647034,
+			"terminal_energy_j": 0.0194330479571278,
+			"initial_energy_components_j": {
+				"translation_j": 0.0285600006008148,
+				"rotation_j": 0.0114239995638886,
+				"vertical_j": 0.0,
+				"total_j": 0.0399840001647034
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0138807483614927,
+				"rotation_j": 0.0055522995956351,
+				"vertical_j": 0.0,
+				"total_j": 0.0194330479571278
+			},
+			"initial_momentum_kg_m_s": [
+				0.0839999988675117,
+				0.0,
+				0.0504000000655651
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0585609897971153,
+				0.0,
+				0.0351360477507114
+			]
+		},
+		{
+			"case": "rail_spin_positive",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.316769599914551,
+						0.51458615064621
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						-0.125267043709755,
+						-0.647443234920502
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6576805114746,
+						4.56466960906982,
+						4.38379859924316
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09747588634491,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 62
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 62,
+				"first_rail_time_s": 0.0322916666666667
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.0517128996938693,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0365294642734649,
+				"rotation_j": 0.0151834354204044,
+				"vertical_j": 0.0,
+				"total_j": 0.0517128996938693
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				-0.0210448633879423,
+				0.0,
+				-0.108770459890366
+			]
+		},
+		{
+			"case": "rail_spin_negative",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.160416666666667,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.300000011920929,
+						0.569999992847443
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						1.20000004768372
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						-18.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.283230423927307,
+						0.51458615064621
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.125267043709755,
+						-0.647443234920502
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						-22.6576805114746,
+						-4.56466960906982,
+						-4.38379859924316
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "rail",
+					"number": 0,
+					"speed": 1.09747588634491,
+					"jaw": false,
+					"position": "(-0.3, 0.607486)",
+					"tick": 62
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 1,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"first_rail_tick": 62,
+				"first_rail_time_s": 0.0322916666666667
+			},
+			"initial_energy_j": 0.129849088609037,
+			"terminal_energy_j": 0.0517128996938693,
+			"initial_energy_components_j": {
+				"translation_j": 0.120960009613037,
+				"rotation_j": 0.008889078996,
+				"vertical_j": 0.0,
+				"total_j": 0.129849088609037
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.0365294642734649,
+				"rotation_j": 0.0151834354204044,
+				"vertical_j": 0.0,
+				"total_j": 0.0517128996938693
+			},
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.20160000026226
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0210448633879423,
+				0.0,
+				-0.108770459890366
+			]
+		},
+		{
+			"case": "analytic_head_on",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.0570831298828125,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.677083730697632,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 2.0,
+					"position": "(-0.028542, 0.0)",
+					"tick": 214
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 214,
+				"first_contact_time_s": 0.111458333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "analytic_cut",
+			"resolution_hz": 1920,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.45,
+			"initial_parameters": {
+				"fixed_step_s": 0.000520833333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 1.0,
+				"ball_friction": 0.0,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.0,
+				"sliding_friction": 0.0,
+				"rolling_resistance": 0.0,
+				"spinning_friction": 0.0,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						-0.280000001192093,
+						0.025000000372529
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						2.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.0,
+						0.0
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.0,
+						0.0
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"terminal_balls": [
+				{
+					"id": 0,
+					"number": 0,
+					"position_m": [
+						0.0773474723100662,
+						0.288979858160019
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						0.382716774940491,
+						0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				},
+				{
+					"id": 1,
+					"number": 1,
+					"position_m": [
+						0.542651891708374,
+						-0.26398041844368
+					],
+					"height_m": 0.028575,
+					"velocity_m_s": [
+						1.61728322505951,
+						-0.786741077899933
+					],
+					"vertical_velocity_m_s": 0.0,
+					"angular_velocity_rad_s": [
+						0.0,
+						0.0000042432475311216,
+						0.0
+					],
+					"phase": 0,
+					"pocket_id": -1
+				}
+			],
+			"events": [
+				{
+					"kind": "ball_contact",
+					"a": 0,
+					"b": 1,
+					"speed": 1.79849004745483,
+					"position": "(-0.025417, 0.0125)",
+					"tick": 220
+				}
+			],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 1,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": 220,
+				"first_contact_time_s": 0.114583333333333,
+				"first_rail_tick": -1,
+				"first_rail_time_s": -1.0
+			},
+			"initial_energy_j": 0.336,
+			"terminal_energy_j": 0.336000017403964,
+			"initial_energy_components_j": {
+				"translation_j": 0.336,
+				"rotation_j": 0.0,
+				"vertical_j": 0.0,
+				"total_j": 0.336
+			},
+			"terminal_energy_components_j": {
+				"translation_j": 0.336000017403963,
+				"rotation_j": 0.000000000000000987958007539342,
+				"vertical_j": 0.0,
+				"total_j": 0.336000017403964
+			},
+			"initial_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.335999995470047,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 0,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						-1.24242496490479,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": 0,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 0.0275750160217285
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						-1.24242496490479,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							-1.24242496490479,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": 0,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							-1.24242496490479,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							-1.24242496490479,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": 0,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							-1.24242496490479,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": 0
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 1,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						-1.24242496490479,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": 1,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 0.0275750160217285
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						-1.24242496490479,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							-1.24242496490479,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": 1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							-1.24242496490479,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							-1.24242496490479,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": 1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							-1.24242496490479,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": 1
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 2,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						1.24242496490479,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": 2,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 0.0275750160217285
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						1.24242496490479,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							1.24242496490479,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": 2,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							1.24242496490479,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							1.24242496490479,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": 2,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							1.24242496490479,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": 2
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 3,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						1.24242496490479,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": 3,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 0.0275750160217285
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						1.24242496490479,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							1.24242496490479,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": 3,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							1.24242496490479,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							1.24242496490479,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": 3,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 0.0275750160217285
+					},
+					"after": {
+						"position_m": [
+							1.24242496490479,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": 3
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 4,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						0.0,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": -1,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 1.26999998092651
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						0.0,
+						0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							0.0,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": -1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 1.26999998092651
+					},
+					"after": {
+						"position_m": [
+							0.0,
+							0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							0.0,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": -1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 1.26999998092651
+					},
+					"after": {
+						"position_m": [
+							0.0,
+							0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": -1
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		},
+		{
+			"case": "stationary_support_probe",
+			"pocket_id": 5,
+			"resolution_hz": 0,
+			"contact_phase_fraction": -1.0,
+			"duration_s": 0.00208333333333333,
+			"initial_parameters": {
+				"fixed_step_s": 0.00208333333333333,
+				"gravity_m_s2": 9.81,
+				"ball_mass_kg": 0.168,
+				"ball_restitution": 0.94,
+				"ball_friction": 0.055,
+				"cushion_restitution": 0.84,
+				"cushion_friction": 0.12,
+				"sliding_friction": 0.19,
+				"rolling_resistance": 0.012,
+				"spinning_friction": 0.0127,
+				"sleep_speed_threshold_m_s": 0.012,
+				"sleep_spin_threshold_rad_s": 0.08,
+				"max_speed_m_s": 14.0,
+				"max_substep_travel_fraction": 0.45,
+				"max_collision_iterations": 6
+			},
+			"initial_balls": [
+				{
+					"position_m": [
+						0.0,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_at": -1,
+					"outside_table": false,
+					"distance_inside_end_plane_m": 0.0275750160217285,
+					"distance_inside_side_plane_m": 1.26999998092651
+				}
+			],
+			"terminal_balls": [
+				{
+					"position_m": [
+						0.0,
+						-0.607424974441528
+					],
+					"phase": 0,
+					"pocket_id": -1,
+					"vertical_velocity_m_s": 0.0
+				}
+			],
+			"support_samples": [
+				{
+					"label": "inner_side_of_current_threshold",
+					"before": {
+						"position_m": [
+							0.0,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_at": -1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.029574990272522,
+						"distance_inside_side_plane_m": 1.26999998092651
+					},
+					"after": {
+						"position_m": [
+							0.0,
+							-0.605425000190735
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				},
+				{
+					"label": "just_beyond_current_threshold",
+					"before": {
+						"position_m": [
+							0.0,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_at": -1,
+						"outside_table": false,
+						"distance_inside_end_plane_m": 0.0275750160217285,
+						"distance_inside_side_plane_m": 1.26999998092651
+					},
+					"after": {
+						"position_m": [
+							0.0,
+							-0.607424974441528
+						],
+						"phase": 0,
+						"pocket_id": -1,
+						"vertical_velocity_m_s": 0.0
+					},
+					"events": []
+				}
+			],
+			"events": [],
+			"event_metrics": {
+				"counts": {
+					"ball_contact": 0,
+					"rail": 0,
+					"pocket": 0,
+					"off_table": 0
+				},
+				"first_contact_tick": -1,
+				"first_contact_time_s": -1.0,
+				"classified_pocket": -1
+			},
+			"initial_energy_j": 0.0,
+			"terminal_energy_j": 0.0,
+			"initial_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"terminal_momentum_kg_m_s": [
+				0.0,
+				0.0,
+				0.0
+			]
+		}
+	],
+	"evaluation": {
+		"successive_resolution_comparisons": [
+			{
+				"case": "head_on",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00252068042755127,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "head_on",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.000340372323989868,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "head_on",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000621408224105835,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00227868976071477,
+				"max_ball_direction_error_deg": 0.181807576152986,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.0011216034181416,
+				"max_ball_direction_error_deg": 0.0908864991601565,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000567845185287297,
+				"max_ball_direction_error_deg": 0.0454990183414557,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00227868976071477,
+				"max_ball_direction_error_deg": 0.181807576152986,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.0011216034181416,
+				"max_ball_direction_error_deg": 0.0908864991601565,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "cut_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000567845185287297,
+				"max_ball_direction_error_deg": 0.0454990183414557,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00212359428405762,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.00104439258575439,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000520810484886169,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.25,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00208348408341408,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.25,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.00000268220901489258,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.25,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000520795583724976,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.5,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.000000238418579101562,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.5,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.00104433298110962,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.5,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000520780682563782,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.75,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.000000238418579101562,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.75,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.00000262260437011719,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "phase_head_on",
+				"contact_phase_fraction": 0.75,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.000520765781402588,
+				"max_ball_direction_error_deg": 0.0,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "pure_rolling",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.000172002371982671,
+				"max_ball_direction_error_deg": 0.0000826628266476234,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "pure_rolling",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.000110792374471202,
+				"max_ball_direction_error_deg": 0.0000284155400378452,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "pure_rolling",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.0000108005360743846,
+				"max_ball_direction_error_deg": 0.000462402118439127,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "rail_spin_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00118212110828608,
+				"max_ball_direction_error_deg": 0.0000285638326619797,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "rail_spin_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.000923502142541111,
+				"max_ball_direction_error_deg": 0.0135763700147823,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "rail_spin_positive",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.0000503080955240875,
+				"max_ball_direction_error_deg": 0.000063806226816532,
+				"within_0_5mm_and_0_1deg": true
+			},
+			{
+				"case": "rail_spin_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 240,
+				"to_hz": 480,
+				"max_ball_endpoint_error_m": 0.00118212110828608,
+				"max_ball_direction_error_deg": 0.0000285638326619797,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "rail_spin_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 480,
+				"to_hz": 960,
+				"max_ball_endpoint_error_m": 0.000923502142541111,
+				"max_ball_direction_error_deg": 0.0135763700147823,
+				"within_0_5mm_and_0_1deg": false
+			},
+			{
+				"case": "rail_spin_negative",
+				"contact_phase_fraction": -1.0,
+				"from_hz": 960,
+				"to_hz": 1920,
+				"max_ball_endpoint_error_m": 0.0000503080955240875,
+				"max_ball_direction_error_deg": 0.000063806226816532,
+				"within_0_5mm_and_0_1deg": true
+			}
+		],
+		"worst_endpoint_error": {
+			"error_m": 0.00252068042755127,
+			"case": "head_on",
+			"phase": -1.0,
+			"from_hz": 240,
+			"to_hz": 480
+		},
+		"worst_direction_error": {
+			"error_deg": 0.181807576152986,
+			"case": "cut_positive",
+			"phase": -1.0,
+			"from_hz": 240,
+			"to_hz": 480
+		},
+		"threshold_misses": [
+			"head_on phase -1.0 240->480: 0.002520680 m, 0.000000 deg",
+			"head_on phase -1.0 960->1920: 0.000621408 m, 0.000000 deg",
+			"cut_positive phase -1.0 240->480: 0.002278690 m, 0.181808 deg",
+			"cut_positive phase -1.0 480->960: 0.001121603 m, 0.090886 deg",
+			"cut_positive phase -1.0 960->1920: 0.000567845 m, 0.045499 deg",
+			"cut_negative phase -1.0 240->480: 0.002278690 m, 0.181808 deg",
+			"cut_negative phase -1.0 480->960: 0.001121603 m, 0.090886 deg",
+			"cut_negative phase -1.0 960->1920: 0.000567845 m, 0.045499 deg",
+			"phase_head_on phase 0.0 240->480: 0.002123594 m, 0.000000 deg",
+			"phase_head_on phase 0.0 480->960: 0.001044393 m, 0.000000 deg",
+			"phase_head_on phase 0.0 960->1920: 0.000520810 m, 0.000000 deg",
+			"phase_head_on phase 0.25 240->480: 0.002083484 m, 0.000000 deg",
+			"phase_head_on phase 0.25 960->1920: 0.000520796 m, 0.000000 deg",
+			"phase_head_on phase 0.5 480->960: 0.001044333 m, 0.000000 deg",
+			"phase_head_on phase 0.5 960->1920: 0.000520781 m, 0.000000 deg",
+			"phase_head_on phase 0.75 960->1920: 0.000520766 m, 0.000000 deg",
+			"rail_spin_positive phase -1.0 240->480: 0.001182121 m, 0.000029 deg",
+			"rail_spin_positive phase -1.0 480->960: 0.000923502 m, 0.013576 deg",
+			"rail_spin_negative phase -1.0 240->480: 0.001182121 m, 0.000029 deg",
+			"rail_spin_negative phase -1.0 480->960: 0.000923502 m, 0.013576 deg"
+		]
+	},
+	"analytic_checks": [
+		{
+			"case": "analytic_head_on",
+			"resolution_hz": 1920,
+			"expected_first_velocity_m_s": [
+				0.0,
+				0.0
+			],
+			"expected_second_velocity_m_s": [
+				2.0,
+				0.0
+			],
+			"first_velocity_error_m_s": 0.0,
+			"second_velocity_error_m_s": 0.0,
+			"linear_momentum_error_kg_m_s": 0.0,
+			"total_energy_error_j_including_rotation": 0.0,
+			"initial_linear_energy_j": 0.336,
+			"terminal_total_energy_j": 0.336,
+			"meets_0_1_percent_momentum_and_energy": true
+		},
+		{
+			"case": "analytic_cut",
+			"resolution_hz": 1920,
+			"expected_first_velocity_m_s": [
+				0.382716774940491,
+				0.786741018295288
+			],
+			"expected_second_velocity_m_s": [
+				1.61728322505951,
+				-0.786741018295288
+			],
+			"first_velocity_error_m_s": 0.0000000596046447753906,
+			"second_velocity_error_m_s": 0.0000000596046447753906,
+			"linear_momentum_error_kg_m_s": 0.0,
+			"total_energy_error_j_including_rotation": 0.0000000174039638811685,
+			"initial_linear_energy_j": 0.336,
+			"terminal_total_energy_j": 0.336000017403964,
+			"meets_0_1_percent_momentum_and_energy": true
+		},
+		{
+			"case": "pure_rolling",
+			"resolution_hz": 1920,
+			"expected_distance_m": 0.742207789363861,
+			"actual_distance_m": 0.742137253284454,
+			"distance_error_m": 0.0000705360794066578,
+			"expected_speed_m_s": 0.406515192909241,
+			"actual_speed_m_s": 0.406505852937698,
+			"speed_error_m_s": 0.00000933997154234367,
+			"terminal_translational_energy_j": 0.0138807487116989,
+			"terminal_rotational_energy_j": 0.0055522995956351,
+			"terminal_total_energy_j": 0.019433048307334,
+			"meets_1_percent_rolling_distance": true
+		}
+	],
+	"mirror_checks": [
+		{
+			"positive_case": "cut_positive",
+			"negative_case": "cut_negative",
+			"resolution_hz": 240,
+			"reflected_endpoint_error_m": 0.0,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "rail_spin_positive",
+			"negative_case": "rail_spin_negative",
+			"resolution_hz": 240,
+			"reflected_endpoint_error_m": 0.0000000238418582654276,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "cut_positive",
+			"negative_case": "cut_negative",
+			"resolution_hz": 480,
+			"reflected_endpoint_error_m": 0.0,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "rail_spin_positive",
+			"negative_case": "rail_spin_negative",
+			"resolution_hz": 480,
+			"reflected_endpoint_error_m": 0.0000000238418582654276,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "cut_positive",
+			"negative_case": "cut_negative",
+			"resolution_hz": 960,
+			"reflected_endpoint_error_m": 0.0,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "rail_spin_positive",
+			"negative_case": "rail_spin_negative",
+			"resolution_hz": 960,
+			"reflected_endpoint_error_m": 0.0000000238418582654276,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "cut_positive",
+			"negative_case": "cut_negative",
+			"resolution_hz": 1920,
+			"reflected_endpoint_error_m": 0.0,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		},
+		{
+			"positive_case": "rail_spin_positive",
+			"negative_case": "rail_spin_negative",
+			"resolution_hz": 1920,
+			"reflected_endpoint_error_m": 0.0000000238418582654276,
+			"reflected_velocity_error_m_s": 0.0,
+			"reflected_spin_error_rad_s": 0.0,
+			"event_count_equal": true
+		}
+	]
+}

@@ -172,9 +172,11 @@ func _test_side_pocket_is_a_drop_event_not_a_trigger_teleport() -> void:
 	ball.velocity = Vector2(0.0, 1.4)
 	var stepper = PhysicsStepper.new()
 	stepper.advance([ball], 0.02, config, table)
-	_assert_true(ball.phase == BallState.Phase.FALLING, "side-pocket entry begins a physical drop")
+	_assert_true(ball.phase == BallState.Phase.IN_PLAY, "ball remains supported before reaching the slate fall edge")
+	stepper.advance([ball], 0.03, config, table)
+	_assert_true(ball.phase == BallState.Phase.FALLING, "crossing the finite shelf begins a physical drop")
 	_assert_true(ball.height >= 0.0, "ball remains visible while it falls below the cloth")
-	stepper.advance([ball], 0.18, config, table)
+	stepper.advance([ball], 0.25, config, table)
 	_assert_true(ball.phase == BallState.Phase.POCKETED, "ball is captured only after falling into the pocket")
 
 

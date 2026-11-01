@@ -16,7 +16,7 @@ func _ready() -> void:
 		_players.append(player)
 
 func play_contact(kind: String, speed: float = 1.0) -> void:
-	if not enabled or _players.is_empty() or speed < 0.08:
+	if not enabled or _players.is_empty() or not is_finite(speed) or speed < 0.005:
 		return
 	var now := Time.get_ticks_msec()
 	if kind == "ball" and now - _last_contact_ms < 16:

@@ -15,11 +15,11 @@ func run() -> void:
 		"stationary center is %.5fm inside the mouth plane; phase=%d (must stay supported)" % [table.half_size.y-ball.position.y,ball.phase])
 	var wide := TableSpec.new(); wide.half_size=Vector2(10,10)
 	var soft := BallState.new()
-	CueStrikeModel.new().apply(soft,Vector2.RIGHT,.25+.01*7.75,Vector2.ZERO,0,config)
+	CueStrikeModel.new().apply(soft,Vector2.RIGHT,load("res://scripts/sim/stroke_power.gd").cue_speed(0.005),Vector2.ZERO,0,config)
 	var sim := PhysicsStepper.new()
 	for tick in range(4800): sim.step_fixed([soft],config.fixed_step,config,wide)
-	require_quality("CTL-SOFT-01",soft.position.length()<=.10,
-		"minimum UI center stroke rolls %.4fm; proposed delicate-touch target <=0.10m" % soft.position.length())
+	require_quality("CTL-SOFT-01",soft.position.length()>=.02 and soft.position.length()<=.10,
+		"minimum UI center stroke rolls %.4fm; delicate-touch target 0.02–0.10m" % soft.position.length())
 	var game=load("res://scenes/main.tscn").instantiate()
 	game.session_path="/tmp/longrail-quality-contract.json"
 	root.add_child(game);game.set_process(false);game.hud.hide_menu();game._new_rack(false)

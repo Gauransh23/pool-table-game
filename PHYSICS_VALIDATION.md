@@ -1,3 +1,9 @@
+# Current0.3.0 continuation evidence
+
+See [continuation report](docs/quality-roadmap/reports/continuation-progress.md) for shared shelf/jaw/slate geometry, gravity-driven entry, the fast-rejection repair, targeted tests and limitations. Current production uses adaptive substeps with TOI-informed normals. The ball-ball impact-time experiment remains separate and is excluded from the exported game. Its improved convergence is not a completed migration or a real-table calibration.
+
+The new geometry presets use WPA shelf ranges, while pocket lining response remains provisional. Keep all older validation below as historical evidence with its original scope.
+
 # Physics validation
 
 Last updated: 2026-10-27

@@ -94,3 +94,7 @@ the same four-second headless break workload. This supersedes the previous GDScr
 numbers. Event/snapshot work adds cost. Idle aim geometry now rebuilds only when its
 inputs change; the app caps rendering at 60 fps. Full GPU/frame pacing and thermal
 profiling is still open. Universal app: approximately 162 MB; DMG: 64 MB.
+
+##0.3.0 geometry-query CPU probe —2026-10-31
+
+The four-second/1920-tick break probe measured1335.533/1328.380/1329.964ms before exact bed broad-phase and rail-cache reuse, then717.902/719.490/715.922ms afterward on this Apple M4 session. These are local simulation timings during development, not a controlled release frame-pacing measurement. Movie-maker render timing is also not a p95/p99 real-time trace.

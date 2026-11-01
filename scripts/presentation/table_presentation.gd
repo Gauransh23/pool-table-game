@@ -1,6 +1,8 @@
 extends Node3D
 class_name TablePresentation
 
+signal stroke_contact
+
 const BallVisual = preload("res://scripts/presentation/ball_visual.gd")
 
 var _table: TableSpec
@@ -17,6 +19,9 @@ var _pocket_rings: Array[MeshInstance3D] = []
 var _camera_tween: Tween
 var _pocket_labels: Array[Label3D] = []
 var _stroke_distance := 0.05
+var _cue_delivery_visible := false
+var _stroke_tween: Tween
+var _stroke_origin := Vector3.ZERO
 
 
 func build(table: TableSpec) -> void:
@@ -55,38 +60,34 @@ func sync_balls(balls: Array) -> void:
 		visual_node.sync_from(state)
 
 
-func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool) -> void:
+func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool, tip_offset: Vector2 = Vector2.ZERO, launch_direction: Vector2 = Vector2.ZERO) -> void:
 	_aim_immediate.clear_surfaces()
-	_cue_root.visible = visible and cue_ball != null and cue_ball.is_on_table()
+	_cue_root.visible = _cue_delivery_visible or (visible and cue_ball != null and cue_ball.is_on_table())
 	_ghost_ball.visible = false
 	if not visible or cue_ball == null or not cue_ball.is_on_table() or direction.length_squared() < 0.9:
 		_aim_mesh.visible = false
 		return
 	_aim_mesh.visible = true
 	var start := Vector3(cue_ball.position.x, BallState.RADIUS + 0.002, cue_ball.position.y)
-	var object_hit := _first_ball_hit(balls, cue_ball, direction)
-	var rail_distance := _first_rail_distance(cue_ball.position, direction)
+	var guide_direction := launch_direction.normalized() if launch_direction.length_squared() > 1.0e-10 else direction
+	var object_hit := _first_ball_hit(balls, cue_ball, guide_direction)
+	var rail_distance := _first_rail_distance(cue_ball.position, guide_direction)
 	var has_object_hit := not object_hit.is_empty() and float(object_hit["distance"]) < rail_distance
 	var guide_distance := rail_distance
 	if has_object_hit:
 		guide_distance = minf(guide_distance, float(object_hit["distance"]))
-	var guide_end := start + Vector3(direction.x, 0.0, direction.y) * guide_distance
+	var guide_end := start + Vector3(guide_direction.x, 0.0, guide_direction.y) * guide_distance
 	_aim_immediate.surface_begin(Mesh.PRIMITIVE_LINES, _aim_material)
 	_aim_immediate.surface_set_color(Color("#eee5cf"))
 	_aim_immediate.surface_add_vertex(start)
 	_aim_immediate.surface_add_vertex(guide_end)
 	if has_object_hit:
-		var object_ball: BallState = object_hit["ball"]
-		var object_direction := (Vector3(object_ball.position.x, guide_end.y, object_ball.position.y) - guide_end).normalized()
-		var object_start := Vector3(object_ball.position.x, BallState.RADIUS + 0.002, object_ball.position.y) + object_direction * BallState.RADIUS
-		_aim_immediate.surface_set_color(Color("#77c1b2"))
-		_aim_immediate.surface_add_vertex(object_start)
-		_aim_immediate.surface_add_vertex(object_start + object_direction * 0.45)
+		# Show the initial contact only; an outgoing ray would omit frictional throw.
 		_ghost_ball.position = guide_end
 		_ghost_ball.visible = true
 	_aim_immediate.surface_end()
 	_aim_mesh.mesh = _aim_immediate
-	_update_cue(start, direction, power)
+	_update_cue(Vector3(cue_ball.position.x, cue_ball.height, cue_ball.position.y), direction, power, tip_offset)
 
 
 func _build_room() -> void:
@@ -132,14 +133,19 @@ func _build_table() -> void:
 			foot.position = Vector3(leg.position.x, -0.755, leg.position.z)
 			foot.material_override = _mat("#866443", 0.27, 0.54)
 			add_child(foot)
-	_add_box("Slate and apron", Vector3(half_x * 2.0 + 0.22, 0.19, half_z * 2.0 + 0.22), Vector3(0.0, -0.105, 0.0), _wood("#38281f"))
-	_add_box("Apron brass reveal", Vector3(half_x * 2.0 + 0.225, 0.016, half_z * 2.0 + 0.225), Vector3(0.0, -0.018, 0.0), _mat("#986f42", 0.3, 0.62))
-	_add_box("Cloth bed", Vector3(half_x * 2.0 + 0.15, 0.07, half_z * 2.0 + 0.15), Vector3(0.0, -0.034, 0.0), _mat("#35251d", 0.36, 0.17))
+	# The slate perimeter includes each pocket shelf. There is no full plane behind
+	# the openings: visible support and physical support use the same vertices.
+	var outline := _table.cloth_outline()
+	var slate := MeshInstance3D.new()
+	slate.mesh = _outline_mesh(outline, 0.0, -0.07, true, false)
+	slate.material_override = _mat("#26332c", 0.9)
+	add_child(slate)
+	# Apron sides leave the actual wells unobstructed from above.
+	for side in [-1.0, 1.0]:
+		_add_box("Long apron", Vector3(half_x * 2.0 + .22, .18, .055), Vector3(0,-.13,side*(half_z+.095)), _wood("#38281f"))
+		_add_box("End apron", Vector3(.055,.18,half_z*2.0+.14), Vector3(side*(half_x+.095),-.13,0), _wood("#38281f"))
 	var cloth := MeshInstance3D.new()
-	var cloth_mesh := PlaneMesh.new()
-	cloth_mesh.size = Vector2(half_x * 2.0, half_z * 2.0)
-	cloth.mesh = cloth_mesh
-	cloth.position.y = 0.002
+	cloth.mesh = _outline_mesh(outline, 0.0, 0.0, false)
 	var cloth_material := ShaderMaterial.new()
 	cloth_material.shader = load("res://assets/shaders/cloth_surface.gdshader")
 	cloth.material_override = cloth_material
@@ -151,41 +157,75 @@ func _build_table() -> void:
 
 
 func _build_pockets() -> void:
-	var pocket_material := _mat("#020403", 0.98)
-	pocket_material.specular_mode = BaseMaterial3D.SPECULAR_DISABLED
-	var corner_radius := 0.067
-	for x_sign in [-1.0, 1.0]:
-		for z_sign in [-1.0, 1.0]:
-			_add_pocket_disk(
-				Vector3(x_sign * (_table.half_size.x - 0.028), 0.002, z_sign * (_table.half_size.y - 0.028)),
-				corner_radius,
-				pocket_material
-			)
-	for z_sign in [-1.0, 1.0]:
-		_add_pocket_disk(Vector3(0.0, 0.002, z_sign * (_table.half_size.y - 0.018)), 0.072, pocket_material)
+	for pocket in _table.pocket_definitions():
+		var opening: PackedVector2Array = pocket["opening"]
+		var well := MeshInstance3D.new()
+		well.name = "PocketWell%d" % pocket["id"]
+		well.mesh = _pocket_liner_mesh(pocket)
+		var lining := _mat("#211b16", 0.94)
+		lining.cull_mode = BaseMaterial3D.CULL_DISABLED
+		well.material_override = lining
+		add_child(well)
+		var bottom := MeshInstance3D.new()
+		bottom.mesh = _outline_mesh(opening, -0.18, -0.18, false)
+		bottom.material_override = _mat("#050706", 1.0)
+		add_child(bottom)
 
 
-func _add_pocket_disk(at: Vector3, radius: float, material: Material) -> void:
-	var pocket := MeshInstance3D.new()
-	var mesh := CylinderMesh.new()
-	mesh.top_radius = radius
-	mesh.bottom_radius = radius * 0.96
-	mesh.height = 0.006
-	mesh.radial_segments = 40
-	pocket.mesh = mesh
-	pocket.position = at
-	pocket.material_override = material
-	add_child(pocket)
-	var lining := MeshInstance3D.new()
-	var rim := TorusMesh.new()
-	rim.inner_radius = radius * 0.96
-	rim.outer_radius = radius * 1.08
-	rim.rings = 48
-	rim.ring_segments = 12
-	lining.mesh = rim
-	lining.position = at + Vector3.UP * 0.005
-	lining.material_override = _mat("#241c16", 0.55, 0.05)
-	add_child(lining)
+func _pocket_liner_mesh(pocket: Dictionary) -> ArrayMesh:
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var points := PackedVector2Array([pocket.fall_a,pocket.back_a,pocket.back_b,pocket.fall_b])
+	for i in range(3):
+		var a := points[i]
+		var b := points[i+1]
+		# Match the three physical liner walls; the front slate edge stays open.
+		_mesh_triangle(surface,Vector3(a.x,2.0*BallState.RADIUS,a.y),Vector3(b.x,2.0*BallState.RADIUS,b.y),Vector3(b.x,-.18,b.y))
+		_mesh_triangle(surface,Vector3(a.x,2.0*BallState.RADIUS,a.y),Vector3(b.x,-.18,b.y),Vector3(a.x,-.18,a.y))
+	surface.generate_normals()
+	return surface.commit()
+
+
+func _outline_mesh(outline: PackedVector2Array, top: float, bottom: float, sides: bool, cap: bool = true) -> ArrayMesh:
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var triangles := Geometry2D.triangulate_polygon(outline)
+	if cap:
+		for i in range(0, triangles.size(), 3):
+			var a := outline[triangles[i]]
+			var b := outline[triangles[i+1]]
+			var c := outline[triangles[i+2]]
+			_mesh_triangle(surface, Vector3(a.x,top,a.y), Vector3(b.x,top,b.y), Vector3(c.x,top,c.y))
+	if sides:
+		for i in range(outline.size()):
+			var a := outline[i]
+			var b := outline[(i+1)%outline.size()]
+			_mesh_triangle(surface,Vector3(a.x,top,a.y),Vector3(b.x,top,b.y),Vector3(b.x,bottom,b.y))
+			_mesh_triangle(surface,Vector3(a.x,top,a.y),Vector3(b.x,bottom,b.y),Vector3(a.x,bottom,a.y))
+	surface.generate_normals()
+	return surface.commit()
+
+
+func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var section := [Vector2(0.0,_table.cushion_nose_height),Vector2(-.029,.051),Vector2(-.029,.007)]
+	for i in range(3):
+		var next := (i+1)%3
+		var p: Vector2 = section[i]
+		var q: Vector2 = section[next]
+		var pa := Vector3(a.x+inward.x*p.x,p.y,a.y+inward.y*p.x)
+		var pb := Vector3(b.x+inward.x*p.x,p.y,b.y+inward.y*p.x)
+		var qa := Vector3(a.x+inward.x*q.x,q.y,a.y+inward.y*q.x)
+		var qb := Vector3(b.x+inward.x*q.x,q.y,b.y+inward.y*q.x)
+		_mesh_triangle(surface,pa,pb,qb)
+		_mesh_triangle(surface,pa,qb,qa)
+	for endpoint in [a,b]:
+		var points: Array[Vector3] = []
+		for p in section: points.append(Vector3(endpoint.x+inward.x*p.x,p.y,endpoint.y+inward.y*p.x))
+		_mesh_triangle(surface,points[0],points[2],points[1])
+	surface.generate_normals()
+	return surface.commit()
 
 
 func _build_rails() -> void:
@@ -196,9 +236,7 @@ func _build_rails() -> void:
 		var inward: Vector2 = segment["inward"]
 		var midpoint := (a + b) * 0.5
 		var tangent := b - a
-		if jaw:
-			continue
-		var rail_depth := 0.12
+		var rail_depth := 0.04 if jaw else 0.12
 		var rail := MeshInstance3D.new()
 		var mesh := BoxMesh.new()
 		mesh.size = Vector3(tangent.length(), 0.092, rail_depth)
@@ -208,12 +246,10 @@ func _build_rails() -> void:
 		rail.material_override = _wood("#503928")
 		add_child(rail)
 		var cushion := MeshInstance3D.new()
-		var cushion_mesh := BoxMesh.new()
-		cushion_mesh.size = Vector3(tangent.length(), 0.045, 0.029)
-		cushion.mesh = _beveled_box(cushion_mesh.size,0.008)
-		cushion.position = Vector3(midpoint.x - inward.x * 0.012, 0.024, midpoint.y - inward.y * 0.012)
-		cushion.rotation.y = rail.rotation.y
-		cushion.material_override = _mat("#174e40", 0.88)
+		cushion.mesh = _cushion_mesh(a,b,inward)
+		var rubber := _mat("#174e40", 0.88)
+		rubber.cull_mode = BaseMaterial3D.CULL_DISABLED
+		cushion.material_override = rubber
 		add_child(cushion)
 		if not jaw:
 			var inlay := MeshInstance3D.new()
@@ -255,6 +291,12 @@ func _build_lighting() -> void:
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	environment.ambient_light_color = Color("#84978b")
 	environment.ambient_light_energy = 0.34
+	var reflection_sky := Sky.new()
+	var reflection_material := ShaderMaterial.new()
+	reflection_material.shader = preload("res://assets/shaders/room_reflections.gdshader")
+	reflection_sky.sky_material = reflection_material
+	environment.sky = reflection_sky
+	environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	environment.adjustment_enabled = true
 	environment.adjustment_saturation = 0.92
@@ -405,29 +447,52 @@ func _first_ball_hit(balls: Array, cue_ball: BallState, direction: Vector2) -> D
 
 func _first_rail_distance(position: Vector2, direction: Vector2) -> float:
 	var distance := INF
-	if direction.x > 1.0e-7:
-		distance = minf(distance, (_table.half_size.x - BallState.RADIUS - position.x) / direction.x)
-	elif direction.x < -1.0e-7:
-		distance = minf(distance, (-_table.half_size.x + BallState.RADIUS - position.x) / direction.x)
-	if direction.y > 1.0e-7:
-		distance = minf(distance, (_table.half_size.y - BallState.RADIUS - position.y) / direction.y)
-	elif direction.y < -1.0e-7:
-		distance = minf(distance, (-_table.half_size.y + BallState.RADIUS - position.y) / direction.y)
-	return maxf(0.04, distance)
+	var nose_offset := _table.cushion_nose_height-BallState.RADIUS
+	var radius := sqrt(maxf(0.0,BallState.RADIUS*BallState.RADIUS-nose_offset*nose_offset))
+	for segment in _table.rail_segments():
+		var a: Vector2 = segment.a
+		var b: Vector2 = segment.b
+		var normal: Vector2 = segment.inward
+		var approach := direction.dot(normal)
+		if approach < -1.0e-8:
+			var t := (radius-(position-a).dot(normal))/approach
+			var hit := position+direction*t
+			var along := (hit-a).dot((b-a).normalized())
+			if t >= 0.0 and along >= 0.0 and along <= a.distance_to(b): distance = minf(distance,t)
+		# Rounded endpoint contacts use the same finite segment footprint as the solver.
+		for endpoint in [a,b]:
+			var offset: Vector2 = position-endpoint
+			var linear := 2.0*offset.dot(direction)
+			var discriminant := linear*linear-4.0*(offset.length_squared()-radius*radius)
+			if discriminant < 0.0: continue
+			var t := (-linear-sqrt(discriminant))*.5
+			if t >= 0.0 and (position+direction*t-endpoint).dot(normal) >= -.001: distance = minf(distance,t)
+	# An open pocket has a slate fall edge rather than an invisible rectangular rail.
+	for pocket in _table.pocket_definitions():
+		var outward: Vector2 = pocket.outward
+		var approach := direction.dot(outward)
+		if approach <= 1.0e-8: continue
+		var a: Vector2 = pocket.fall_a
+		var b: Vector2 = pocket.fall_b
+		var t := (a-position).dot(outward)/approach
+		var along := (position+direction*t-a).dot((b-a).normalized())
+		if t >= 0.0 and along >= 0.0 and along <= a.distance_to(b): distance = minf(distance,t)
+	return distance if is_finite(distance) else 0.45
 
 
-func _update_cue(cue_position: Vector3, direction: Vector2, power: float) -> void:
+func _update_cue(cue_position: Vector3, direction: Vector2, power: float, tip_offset: Vector2 = Vector2.ZERO) -> void:
 	var aim := Vector3(direction.x, 0.0, direction.y).normalized()
-	var elevation := 0.0
-	var cue_axis := Vector3(aim.x * cos(elevation), -sin(elevation), aim.z * cos(elevation)).normalized()
-	var retract := BallState.RADIUS + 0.025 + clampf(power, 0.0, 1.0) * 0.075
-	_stroke_distance = retract - 0.020 - BallState.RADIUS + 0.003
-	var cue_end := cue_position - aim * retract
-	var cue_center := cue_end - cue_axis * 0.45
-	_cue_root.position = cue_center
-	var x_axis := Vector3.UP.cross(cue_axis).normalized()
-	var z_axis := x_axis.cross(cue_axis).normalized()
-	_cue_root.basis = Basis(x_axis, cue_axis, z_axis).orthonormalized()
+	var lateral := Vector3(-aim.z, 0.0, aim.x)
+	var tip := tip_offset.limit_length(CueStrikeModel.MAX_TIP_OFFSET)
+	# Match CueStrikeModel's contact arm, including the selected tip position.
+	var contact := cue_position - aim * BallState.RADIUS * sqrt(1.0 - tip.length_squared())
+	contact += (lateral * tip.x + Vector3.UP * tip.y) * BallState.RADIUS
+	_stroke_distance = 0.008 + clampf(power, 0.0, 1.0) * 0.075
+	# The tip front is local y=.470, not the shaft's y=.450 endpoint.
+	_cue_root.position = contact - aim * (0.470 + _stroke_distance)
+	var x_axis := Vector3.UP.cross(aim).normalized()
+	var z_axis := x_axis.cross(aim).normalized()
+	_cue_root.basis = Basis(x_axis, aim, z_axis).orthonormalized()
 
 
 func _add_box(label: String, size: Vector3, at: Vector3, material: Material) -> void:
@@ -450,9 +515,9 @@ func _mat(color: String, roughness: float, metallic: float = 0.0) -> StandardMat
 
 
 func pocket_positions() -> Array[Vector2]:
-	var x := _table.half_size.x - 0.028
-	var z := _table.half_size.y - 0.028
-	return [Vector2(-x,z), Vector2(-x,-z), Vector2(x,z), Vector2(x,-z), Vector2(0,z), Vector2(0,-z)]
+	var positions: Array[Vector2] = []
+	for pocket in _table.pocket_definitions(): positions.append(pocket.mouth_center)
+	return positions
 
 
 func _build_pocket_markers() -> void:
@@ -534,12 +599,35 @@ func _wood(color: String) -> ShaderMaterial:
 	return material
 
 
-func play_stroke() -> void:
-	if not _cue_root.visible:
-		return
+func play_stroke(on_contact: Callable) -> void:
+	cancel_stroke()
+	_cue_delivery_visible = true
+	_stroke_origin = _cue_root.position
 	var axis := _cue_root.basis.y.normalized()
-	var tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	tween.tween_property(_cue_root, "position", _cue_root.position + axis * _stroke_distance, 0.10)
+	var contact_position := _stroke_origin + axis * _stroke_distance
+	_stroke_tween = create_tween()
+	# A brief controlled backswing, then accelerating delivery to the exact tip contact.
+	_stroke_tween.tween_property(_cue_root, "position", _stroke_origin - axis * 0.008, 0.025).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_stroke_tween.tween_property(_cue_root, "position", contact_position, 0.075).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_stroke_tween.tween_callback(func():
+		on_contact.call()
+		stroke_contact.emit()
+	)
+	# Keep the contact pose visible across a rendered frame instead of hiding it
+	# in the callback before the player can see it.
+	_stroke_tween.tween_interval(0.025)
+	_stroke_tween.tween_callback(func():
+		_cue_delivery_visible = false
+		_cue_root.hide()
+		_stroke_tween = null
+	)
+
+
+func cancel_stroke() -> void:
+	_cue_delivery_visible = false
+	if is_instance_valid(_stroke_tween):
+		_stroke_tween.kill()
+	_stroke_tween = null
 
 
 func _beveled_box(size: Vector3, bevel: float) -> ArrayMesh:

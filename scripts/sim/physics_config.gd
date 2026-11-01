@@ -24,3 +24,6 @@ var max_collision_iterations: int = 6
 var cue_mass: float = 0.52
 var cue_collision_efficiency: float = 0.87
 var cue_end_mass: float = 0.008
+
+# Provisional damped pocket lining response; measured calibration is still pending.
+var pocket_liner_restitution: float = 0.2

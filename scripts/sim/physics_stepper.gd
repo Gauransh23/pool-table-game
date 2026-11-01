@@ -8,6 +8,7 @@ const POSITION_CORRECTION := 0.82
 var _accumulator: float = 0.0
 var tick_count: int = 0
 var _events: Array[Dictionary] = []
+var _capture_emitted: Dictionary = {}
 var _previous_positions: PackedVector3Array = PackedVector3Array()
 var _previous_velocities: PackedVector3Array = PackedVector3Array()
 
@@ -39,9 +40,10 @@ func step_fixed(balls: Array, delta: float, config: PhysicsConfig, table: TableS
 	if delta <= 0.0:
 		return
 	tick_count += 1
+	var rail_faces := table.rail_segments()
 	var fastest := 0.0
 	for ball in balls:
-		if ball.is_on_table():
+		if _can_collide(ball):
 			fastest = maxf(maxf(fastest, ball.velocity.length()), absf(ball.vertical_velocity))
 	var travel_limit := maxf(0.006, BallState.RADIUS * config.max_substep_travel_fraction)
 	var substeps := maxi(1, ceili(fastest * delta / travel_limit))
@@ -58,19 +60,22 @@ func step_fixed(balls: Array, delta: float, config: PhysicsConfig, table: TableS
 			var any_contact := false
 			for first_index in range(balls.size()):
 				var first: BallState = balls[first_index]
-				if not first.is_on_table():
+				if not _can_collide(first):
 					continue
 				for second_index in range(first_index + 1, balls.size()):
 					var second: BallState = balls[second_index]
-					if not second.is_on_table():
+					if not _can_collide(second):
 						continue
 					any_contact = _resolve_ball_pair(first, second, config,
 						_previous_positions[second_index] - _previous_positions[first_index],
 						_previous_velocities[second_index] - _previous_velocities[first_index],
 						sub_delta) or any_contact
 			for ball in balls:
-				if ball.is_on_table():
-					any_contact = _resolve_rails(ball, config, table) or any_contact
+				if _can_collide(ball):
+					any_contact = _resolve_rails(ball, config, table, rail_faces) or any_contact
+				if ball.phase == BallState.Phase.FALLING:
+					any_contact = _resolve_slate_edge(ball, config, table) or any_contact
+					any_contact = _resolve_pocket_liner(ball, config, table) or any_contact
 			if not any_contact:
 				break
 		_classify_exits(balls, table)
@@ -118,10 +123,8 @@ func _integrate_balls(balls: Array, delta: float, config: PhysicsConfig, table: 
 		if ball.phase == BallState.Phase.FALLING:
 			ball.vertical_velocity -= config.gravity * delta
 			ball.height += ball.vertical_velocity * delta
-			ball.velocity *= exp(-1.1 * delta)
 			ball.position += ball.velocity * delta
-			if ball.height < -0.12:
-				ball.phase = BallState.Phase.POCKETED
+			ball.advance_orientation(delta)
 			continue
 		if ball.height > BallState.RADIUS + 1.0e-5 or ball.vertical_velocity > 1.0e-4:
 			ball.phase = BallState.Phase.AIRBORNE
@@ -246,7 +249,7 @@ func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConf
 	return true
 
 
-func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) -> bool:
+func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec, rail_faces: Array = []) -> bool:
 	var touched := false
 	var ball_velocity := Vector3(ball.velocity.x, ball.vertical_velocity, ball.velocity.y)
 	var mass := config.ball_mass
@@ -255,7 +258,7 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 	if absf(nose_offset) >= BallState.RADIUS:
 		return false
 	var horizontal_radius := sqrt(BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset)
-	for segment in table.rail_segments():
+	for segment in rail_faces if not rail_faces.is_empty() else table.rail_segments():
 		var a: Vector2 = segment["a"]
 		var b: Vector2 = segment["b"]
 		var inward: Vector2 = segment["inward"]
@@ -301,17 +304,94 @@ func _resolve_rails(ball: BallState, config: PhysicsConfig, table: TableSpec) ->
 	return touched
 
 
+func _resolve_slate_edge(ball: BallState, config: PhysicsConfig, table: TableSpec) -> bool:
+	if ball.pocket_id < 0 or absf(ball.height) >= BallState.RADIUS: return false
+	var pocket: Dictionary = table.pocket_definitions()[ball.pocket_id]
+	var a: Vector2 = pocket.fall_a
+	var b: Vector2 = pocket.fall_b
+	var outward: Vector2 = pocket.outward
+	var closest := Geometry2D.get_closest_point_to_segment(ball.position,a,b)
+	var planar := ball.position-closest
+	var separation := Vector3(planar.x,ball.height,planar.y)
+	var distance := separation.length()
+	if distance >= BallState.RADIUS: return false
+	var normal := separation.normalized() if distance > 1.0e-8 else Vector3(outward.x,0,outward.y)
+	var penetration := BallState.RADIUS-distance
+	if table.is_supported(ball.position) and ball.height >= 0.0:
+		# The top face reacts when a rejected ball overlaps supported slate.
+		normal = Vector3.UP
+		penetration = BallState.RADIUS-ball.height
+	elif normal.x*outward.x+normal.z*outward.y < 0.0:
+		# The vertical face of the cut cannot push a ball deeper under the bed.
+		normal = Vector3(outward.x,0,outward.y)
+		penetration = sqrt(maxf(0.0,BallState.RADIUS*BallState.RADIUS-ball.height*ball.height))-planar.dot(outward)
+	ball.position += Vector2(normal.x,normal.z)*penetration
+	ball.height += normal.y*penetration
+	var arm := -normal*BallState.RADIUS
+	var approach := _contact_velocity(ball,arm).dot(normal)
+	if approach < 0.0:
+		var inverse_inertia := 1.0/(.4*config.ball_mass*BallState.RADIUS*BallState.RADIUS)
+		_apply_impulse(ball,-normal*approach*config.ball_mass,arm,config.ball_mass,inverse_inertia)
+	return true
+
+
+func _resolve_pocket_liner(ball: BallState, config: PhysicsConfig, table: TableSpec) -> bool:
+	if ball.pocket_id < 0 or ball.height > BallState.RADIUS: return false
+	var pocket: Dictionary = table.pocket_definitions()[ball.pocket_id]
+	var vertices := PackedVector2Array([pocket.fall_a,pocket.back_a,pocket.back_b,pocket.fall_b])
+	var center: Vector2 = (pocket.fall_a+pocket.fall_b+pocket.back_a+pocket.back_b)*.25
+	var touched := false
+	# Leave the fall edge open for possible jaw rejection/re-entry. The other
+	# three edges are the recessed liner, so falling balls cannot fly through it.
+	for i in range(3):
+		var a := vertices[i]
+		var b := vertices[i+1]
+		var tangent := (b-a).normalized()
+		var normal := Vector2(-tangent.y,tangent.x)
+		if normal.dot(center-(a+b)*.5) < 0: normal = -normal
+		var closest := Geometry2D.get_closest_point_to_segment(ball.position,a,b)
+		var offset := ball.position-closest
+		var distance := offset.dot(normal)
+		if distance >= BallState.RADIUS or offset.length() > BallState.RADIUS * 2.0: continue
+		ball.position += normal * (BallState.RADIUS-distance)
+		var approach := ball.velocity.dot(normal)
+		if approach < 0.0: ball.velocity -= normal * approach * (1.0+config.pocket_liner_restitution)
+		touched = true
+	return touched
+
+
+func _can_collide(ball: BallState) -> bool:
+	return ball.is_on_table() or (ball.phase == BallState.Phase.FALLING and ball.height > -BallState.RADIUS)
+
+
 func _classify_exits(balls: Array, table: TableSpec) -> void:
 	for ball in balls:
-		if not ball.is_on_table():
+		if ball.phase == BallState.Phase.FALLING:
+			# A jaw contact may return a barely descending ball to supported slate.
+			if not _capture_emitted.has(ball.id) and table.is_supported(ball.position) and ball.height >= BallState.RADIUS - 0.002:
+				ball.height = BallState.RADIUS
+				ball.vertical_velocity = maxf(0.0, ball.vertical_velocity)
+				ball.phase = BallState.Phase.IN_PLAY
+				ball.pocket_id = -1
+				continue
+			# Scoring follows irreversible passage below the slate, never mouth entry.
+			if ball.height <= -BallState.RADIUS and not _capture_emitted.has(ball.id) and not table.is_supported(ball.position) and table.pocket_at(ball.position) == ball.pocket_id:
+				_capture_emitted[ball.id] = true
+				_record_event({"kind": "pocket", "number": ball.number,
+					"pocket_id": ball.pocket_id, "speed": ball.velocity.length(), "position": ball.position})
+			if ball.height < -0.12:
+				ball.phase = BallState.Phase.POCKETED
+				ball.velocity = Vector2.ZERO
+				ball.angular_velocity = Vector3.ZERO
+				ball.vertical_velocity = 0.0
 			continue
+		if not ball.is_on_table(): continue
+		if table.is_supported(ball.position): continue
 		var pocket := table.pocket_at(ball.position)
-		if pocket >= 0 and ball.height <= BallState.RADIUS + 0.002:
+		if pocket >= 0 and not table.is_supported(ball.position) and ball.height <= BallState.RADIUS + 0.002:
 			ball.phase = BallState.Phase.FALLING
 			ball.pocket_id = pocket
-			ball.vertical_velocity = minf(ball.vertical_velocity, -maxf(0.28, ball.velocity.length() * 0.08))
-			_record_event({"kind": "pocket", "number": ball.number,
-				"pocket_id": pocket, "speed": ball.velocity.length(), "position": ball.position})
+			# Gravity begins on loss of support. No magnet or injected downward kick.
 		elif table.outside_table(ball.position):
 			ball.phase = BallState.Phase.OFF_TABLE
 			_record_event({"kind": "off_table", "number": ball.number,

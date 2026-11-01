@@ -3,7 +3,7 @@ render_mode diffuse_burley, specular_schlick_ggx;
 uniform vec4 ball_base : source_color = vec4(0.95, 0.93, 0.86, 1.0);
 uniform bool striped = false;
 uniform bool numbered = false;
-uniform sampler2D number_texture : source_color, filter_linear;
+uniform sampler2D number_texture : source_color, filter_linear_mipmap;
 varying vec3 ball_point;
 void vertex() { ball_point = VERTEX / 0.028575; }
 void fragment() {

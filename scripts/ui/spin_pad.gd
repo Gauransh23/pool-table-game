@@ -12,6 +12,7 @@ var _radius: float = 0.0
 func _ready() -> void:
 	custom_minimum_size = Vector2(112.0, 112.0)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	tooltip_text = "Click for tip position. Shift-drag for fine adjustment. Double-click to center."
 
 
 func _draw() -> void:
@@ -21,6 +22,7 @@ func _draw() -> void:
 	draw_arc(center, _radius, 0.0, TAU, 64, Color("#b8ac91"), 1.2, true)
 	draw_line(center + Vector2(-_radius * 0.72, 0.0), center + Vector2(_radius * 0.72, 0.0), Color("#c7bda7"), 1.0, true)
 	draw_line(center + Vector2(0.0, -_radius * 0.72), center + Vector2(0.0, _radius * 0.72), Color("#c7bda7"), 1.0, true)
+	draw_arc(center, _radius * MAX_STABLE_TIP_OFFSET, 0.0, TAU, 64, Color("#b8ac9170"), 1.0, true)
 	draw_circle(center, 2.4, Color("#8d8067"))
 	draw_circle(center + Vector2(spin.x, -spin.y) * _radius, 6.2, Color("#b5783f"))
 	draw_arc(center + Vector2(spin.x, -spin.y) * _radius, 6.2, 0.0, TAU, 32, Color("#fff5df"), 1.2, true)
@@ -38,12 +40,24 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_button := event as InputEventMouseButton
 		if mouse_button.button_index == MOUSE_BUTTON_LEFT and mouse_button.pressed:
-			_update_spin(mouse_button.position)
+			if mouse_button.double_click:
+				spin = Vector2.ZERO
+				queue_redraw()
+				spin_changed.emit(spin)
+			elif not mouse_button.shift_pressed:
+				_update_spin(mouse_button.position)
 			accept_event()
 	elif event is InputEventMouseMotion:
 		var mouse_motion := event as InputEventMouseMotion
 		if mouse_motion.button_mask & MOUSE_BUTTON_MASK_LEFT:
-			_update_spin(mouse_motion.position)
+			if mouse_motion.shift_pressed:
+				var radius := minf(size.x,size.y)*0.41
+				if radius > 0.0:
+					spin = (spin+Vector2(mouse_motion.relative.x,-mouse_motion.relative.y)/radius*.2).limit_length(MAX_STABLE_TIP_OFFSET)
+					queue_redraw()
+					spin_changed.emit(spin)
+			else:
+				_update_spin(mouse_motion.position)
 			accept_event()
 
 

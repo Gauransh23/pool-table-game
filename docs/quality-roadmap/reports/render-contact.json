@@ -1,0 +1,8 @@
+{
+	"contact_frame": 6,
+	"cue_visible_at_rendered_contact": true,
+	"first_motion_frame": 7,
+	"gap_frames": 1,
+	"meaning": "Rendered frames; does not measure display scan-out, native input or audio device latency.",
+	"renderer": "forward_plus"
+}

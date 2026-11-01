@@ -11,6 +11,6 @@ STAGE="$(mktemp -d "${TMPDIR:-/tmp}/longrail-dmg.XXXXXX")"
 trap 'rm -rf "${STAGE}"' EXIT
 ditto 'build/Long Rail.app' "${STAGE}/Long Rail.app"
 ln -s /Applications "${STAGE}/Applications"
-hdiutil create -volname 'Long Rail' -srcfolder "${STAGE}" -format UDZO -ov 'build/Long Rail-0.2.0-mac.dmg'
-shasum -a 256 'build/Long Rail-0.2.0-mac.dmg' > 'build/SHA256SUMS.txt'
-printf '\nReady: %s/build/Long Rail-0.2.0-mac.dmg\n' "${ROOT}"
+hdiutil create -volname 'Long Rail' -srcfolder "${STAGE}" -format UDZO -ov 'build/Long Rail-0.3.0-mac.dmg'
+shasum -a 256 'build/Long Rail-0.3.0-mac.dmg' > 'build/SHA256SUMS.txt'
+printf '\nReady: %s/build/Long Rail-0.3.0-mac.dmg\n' "${ROOT}"

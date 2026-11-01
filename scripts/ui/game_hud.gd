@@ -7,6 +7,7 @@ signal power_changed(value: float)
 signal spin_changed(value: Vector2)
 signal mode_requested(mode: String)
 signal undo_requested
+signal menu_requested
 signal view_requested
 signal sound_changed(enabled: bool)
 signal guide_changed(enabled: bool)
@@ -30,6 +31,7 @@ var _spin: SpinPad
 var _power: HSlider
 var _readout: Label
 var _mode_label: Label
+var _can_shoot := true
 
 func _ready() -> void:
 	_build()
@@ -62,7 +64,7 @@ func _build() -> void:
 	column.add_theme_constant_override("separation", 15)
 	side.add_child(column)
 	column.add_child(label("THE STROKE", 12, Color("bda577")))
-	_status = label("Move the pointer over the cloth to aim.", 15)
+	_status = label("Click and drag on the cloth to aim. Release to retain your line.", 15)
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_status.custom_minimum_size.y = 76
 	column.add_child(_status)
@@ -75,9 +77,9 @@ func _build() -> void:
 	power_row.add_child(_readout)
 	_power = HSlider.new()
 	_power.focus_mode = Control.FOCUS_NONE
-	_power.min_value = 0.01; _power.max_value = 1; _power.step = .005; _power.value = power
+	_power.min_value = 0; _power.max_value = 1; _power.step = .005; _power.value = power
 	_power.value_changed.connect(func(value: float):
-		power = value; _readout.text = "%d%%" % roundi(value * 100); power_changed.emit(value))
+		power = value; _readout.text = "%.1f%%" % (value * 100.0); _refresh_shoot_enabled(); power_changed.emit(value))
 	column.add_child(_power)
 	var spin_row := HBoxContainer.new()
 	column.add_child(spin_row)
@@ -91,19 +93,21 @@ func _build() -> void:
 	spin_words.add_child(label("TIP POSITION", 11, Color("bda577")))
 	spin_words.add_child(label("Top: follow\nBottom: draw\nSides: english", 12, Color("b6b9aa")))
 	column.add_child(label("PURE PRACTICE", 11, Color("bda577")))
-	var explanation := label("Take your time. Explore speed and spin.\nUse Undo to try a shot again.\nScratch? Click the cloth to place it.", 13, Color("a7b6a9"))
+	var explanation := label("Take your time. Explore speed and spin.\nUse Undo to try a shot again.\nScratch? Click a clear place on the cloth.", 13, Color("a7b6a9"))
 	column.add_child(explanation)
 	var spacer := Control.new()
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	column.add_child(spacer)
-	_shoot = button("TAKE SHOT    ↗", func(): shoot_requested.emit(power, selected_spin), true)
+	_shoot = button("TAKE SHOT    ↗", func(): _request_shot(), true)
 	_shoot.custom_minimum_size.y = 50
 	column.add_child(_shoot)
+	_readout.text = "%.1f%%" % (power * 100.0)
+	_refresh_shoot_enabled()
 	var actions := HBoxContainer.new()
 	column.add_child(actions)
 	actions.add_child(button("Undo", func(): undo_requested.emit()))
 	actions.add_child(button("Camera", func(): view_requested.emit()))
-	actions.add_child(button("Menu", func(): show_home(true)))
+	actions.add_child(button("Menu", func(): menu_requested.emit()))
 	var sound := CheckBox.new()
 	sound.focus_mode = Control.FOCUS_NONE
 	sound.text = "Table sound"; sound.button_pressed = true
@@ -111,10 +115,11 @@ func _build() -> void:
 	column.add_child(sound)
 	var guides := CheckBox.new()
 	guides.focus_mode = Control.FOCUS_NONE
-	guides.text = "Aim assistance"; guides.button_pressed = true
+	guides.text = "Initial path guide"
+	guides.tooltip_text = "Shows launch direction and first contact. Later spin, throw and rebounds are not predicted."; guides.button_pressed = true
 	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
 	column.add_child(guides)
-	var footer := label("POINTER  Aim     ← →  Fine aim     SPACE  Shoot     V  Camera     U  Undo     ESC  Menu", 12, Color("a8ac9c"))
+	var footer := label("DRAG  Aim; release to keep     ← →  Fine aim     SPACE  Shoot     V  Camera     U  Undo     ESC  Menu", 12, Color("a8ac9c"))
 	footer.anchor_top = 1; footer.anchor_bottom = 1
 	footer.offset_left = 38; footer.offset_top = -36; footer.offset_bottom = -12
 	_root.add_child(footer)
@@ -135,7 +140,14 @@ func _build() -> void:
 	_overlay.hide()
 
 func set_status(text: String) -> void: _status.text = text
-func set_can_shoot(value: bool) -> void: _shoot.disabled = not value
+func _request_shot() -> void:
+	if power > 0.0:
+		shoot_requested.emit(power, selected_spin)
+func set_can_shoot(value: bool) -> void:
+	_can_shoot = value
+	_refresh_shoot_enabled()
+func _refresh_shoot_enabled() -> void:
+	if is_instance_valid(_shoot): _shoot.disabled = not _can_shoot or power <= 0.0
 func set_score(title: String, detail: String, mode: String) -> void:
 	_score.text = title; _detail.text = detail; _mode_label.text = mode
 func select_call(number: int, pocket: int) -> void:
@@ -155,7 +167,7 @@ func show_home(can_resume: bool = false) -> void:
 	_card.add_child(label("A quiet room. A precise stroke. One more rack.", 16, Color("b6b9aa")))
 	if can_resume: _card.add_child(button("Return to the table", func(): hide_menu(); resume_requested.emit(), true))
 	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
-	_card.add_child(label("Pure practice • Offline • 9-foot table\nClick the cloth to aim. Use power and tip position to shape the shot.\nFor ball in hand, click a clear place on the cloth.", 13, Color("9da898")))
+	_card.add_child(label("Pure practice • Offline • 9-foot table\nClick and drag on the cloth to aim; release to retain.\nUse power and tip position to shape the shot.\nFor ball in hand, click a clear place on the cloth.", 13, Color("9da898")))
 	_card.add_child(button("Quit", func(): get_tree().quit()))
 func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:
 	_clear_card(); _overlay.show()
