@@ -1,3 +1,7 @@
+# Quality-bar-1 applies
+
+Read [QUALITY_TARGETS](QUALITY_TARGETS.md), [numerical targets](targets/01-physics.md#num--numerical-precision-and-determinism) and [test protocols](TEST_PROTOCOLS.md#f-numeric) before this checkpoint. The historical 0.5 mm / 0.1 degree experiment result below remains evidence against its original threshold. It does not pass the new final numerical bar of 0.10 mm / 0.02 degrees or the production-to-reference budget. Map the promotion to the NUM/BAL/RAI IDs, retain all old failures and add missing coverage. No thresholds were changed in the executable harness by this documentation turn.
+
 # Next checkpoint: S7b — qualify the impact-time prototype
 
 TASK_FILE=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/TASK.md

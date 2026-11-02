@@ -1,3 +1,7 @@
+# New acceptance bar
+
+[Quality-bar-1](docs/quality-roadmap/QUALITY_TARGETS.md) defines 140 new/strengthened acceptance obligations. All start UNVERIFIED; the historical checks below retain only their original scope. New numerical, calibrated and perceptual targets need separate evidence.
+
 # QA status — local 0.3.0 candidate
 
 Updated 2026-10-31. Current evidence: [continuation report](docs/quality-roadmap/reports/continuation-progress.md), [test results](docs/quality-roadmap/reports/continuation-checks/results.json), [source/artifact hashes](docs/quality-roadmap/reports/candidate-manifest.json).

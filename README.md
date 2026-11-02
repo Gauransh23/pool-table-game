@@ -58,3 +58,7 @@ See [Project state](PROJECT_STATE.md), [Physics validation](PHYSICS_VALIDATION.m
 [QA status](QA_STATUS.md), [Performance](PERFORMANCE.md), and
 [Third-party notices](THIRD_PARTY_NOTICES.md). No project source license has been
 selected; public visibility does not itself grant reuse rights.
+
+## Quality targets for implementation
+
+Read the [high-fidelity contract](docs/quality-roadmap/QUALITY_TARGETS.md), its domain target pages and [test protocols](docs/quality-roadmap/TEST_PROTOCOLS.md) before further quality work. The 140 target IDs are acceptance obligations, not a statement that the current preview meets them.

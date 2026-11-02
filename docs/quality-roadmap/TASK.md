@@ -9,8 +9,8 @@ implementation_owner: next-authorized-executor
 target_worktree: "/Users/codex/Documents/My Public Repos/pool-table-game"
 target_branch: main
 target_head: 5788954d8b6c9111177888a04b529400c86ac926
-task_revision: 3
-contract_revision: 2
+task_revision: 4
+contract_revision: 3
 ---
 
 # Artifact variables
@@ -501,3 +501,13 @@ Do not mark the full game quality objective complete. The owner requested contin
 # Focused competitor observation — owner authorization 2026-10-31
 
 The owner requested four dedicated observers and a commit/push after research. COMPETITOR_REVIEW.md consolidates separate reports for interaction, precise controls, visuals/sound and physics. Evidence comes from actual first-party animated gameplay and official control imagery plus explicitly labeled documentation; live entry remained at a splash/login screen, and audio remains unobserved. No coefficient matching or competitor-quality signoff follows from this material. Add the proposed comparative tasks to E3/E4/E6/E7/E8 before adopting design alternatives. This turn publishes the existing implementation and these authored findings; third-party media are not repository assets.
+
+# High-fidelity acceptance contract — quality-bar-1
+
+The owner explicitly requested comprehensive high targets and tests for the implementing agent, then a push of the specs. QUALITY_TARGETS.md defines terms, budgets, supported domain and completion. QUALITY_REQUIREMENTS.json owns 140 IDs across 17 domains; targets/ contains generated readable branches. TEST_PROTOCOLS.md defines the test corpus, independent oracles, sampling, clock/unit/uncertainty rules and planned-versus-existing coverage.
+
+This contract raises/clarifies final acceptance beyond earlier proposed thresholds. Historical results remain unchanged. All new obligations start UNVERIFIED; runtime code and existing gameplay assertions are unchanged in this specification checkpoint; the new Python helper only validates/renders documentation. Future implementation must report requirement-specific evidence and cannot claim complete from the original four quality checks or regression count. AGENTS.md points future agents to the correct branch.
+
+## Target specification closeout — 2026-11-01
+
+Quality-bar-1 finalized with 140 obligations, 17 protocol families, generated domain branches and a non-overwriting ledger initializer. Focused review concerns were resolved by explicit measurement/decision rules; see reports/target-spec-adjudication.md for corrections and the interrupted final peer-recheck limitation. All gameplay obligations remain UNVERIFIED. Runtime source/assets and executable gameplay assertions remain unchanged.
