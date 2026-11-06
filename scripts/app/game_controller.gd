@@ -17,6 +17,8 @@ var _stroke_pending := false
 var _shot_generation := 0
 var _placing := false
 var _aim_gesture := false
+var _placement_cursor := Vector2.ZERO
+var _placement_cursor_active := false
 var _guides := true
 var _overhead := true
 var _undo: Array[BallState] = []
@@ -44,6 +46,7 @@ func _ready() -> void:
 	hud.view_requested.connect(_toggle_view)
 	hud.sound_changed.connect(func(value: bool): _audio.enabled = value)
 	hud.guide_changed.connect(func(value: bool): _guides = value; _refresh_aim())
+	hud.play_area_changed.connect(_on_play_area_changed)
 	_new_rack(false)
 	var resumed := _load_session()
 	hud.show_home(resumed)
@@ -70,7 +73,9 @@ func _process(delta: float) -> void:
 		if stepper.are_balls_settled(balls, physics_config):
 			_shot_in_motion = false
 			_placing = not _cue_ball().is_on_table()
-			hud.set_status("Cue ball in hand. Click a clear place on the cloth." if _placing else "A measured stroke. Line up the next one.")
+			_placement_cursor_active = false
+			if _placing: get_viewport().gui_release_focus()
+			hud.set_status("Cue ball in hand. Click clear cloth, or use arrows and Enter to place." if _placing else "A measured stroke. Line up the next one.")
 			if _pots == 15: hud.set_status("Table cleared. Beautifully played. Start a fresh rack from the menu.")
 			_save_session()
 		table_view.sync_balls(balls)
@@ -88,13 +93,26 @@ func _unhandled_input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_ESCAPE:
 				if hud.menu_visible(): hud.hide_menu()
-				else: _open_menu()
+				elif not hud.release_control_focus(): _open_menu()
 			KEY_SPACE:
 				if not hud.menu_visible(): _on_shoot_requested(power,spin)
 			KEY_U: _undo_shot()
 			KEY_V: _toggle_view()
-			KEY_LEFT, KEY_RIGHT:
-				if not _shot_in_motion and not _stroke_pending and not _placing and not _aim_gesture and not hud.menu_visible():
+			KEY_P:
+				if not _shot_in_motion and not _stroke_pending and not _placing: hud.focus_power()
+			KEY_S:
+				if not _shot_in_motion and not _stroke_pending and not _placing: hud.focus_spin()
+			KEY_TAB:
+				if not _shot_in_motion and not _stroke_pending and not _placing and not hud.menu_visible() and get_viewport().gui_get_focus_owner() == null:
+					hud.focus_practice_controls(event.shift_pressed)
+			KEY_ENTER, KEY_KP_ENTER:
+				if _placing and not hud.menu_visible():
+					_ensure_placement_cursor()
+					_place_cue(_placement_cursor)
+			KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN:
+				if _placing and not hud.menu_visible():
+					_move_placement_cursor(event.keycode, event.shift_pressed)
+				elif event.keycode in [KEY_LEFT, KEY_RIGHT] and not _shot_in_motion and not _stroke_pending and not _aim_gesture and not hud.menu_visible():
 					aim_direction = aim_direction.rotated((-.001 if event.keycode==KEY_LEFT else .001) * (.2 if event.shift_pressed else 1.0))
 	if hud.menu_visible() or _shot_in_motion or _stroke_pending: return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -102,15 +120,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			_place_cue(table_view.project_mouse_to_table(event.position,BallState.RADIUS))
 		elif not _aim_gesture and _begin_aim_gesture(event.position):
 			_aim_gesture = true
-	elif event is InputEventMouseMotion and _aim_gesture:
-		if _placing or (event.button_mask & MOUSE_BUTTON_MASK_LEFT) == 0:
-			_cancel_aim_gesture()
-		else:
-			_update_aim_from_pointer(event.position)
+	elif event is InputEventMouseMotion:
+		if _placing:
+			_placement_cursor = table_view.project_mouse_to_table(event.position, BallState.RADIUS)
+			_placement_cursor_active = true
+			hud.set_status("Click or Enter to place the cue ball." if _can_place_cue(_placement_cursor) else "No room here. Move to clear cloth.")
+			_refresh_aim()
+		elif _aim_gesture:
+			if (event.button_mask & MOUSE_BUTTON_MASK_LEFT) == 0:
+				_cancel_aim_gesture()
+			else:
+				_update_aim_from_pointer(event.position)
 
 func _begin_aim_gesture(screen_position: Vector2) -> bool:
 	var target := table_view.project_mouse_to_table(screen_position,BallState.RADIUS)
 	if not _is_playable_cloth_position(target): return false
+	hud.release_control_focus()
 	_update_aim_direction(target)
 	return true
 
@@ -133,8 +158,20 @@ func _open_menu() -> void:
 	_cancel_aim_gesture()
 	hud.show_home(true)
 
+func _on_play_area_changed(area: Rect2) -> void:
+	_cancel_aim_gesture()
+	_last_aim_state.clear()
+	table_view.set_play_area(area)
+
 func _refresh_aim() -> void:
+	table_view.set_play_area(hud.table_area_rect())
 	hud.set_can_shoot(not _shot_in_motion and not _placing and not _stroke_pending)
+	if _placing:
+		_ensure_placement_cursor()
+		table_view.set_aim(balls, aim_direction, _cue_ball(), power, false)
+		table_view.set_placement_preview(_placement_cursor, _can_place_cue(_placement_cursor))
+		return
+	_placement_cursor_active = false
 	var state: Array = [aim_direction, _cue_ball().position, power, spin, _shot_in_motion, _placing, _stroke_pending, _guides]
 	if state == _last_aim_state: return
 	_last_aim_state = state
@@ -148,6 +185,7 @@ func _new_rack(persist: bool = true) -> void:
 	_last_aim_state.clear()
 	balls = RackBuilder.create_eight_ball_rack(table)
 	stepper=PhysicsStepper.new(); _shot_in_motion=false; _stroke_pending=false; _placing=false
+	_placement_cursor_active = false
 	_undo.clear(); _strokes=0; _pots=0
 	hud.reset_spin(); hud.set_status("Click and drag on the cloth to aim. Release to retain your line.")
 	table_view.sync_balls(balls); _refresh_aim(); _update_score()
@@ -165,6 +203,7 @@ func _on_shoot_requested(selected_power: float, selected_spin: Vector2) -> void:
 	var shot_speed := StrokePowerModel.cue_speed(selected_power)
 	if shot_speed <= 0.0 or not selected_spin.is_finite() or selected_spin.length() > CueStrikeModel.MAX_TIP_OFFSET + 1.0e-6: return
 	_cancel_aim_gesture()
+	hud.release_control_focus()
 	power = clampf(selected_power, 0.0, 1.0)
 	spin = selected_spin
 	var shot_direction := aim_direction
@@ -201,15 +240,52 @@ func _cancel_pending_stroke() -> void:
 	_last_aim_state.clear()
 	_refresh_aim()
 
-func _place_cue(at: Vector2) -> void:
+func _can_place_cue(at: Vector2) -> bool:
+	if not at.is_finite() or not table.is_supported(at): return false
 	var bound := table.half_size - Vector2.ONE*(BallState.RADIUS+.008)
-	if absf(at.x)>bound.x or absf(at.y)>bound.y: return
+	if absf(at.x)>bound.x or absf(at.y)>bound.y: return false
 	for ball in balls:
-		if ball.number!=0 and ball.is_on_table() and ball.position.distance_to(at)<BallState.RADIUS*2.05: return
+		if ball.number!=0 and ball.is_on_table() and ball.position.distance_to(at)<BallState.RADIUS*2.05: return false
+	var nose_offset := table.cushion_nose_height - BallState.RADIUS
+	var clearance := sqrt(maxf(0.0, BallState.RADIUS * BallState.RADIUS - nose_offset * nose_offset))
+	for segment in table.rail_segments():
+		if at.distance_to(Geometry2D.get_closest_point_to_segment(at, segment.a, segment.b)) < clearance:
+			return false
+	return true
+
+func _ensure_placement_cursor() -> void:
+	if _placement_cursor_active: return
+	_placement_cursor_active = true
+	hud.set_status("Cue ball in hand. Click clear cloth, or use arrows and Enter to place.")
+	_placement_cursor = Vector2(-table.half_size.x * 0.5, 0.0)
+	if _can_place_cue(_placement_cursor): return
+	for x in range(-10, 11):
+		for z in range(-4, 5):
+			var point := Vector2(x * 0.1, z * 0.1)
+			if _can_place_cue(point):
+				_placement_cursor = point
+				return
+
+func _move_placement_cursor(keycode: Key, fine: bool) -> void:
+	_ensure_placement_cursor()
+	var step := 0.001 if fine else 0.01
+	match keycode:
+		KEY_LEFT: _placement_cursor.x -= step
+		KEY_RIGHT: _placement_cursor.x += step
+		KEY_UP: _placement_cursor.y -= step
+		KEY_DOWN: _placement_cursor.y += step
+	var bound := table.half_size - Vector2.ONE * (BallState.RADIUS + 0.008)
+	_placement_cursor = _placement_cursor.clamp(-bound, bound)
+	hud.set_status("Enter places the cue ball." if _can_place_cue(_placement_cursor) else "No room here. Use arrows to find clear cloth.")
+	_refresh_aim()
+
+func _place_cue(at: Vector2) -> void:
+	if not _can_place_cue(at): return
 	var cue := _cue_ball(); cue.position=at; cue.height=BallState.RADIUS; cue.phase=BallState.Phase.IN_PLAY
 	cue.velocity=Vector2.ZERO; cue.angular_velocity=Vector3.ZERO; cue.vertical_velocity=0; cue.pocket_id=-1
-	_placing=false; hud.set_status("Cue ball placed. Find your next line.")
-	table_view.sync_balls(balls); _save_session()
+	_placing=false; _placement_cursor_active=false; hud.set_status("Cue ball placed. Find your next line.")
+	_last_aim_state.clear()
+	table_view.sync_balls(balls); _refresh_aim(); _save_session()
 
 func _undo_shot() -> void:
 	_cancel_aim_gesture()
@@ -217,6 +293,7 @@ func _undo_shot() -> void:
 	_last_aim_state.clear()
 	balls=_copy_balls(_undo); _undo.clear(); _strokes=_undo_strokes; _pots=_undo_pots
 	stepper=PhysicsStepper.new(); _shot_in_motion=false; _placing=not _cue_ball().is_on_table()
+	_placement_cursor_active = false
 	hud.set_status("Shot restored. Try a different line or touch.")
 	table_view.sync_balls(balls); _refresh_aim(); _update_score(); _save_session()
 
@@ -285,6 +362,7 @@ func _load_session() -> bool:
 	_cancel_aim_gesture()
 	_last_aim_state.clear()
 	balls=restored;_strokes=strokes;_pots=pots;_placing=not _cue_ball().is_on_table()
+	_placement_cursor_active = false
 	_shot_in_motion=false;_stroke_pending=false;_undo.clear()
 	table_view.sync_balls(balls);_refresh_aim();_update_score()
 	return true

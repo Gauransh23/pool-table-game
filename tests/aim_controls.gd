@@ -17,6 +17,9 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	# The headless display is 64x64; declare this input fixture's logical canvas.
+	root.content_scale_size = Vector2i(1600, 900)
+	root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
 	game = load("res://scenes/main.tscn").instantiate() as GameController
 	game.session_path = session_file
 	root.add_child(game)

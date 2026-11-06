@@ -1,0 +1,183 @@
+{
+  "client_date": "2026-11-06",
+  "version": "0.3.1",
+  "base_commit": "41b860f2f815a18f221df1c0b866d811723cde69",
+  "active_physics": "scripts/sim/physics_stepper.gd",
+  "physics_coefficients_changed": false,
+  "environment": {
+    "engine": "4.7.2.stable.official.ed1daf0bf",
+    "device": "Apple M4",
+    "platform": "macOS",
+    "renderer": "Metal Forward+"
+  },
+  "baseline_failures": {
+    "practice_input_flow": {
+      "checks": 197,
+      "failures": 38
+    },
+    "audio_contact_delivery": {
+      "failures": 2
+    }
+  },
+  "tests": {
+    "practice_input_flow": {
+      "checks": 200,
+      "failures": 0
+    },
+    "audio_contacts": {
+      "failures": 0,
+      "meaning": "Two physical contacts plus 100 batched scheduling calls; empty-stream headless fixture, no acoustic claim"
+    },
+    "simulation_rules": {
+      "checks": 950,
+      "failures": 0
+    },
+    "aim_controls": {
+      "failures": 0
+    },
+    "practice_flow": {
+      "checks": 42,
+      "failures": 0
+    },
+    "save_recovery": {
+      "checks": 39,
+      "failures": 0
+    },
+    "stroke_contact": {
+      "checks": 24,
+      "failures": 0
+    },
+    "spin_precision": {
+      "checks": 5,
+      "failures": 0
+    }
+  },
+  "native_resize_correction": {
+    "old_window": [
+      1100,
+      700
+    ],
+    "old_logical_viewport": [
+      1600,
+      900
+    ],
+    "old_render_image": [
+      1100,
+      618
+    ],
+    "new_window_viewport_image": [
+      1100,
+      700
+    ],
+    "meaning": "The old native window letterboxed; the old overlap reproduction was a direct 1100x700 SubViewport."
+  },
+  "source_sha256": {
+    "project.godot": "a4d9feb4b3b7e34ee8920245170608487a89cef28bca479939893e4681f0dd77",
+    "export_presets.cfg": "41ea350b1460ebacf3d6fb41031838bad69a5d194b9e49b65d38d17c72c86163",
+    "scripts/app/game_controller.gd": "2ac4c9ede6117f5433738630bd3dda9d2947114170d4ccc16e5a6469c75727da",
+    "scripts/presentation/table_audio.gd": "8a604661a03ea444bff2f71f05d55e7cc834fa4a6c9bc1988a9949ae2b34c3e6",
+    "scripts/presentation/table_presentation.gd": "140a2a81c4cc090b892edb23d5dcb078ea3da004fc8b6b68a10c5eda3a52bfa7",
+    "scripts/ui/game_hud.gd": "0cb993b6cd19b0367de2c87d8b00ce0bbfd54b86bd28f3aff1beb44eb0dda63d",
+    "scripts/ui/spin_pad.gd": "a69a068b78ed138ec6661ba9d3d3784e820a65368954677a8d85f60741b58dec",
+    "assets/audio/default_bus_layout.tres": "c469ec92ebd018261d62b4d1f3797e65bc07e4c47b59cba0faf249796a9ae0d8",
+    "tests/aim_controls.gd": "0ae6468479dd0039dabfdc234b887b45b32bde6384073a956620223fdbd2eab4",
+    "tests/practice_input_flow.gd": "f30378e3fc400e2c05d7dfcb10bc66cda17d9d2773987357d84892e66f5f910d",
+    "tests/audio_contacts.gd": "786f0501182525cf0bd9b9ba93dde6bd284ea30aa78eb0a264f66f4c102920ce",
+    "tests/capture_preview.gd": "c84b97f9d23ac2239ff66459920b732c2a8d2afb66f918f3078f52522f7ae9f5",
+    "tools/build_mac.sh": "be6a049a3055bc2e56e05a02f03695311aa3a0b3466a940968a54a98032c92ac"
+  },
+  "captures": {
+    "build/verification/flow-small.png": {
+      "sha256": "5abbb65985d2b393f3eeb8685ab2c276c1bfac31877dae262a797466f3349319",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1100, 700)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+        "viewport_size": "(1100.0, 700.0)",
+        "window_size": "(1100, 700)"
+      }
+    },
+    "build/verification/flow-default.png": {
+      "sha256": "df303e1d94da48589d352d303b6a4edda864555f4e2a0c45c4bbab4c4473cd6e",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1600, 900)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 112.0), S: (1242.0, 740.0)]",
+        "viewport_size": "(1600.0, 900.0)",
+        "window_size": "(1600, 900)"
+      }
+    },
+    "build/verification/flow-small-lounge.png": {
+      "sha256": "4b54bfef57067909ce7550981bb1615b5fef133832bc433951f38f96c5e7e435",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1100, 700)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+        "viewport_size": "(1100.0, 700.0)",
+        "window_size": "(1100, 700)"
+      }
+    },
+    "build/verification/flow-power-focus.png": {
+      "sha256": "cbad5c03e65db60581bd28d4f5954d131e9f6d3143e8ea7b8e3f39efaef4eb6a",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1100, 700)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+        "viewport_size": "(1100.0, 700.0)",
+        "window_size": "(1100, 700)"
+      }
+    },
+    "build/verification/flow-menu.png": {
+      "sha256": "38d1ac60ad2496e4f607fd5608ebd1e07bc697c277a19e17085d5b97c6e2147f",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1100, 700)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+        "viewport_size": "(1100.0, 700.0)",
+        "window_size": "(1100, 700)"
+      }
+    },
+    "build/verification/flow-placement.png": {
+      "sha256": "e845a836d1ae6ff0e0a9b7a10f13a269531b9fbbcb60016240d060c49e83b9a9",
+      "metadata": {
+        "design_size": "(1600, 900)",
+        "image_size": "(1100, 700)",
+        "meaning": "Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.",
+        "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+        "viewport_size": "(1100.0, 700.0)",
+        "window_size": "(1100, 700)"
+      }
+    }
+  },
+  "build": {
+    "command": "bash tools/build_mac.sh",
+    "bundle_version": "0.3.1",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "codesign_verify": "PASS --deep --strict",
+    "checksum_verify": "PASS",
+    "artifact_sha256": {
+      "build/Long Rail-0.3.1-mac.dmg": "0cd3f26c28896e97cfe3dea752677fbf32b552531238bc7bfe67a3622bea7558",
+      "build/Long Rail-0.3.1.app/Contents/MacOS/Long Rail": "3bc94100ad62ec170b67c2db5fa6247f59b14e0c6c362d4eca9326c2027e813c",
+      "build/Long Rail-0.3.1.app/Contents/Resources/Long Rail.pck": "23f4d7b83f0d80e53636938c6ee2d43ae82c5dd3315a6d88ddc7ac37f1f44c92"
+    }
+  },
+  "startup": {
+    "command": "build/Long Rail-0.3.1.app/Contents/MacOS/Long Rail --headless --quit-after 3",
+    "exit_code": 0,
+    "log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org"
+  },
+  "limits": [
+    "Bounded input/layout checks do not pass the entire quality-bar-1 catalog.",
+    "Existing 12-voice pool remains bounded; no new solver contact-identity coalescing was introduced.",
+    "Limiter configuration is verified; no output true-peak, naturalness or device-latency measurement was performed.",
+    "No physical calibration coefficients were changed."
+  ]
+}

@@ -12,7 +12,10 @@ var _radius: float = 0.0
 func _ready() -> void:
 	custom_minimum_size = Vector2(112.0, 112.0)
 	mouse_filter = Control.MOUSE_FILTER_STOP
-	tooltip_text = "Click for tip position. Shift-drag for fine adjustment. Double-click to center."
+	focus_mode = Control.FOCUS_ALL
+	focus_entered.connect(queue_redraw)
+	focus_exited.connect(queue_redraw)
+	tooltip_text = "Click or use arrow keys for tip position. Shift makes fine adjustments. Home or double-click centers. Escape returns to table aim."
 
 
 func _draw() -> void:
@@ -26,6 +29,16 @@ func _draw() -> void:
 	draw_circle(center, 2.4, Color("#8d8067"))
 	draw_circle(center + Vector2(spin.x, -spin.y) * _radius, 6.2, Color("#b5783f"))
 	draw_arc(center + Vector2(spin.x, -spin.y) * _radius, 6.2, 0.0, TAU, 32, Color("#fff5df"), 1.2, true)
+	if has_focus():
+		draw_style_box(get_focus_style(), Rect2(Vector2.ONE * 2.0, size - Vector2.ONE * 4.0))
+
+func get_focus_style() -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color.TRANSPARENT
+	style.border_color = Color("f4d492")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(7)
+	return style
 
 
 static func normalized_tip_offset(point: Vector2, control_size: Vector2) -> Vector2:
@@ -37,9 +50,29 @@ static func normalized_tip_offset(point: Vector2, control_size: Vector2) -> Vect
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventKey and event.pressed:
+		var step := 0.005 if event.shift_pressed else 0.025
+		var change := Vector2.ZERO
+		match event.keycode:
+			KEY_LEFT: change.x = -step
+			KEY_RIGHT: change.x = step
+			KEY_UP: change.y = step
+			KEY_DOWN: change.y = -step
+			KEY_HOME:
+				spin = Vector2.ZERO
+				queue_redraw()
+				spin_changed.emit(spin)
+				accept_event()
+				return
+		if change != Vector2.ZERO:
+			spin = (spin + change).limit_length(MAX_STABLE_TIP_OFFSET)
+			queue_redraw()
+			spin_changed.emit(spin)
+			accept_event()
+	elif event is InputEventMouseButton:
 		var mouse_button := event as InputEventMouseButton
 		if mouse_button.button_index == MOUSE_BUTTON_LEFT and mouse_button.pressed:
+			grab_focus()
 			if mouse_button.double_click:
 				spin = Vector2.ZERO
 				queue_redraw()

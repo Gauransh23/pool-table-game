@@ -12,6 +12,7 @@ signal view_requested
 signal sound_changed(enabled: bool)
 signal guide_changed(enabled: bool)
 signal resume_requested
+signal play_area_changed(area: Rect2)
 
 var power := 0.42
 var selected_spin := Vector2.ZERO
@@ -32,9 +33,15 @@ var _power: HSlider
 var _readout: Label
 var _mode_label: Label
 var _can_shoot := true
+var _side: PanelContainer
+var _footer: Label
+var _focus_controls: Array[Control] = []
+var _previous_focus: WeakRef
 
 func _ready() -> void:
 	_build()
+	_root.resized.connect(_layout_hud)
+	_layout_hud()
 
 func _build() -> void:
 	_root = Control.new()
@@ -55,18 +62,19 @@ func _build() -> void:
 	_detail = label("", 13, Color("b6b9aa"))
 	score_box.add_child(_detail)
 	var side := PanelContainer.new()
+	_side = side
 	side.anchor_left = 1; side.anchor_right = 1
 	side.offset_left = -310; side.offset_right = -24
 	side.offset_top = 112; side.anchor_bottom = 1; side.offset_bottom = -60
 	side.add_theme_stylebox_override("panel", panel())
 	_root.add_child(side)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 15)
+	column.add_theme_constant_override("separation", 10)
 	side.add_child(column)
 	column.add_child(label("THE STROKE", 12, Color("bda577")))
 	_status = label("Click and drag on the cloth to aim. Release to retain your line.", 15)
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_status.custom_minimum_size.y = 76
+	_status.custom_minimum_size.y = 50
 	column.add_child(_status)
 	var power_row := HBoxContainer.new()
 	column.add_child(power_row)
@@ -76,7 +84,18 @@ func _build() -> void:
 	_readout.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	power_row.add_child(_readout)
 	_power = HSlider.new()
-	_power.focus_mode = Control.FOCUS_NONE
+	_power.focus_mode = Control.FOCUS_ALL
+	_power.custom_minimum_size.y = 32
+	# HSlider themes only highlight the grabber; draw an explicit focus outline.
+	var power_focus := Panel.new()
+	power_focus.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	power_focus.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	power_focus.add_theme_stylebox_override("panel", focus_ring())
+	_power.add_child(power_focus)
+	power_focus.hide()
+	_power.focus_entered.connect(power_focus.show)
+	_power.focus_exited.connect(power_focus.hide)
+	_power.tooltip_text = "Power: Left/Right to adjust. Escape returns to table aim."
 	_power.min_value = 0; _power.max_value = 1; _power.step = .005; _power.value = power
 	_power.value_changed.connect(func(value: float):
 		power = value; _readout.text = "%.1f%%" % (value * 100.0); _refresh_shoot_enabled(); power_changed.emit(value))
@@ -92,9 +111,6 @@ func _build() -> void:
 	spin_row.add_child(spin_words)
 	spin_words.add_child(label("TIP POSITION", 11, Color("bda577")))
 	spin_words.add_child(label("Top: follow\nBottom: draw\nSides: english", 12, Color("b6b9aa")))
-	column.add_child(label("PURE PRACTICE", 11, Color("bda577")))
-	var explanation := label("Take your time. Explore speed and spin.\nUse Undo to try a shot again.\nScratch? Click a clear place on the cloth.", 13, Color("a7b6a9"))
-	column.add_child(explanation)
 	var spacer := Control.new()
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	column.add_child(spacer)
@@ -105,21 +121,34 @@ func _build() -> void:
 	_refresh_shoot_enabled()
 	var actions := HBoxContainer.new()
 	column.add_child(actions)
-	actions.add_child(button("Undo", func(): undo_requested.emit()))
-	actions.add_child(button("Camera", func(): view_requested.emit()))
-	actions.add_child(button("Menu", func(): menu_requested.emit()))
+	var undo := button("Undo", func(): undo_requested.emit())
+	var camera := button("Camera", func(): view_requested.emit())
+	var menu := button("Menu", func(): menu_requested.emit())
+	for action in [undo, camera, menu]: actions.add_child(action)
+	var options := HBoxContainer.new()
+	options.add_theme_constant_override("separation", 12)
+	column.add_child(options)
 	var sound := CheckBox.new()
-	sound.focus_mode = Control.FOCUS_NONE
+	sound.focus_mode = Control.FOCUS_ALL
 	sound.text = "Table sound"; sound.button_pressed = true
+	sound.custom_minimum_size.y = 32
+	sound.add_theme_font_size_override("font_size", 14)
+	sound.add_theme_stylebox_override("focus", focus_ring())
 	sound.toggled.connect(func(value: bool): sound_changed.emit(value))
-	column.add_child(sound)
+	options.add_child(sound)
 	var guides := CheckBox.new()
-	guides.focus_mode = Control.FOCUS_NONE
-	guides.text = "Initial path guide"
+	guides.focus_mode = Control.FOCUS_ALL
+	guides.text = "Path guide"
+	guides.custom_minimum_size.y = 32
+	guides.add_theme_font_size_override("font_size", 14)
+	guides.add_theme_stylebox_override("focus", focus_ring())
 	guides.tooltip_text = "Shows launch direction and first contact. Later spin, throw and rebounds are not predicted."; guides.button_pressed = true
 	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
-	column.add_child(guides)
-	var footer := label("DRAG  Aim; release to keep     ← →  Fine aim     SPACE  Shoot     V  Camera     U  Undo     ESC  Menu", 12, Color("a8ac9c"))
+	options.add_child(guides)
+	_focus_controls = [_power, _spin, _shoot, undo, camera, menu, sound, guides]
+	var footer := label("Drag aim · ← → fine aim · P power · S tip · Space shoot · U undo · V view · Esc table/menu", 12, Color("bcc4b9"))
+	_footer = footer
+	footer.anchor_right = 1
 	footer.anchor_top = 1; footer.anchor_bottom = 1
 	footer.offset_left = 38; footer.offset_top = -36; footer.offset_bottom = -12
 	_root.add_child(footer)
@@ -138,6 +167,57 @@ func _build() -> void:
 	_card.add_theme_constant_override("separation", 18)
 	card_panel.add_child(_card)
 	_overlay.hide()
+
+func _layout_hud() -> void:
+	_side.offset_top = 112 if _root.size.y >= 800 else 88
+	_side.offset_bottom = -48
+	_footer.offset_left = 24
+	_footer.offset_right = -24
+	play_area_changed.emit(table_area_rect())
+
+func table_area_rect() -> Rect2:
+	var top := _side.position.y
+	return Rect2(24.0, top, maxf(1.0, _side.position.x - 48.0), maxf(1.0, _root.size.y - top - 48.0))
+
+func focus_power() -> void:
+	if not menu_visible(): _power.grab_focus()
+
+func focus_practice_controls(backwards: bool = false) -> void:
+	if not menu_visible():
+		(_focus_controls[-1] if backwards else _power).grab_focus()
+
+func focus_spin() -> void:
+	if not menu_visible(): _spin.grab_focus()
+
+func release_control_focus() -> bool:
+	var owner := get_viewport().gui_get_focus_owner()
+	if owner != null and not menu_visible() and _root.is_ancestor_of(owner):
+		get_viewport().gui_release_focus()
+		return true
+	return false
+
+func _open_card() -> void:
+	if not menu_visible():
+		var owner := get_viewport().gui_get_focus_owner()
+		_previous_focus = weakref(owner) if owner != null else null
+	for control in _focus_controls: control.focus_mode = Control.FOCUS_NONE
+	_clear_card()
+	_overlay.show()
+
+func _focus_menu() -> void:
+	if not menu_visible(): return
+	var buttons: Array[Control] = []
+	for child in _card.get_children():
+		if child is Button: buttons.append(child)
+	for index in range(buttons.size()):
+		var control := buttons[index]
+		var next := buttons[(index + 1) % buttons.size()]
+		var previous := buttons[(index - 1 + buttons.size()) % buttons.size()]
+		control.focus_next = control.get_path_to(next)
+		control.focus_previous = control.get_path_to(previous)
+		control.focus_neighbor_top = control.focus_previous
+		control.focus_neighbor_bottom = control.focus_next
+	if not buttons.is_empty(): buttons[0].grab_focus()
 
 func set_status(text: String) -> void: _status.text = text
 func _request_shot() -> void:
@@ -158,35 +238,45 @@ func reset_spin() -> void:
 	selected_spin = Vector2.ZERO; _spin.spin = Vector2.ZERO; _spin.queue_redraw()
 	spin_changed.emit(Vector2.ZERO)
 func menu_visible() -> bool: return _overlay.visible
-func hide_menu() -> void: _overlay.hide()
+func hide_menu() -> void:
+	_overlay.hide()
+	for control in _focus_controls: control.focus_mode = Control.FOCUS_ALL
+	var previous = _previous_focus.get_ref() if _previous_focus != null else null
+	_previous_focus = null
+	if is_instance_valid(previous) and previous.is_visible_in_tree(): previous.grab_focus()
+	else: get_viewport().gui_release_focus()
 func _clear_card() -> void:
 	for child in _card.get_children(): _card.remove_child(child); child.queue_free()
 func show_home(can_resume: bool = false) -> void:
-	_clear_card(); _overlay.show()
+	_open_card()
 	_card.add_child(label("L O N G   R A I L", 36, Color("e9d9b8")))
 	_card.add_child(label("A quiet room. A precise stroke. One more rack.", 16, Color("b6b9aa")))
 	if can_resume: _card.add_child(button("Return to the table", func(): hide_menu(); resume_requested.emit(), true))
 	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
-	_card.add_child(label("Pure practice • Offline • 9-foot table\nClick and drag on the cloth to aim; release to retain.\nUse power and tip position to shape the shot.\nFor ball in hand, click a clear place on the cloth.", 13, Color("9da898")))
+	_card.add_child(label("Pure practice • Offline • 9-foot table\nDrag on the cloth to aim; release to keep the line.\nTab through controls, or P for power and S for tip position.\nEscape returns to table aim. After a scratch, arrows move\nthe cue-ball preview and Enter places it; a cloth click also works.", 13, Color("b6c0b6")))
 	_card.add_child(button("Quit", func(): get_tree().quit()))
+	call_deferred("_focus_menu")
 func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:
-	_clear_card(); _overlay.show()
+	_open_card()
 	_card.add_child(label(title, 28, Color("e9d9b8")))
 	var text := label(detail, 15); text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	text.custom_minimum_size.x = 480; _card.add_child(text)
 	for choice in choices:
 		_card.add_child(button(choice["label"], func(): hide_menu(); callback.call(choice["id"])))
+	call_deferred("_focus_menu")
 
 func label(text: String, pixels: int, color: Color = Color("eee7d8")) -> Label:
 	var value := Label.new(); value.text = text
-	value.add_theme_font_size_override("font_size", pixels)
+	value.add_theme_font_size_override("font_size", maxi(12, pixels))
 	value.add_theme_color_override("font_color", color)
 	return value
 func button(text: String, action: Callable, primary: bool = false) -> Button:
-	var value := Button.new(); value.focus_mode = Control.FOCUS_NONE; value.text = text; value.custom_minimum_size.y = 40
+	var value := Button.new(); value.focus_mode = Control.FOCUS_ALL; value.text = text; value.custom_minimum_size.y = 40
 	value.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	value.add_theme_font_size_override("font_size", 14)
-	value.add_theme_color_override("font_color", Color("18251e") if primary else Color("e2d9c6"))
+	var foreground := Color("18251e") if primary else Color("e2d9c6")
+	for state in ["font_color", "font_focus_color", "font_hover_color", "font_pressed_color"]:
+		value.add_theme_color_override(state, foreground)
 	for state in ["normal", "hover", "pressed", "disabled"]:
 		var style := StyleBoxFlat.new()
 		style.bg_color = (Color("c9ac73") if primary else Color("233c33")).lightened(.12 if state=="hover" else 0)
@@ -195,11 +285,20 @@ func button(text: String, action: Callable, primary: bool = false) -> Button:
 		style.corner_radius_bottom_left = 7; style.corner_radius_bottom_right = 7
 		style.content_margin_left = 15; style.content_margin_right = 15
 		value.add_theme_stylebox_override(state, style)
+	value.add_theme_stylebox_override("focus", focus_ring())
 	value.pressed.connect(action)
 	return value
 func panel() -> StyleBoxFlat:
 	var style := StyleBoxFlat.new(); style.bg_color = Color("101f1c")
 	style.border_color = Color("625940"); style.set_border_width_all(1)
-	style.set_corner_radius_all(12); style.content_margin_left = 24; style.content_margin_right = 24
-	style.content_margin_top = 24; style.content_margin_bottom = 24
+	style.set_corner_radius_all(12); style.content_margin_left = 16; style.content_margin_right = 16
+	style.content_margin_top = 16; style.content_margin_bottom = 16
+	return style
+
+func focus_ring() -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color.TRANSPARENT
+	style.border_color = Color("f4d492")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(7)
 	return style

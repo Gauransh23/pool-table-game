@@ -22,6 +22,52 @@ var _stroke_distance := 0.05
 var _cue_delivery_visible := false
 var _stroke_tween: Tween
 var _stroke_origin := Vector3.ZERO
+var _play_area := Rect2()
+var _fit_area := Rect2()
+var _fit_viewport := Vector2.ZERO
+var _fit_transform := Transform3D()
+var _view_zoom := 1.0
+var _fit_zoom := -1.0
+
+
+func _process(_delta: float) -> void:
+	_fit_camera()
+
+
+func set_play_area(area: Rect2) -> void:
+	_play_area = area
+	_fit_camera()
+
+
+func _fit_camera() -> void:
+	if _camera == null or _table == null or _play_area.size.x <= 0.0 or _play_area.size.y <= 0.0:
+		return
+	var viewport_size := get_viewport().get_visible_rect().size
+	var transform := _camera.global_transform
+	if _fit_area == _play_area and _fit_viewport == viewport_size and _fit_transform == transform and _fit_zoom == _view_zoom:
+		return
+	var area := _play_area.intersection(Rect2(Vector2.ZERO, viewport_size)).grow(-12.0)
+	if area.size.x <= 0.0 or area.size.y <= 0.0: return
+	var inverse := transform.affine_inverse()
+	var low := Vector2(INF, INF)
+	var high := Vector2(-INF, -INF)
+	# Include the rails, wells, apron and feet, so both views fit the same table.
+	for x_sign in [-1.0, 1.0]:
+		for z_sign in [-1.0, 1.0]:
+			for height in [-0.79, 0.10]:
+				var point: Vector3 = inverse * Vector3(x_sign * (_table.half_size.x + 0.18), height, z_sign * (_table.half_size.y + 0.18))
+				low = low.min(Vector2(point.x, point.y))
+				high = high.max(Vector2(point.x, point.y))
+	var extent := high - low
+	var scale := minf(area.size.x / extent.x, area.size.y / extent.y) / _view_zoom
+	var center := (low + high) * 0.5
+	_camera.size = viewport_size.y / scale
+	_camera.h_offset = center.x - (area.get_center().x - viewport_size.x * 0.5) / scale
+	_camera.v_offset = center.y + (area.get_center().y - viewport_size.y * 0.5) / scale
+	_fit_area = _play_area
+	_fit_viewport = viewport_size
+	_fit_transform = transform
+	_fit_zoom = _view_zoom
 
 
 func build(table: TableSpec) -> void:
@@ -62,6 +108,8 @@ func sync_balls(balls: Array) -> void:
 
 func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool, tip_offset: Vector2 = Vector2.ZERO, launch_direction: Vector2 = Vector2.ZERO) -> void:
 	_aim_immediate.clear_surfaces()
+	var ghost_material := _ghost_ball.material_override as StandardMaterial3D
+	ghost_material.albedo_color = Color(0.93, 0.88, 0.74, 0.24)
 	_cue_root.visible = _cue_delivery_visible or (visible and cue_ball != null and cue_ball.is_on_table())
 	_ghost_ball.visible = false
 	if not visible or cue_ball == null or not cue_ball.is_on_table() or direction.length_squared() < 0.9:
@@ -88,6 +136,13 @@ func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float
 	_aim_immediate.surface_end()
 	_aim_mesh.mesh = _aim_immediate
 	_update_cue(Vector3(cue_ball.position.x, cue_ball.height, cue_ball.position.y), direction, power, tip_offset)
+
+
+func set_placement_preview(position: Vector2, valid: bool) -> void:
+	_ghost_ball.position = Vector3(position.x, BallState.RADIUS, position.y)
+	var material := _ghost_ball.material_override as StandardMaterial3D
+	material.albedo_color = Color(0.8, 1.0, 0.85, 0.65) if valid else Color(1.0, 0.35, 0.25, 0.65)
+	_ghost_ball.visible = true
 
 
 func _build_room() -> void:
@@ -346,6 +401,7 @@ func _build_lighting() -> void:
 func _build_camera() -> void:
 	_camera = Camera3D.new()
 	_camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+	_camera.keep_aspect = Camera3D.KEEP_HEIGHT
 	_camera.size = 2.15
 	_camera.h_offset = 0.28
 	_camera.position = Vector3(0.0, 3.8, 3.0)
@@ -587,7 +643,8 @@ func set_overhead(overhead: bool) -> void:
 
 
 func zoom(amount: float) -> void:
-	_camera.size = clampf(_camera.size + amount, 1.8, 3.0)
+	_view_zoom = clampf(_view_zoom + amount, 1.0, 1.5)
+	_fit_camera()
 
 
 func _wood(color: String) -> ShaderMaterial:

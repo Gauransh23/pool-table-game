@@ -4,7 +4,6 @@ class_name TableAudio
 var enabled := true
 var _players: Array[AudioStreamPlayer] = []
 var _cursor := 0
-var _last_contact_ms := 0
 var _sounds := {}
 
 func _ready() -> void:
@@ -12,17 +11,15 @@ func _ready() -> void:
 		_sounds[kind] = load("res://assets/audio/%s.wav" % kind)
 	for index in range(12):
 		var player := AudioStreamPlayer.new()
+		player.bus = &"Contacts"
 		add_child(player)
 		_players.append(player)
 
 func play_contact(kind: String, speed: float = 1.0) -> void:
 	if not enabled or _players.is_empty() or not is_finite(speed) or speed < 0.005:
 		return
-	var now := Time.get_ticks_msec()
-	if kind == "ball" and now - _last_contact_ms < 16:
-		return
-	if kind == "ball":
-		_last_contact_ms = now
+	# Distinct physics contacts can arrive together in one rendered frame. Do not
+	# discard unrelated impacts based on CPU wall time; the voice pool bounds work.
 	var player := _players[_cursor % _players.size()]
 	_cursor += 1
 	player.stream = _sounds.get(kind, _sounds["ball"])

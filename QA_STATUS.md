@@ -1,3 +1,23 @@
+# Practice interaction fixes — 0.3.1
+
+Updated 2026-11-06. [Fix report](docs/quality-roadmap/reports/PRACTICE_FLOW_FIXES.md).
+
+The table now fits beside the HUD at actual window sizes; controls keep readable
+native sizing. Power, spin, menus, shooting, undo and scratch recovery have a
+keyboard path with visible focus. The audio system schedules distinct ball
+contacts without the global 16 ms gate and routes them through a limited contact bus.
+
+Verified: 200 routed input/layout checks at 1100×700, 1600×900 and 1920×1080;
+950 simulation/rules assertions; aim controls, 42 practice-flow, 39 recovery,
+24 stroke-contact and 5 spin-precision checks; two simultaneous physical impact
+events and a 100-event audio-delivery batch. Native Metal captures of small/default,
+lounge, focus, menu and placement states were inspected.
+
+The earlier audit's minimum-window wording is corrected: native 0.3.0 scaled a
+fixed design canvas; its overlap was reproduced in a true 1100×700 subviewport.
+0.3.1 handles both sizes directly. These bounded checks do not certify the complete
+quality catalog, calibrated physics, audio naturalness, true-peak or device latency.
+
 # New acceptance bar
 
 [Quality-bar-1](docs/quality-roadmap/QUALITY_TARGETS.md) defines 140 new/strengthened acceptance obligations. All start UNVERIFIED; the historical checks below retain only their original scope. New numerical, calibrated and perceptual targets need separate evidence.

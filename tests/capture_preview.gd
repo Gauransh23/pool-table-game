@@ -20,6 +20,16 @@ func run() -> void:
 	if "--break" in arguments:
 		game._on_shoot_requested(.75, Vector2.ZERO)
 		await create_timer(4.0).timeout
+	if "--power-focus" in arguments: game.hud.focus_power()
+	if "--spin-focus" in arguments: game.hud.focus_spin()
+	if "--placing" in arguments:
+		game._cue_ball().phase = BallState.Phase.POCKETED
+		game._cue_ball().height = -0.18
+		game._cue_ball().pocket_id = 0
+		game._placing = true
+		game.table_view.sync_balls(game.balls)
+		game._refresh_aim()
+	if "--menu" in arguments: game._open_menu()
 	for frame in range(3): await process_frame
 	await RenderingServer.frame_post_draw
 	var path := "user://longrail-%d.png" % Time.get_ticks_usec()
@@ -27,7 +37,7 @@ func run() -> void:
 		if argument.begins_with("--output="): path = argument.trim_prefix("--output=")
 	var capture_image := root.get_texture().get_image()
 	var error := capture_image.save_png(path)
-	var metadata := {"window_size":str(root.size),"design_size":str(root.content_scale_size),"viewport_size":str(root.get_visible_rect().size),"image_size":str(capture_image.get_size()),"meaning":"The configured canvas preserves design aspect; the render image excludes window letterboxing."}
+	var metadata := {"window_size":str(root.size),"design_size":str(root.content_scale_size),"viewport_size":str(root.get_visible_rect().size),"image_size":str(capture_image.get_size()),"play_area":str(game.hud.table_area_rect()),"meaning":"Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement."}
 	var metadata_file := FileAccess.open(path+".json",FileAccess.WRITE)
 	if metadata_file != null:
 		metadata_file.store_string(JSON.stringify(metadata,"\t"))

@@ -2,6 +2,8 @@
 
 Date: 2026-11-06. Candidate: Long Rail 0.3.0, source commit `57644e0`. Focus: aim, release, move to power, shoot and continue. This is a diagnostic report; no product code was changed.
 
+**Follow-up correction and fixes:** [0.3.1 interaction fixes](PRACTICE_FLOW_FIXES.md) records the resolution. A fresh native capture clarified the first finding: 0.3.0's native minimum window letterboxed/scaled a fixed 1600×900 design canvas; the overlap occurred in the isolated true 1100×700 viewport. The original wording overstated native-window occlusion. The new version uses a window-sized canvas and fits the table beside the HUD in both native and isolated viewport sizes. Original probe values below are retained as historical evidence.
+
 ## Verdict
 
 The exact mouse sequence works in the default `1600×900` viewport when exercised through Godot's actual GUI input routing. I reproduced: left-button drag on cloth → release → unpressed cursor travel → power slider drag → Take Shot click → simulation settle → Undo. All 16 isolated checks passed. The active game also showed eight strokes and four balls pocketed during this investigation. Those observations support basic playability at the default size; they do not prove a representative player can select precise shots reliably.

@@ -5,7 +5,7 @@ on practice-table quality and expressive stroke control rather than a complete m
 
 ## Try the Mac preview
 
-Build output: `build/Long Rail-0.3.0-mac.dmg`. Open it and drag **Long Rail** into
+Build output: `build/Long Rail-0.3.1-mac.dmg`. Open it and drag **Long Rail** into
 **Applications**, then open the app. This local preview uses an ad-hoc signature;
 Developer ID notarization is not configured.
 
@@ -13,9 +13,15 @@ Click and drag on the cloth to aim; release to retain your line. Choose power an
 tip position, then click **Take Shot** or press **Space**. Zero power does not fire; the low end supports delicate taps. Left/right arrows
 fine-tune aim; hold Shift for finer steps. Shift-drag the tip pad for small
 adjustments; double-click it to center the tip.
+For keyboard play, **P** selects power and **S** selects tip position. Use arrow
+keys in the focused control, **Shift** for fine tip adjustments and **Home** to
+center the tip. **Tab/Shift-Tab** moves between controls; **Enter** activates a
+focused button. **Escape** leaves a control and returns arrows to table aim;
+press it again to open the menu. Focus has a visible gold outline.
 **U** restores the last shot exactly. **V** switches between overhead and lounge
-cameras. **Escape** opens the menu. After a scratch, click a clear place on the cloth
-to put the cue ball back in play. The last settled table saves automatically.
+cameras. After a scratch, click clear cloth to place the cue ball, or use arrows
+to move its preview (**Shift** for fine movement) and **Enter** to confirm.
+The last settled table saves automatically.
 
 The preview includes original procedural table/ball materials and contact sounds,
 soft-to-hard stroke control, follow/draw/english, collision and friction models,
@@ -52,6 +58,9 @@ bash tools/godot.sh --headless --path . --script tests/stroke_contact.gd
 bash tools/godot.sh --headless --path . --script tests/save_recovery.gd
 bash tools/godot.sh --headless --path . --script tests/table_geometry.gd
 bash tools/godot.sh --headless --path . --script tests/pocket_support.gd
+bash tools/godot.sh --headless --path . --script tests/aim_controls.gd
+bash tools/godot.sh --headless --path . --script tests/practice_input_flow.gd
+bash tools/godot.sh --headless --path . --script tests/audio_contacts.gd
 ```
 
 See [Project state](PROJECT_STATE.md), [Physics validation](PHYSICS_VALIDATION.md),
