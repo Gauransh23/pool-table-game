@@ -1,0 +1,5 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+{"design_size":"(1600, 900)","image_size":"(1100, 700)","meaning":"Window-sized canvas; camera fits the full table beside the HUD. This is a rendered image, not a native input-latency measurement.","play_area":"[P: (24.0, 88.0), S: (742.0, 564.0)]","viewport_size":"(1100.0, 700.0)","window_size":"(1100, 700)"}
+CAPTURE: /tmp/pool-fine-aim-small.png
