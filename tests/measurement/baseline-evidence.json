@@ -1,0 +1,196 @@
+{
+  "summary": {
+    "status": "PASS",
+    "scope": "same-build active-solver replay and acquisition integrity only",
+    "fixture": "three-ball-chain-v1",
+    "replay_ticks": 1440,
+    "event_counts": {
+      "ball_contact": 2
+    },
+    "missing_expected_events": [],
+    "paired_overhead_ratio_median": 1.2449338672491204,
+    "acquisition_loaded_by_gameplay": false,
+    "limitations": [
+      "same build/platform reproducibility only",
+      "tick quantization is not exact impact time",
+      "wall delivery and frame post-draw timestamps are not display presentation or audible onset",
+      "no calibration or perception claim"
+    ],
+    "native_ticks": 1443,
+    "native_event_counts": {
+      "ball_contact": 2
+    },
+    "frame_process": {
+      "samples": 182,
+      "median_ms": 16.662,
+      "p95_ms": 17.234,
+      "worst_ms": 17.639,
+      "nonpositive_intervals": [],
+      "over_50ms": []
+    },
+    "frame_post_draw": {
+      "samples": 182,
+      "median_ms": 16.701,
+      "p95_ms": 17.633,
+      "worst_ms": 18.979,
+      "nonpositive_intervals": [],
+      "over_50ms": []
+    },
+    "raw_sha256": "22e126f718216c7b7dcd50220610f812b84d495d00c2486d5856eb2b04f7164a"
+  },
+  "manifest": {
+    "commit": "98287008b8d5286d78a4e0e6bb68d56b3f5b7d5e",
+    "dirty_status": "?? tests/fixtures/\n?? tests/measurement/\n?? tools/acquire_shot.py\n",
+    "fixture_sha256": "2a9654e003c026a0169c5eeddc349a2d638a7f13d86314e04a6ade0071a1cfa5",
+    "active_engine": "scripts/sim/physics_stepper.gd; GameController default; acquisition subclass calls super",
+    "artifact": "Godot source run, not release export",
+    "input": "scripted controller request; no OS input capture",
+    "raw_sha256": "22e126f718216c7b7dcd50220610f812b84d495d00c2486d5856eb2b04f7164a",
+    "engine": {
+      "build": "official",
+      "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "hex": 263938,
+      "major": 4,
+      "minor": 7,
+      "patch": 2,
+      "status": "stable",
+      "string": "4.7.2-stable (official)",
+      "timestamp": 0
+    },
+    "os": "macOS",
+    "device": "Apple M4"
+  },
+  "source_hashes": {
+    "scripts/app/game_controller.gd": "67d03831a85264cc7838dd238968dc8bd47dfebaaed5e2c5638f9745b6afab75",
+    "scripts/sim/physics_stepper.gd": "f16b01423140524a9330daaac39011cca6757fc532ea4fce7dd6cf3fa230669b",
+    "scripts/sim/physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
+    "scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff",
+    "scripts/sim/ball_state.gd": "5b0ab4a9d58f98e46bae1352141d7de563764491d4e5f8cce46799ca1284a8c1",
+    "scripts/sim/cue_strike_model.gd": "eb1e66144f4f6ea6d188b32858c70da231c8a92a8658db2c4d8c4baa5cdd473f",
+    "scripts/sim/stroke_power.gd": "5db09d9cfb0b34d8480277480c658f249f986939b6ac141cb0d63c9060652cc7",
+    "project.godot": "a4d9feb4b3b7e34ee8920245170608487a89cef28bca479939893e4681f0dd77",
+    "tests/fixtures/three_ball_v1.json": "2a9654e003c026a0169c5eeddc349a2d638a7f13d86314e04a6ade0071a1cfa5",
+    "tests/measurement/check_negative.py": "7b0fc53dd969dd8a4a3bd175989bf4105214008d70f3c380b04245f81f51b993",
+    "tests/measurement/run_acquisition.gd": "d64fba62d44969c9d25d38351bd8e088d1cd9b822856858a0e2febbaa1195b3c",
+    "tests/measurement/shot_fixture.gd": "af15e64511c01a800b96321ab4af35ab4685b750b78b7e3f405ae82d1ad03f89",
+    "tests/measurement/trace_stepper.gd": "6c9e01613afafceeab8c3a878a9e65a6fa39ae29bdbaac27087e741fe984bc13",
+    "tools/acquire_shot.py": "6666ee2386a2c8c57e51fc36b0ebbbd311cee41d0e947c1ad29cfb0dd385d3dc"
+  },
+  "config": {
+    "ball_friction": 0.055,
+    "ball_mass": 0.168,
+    "ball_restitution": 0.94,
+    "cue_collision_efficiency": 0.87,
+    "cue_end_mass": 0.008,
+    "cue_mass": 0.52,
+    "cushion_friction": 0.12,
+    "cushion_restitution": 0.84,
+    "fixed_step": 0.00208333333333333,
+    "gravity": 9.81,
+    "max_collision_iterations": 6,
+    "max_speed": 14.0,
+    "max_substep_travel_fraction": 0.45,
+    "pocket_liner_restitution": 0.2,
+    "rolling_resistance": 0.012,
+    "sleep_speed_threshold": 0.012,
+    "sleep_spin_threshold": 0.08,
+    "sliding_friction": 0.19,
+    "spinning_friction": 0.0127
+  },
+  "table": {
+    "corner_cut_angle_degrees": 142.0,
+    "corner_mouth": 0.116,
+    "corner_shelf": 0.035,
+    "cushion_nose_height": 0.03629025,
+    "pocket_depth": 0.13,
+    "side_cut_angle_degrees": 104.0,
+    "side_mouth": 0.129,
+    "side_shelf": 0.006
+  },
+  "native_window": {
+    "framebuffer": "(1600.0, 900.0)",
+    "refresh_hz": 120.0,
+    "renderer": "forward_plus",
+    "screen_scale": 2.0,
+    "screenshot": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-native-final/raw.json.png",
+    "thermal_power_cache": "uncontrolled; short development capture",
+    "window": "(1600, 900)"
+  },
+  "paired_replay_timings": [
+    {
+      "plain_usec": 66453,
+      "traced_usec": 84270
+    },
+    {
+      "plain_usec": 69425,
+      "traced_usec": 83668
+    },
+    {
+      "plain_usec": 66083,
+      "traced_usec": 82821
+    },
+    {
+      "plain_usec": 65928,
+      "traced_usec": 82076
+    },
+    {
+      "plain_usec": 67123,
+      "traced_usec": 81660
+    }
+  ],
+  "raw_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-native-final/raw.json",
+  "full_manifest_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-native-final/manifest.json",
+  "image_sha256": "813cba494d613f4934a0515d5c53712d58099437b4f2bf6e38d36258c2f95a95",
+  "negative_process": [
+    {
+      "case": "invalid-fixture",
+      "command": [
+        "python3",
+        "tools/acquire_shot.py",
+        "--fixture",
+        "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/measurement-regressions/invalid.json",
+        "--output",
+        "test-results/acquisition-invalid-v2"
+      ],
+      "environment": {},
+      "exit": 1
+    },
+    {
+      "case": "unwritable-output",
+      "command": [
+        "bash",
+        "tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/measurement/run_acquisition.gd",
+        "--",
+        "--output=/dev/null/raw.json"
+      ],
+      "environment": {},
+      "exit": 1
+    },
+    {
+      "case": "broken-dependency",
+      "command": [
+        "python3",
+        "tools/acquire_shot.py",
+        "--output",
+        "test-results/acquisition-broken-v1"
+      ],
+      "environment": {
+        "GODOT": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/measurement-regressions/broken-godot.sh"
+      },
+      "exit": 1
+    }
+  ],
+  "regressions": {
+    "simulation_rules_assertions": 950,
+    "stroke_contact_checks": 24,
+    "save_recovery_checks": 39,
+    "physics_precision_runs": 48,
+    "physics_precision_pocket_probes": 6,
+    "physics_precision_threshold_misses": 20
+  }
+}
