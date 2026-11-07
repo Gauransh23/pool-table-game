@@ -110,6 +110,7 @@ func capture_native(data: Dictionary, raw: Dictionary) -> void:
 	game._on_shoot_requested(data.input.power,Vector2(data.input.tip_x,data.input.tip_y))
 	var was_pending := true
 	var start := Time.get_ticks_usec()
+	var termination_reason := "timeout"
 	while Time.get_ticks_usec()-start < 12000000:
 		await process_frame
 		tracer.record("frame_process", {"pending":game._stroke_pending,"moving":game._shot_in_motion,"process_delta_seconds":game.get_process_delta_time()})
@@ -118,13 +119,23 @@ func capture_native(data: Dictionary, raw: Dictionary) -> void:
 			was_pending=false
 		await RenderingServer.frame_post_draw
 		tracer.record("frame_post_draw", {})
-		if tracer.tick_count >= data.ticks or (not was_pending and not game._shot_in_motion): break
+		if Time.get_ticks_usec()-start >= 12000000: break
+		if tracer.tick_count >= data.ticks:
+			termination_reason="horizon"
+			break
+		if not was_pending and not game._shot_in_motion and not game._stroke_pending and tracer.are_balls_settled(game.balls,game.physics_config):
+			termination_reason="settled"
+			break
+	var termination := {"reason":termination_reason,"tick":tracer.tick_count,"elapsed_wall_usec":Time.get_ticks_usec()-start,"deadline_usec":12000000,"controller_moving":game._shot_in_motion,"controller_pending":game._stroke_pending,"balls_settled":tracer.are_balls_settled(game.balls,game.physics_config)}
+	tracer.record("termination",termination)
+	check(termination_reason != "timeout","native acquisition timed out before horizon/settlement")
 	check(not was_pending and tracer.tick_count > 0,"native acquisition had no shot")
 	check(not tracer.overflow,"native trace overflow")
 	for kind in data.expected_events:
 		check(tracer.records.any(func(r): return r.kind == "event" and r.payload.event.kind == kind),"missing native event: "+kind)
 	raw.native=true
 	raw["native_records"]=tracer.records
+	raw["native_termination"]=termination
 	raw["native_terminal"]=Fixture.states(game.balls)
 	raw["native_ticks"]=tracer.tick_count
 	raw["native_window"]={"window":str(root.size),"framebuffer":str(root.get_texture().get_size()),"screen_scale":DisplayServer.screen_get_scale(),"refresh_hz":DisplayServer.screen_get_refresh_rate(),"renderer":RenderingServer.get_current_rendering_method(),"screenshot":output+".png","thermal_power_cache":"uncontrolled; short development capture"}

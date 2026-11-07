@@ -192,5 +192,201 @@
     "physics_precision_runs": 48,
     "physics_precision_pocket_probes": 6,
     "physics_precision_threshold_misses": 20
+  },
+  "round_1_fix": {
+    "review": "task-a-review.md: findings P1/P2/P2 corrected; independent re-review pending",
+    "source_hashes": {
+      "tests/measurement/check_negative.py": "b28844c647070508c66c0af00abf856475d7dfe3be5930e94bc24d7a7780f989",
+      "tests/measurement/run_acquisition.gd": "29f45f73e7cc711dc60284d57aa6c3eceb910c9896da63185e6a482dbc8271ab",
+      "tools/acquire_shot.py": "240d1013648308d327ad3b847d4d243ea302e4c4ee04b04ef139489d59be940c"
+    },
+    "runs": {
+      "acquisition-fix1-headless": {
+        "summary": {
+          "status": "PASS",
+          "scope": "same-build active-solver replay and acquisition integrity only",
+          "fixture": "three-ball-chain-v1",
+          "replay_ticks": 1440,
+          "event_counts": {
+            "ball_contact": 2
+          },
+          "missing_expected_events": [],
+          "paired_overhead_ratio_median": 1.259276850917295,
+          "replay_clocks": {
+            "samples": 1442,
+            "median_ms": 0.057,
+            "p95_ms": 0.064,
+            "worst_ms": 0.231,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "acquisition_loaded_by_gameplay": false,
+          "limitations": [
+            "same build/platform reproducibility only",
+            "tick quantization is not exact impact time",
+            "wall delivery and frame post-draw timestamps are not display presentation or audible onset",
+            "no calibration or perception claim"
+          ],
+          "raw_sha256": "ba1910ad335094d849b6873614d2621b33a5b2ccf7cf2c2719ab8b1412d4e58b"
+        },
+        "raw_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-headless/raw.json",
+        "manifest_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-headless/manifest.json",
+        "raw_sha256": "ba1910ad335094d849b6873614d2621b33a5b2ccf7cf2c2719ab8b1412d4e58b"
+      },
+      "acquisition-fix1-native": {
+        "summary": {
+          "status": "PASS",
+          "scope": "same-build active-solver replay and acquisition integrity only",
+          "fixture": "three-ball-chain-v1",
+          "replay_ticks": 1440,
+          "event_counts": {
+            "ball_contact": 2
+          },
+          "missing_expected_events": [],
+          "paired_overhead_ratio_median": 1.2495887121874583,
+          "replay_clocks": {
+            "samples": 1442,
+            "median_ms": 0.057,
+            "p95_ms": 0.061,
+            "worst_ms": 0.232,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "acquisition_loaded_by_gameplay": false,
+          "limitations": [
+            "same build/platform reproducibility only",
+            "tick quantization is not exact impact time",
+            "wall delivery and frame post-draw timestamps are not display presentation or audible onset",
+            "no calibration or perception claim"
+          ],
+          "native_ticks": 1440,
+          "native_event_counts": {
+            "ball_contact": 2
+          },
+          "native_termination": {
+            "balls_settled": false,
+            "controller_moving": true,
+            "controller_pending": false,
+            "deadline_usec": 12000000,
+            "elapsed_wall_usec": 3018362,
+            "reason": "horizon",
+            "tick": 1440
+          },
+          "native_clocks": {
+            "samples": 1809,
+            "median_ms": 0.143,
+            "p95_ms": 14.783,
+            "worst_ms": 17.502,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "frame_process": {
+            "samples": 182,
+            "median_ms": 16.665,
+            "p95_ms": 18.452,
+            "worst_ms": 18.701,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "frame_post_draw": {
+            "samples": 182,
+            "median_ms": 16.682,
+            "p95_ms": 18.397,
+            "worst_ms": 32.869,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "raw_sha256": "37706f22a1d3c3ae981fd698c5532dcc95500ac7785472db9bd62881ec3cb66a"
+        },
+        "raw_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-native/raw.json",
+        "manifest_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-native/manifest.json",
+        "raw_sha256": "37706f22a1d3c3ae981fd698c5532dcc95500ac7785472db9bd62881ec3cb66a"
+      },
+      "acquisition-fix1-settled-final": {
+        "summary": {
+          "status": "PASS",
+          "scope": "same-build active-solver replay and acquisition integrity only",
+          "fixture": "three-ball-settlement-probe-v1",
+          "replay_ticks": 5000,
+          "event_counts": {
+            "ball_contact": 2
+          },
+          "missing_expected_events": [],
+          "paired_overhead_ratio_median": 1.2646538120237976,
+          "replay_clocks": {
+            "samples": 5002,
+            "median_ms": 0.057,
+            "p95_ms": 0.06,
+            "worst_ms": 0.227,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "acquisition_loaded_by_gameplay": false,
+          "limitations": [
+            "same build/platform reproducibility only",
+            "tick quantization is not exact impact time",
+            "wall delivery and frame post-draw timestamps are not display presentation or audible onset",
+            "no calibration or perception claim"
+          ],
+          "native_ticks": 2193,
+          "native_event_counts": {
+            "ball_contact": 2
+          },
+          "native_termination": {
+            "balls_settled": true,
+            "controller_moving": false,
+            "controller_pending": false,
+            "deadline_usec": 12000000,
+            "elapsed_wall_usec": 4574942,
+            "reason": "settled",
+            "tick": 2193
+          },
+          "native_clocks": {
+            "samples": 2750,
+            "median_ms": 0.165,
+            "p95_ms": 10.662,
+            "worst_ms": 16.427,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "frame_process": {
+            "samples": 276,
+            "median_ms": 16.668,
+            "p95_ms": 17.497,
+            "worst_ms": 17.738,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "frame_post_draw": {
+            "samples": 276,
+            "median_ms": 16.684,
+            "p95_ms": 17.861,
+            "worst_ms": 20.369,
+            "backwards_intervals": [],
+            "equal_timestamp_intervals": 0,
+            "over_50ms": []
+          },
+          "raw_sha256": "72cb0bee67b207df20d2b0f35f91b91a314369cd4014a636a6cb1e4e6c832779"
+        },
+        "raw_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-settled-final/raw.json",
+        "manifest_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-settled-final/manifest.json",
+        "raw_sha256": "72cb0bee67b207df20d2b0f35f91b91a314369cd4014a636a6cb1e4e6c832779"
+      }
+    },
+    "negative_suite": {
+      "corrupt_acquisitions_rejected": 55,
+      "forced_timeout_metadata_rejected": true,
+      "reviewer_exact_mutations_retained": true,
+      "backwards_replay_and_native_clocks_preserved": true,
+      "log_local_path": "/Users/codex/Documents/My Public Repos/pool-table-game/test-results/acquisition-fix1-native/negative-suite.log"
+    }
   }
 }
