@@ -92,5 +92,12 @@
     "sampled_transition_right_endpoint": 6
   },
   "actual_transition_root_status": "INCONCLUSIVE",
-  "raw_metric_note": "22 metric FAIL comparisons are not 22 independent physical failures. The six sampled crossing rows cannot establish exact-root failure. Seven intended pure-rolling fixtures have no qualified slide crossing; tiny float-vector slip remnants are not an exact transition reference."
+  "raw_metric_note": "22 metric FAIL comparisons are not 22 independent physical failures. The six sampled crossing rows cannot establish exact-root failure. Seven intended pure-rolling fixtures have no qualified slide crossing; tiny float-vector slip remnants are not an exact transition reference.",
+  "round1_review": {
+    "parser_revalidation": "PASS; every original chunk revalidated, 52 missing/duplicate/incorrect field/record mutations rejected",
+    "torque_consistency": "PASS in 410 level/resting direct cue-speed matrix checks (369 positive launches,41 zero no-ops); geometric/arithmetic invariant only",
+    "postprocess_identity": "postprocess-identity-round1.json",
+    "torque_ledger": "torque-audit-round1.json",
+    "physical_calibration": "NOT_RUN / unproven; CUE-001 overall remains INCONCLUSIVE"
+  }
 }

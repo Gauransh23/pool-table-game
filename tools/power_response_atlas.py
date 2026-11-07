@@ -146,16 +146,130 @@ def numeric_equal(a,b):
     return a==b
 
 
+SUPPORTED_PROBES = {'zero_direction','moving_ball','nan_speed','inf_speed','nan_direction','nan_tip','nan_elevation'}
+BOUNDARY_INPUTS = {'-0.1','0.0','nan','inf','1.1'} | {f'outside_tip_{i}' for i in range(8)}
+RESULT_FIELDS = set('accepted committed_power controller_equivalent hud_readback hud_tip_readback provenance input_domain requested_power power_tick tip_actual tip_adjustment family finite observer_overflow status cue_speed_m_s direction tip_requested initial launch terminal ticks simulation_s termination events first_ball_contact first_rail_event rail_classification cue_object_classification cue_signed_travel_after_contact_m trace'.split())
+TABLE_REFERENCE = dict(corner_cut_angle_degrees=142.,corner_mouth=.116,corner_shelf=.035,cushion_nose_height=.03629025,pocket_depth=.13,side_cut_angle_degrees=104.,side_mouth=.129,side_shelf=.006)
+
+
+def require(condition, message):
+    if not condition: raise ValueError(message)
+
+
+def number(value):
+    return type(value) in (int,float) and math.isfinite(value)
+
+
+def vector(value, length):
+    return isinstance(value,list) and len(value)==length and all(number(v) for v in value)
+
+
+def canonical_states(states):
+    require(isinstance(states,list) and bool(states),'missing canonical states')
+    for state_ in states:
+        require(vector(state_,17),'invalid canonical states')
+        require(state_[0]==int(state_[0]) and state_[1]==int(state_[1]),'invalid identity')
+        require(math.isclose(sum(q*q for q in state_[11:15]),1,abs_tol=2e-5),'invalid orientation')
+
+
+def validate_records(lines, expected):
+    require(all(isinstance(r,dict) and finite(r) for r in lines),'nonfinite/malformed record')
+    counts=collections.Counter(r['kind'] for r in lines)
+    require(counts==dict(runtime=1,completion=1,result=len(expected),unsupported_probe=7,controller_boundary=13),'missing/duplicate/unknown record kind counts')
+    runtime=lines[0]
+    for key in ['architecture','clock','os','processor','scalar_precision','vector_precision']:
+        require(isinstance(runtime[key],str) and bool(runtime[key]),'missing runtime '+key)
+    require(runtime['clock']=='Time.get_ticks_usec; manually accumulated simulation dt','unknown instrument clock')
+    require(runtime['scalar_precision']=='64-bit GDScript float' and runtime['vector_precision'] in ['32-bit','64-bit'],'unknown runtime precision')
+    require(runtime['half_size']==[1.27,.635] and runtime['table']==TABLE_REFERENCE,'wrong runtime geometry profile')
+    engine=runtime['engine']
+    for key in ['major','minor','patch','hex','timestamp']:
+        require(type(engine[key]) is int and engine[key]>=0,'missing runtime engine version')
+    for key in ['build','status','string']:
+        require(isinstance(engine[key],str) and bool(engine[key]),'missing runtime engine identity')
+    require(isinstance(engine['hash'],str) and len(engine['hash'])==40 and all(c in '0123456789abcdef' for c in engine['hash']),'missing runtime engine hash')
+    probes=[r for r in lines if r['kind']=='unsupported_probe']
+    require(len({r['id'] for r in probes})==7 and {r['id'] for r in probes}==SUPPORTED_PROBES,'missing/duplicate unsupported probe identity')
+    for r in probes:
+        require(r['domain']=='direct_model_only' and isinstance(r['qualification'],str) and bool(r['qualification']),'unsupported probe domain/qualification')
+        require(type(r['accepted']) is bool and type(r['finite_outcome']) is bool,'missing unsupported outcome')
+        if r['finite_outcome']:
+            canonical_states(r['states']); require(r['missing_reason'] is None,'finite outcome reason')
+        else:
+            require(r['states'] is None and isinstance(r['missing_reason'],str) and bool(r['missing_reason']),'missing nonfinite outcome reason')
+    boundaries=[r for r in lines if r['kind']=='controller_boundary']
+    require(len({r['input'] for r in boundaries})==13 and {r['input'] for r in boundaries}==BOUNDARY_INPUTS,'missing/duplicate controller boundary identity')
+    for r in boundaries:
+        require(type(r['committed']) is bool and r['committed']==(r['input']=='1.1'),'controller boundary commitment')
+        if r['input'].startswith('outside_tip_'):
+            require(r['pending'] is False,'outside-tip boundary remains pending')
+        else:
+            require(r['committed_power']==(1.0 if r['committed'] else None),'boundary clamp/no commit')
+            canonical_states(r['states'])
+            require(len(r['states'])==1,'boundary inventory')
+            require((any(v!=0 for v in r['states'][0][5:11]))==r['committed'],'boundary launch/no-op mismatch')
+
+
+def validate_modality(f,r,precision):
+    require(RESULT_FIELDS<=r.keys(),'missing result provenance/domain/outcome fields')
+    require(r['family']==f['family'] and type(r['accepted']) is bool,'result family/acceptance')
+    accepted=f['family']!='rolling' and f['cue_speed']>0 and not f.get('expected_rejection',False)
+    require(r['accepted']==accepted,'strike acceptance mismatch')
+    power_domain=f['family'] not in ['launch','rolling']
+    require(r['input_domain']==('HUD power' if power_domain else ('direct cue speed' if f['family']=='launch' else 'initial ball speed')),'wrong input domain')
+    require(vector(r['tip_actual'],2) and isinstance(r['tip_adjustment'],str) and bool(r['tip_adjustment']),'missing actual tip')
+    # Tip fields are actual engine vectors, distinct from serialization-only
+    # comparisons of the requested double metadata.
+    import struct
+    actual=[struct.unpack('f',struct.pack('f',v))[0] for v in f['tip']] if precision=='32-bit' else f['tip']
+    require(numeric_equal(r['tip_actual'],actual),'actual tip conversion mismatch')
+    if power_domain:
+        require(numeric_equal(r['requested_power'],f['power']) and r['power_tick']==f['power_tick'] and number(r['hud_readback']) and math.isclose(r['hud_readback'],f['power'],abs_tol=1e-12),'requested/readback power mismatch')
+    else:
+        require(all(r[k] is None for k in ['requested_power','power_tick','hud_readback']),'unused power fields must be null')
+    linked=f['modality']=='controller' or f.get('controller_probe',False)
+    require(r['provenance']==('actual HUD signal/controller/contact closure; manual tween clock' if f['modality']=='controller' else 'direct active strike model'),'incorrect modality provenance')
+    require(r['controller_equivalent'] is (True if f.get('controller_probe',False) else None),'missing/incorrect declared controller equivalence')
+    if linked:
+        require(vector(r['hud_tip_readback'],2) and numeric_equal(r['hud_tip_readback'],actual),'missing/controller tip readback')
+        require((number(r['committed_power']) and numeric_equal(r['committed_power'],f['power'])) if accepted else r['committed_power'] is None,'committed power/no-op mismatch')
+        if not accepted: require(r['launch']==r['initial'],'zero controller request changed state')
+    else:
+        require(r['committed_power'] is None and r['hud_tip_readback'] is None,'unlinked controller commitment claimed')
+
+
+def validate_event_classification(r):
+    first_ball=next((e for e in r['events'] if e['event']['kind']=='ball_contact'),None)
+    first_rail=next((e for e in r['events'] if e['event']['kind']=='rail'),None)
+    require(r['first_ball_contact']==first_ball and r['first_rail_event']==first_rail,'first contact/event mismatch')
+    require(r['rail_classification']==('no_rail_event' if first_rail is None else ('jaw' if first_rail['event']['jaw'] else 'straight')),'rail jaw/classification mismatch')
+    travel=r['cue_signed_travel_after_contact_m']
+    if first_ball is None:
+        require(travel is None and r['cue_object_classification']=='no_ball_contact','spurious cue-object contact')
+    else:
+        require(number(travel),'missing signed cue-object travel')
+        require(r['cue_object_classification']==('follow' if travel>.001 else ('draw' if travel<-.001 else 'stun_or_small')),'cue-object classification mismatch')
+
+
 def read_chunk(path, expected):
+    try:
+        return _read_chunk(path,expected)
+    except (KeyError,TypeError,IndexError,AttributeError,OverflowError) as exc:
+        raise ValueError('missing/malformed atlas evidence: '+str(exc)) from exc
+
+
+def _read_chunk(path, expected):
     lines=[json.loads(line) for line in (path/'raw.jsonl').read_text().splitlines()]
     if not lines or lines[0].get('kind')!='runtime' or lines[-1].get('kind')!='completion':
         raise ValueError('missing runtime/completion marker')
     if lines[-1].get('errors')!=[] or lines[-1].get('fixtures')!=len(expected):
         raise ValueError('incomplete/failed engine run')
     if lines[0].get('profile')!=PROFILE: raise ValueError('wrong runtime profile')
+    validate_records(lines,expected)
     rows=[r for r in lines if r.get('kind')=='result']
     if [r['id'] for r in rows]!=[f['id'] for f in expected]: raise ValueError('missing/duplicate/order fixture rows')
     for f,r in zip(expected,rows):
+        validate_modality(f,r,lines[0]['vector_precision'])
         if not finite(r) or not r['finite'] or r['observer_overflow']: raise ValueError('nonfinite/overflow result')
         if r.get('status')!='MEASURED' or not numeric_equal(r['cue_speed_m_s'],f['cue_speed']) or not numeric_equal(r['direction'],f['direction']) or not numeric_equal(r['tip_requested'],f['tip']):
             raise ValueError('input/result mismatch')
@@ -172,10 +286,13 @@ def read_chunk(path, expected):
         if f['modality']=='controller' and not math.isclose(r['hud_readback'],f['power'],abs_tol=1e-12):
             raise ValueError('HUD quantization mismatch')
         for e in r['events']:
+            if e['event']['kind']=='rail':
+                require(type(e['event']['jaw']) is bool,'missing/invalid rail jaw flag')
             if not 1<=e['event']['tick']<=r['ticks'] or e['event']['kind'] not in ['ball_contact','rail','pocket','off_table']:
                 raise ValueError('invalid event')
             if not isinstance(e['event'].get('position'),list) or len(e['event']['position'])!=2:
                 raise ValueError('event position must be a numeric planar vector')
+        validate_event_classification(r)
     # Full traces must be present for precisely the named fixtures, with no gaps.
     trace_counts=collections.Counter()
     with (path/'traces.jsonl').open() as trace_file:

@@ -1,0 +1,287 @@
+{
+  "schema": "long-rail-power-atlas-postprocess/1",
+  "status": "PASS",
+  "acquisition_commit": "92f09ba0b19f46355497039d58cc84b3cb4c7fa2",
+  "acquisition_manifest_sha256": "fcd294f5b05629bf14da43d4e36e2ce81bff69bc6f3c258214de1dc3159efa68",
+  "original_wrapper_sha256": "1cfb0691423a0df687fc11771b544e93b48c0a875d2d2ba549a6dc288b6405b6",
+  "postprocess_source_sha256": {
+    "tools/power_response_atlas.py": "ed934c8cf1c94e969beb51245fb07397e10d6b4048358df551f0ce4bfbfb56ea",
+    "tools/power_atlas_torque_audit.py": "aa94cda2dee7eb2e1b85ba13170fe8dc9cfcef79ee960399f5e2bb9248825668",
+    "tests/measurement/check_power_atlas.py": "2d92f2e4f646225441f107cbd5f6523cd755559572a53c46336069bfba074be3"
+  },
+  "scope": "Revalidate retained original acquisition with stricter reader; no engine/instrument/physical sweep rerun; original source/artifact manifest unchanged",
+  "chunks": [
+    {
+      "chunk": "center",
+      "fixtures": 201,
+      "record_counts": {
+        "runtime": 1,
+        "result": 201,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "center/fixtures.json": "7f1686443cf9a98a69cae49f6f7ac9ca87cd3fff7d8d9a00437274bfbdac0a48",
+        "center/raw.jsonl": "637bc1c8ee96e7bc42e44f6de8aa623a0314208ac903af5af92c5b8b32ba7401",
+        "center/traces.jsonl": "faee24075bdad8b2800e6d57982aea232b953985fb5f109bc9324a368959c65b"
+      }
+    },
+    {
+      "chunk": "draw",
+      "fixtures": 201,
+      "record_counts": {
+        "runtime": 1,
+        "result": 201,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "draw/fixtures.json": "e1f568211e811bb8d1cb0847d6cfa2abfc1577b5fbf915aa444335583e81d563",
+        "draw/raw.jsonl": "786760f5a7f679c1824bf7c3d6d48e2872c3769b0e411a0a2d06ea109c962df8",
+        "draw/traces.jsonl": "e5fe8673618c481adf0b889b0ebff256104f3c42f30b9e32f5baa5dc72096728"
+      }
+    },
+    {
+      "chunk": "follow",
+      "fixtures": 201,
+      "record_counts": {
+        "runtime": 1,
+        "result": 201,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "follow/fixtures.json": "62bdb72c7bf2a56c118f273562876f7856458d1f7f6946495b0d5532fa01da4f",
+        "follow/raw.jsonl": "1ed1008eb1753724d150340b5879d1ad690c26193eadf6ab13cc1df858eaecf4",
+        "follow/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "launch",
+      "fixtures": 418,
+      "record_counts": {
+        "runtime": 1,
+        "result": 418,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "launch/fixtures.json": "971d8a33a37a158d0ee6075f7eaf1a76b4fbc5e0e32b99bb10858550d6604de4",
+        "launch/raw.jsonl": "8cebe9ced74b6a75af5f540c87e93bb25d817fcb1bff15d97e9a38b3b06f2845",
+        "launch/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "left",
+      "fixtures": 201,
+      "record_counts": {
+        "runtime": 1,
+        "result": 201,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "left/fixtures.json": "52f46b1cf8fd7c666d9f24b779260f3cc84571c7f37b82f11be29cf7b64f05cf",
+        "left/raw.jsonl": "34d1c3eca7fcfebe46ccde547491ba85c52b8d60c599fd96f022850465824147",
+        "left/traces.jsonl": "828d6f67a73a55b3ef48f6a332b08945f4c127a33ac6d5c5ec17459a6990d742"
+      }
+    },
+    {
+      "chunk": "object",
+      "fixtures": 45,
+      "record_counts": {
+        "runtime": 1,
+        "result": 45,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "object/fixtures.json": "58980c773c99c90258f9f925d5082b492e894d459076b863dfc3f3847279a366",
+        "object/raw.jsonl": "8bf0f889dc14200e5121424fba6525d47961f0632922d7e8d83987e06f682989",
+        "object/traces.jsonl": "fe158c930ae94aa9263560f9c61606e6fe9bbfde0b432215e20e2df915594745"
+      }
+    },
+    {
+      "chunk": "overhead-0-0",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-0-0/fixtures.json": "9bce735c9c24c69891bf24f1d09dc5da33e67e6d397003ceca0624a8332a011f",
+        "overhead-0-0/raw.jsonl": "cf6a94f828b7a353e609e8645c41dc044632f7ac7a025c8bdf0ca8aa628bbad6",
+        "overhead-0-0/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "overhead-0-1",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-0-1/fixtures.json": "ab69d4c1a9f717785ccbe03f3139d138b2f305520ad68242b83accae3bf38523",
+        "overhead-0-1/raw.jsonl": "1851cf929b82060ce98ae38fb8b3beed6322d5d051b129a3d4c73c675e42ab6c",
+        "overhead-0-1/traces.jsonl": "3d182ef53f49d895f436ef530fdc927caa67880a664b892342e0c0b4d7482e00"
+      }
+    },
+    {
+      "chunk": "overhead-1-0",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-1-0/fixtures.json": "9bce735c9c24c69891bf24f1d09dc5da33e67e6d397003ceca0624a8332a011f",
+        "overhead-1-0/raw.jsonl": "651a360e6ee1ac727b1a0c5f5d1a8333e52a6b33c62a985504b24f0a6739a0d4",
+        "overhead-1-0/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "overhead-1-1",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-1-1/fixtures.json": "ab69d4c1a9f717785ccbe03f3139d138b2f305520ad68242b83accae3bf38523",
+        "overhead-1-1/raw.jsonl": "bd382505a6e6006361b03e26967bb66db78614f1036643f58ea30e306524beed",
+        "overhead-1-1/traces.jsonl": "3d182ef53f49d895f436ef530fdc927caa67880a664b892342e0c0b4d7482e00"
+      }
+    },
+    {
+      "chunk": "overhead-2-0",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-2-0/fixtures.json": "9bce735c9c24c69891bf24f1d09dc5da33e67e6d397003ceca0624a8332a011f",
+        "overhead-2-0/raw.jsonl": "7083034a17ad228ed7fbd81034a988da3615848b008d841be97c1e21853fefa9",
+        "overhead-2-0/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "overhead-2-1",
+      "fixtures": 1,
+      "record_counts": {
+        "runtime": 1,
+        "result": 1,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "overhead-2-1/fixtures.json": "ab69d4c1a9f717785ccbe03f3139d138b2f305520ad68242b83accae3bf38523",
+        "overhead-2-1/raw.jsonl": "823105eeef26d3d4784c25c57c310889f27b48a79f3dc03b87fea521b43ed5ea",
+        "overhead-2-1/traces.jsonl": "3d182ef53f49d895f436ef530fdc927caa67880a664b892342e0c0b4d7482e00"
+      }
+    },
+    {
+      "chunk": "rail",
+      "fixtures": 36,
+      "record_counts": {
+        "runtime": 1,
+        "result": 36,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "rail/fixtures.json": "69a2cbe84e4f6e6c3392b5edf21fce28d2787e0cab90396ca49a0237ed4cdc57",
+        "rail/raw.jsonl": "6922508a997276d5b9840d2b3065b9adab682ca40a22dcdc4b3e6d1d28b79b50",
+        "rail/traces.jsonl": "180d0221950ce61fdac362632804c4bf89caa656c06d5eca91d5322fd48f2a46"
+      }
+    },
+    {
+      "chunk": "repeat",
+      "fixtures": 8,
+      "record_counts": {
+        "runtime": 1,
+        "result": 8,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "repeat/fixtures.json": "3c94d2401263aa6cbc71bdb2ea179ccd6f2db7897d498ca98447910c9b84185a",
+        "repeat/raw.jsonl": "a77fb65ff3df3452cb3b3475aa9b73495139380f0facc241c99b08f8f884e87e",
+        "repeat/traces.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "chunk": "right",
+      "fixtures": 201,
+      "record_counts": {
+        "runtime": 1,
+        "result": 201,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "right/fixtures.json": "f733420521cf6d4e4c07bb1b05bcf03105dc21cbe0296e70431faab6c528255f",
+        "right/raw.jsonl": "b92f1c7e713ea13202bdbd107f34186e5f005d00faa2eeee4a34f1135f740e12",
+        "right/traces.jsonl": "28987ecb7b5d9eb1fbc601a13bec6471cc2e70ac364e945f8c09a370c86fe888"
+      }
+    },
+    {
+      "chunk": "rolling",
+      "fixtures": 7,
+      "record_counts": {
+        "runtime": 1,
+        "result": 7,
+        "unsupported_probe": 7,
+        "controller_boundary": 13,
+        "completion": 1
+      },
+      "engine_hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+      "artifact_sha256": {
+        "rolling/fixtures.json": "f82f69c7ac479f5fe3d8794e29a97f439619ff80c7d14f80bcb44ad59a8926fe",
+        "rolling/raw.jsonl": "9bbbe63dc4dc2ae31dee694e0033f3649c1ce79b1caa0b5d993dd2f5fe7edb47",
+        "rolling/traces.jsonl": "ccd17421e702b27e535e1415d205a852a2627f4b51b2c9accd9c93c6ef59487e"
+      }
+    }
+  ]
+}

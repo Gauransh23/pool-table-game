@@ -51,7 +51,7 @@ proof of real-cloth calibration error. Pure rolling does not need a slide transi
 tiny float-vector residuals and the absence of a crossing are retained as unqualified
 transition entries rather than invented exact roots.
 
-To reproduce the six integrity tests without a new sweep, extract both archives
+To reproduce the original evidence without a new sweep, extract the archives
 from the repository root, then run the checker:
 
 ```sh
@@ -64,3 +64,11 @@ python3 tests/measurement/check_power_atlas.py
 Extract only into absent/empty named run directories. The smoke archive is the
 earlier completed smoke acquisition used for parser corruption tests; it is
 historical harness evidence, not the final qualified product atlas.
+
+Round 1 adds fail-closed reader checks and the independent torque audit without
+reacquiring the atlas. `postprocess-identity-round1.json` binds these updated tools
+to the unchanged original manifest/chunks. The current parser-negative tests use
+final-v2 rather than the historical smoke. The exact seven covering tests are
+recorded in `round1-covering-tests.json`. The older `--resume --strict` evidence
+was produced by the original wrapper; the updated wrapper correctly rejects
+resuming it under a changed source identity. Physical calibration remains unproven.
