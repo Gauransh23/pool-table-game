@@ -1,0 +1,15 @@
+Lead review reproduced against the first COMPLETE schema:
+
+python3 - <<'PY'
+import json,pathlib
+s=json.loads(pathlib.Path('test-results/power-atlas-c0-20261107-b/summary.json').read_text())
+rail=next(r for r in s['contact_map'] if r['first_event']=='rail')
+assert 'first_rail_event' in rail, 'reproduced review finding: rail event lacked an explicit rail-contact field'
+PY
+
+Exit 1:
+AssertionError: reproduced review finding: rail event lacked an explicit rail-contact field
+
+The corrected schema records first_ball_contact/cue_object_classification separately
+from first_rail_event/rail_classification. Final integrity checks assert these fields
+against actual rail/ball events and require numeric planar event positions.

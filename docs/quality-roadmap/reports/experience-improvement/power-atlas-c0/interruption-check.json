@@ -1,0 +1,377 @@
+{
+  "status": "EXPECTED_INCOMPLETE",
+  "procedure": "SIGTERM Python driver and its observed Godot child during follow chunk; retain flushed artifacts; no summary or qualified completion",
+  "manifest": {
+    "schema": "long-rail-power-atlas/1",
+    "run_id": "power-atlas-c0-20261107-final",
+    "status": "INCOMPLETE",
+    "started_utc": "2026-11-07T15:22:10Z",
+    "baseline_head": "08199fe096d8814223102cc85d3f856056eb04a5",
+    "dirty_summary": "?? docs/quality-roadmap/reports/experience-improvement/ORCHESTRATION_STATUS.md\n?? docs/quality-roadmap/reports/experience-improvement/POWER_RESPONSE_INVESTIGATION.md\n?? docs/quality-roadmap/reports/experience-improvement/VISUAL_SLICE_INVESTIGATION.md\n?? docs/quality-roadmap/reports/experience-improvement/power-scout-evidence/\n?? tests/measurement/check_power_atlas.py\n?? tests/measurement/power_atlas_fixture.gd\n?? tests/power_response_atlas.gd\n?? tools/power_response_atlas.py\n",
+    "source_sha256": {
+      "assets/audio/ball.wav": "b644fbf7a969603796c9258b19be77690e5450097c437c3eb8875f83e2e33112",
+      "assets/audio/ball.wav.import": "750cb114a3df1fba3708bab83bd65446577a40449e10d97d503084fcb38d8bd4",
+      "assets/audio/cue.wav": "7ea2f8c9cba1a6b2810cb28d21d99dc6cea1f776dd89f9257e12a16a818e9a52",
+      "assets/audio/cue.wav.import": "539a8f795ac568803c9777672c957395508049752aea09b0e1455a620d6d240b",
+      "assets/audio/default_bus_layout.tres": "c469ec92ebd018261d62b4d1f3797e65bc07e4c47b59cba0faf249796a9ae0d8",
+      "assets/audio/pocket.wav": "4d1c05ce36b628b5e00f36810a1484dd577c312d508e61800f27ea55271ed2f3",
+      "assets/audio/pocket.wav.import": "4e8cf99660ef0c6d0162c8bcd3b9f6e0801962655d73ece0fbc87f00a84a4dbc",
+      "assets/audio/rail.wav": "6d7bebdcf14a23269d878d1a2ba2cbc0340bbfb454442b3409f57ff99b75c823",
+      "assets/audio/rail.wav.import": "765819dbf6b87e05fd5dbe40d7c1f55fad02557e98c8705306c452939ae2b9fb",
+      "assets/icon.svg": "dc0e639506c49ab075aea1704283b2b8a8be5f99660ac1402f10c98ef7800afe",
+      "assets/icon.svg.import": "8d573e8e7051a735de9875e43567fa8ae4b137bc842e11649f735184bdcf8992",
+      "assets/markings/ball-01.png": "915b2d8bd623ab5cb8d6e597b21d06c7b0bb4f9507d5a239193a1629ae905ebb",
+      "assets/markings/ball-01.png.import": "f6620f6934d8ed8c1736de269487702cb0eb9eddcf8a452a0a085a8703781901",
+      "assets/markings/ball-02.png": "65a03aa504fb5de5f3d9725cff3f5d281d7bf9bba4ae07ab104968670d7fc678",
+      "assets/markings/ball-02.png.import": "908fff201d6222cfa03c569e87068499a1da37b0421e3bd64017893846292056",
+      "assets/markings/ball-03.png": "d5e01915c859cbeb87bd65d1aaa3ae29c9d6281ef633df47e1c08a5116bbe8f1",
+      "assets/markings/ball-03.png.import": "c1eda2d675f0a0968007469e00341ac9f7005ef7592b50c283f1555f0dc3756a",
+      "assets/markings/ball-04.png": "0583bbc823e8120b07b9989f4edd4ef6e09a16c8855692872228010c6f89ccc5",
+      "assets/markings/ball-04.png.import": "9cbef6dd4dc4a9fe2917b36ec9911a71c66ae2c5499d97080ddaaa8cea87a552",
+      "assets/markings/ball-05.png": "7c6142b4ba19ae2dffe39b941a56a1d393ba0003cd839bd7011a630dcef1d7d0",
+      "assets/markings/ball-05.png.import": "dcca4731512c8d16755d7bef013f0d6639dad1b797ef03ab08630ee5add3df28",
+      "assets/markings/ball-06.png": "85c7998b20d0819398481eb0bab62ce521b91b7efd1a1ec82d142aa03d34983a",
+      "assets/markings/ball-06.png.import": "e0fc2a9e2d506d60a20fa6441efd6dc12079856981b8f04d2c656570db19444c",
+      "assets/markings/ball-07.png": "7143307efbaf6d243c87351df47b07b21aac8c644886db0d778ae05694f69626",
+      "assets/markings/ball-07.png.import": "bece2876faa959ef6a4930274e5053e18686cd840ac4f9e388a94e9a90c6bf13",
+      "assets/markings/ball-08.png": "992c756a3f8cc94209a39a1f0b0a4c49768b8c33af38dca70e3c175c00df21bf",
+      "assets/markings/ball-08.png.import": "0de9931a0877fa24830718809b45ee6c70cb34ad896c06edf87cf2e3a0197cdc",
+      "assets/markings/ball-09.png": "3ed0abb334f20716e5c1acfac03b628477d1612038bbf679e670498c4ad93e83",
+      "assets/markings/ball-09.png.import": "3dfb29a5c0fecc215bef6214558c8f41c844abcb431720cff8f4eb3c1ba75837",
+      "assets/markings/ball-10.png": "25c6d1ce635e37759bde251d8148ca099ceece69be04f7ba1cc7ba984e865754",
+      "assets/markings/ball-10.png.import": "a2ae681f601a3375f96ab2fcad3b8a32e310d60cc3efd8bcaf95507897f56ca7",
+      "assets/markings/ball-11.png": "33157f9547de23dd61f7adfdf04c5c50951f882ccc5a438628d488f274e2f78c",
+      "assets/markings/ball-11.png.import": "7b0b32627f59e7a0ebde81afbab78efe00970966873ee6820a2e5a92f7990930",
+      "assets/markings/ball-12.png": "6e7c7bac6dedead05ec44a9493e72d7f67a2762b6f822daff6fc00a71dfeb0bb",
+      "assets/markings/ball-12.png.import": "e8af0c95391482a9e9ac06f170f4d7457f547d10e6302d87d1685beee1f47f80",
+      "assets/markings/ball-13.png": "993866bd950bcc0e5253723d1c285f3dd5679c564272e4f70bda2fb3dc516bfb",
+      "assets/markings/ball-13.png.import": "350e88f2136aa08fa3ce6d6c00189ed31457e40cbacb173242066a9a011f5654",
+      "assets/markings/ball-14.png": "34b25ac95d2ea75811ce2e1690360900d954f3405879f54c171d3dd81ba3ff01",
+      "assets/markings/ball-14.png.import": "bca0f4663e1d4894ac6457aaf259709bd112a7e050e30dfc5e456e4e27ca84ef",
+      "assets/markings/ball-15.png": "890ca8e373fe40922e9c9c88ce6bb254d7fe6e6e03f5f2f4ecfbd5f49b4f011d",
+      "assets/markings/ball-15.png.import": "9e65976573565b0b53ce80653ec7794ae143efa3936dc1fce83023c2c0b30983",
+      "assets/shaders/ball_surface.gdshader": "d005527f9c72f1a361c0b475a3d93a5f24c0a94ac6ea3e3676a647c68a539238",
+      "assets/shaders/ball_surface.gdshader.uid": "b91fb34aa432aaa645b81f97d3db417cb6d12c2a040b4c2c76389a80ad53af16",
+      "assets/shaders/cloth_surface.gdshader": "46357b268dd1f91ddfe388e78602d083f07e678d526bfca4f7d3804bc73a24cc",
+      "assets/shaders/cloth_surface.gdshader.uid": "4e884b75e88604e408c2d04d4861be82ba68df3cfa0fb39fe677073251e67a90",
+      "assets/shaders/room_reflections.gdshader": "f84d09a560b56f5d0624da694e9ec49b8e837da1da5da99e126393102dbc25fa",
+      "assets/shaders/room_reflections.gdshader.uid": "22ec58c501dec2d7e2f20cd1098a2e621e60f0884e2b9faff2fb31a25e2108a8",
+      "project.godot": "a4d9feb4b3b7e34ee8920245170608487a89cef28bca479939893e4681f0dd77",
+      "scenes/main.tscn": "ef4294b4fb7fed01de5f6b4b0ae2745fd478c0e0273fc1159ed785b3b8eff6df",
+      "scripts/app/game_controller.gd": "67d03831a85264cc7838dd238968dc8bd47dfebaaed5e2c5638f9745b6afab75",
+      "scripts/app/game_controller.gd.uid": "65c391edd96f482953c9f265dcd6bad53c371d7852f5b06f502f94293ed6e2d7",
+      "scripts/game/eight_ball_match.gd": "548464b99a34a0f938b9a3d8f48633cf9e6db05329906ad7209500cd67b447e2",
+      "scripts/game/eight_ball_match.gd.uid": "fb395f5f59a3face53a2c1091f1183ce8b0327dd5412db260c492d34b479ab68",
+      "scripts/game/eight_ball_rules.gd": "2966ea8a3dba68aa57ff42844720a3fcd68ee11e2a2643a080814e439b596e1e",
+      "scripts/game/eight_ball_rules.gd.uid": "f7b38dde2c5f42d45ff12dd9f2a4fcf5fcaf06700aaa7a9a8de8cb60c31bcafc",
+      "scripts/game/eight_ball_shot_event.gd": "ab398d3ba1d30ae19f15bc5979a75f96971fa02314a8ef1c61b0f668e2e24dae",
+      "scripts/game/eight_ball_shot_event.gd.uid": "90592b5de245b722440a3f4bbf9e2f014f6e3ef8122ed7f002454368479f98d1",
+      "scripts/game/rack_builder.gd": "1aa638dd18c49cf7f418c94fe2a5b29ee94f38f99882dd8183a0a422e2d56123",
+      "scripts/game/rack_builder.gd.uid": "8cf18d03232ad6aade8909d02a1db8ef7f2f828ab3d36ddfa0eaa153f94963f9",
+      "scripts/presentation/ball_visual.gd": "e4915e3b0651106ead7319d42e056fed6845c0b7c2fc300536307730c6756a90",
+      "scripts/presentation/ball_visual.gd.uid": "1e50878ac4d2b01ae9a8cdf0d9ec0948a4bc2d015bc6c1e3e5976fa23b4d2e82",
+      "scripts/presentation/table_audio.gd": "8a604661a03ea444bff2f71f05d55e7cc834fa4a6c9bc1988a9949ae2b34c3e6",
+      "scripts/presentation/table_audio.gd.uid": "78fa01fc6f0fdb5c643795f59e2d13fc0553742dc34b055ad3d750df847b2fed",
+      "scripts/presentation/table_presentation.gd": "140a2a81c4cc090b892edb23d5dcb078ea3da004fc8b6b68a10c5eda3a52bfa7",
+      "scripts/presentation/table_presentation.gd.uid": "910027a6533eb74f81493834b8e3b12b5b546180674d5178b9b7f349158cb4f8",
+      "scripts/sim/ball_state.gd": "5b0ab4a9d58f98e46bae1352141d7de563764491d4e5f8cce46799ca1284a8c1",
+      "scripts/sim/ball_state.gd.uid": "0ac6586a028077ab71b35c6a5921e7b3f641c001bb53e89aa337714f028183dc",
+      "scripts/sim/cue_strike_model.gd": "eb1e66144f4f6ea6d188b32858c70da231c8a92a8658db2c4d8c4baa5cdd473f",
+      "scripts/sim/cue_strike_model.gd.uid": "5988d8bd64d02227f0bdb75f5352f6cb76deb595b8173a3502ff0fbc98c0f5b9",
+      "scripts/sim/physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
+      "scripts/sim/physics_config.gd.uid": "13f7217713d1c8918d9d6143e541d67d445b376fe64c33bfb1b6dc4d936ba595",
+      "scripts/sim/physics_stepper.gd": "f16b01423140524a9330daaac39011cca6757fc532ea4fce7dd6cf3fa230669b",
+      "scripts/sim/physics_stepper.gd.uid": "c4e7ddb43992bfc436beac348b6a7d11748d11eb4e547681fc46793de035ab3e",
+      "scripts/sim/stroke_power.gd": "5db09d9cfb0b34d8480277480c658f249f986939b6ac141cb0d63c9060652cc7",
+      "scripts/sim/stroke_power.gd.uid": "f05d41af4b361e3b25344891f45f980fe7d8a98896a6a1ce23bc11d1b700304f",
+      "scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff",
+      "scripts/sim/table_spec.gd.uid": "a13eb8fa5dea7df32dbb50e2df88e558ebf8ed670452e1dca09d6746c39525bb",
+      "scripts/ui/game_hud.gd": "2c740297e10d5de8a0f1c22178d6ce3d8431981d6086052bd1c774a49021909c",
+      "scripts/ui/game_hud.gd.uid": "279463c3edc55e789626dc0f6595c0f2785062770300af56a181853d99d2d1fc",
+      "scripts/ui/spin_pad.gd": "a69a068b78ed138ec6661ba9d3d3784e820a65368954677a8d85f60741b58dec",
+      "scripts/ui/spin_pad.gd.uid": "64d83ab454f7fce95df029759b475307ce5500bc6c07255d52944f6f62f90216",
+      "tests/measurement/power_atlas_fixture.gd": "c5356e281ec7cd8840ced2fb5778a4883a809ec9c04ec9b86bdb60a72295f0c1",
+      "tests/measurement/shot_fixture.gd": "af15e64511c01a800b96321ab4af35ab4685b750b78b7e3f405ae82d1ad03f89",
+      "tests/power_response_atlas.gd": "d650b2a768686157218f009a1bb8310755dc49678866b9c63c476b1de91f76da",
+      "tools/power_response_atlas.py": "82e88b5502bb7094eed81df32fb57ffe936d13ebc9ceeb520eabb35af5298452"
+    },
+    "fixtures_sha256": "7970e5c1f6cff91fa089dc2c016d75576d3e331ad588848a078f7586a64214a4",
+    "fixture_schema": "long-rail-power-atlas-fixture/1",
+    "mapping_identity": "floor-quadratic-v1",
+    "profile": {
+      "fixed_step": 0.0020833333333333333,
+      "gravity": 9.81,
+      "ball_mass": 0.168,
+      "ball_restitution": 0.94,
+      "ball_friction": 0.055,
+      "cushion_restitution": 0.84,
+      "cushion_friction": 0.12,
+      "sliding_friction": 0.19,
+      "rolling_resistance": 0.012,
+      "spinning_friction": 0.0127,
+      "sleep_speed_threshold": 0.012,
+      "sleep_spin_threshold": 0.08,
+      "max_speed": 14.0,
+      "max_substep_travel_fraction": 0.45,
+      "max_collision_iterations": 6,
+      "cue_mass": 0.52,
+      "cue_collision_efficiency": 0.87,
+      "cue_end_mass": 0.008,
+      "pocket_liner_restitution": 0.2
+    },
+    "profile_sha256": "8c1541e909ceb077bde5413d65d4198fd434e58a49494fd48f4de91f830011e8",
+    "requirements": [
+      "PWR-001",
+      "PWR-002",
+      "PWR-003",
+      "PWR-004",
+      "PWR-005",
+      "PWR-006",
+      "CUE-001",
+      "CUE-002",
+      "CUE-003",
+      "CUE-004",
+      "CUE-005",
+      "CUE-006",
+      "CUE-007",
+      "CLT-001",
+      "CLT-002",
+      "CLT-003",
+      "CLT-004",
+      "CLT-005",
+      "CLT-006",
+      "CLT-007"
+    ],
+    "units": {
+      "distance": "m",
+      "time": "s",
+      "mass": "kg",
+      "spin": "rad/s",
+      "angles": "rad",
+      "energy": "J",
+      "impulse": "N s",
+      "planar_axes": "x,z"
+    },
+    "rng": "active physics seedless; cosmetic stream excluded",
+    "host": {
+      "os": "macOS-27.2-arm64-arm-64bit",
+      "architecture": "arm64"
+    },
+    "oracle_identity": "uniform solid sphere vector Coulomb slide; exact transition split; constant rolling resistance",
+    "artifact": "headless source run; controller tween manually advanced; no native/human evidence",
+    "cli": [
+      "tools/power_response_atlas.py",
+      "--output",
+      "test-results/power-atlas-c0-20261107-final"
+    ],
+    "per_process_watchdog_s": 120,
+    "worst_free_ticks": 40200000,
+    "smoke": false
+  },
+  "summary_exists": false,
+  "chunks": {
+    "follow": {
+      "raw_sha256": "797f0f2bffc0321a8116655ab510fcb7e95a4f60ac6f382432babd002fa03793",
+      "rows": 182,
+      "last_row": {
+        "accepted": true,
+        "committed_power": null,
+        "controller_equivalent": null,
+        "cue_impulse_Ns": [
+          0.9028051757812501,
+          0.0,
+          0.0
+        ],
+        "cue_input_energy_J": 10.965573596250003,
+        "cue_object_classification": "no_ball_contact",
+        "cue_signed_travel_after_contact_m": null,
+        "cue_speed_m_s": 6.494250000000001,
+        "direction": [
+          1.0,
+          0.0
+        ],
+        "elevation_radians": 0.0,
+        "endpoint_to_rest": true,
+        "energy_bound_J": 10.965584561823599,
+        "events": [],
+        "family": "free",
+        "finite": true,
+        "first_ball_contact": null,
+        "first_rail_event": null,
+        "first_roll_interval": {
+          "distance_interval_m": [
+            0.5584902167320251,
+            0.5700855851173401
+          ],
+          "from": "slide",
+          "phase_from": 0,
+          "phase_to": 0,
+          "slip_m_s": 4.1923522076103836e-07,
+          "tick": 50,
+          "time_interval_s": [
+            0.10208333333333344,
+            0.10416666666666678
+          ],
+          "to": "roll",
+          "velocity_m_s": [
+            5.565768718719482,
+            0.0
+          ]
+        },
+        "hud_readback": 0.9,
+        "hud_tip_readback": null,
+        "id": "free-follow-180",
+        "initial": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.028575,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            -1.0
+          ]
+        ],
+        "input_domain": "HUD power",
+        "kind": "result",
+        "last_stable_roll_interval": {
+          "distance_interval_m": [
+            0.5584902167320251,
+            0.5700855851173401
+          ],
+          "from": "slide",
+          "phase_from": 0,
+          "phase_to": 0,
+          "slip_m_s": 4.1923522076103836e-07,
+          "tick": 50,
+          "time_interval_s": [
+            0.10208333333333344,
+            0.10416666666666678
+          ],
+          "to": "roll",
+          "velocity_m_s": [
+            5.565768718719482,
+            0.0
+          ]
+        },
+        "launch": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.028575,
+            5.37384033203125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -211.56849670410156,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            -1.0
+          ]
+        ],
+        "launch_energy_J": 3.6538090405195316,
+        "net_displacement_m": [
+          132.1631622314453,
+          0.0
+        ],
+        "observer_overflow": false,
+        "path_length_m": 132.1631622314453,
+        "power_tick": 180.0,
+        "provenance": "direct active strike model",
+        "rail_classification": "no_rail_event",
+        "readiness_s": 47.368749999998,
+        "regime_changes": [
+          {
+            "distance_interval_m": [
+              0.5584902167320251,
+              0.5700855851173401
+            ],
+            "from": "slide",
+            "phase_from": 0,
+            "phase_to": 0,
+            "slip_m_s": 4.1923522076103836e-07,
+            "tick": 50,
+            "time_interval_s": [
+              0.10208333333333344,
+              0.10416666666666678
+            ],
+            "to": "roll",
+            "velocity_m_s": [
+              5.565768718719482,
+              0.0
+            ]
+          }
+        ],
+        "requested_power": 0.9,
+        "signed_net_m": 132.1631622314453,
+        "simulation_s": 47.368749999998,
+        "spin_rest_s": 47.368749999998,
+        "status": "MEASURED",
+        "substep_count": null,
+        "substep_reason": "not exposed by active observer API",
+        "terminal": [
+          [
+            0.0,
+            0.0,
+            132.1631622314453,
+            0.0,
+            0.028575,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.8111732006072998,
+            0.5848060846328735,
+            0.0,
+            -1.0
+          ]
+        ],
+        "termination": "settled",
+        "ticks": 22737,
+        "tip_actual": [
+          0.0,
+          0.44999998807907104
+        ],
+        "tip_adjustment": "supported fixtures need no radial clamp; Vector2 conversion only",
+        "tip_requested": [
+          0.0,
+          0.45
+        ],
+        "trace": false,
+        "translation_rest_s": 47.368749999998,
+        "wall_usec": 416650
+      },
+      "complete_marker": false
+    },
+    "center": {
+      "raw_sha256": "b1a175a9bdbd38c3403c17e9ea68c2f86630dfde631d4132cf8fc1e9571eaaa0",
+      "rows": 223,
+      "last_row": {
+        "errors": [],
+        "fixtures": 201,
+        "kind": "completion"
+      },
+      "complete_marker": true
+    }
+  }
+}

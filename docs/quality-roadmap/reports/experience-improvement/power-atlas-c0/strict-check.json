@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "tools/power_response_atlas.py",
+    "--output",
+    "test-results/power-atlas-c0-20261107-final-v2-strict-copy",
+    "--resume",
+    "--strict"
+  ],
+  "expected_exit": 2,
+  "actual_exit": 2,
+  "stdout": "chunk center 201\nchunk follow 201\nchunk draw 201\nchunk right 201\nchunk left 201\nchunk launch 418\nchunk rail 36\nchunk object 45\nchunk rolling 7\n{\n  \"status\": \"COMPLETE\",\n  \"fixture_counts\": {\n    \"free\": 1005,\n    \"launch\": 418,\n    \"rail\": 36,\n    \"object\": 45,\n    \"rolling\": 7\n  },\n  \"gap_violations\": 21,\n  \"nearest_target_failures\": 3,\n  \"total_ticks\": 7673177,\n  \"wall_s\": 1.1811320781707764\n}\n",
+  "stderr": ""
+}
