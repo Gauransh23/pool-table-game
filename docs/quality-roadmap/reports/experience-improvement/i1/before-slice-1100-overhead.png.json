@@ -1,0 +1,68 @@
+{
+  "arguments": [
+    "--small",
+    "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1100-overhead.png"
+  ],
+  "balls": [
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 14.1495819091797,
+      "height": 0.028575,
+      "number": 0,
+      "orientation": "(0, 0, 0, 1)",
+      "phase": 0,
+      "position": "(-0.94, -0.4)",
+      "velocity": "(0.0, 0.0)"
+    },
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 14.149543762207,
+      "height": 0.028575,
+      "number": 8,
+      "orientation": "(0, 0, 0, 1)",
+      "phase": 0,
+      "position": "(-1.2, -0.37)",
+      "velocity": "(0.0, 0.0)"
+    },
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 14.1494979858398,
+      "height": 0.028575,
+      "number": 14,
+      "orientation": "(0.707107, 0, 0, 0.707107)",
+      "phase": 0,
+      "position": "(-1.05, -0.52)",
+      "velocity": "(0.0, 0.0)"
+    }
+  ],
+  "camera_size": 2.8272979259491,
+  "camera_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 0.000201, -1.0), Z: (0.0, 1.0, 0.000201), O: (0.0, 5.0, 0.001)]",
+  "capture": "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1100-overhead.png",
+  "design_size": "(1600, 900)",
+  "draw_calls": 242.0,
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "fixture_sha256": "84fd71e9d0add0def6bd235156589fe6ca3cb0ebe57f1b3a8d09f3db56d0d8ca",
+  "framebuffer": "(1100, 700)",
+  "native_os_transform": "NOT_MEASURED; native window framebuffer capture",
+  "play_area": "[P: (24.0, 88.0), S: (742.0, 564.0)]",
+  "primitives": 35096.0,
+  "source_sha256": "140a2a81c4cc090b892edb23d5dcb078ea3da004fc8b6b68a10c5eda3a52bfa7",
+  "sources": {
+    "res://assets/shaders/ball_surface.gdshader": "d005527f9c72f1a361c0b475a3d93a5f24c0a94ac6ea3e3676a647c68a539238",
+    "res://assets/shaders/cloth_surface.gdshader": "46357b268dd1f91ddfe388e78602d083f07e678d526bfca4f7d3804bc73a24cc",
+    "res://scripts/presentation/ball_visual.gd": "e4915e3b0651106ead7319d42e056fed6845c0b7c2fc300536307730c6756a90",
+    "res://scripts/presentation/table_presentation.gd": "140a2a81c4cc090b892edb23d5dcb078ea3da004fc8b6b68a10c5eda3a52bfa7",
+    "res://scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff"
+  },
+  "viewport": "(1100.0, 700.0)"
+}

@@ -11,6 +11,8 @@ var _ball_nodes: Dictionary = {}
 var _aim_mesh: MeshInstance3D
 var _aim_immediate: ImmediateMesh
 var _aim_material: StandardMaterial3D
+var _contact_marker_mesh: TorusMesh
+var _placement_preview_mesh: SphereMesh
 var _ghost_ball: MeshInstance3D
 var _cue_root: Node3D
 var _cue_body: MeshInstance3D
@@ -108,8 +110,9 @@ func sync_balls(balls: Array) -> void:
 
 func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool, tip_offset: Vector2 = Vector2.ZERO, launch_direction: Vector2 = Vector2.ZERO) -> void:
 	_aim_immediate.clear_surfaces()
+	_ghost_ball.mesh = _contact_marker_mesh
 	var ghost_material := _ghost_ball.material_override as StandardMaterial3D
-	ghost_material.albedo_color = Color(0.93, 0.88, 0.74, 0.24)
+	ghost_material.albedo_color = Color(0.68, 0.89, 0.94, 0.9)
 	_cue_root.visible = _cue_delivery_visible or (visible and cue_ball != null and cue_ball.is_on_table())
 	_ghost_ball.visible = false
 	if not visible or cue_ball == null or not cue_ball.is_on_table() or direction.length_squared() < 0.9:
@@ -139,6 +142,7 @@ func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float
 
 
 func set_placement_preview(position: Vector2, valid: bool) -> void:
+	_ghost_ball.mesh = _placement_preview_mesh
 	_ghost_ball.position = Vector3(position.x, BallState.RADIUS, position.y)
 	var material := _ghost_ball.material_override as StandardMaterial3D
 	material.albedo_color = Color(0.8, 1.0, 0.85, 0.65) if valid else Color(1.0, 0.35, 0.25, 0.65)
@@ -195,10 +199,6 @@ func _build_table() -> void:
 	slate.mesh = _outline_mesh(outline, 0.0, -0.07, true, false)
 	slate.material_override = _mat("#26332c", 0.9)
 	add_child(slate)
-	# Apron sides leave the actual wells unobstructed from above.
-	for side in [-1.0, 1.0]:
-		_add_box("Long apron", Vector3(half_x * 2.0 + .22, .18, .055), Vector3(0,-.13,side*(half_z+.095)), _wood("#38281f"))
-		_add_box("End apron", Vector3(.055,.18,half_z*2.0+.14), Vector3(side*(half_x+.095),-.13,0), _wood("#38281f"))
 	var cloth := MeshInstance3D.new()
 	cloth.mesh = _outline_mesh(outline, 0.0, 0.0, false)
 	var cloth_material := ShaderMaterial.new()
@@ -217,7 +217,7 @@ func _build_pockets() -> void:
 		var well := MeshInstance3D.new()
 		well.name = "PocketWell%d" % pocket["id"]
 		well.mesh = _pocket_liner_mesh(pocket)
-		var lining := _mat("#211b16", 0.94)
+		var lining := _mat("#33281f", 0.94)
 		lining.cull_mode = BaseMaterial3D.CULL_DISABLED
 		well.material_override = lining
 		add_child(well)
@@ -237,6 +237,19 @@ func _pocket_liner_mesh(pocket: Dictionary) -> ArrayMesh:
 		# Match the three physical liner walls; the front slate edge stays open.
 		_mesh_triangle(surface,Vector3(a.x,2.0*BallState.RADIUS,a.y),Vector3(b.x,2.0*BallState.RADIUS,b.y),Vector3(b.x,-.18,b.y))
 		_mesh_triangle(surface,Vector3(a.x,2.0*BallState.RADIUS,a.y),Vector3(b.x,-.18,b.y),Vector3(a.x,-.18,a.y))
+	# A narrow solid return behind the three physical walls; no front disk or
+	# bridge crosses the slate fall edge. The cavity face above is untouched.
+	for i in range(3):
+		var a := points[i]
+		var b := points[i+1]
+		var tangent := (b-a).normalized()
+		var normal := Vector2(-tangent.y,tangent.x)
+		var center: Vector2 = (pocket.fall_a+pocket.fall_b+pocket.back_a+pocket.back_b)*.25
+		if normal.dot(center-(a+b)*.5)>0: normal=-normal
+		var a_outer := a+normal*.006
+		var b_outer := b+normal*.006
+		_mesh_triangle(surface,Vector3(a.x,2*BallState.RADIUS,a.y),Vector3(b.x,2*BallState.RADIUS,b.y),Vector3(b_outer.x,2*BallState.RADIUS,b_outer.y))
+		_mesh_triangle(surface,Vector3(a.x,2*BallState.RADIUS,a.y),Vector3(b_outer.x,2*BallState.RADIUS,b_outer.y),Vector3(a_outer.x,2*BallState.RADIUS,a_outer.y))
 	surface.generate_normals()
 	return surface.commit()
 
@@ -261,29 +274,111 @@ func _outline_mesh(outline: PackedVector2Array, top: float, bottom: float, sides
 	return surface.commit()
 
 
+func _rail_section_point(endpoint: Vector2, inward: Vector2, section: Vector2) -> Vector3:
+	var shift := inward * section.x
+	for other in _table.rail_segments():
+		if other.inward.is_equal_approx(inward): continue
+		if endpoint.distance_to(other.a) < 0.000001 or endpoint.distance_to(other.b) < 0.000001:
+			var normal: Vector2 = other.inward
+			shift = (inward + normal) * section.x / (1.0 + inward.dot(normal))
+			break
+	return Vector3(endpoint.x+shift.x,section.y,endpoint.y+shift.y)
+
+
 func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var section := [Vector2(0.0,_table.cushion_nose_height),Vector2(-.029,.051),Vector2(-.029,.007)]
-	for i in range(3):
-		var next := (i+1)%3
+	var section := [Vector2(0.0,_table.cushion_nose_height),Vector2(-.027,.051),Vector2(-.029,.049),Vector2(-.029,.007)]
+	for i in range(section.size()):
+		var next := (i+1)%section.size()
 		var p: Vector2 = section[i]
 		var q: Vector2 = section[next]
-		var pa := Vector3(a.x+inward.x*p.x,p.y,a.y+inward.y*p.x)
-		var pb := Vector3(b.x+inward.x*p.x,p.y,b.y+inward.y*p.x)
-		var qa := Vector3(a.x+inward.x*q.x,q.y,a.y+inward.y*q.x)
-		var qb := Vector3(b.x+inward.x*q.x,q.y,b.y+inward.y*q.x)
+		var pa := _rail_section_point(a, inward, p)
+		var pb := _rail_section_point(b, inward, p)
+		var qa := _rail_section_point(a, inward, q)
+		var qb := _rail_section_point(b, inward, q)
 		_mesh_triangle(surface,pa,pb,qb)
 		_mesh_triangle(surface,pa,qb,qa)
 	for endpoint in [a,b]:
 		var points: Array[Vector3] = []
-		for p in section: points.append(Vector3(endpoint.x+inward.x*p.x,p.y,endpoint.y+inward.y*p.x))
-		_mesh_triangle(surface,points[0],points[2],points[1])
+		for p in section: points.append(_rail_section_point(endpoint,inward,p))
+		for i in range(1,points.size()-1):
+			if endpoint == a: _mesh_triangle(surface,points[0],points[i+1],points[i])
+			else: _mesh_triangle(surface,points[0],points[i],points[i+1])
 	surface.generate_normals()
 	return surface.commit()
 
 
+func _build_rail_deck() -> void:
+	# A continuous ring of quads leaves the entire physical mouth and cavity
+	# open. The outer edge is projected onto the apron rectangle, avoiding
+	# self-intersecting deep offsets at the acute rail/jaw joins.
+	var inner: Array[Vector2] = []
+	for id in [5,3,2,4,0,1]:
+		var pocket: Dictionary = _table.pocket_definitions()[id]
+		for key in ["mouth_a","back_a","back_b","mouth_b"]:
+			var point: Vector2 = pocket[key]
+			if key.begins_with("mouth"):
+				for rail in _table.rail_segments():
+					if not rail.jaw and (rail.a.distance_to(point)<.000001 or rail.b.distance_to(point)<.000001):
+						var vertex := _rail_section_point(point,rail.inward,Vector2(-.029,.051))
+						point=Vector2(vertex.x,vertex.z)
+						break
+			else:
+				point += pocket.outward*.006
+			inner.append(point)
+	var half := _table.half_size+Vector2(.12,.12)
+	var anchors := PackedVector2Array([Vector2(-half.x,-half.y),Vector2(0,-half.y),Vector2(half.x,-half.y),Vector2(half.x,half.y),Vector2(0,half.y),Vector2(-half.x,half.y)])
+	var deck := Node3D.new()
+	deck.name="JoinedRailDeck"
+	add_child(deck)
+	var material := _wood("#654732")
+	var fascia_material := _wood("#38281f")
+	var width := .025
+	var fascia_bands := [
+		PackedVector2Array([Vector2(-half.x,-half.y),Vector2(half.x,-half.y),Vector2(half.x,-half.y+width),Vector2(-half.x,-half.y+width)]),
+		PackedVector2Array([Vector2(-half.x,half.y-width),Vector2(half.x,half.y-width),Vector2(half.x,half.y),Vector2(-half.x,half.y)]),
+		PackedVector2Array([Vector2(-half.x,-half.y+width),Vector2(-half.x+width,-half.y+width),Vector2(-half.x+width,half.y-width),Vector2(-half.x,half.y-width)]),
+		PackedVector2Array([Vector2(half.x-width,-half.y+width),Vector2(half.x,-half.y+width),Vector2(half.x,half.y-width),Vector2(half.x-width,half.y-width)])
+	]
+	# Split through pocket axes before polygon subtraction, so every cutout is
+	# open to a sector edge rather than requiring a triangulator with holes.
+	for i in range(anchors.size()):
+		var sector := PackedVector2Array([Vector2.ZERO,anchors[i],anchors[(i+1)%anchors.size()]])
+		for polygon in Geometry2D.clip_polygons(sector,PackedVector2Array(inner)):
+			if Geometry2D.is_polygon_clockwise(polygon): polygon.reverse()
+			var part := MeshInstance3D.new()
+			part.mesh=_outline_mesh(polygon,.051,-.002,true)
+			part.material_override=material
+			deck.add_child(part)
+			# Only a narrow exterior apron receives full depth. Pocket cuts and
+			# sector boundaries must not become hanging interior partitions.
+			for band in fascia_bands:
+				for fascia_outline in Geometry2D.intersect_polygons(polygon,band):
+					if Geometry2D.is_polygon_clockwise(fascia_outline): fascia_outline.reverse()
+					var fascia := MeshInstance3D.new()
+					fascia.mesh=_outline_mesh(fascia_outline,-.002,-.22,true,false)
+					fascia.material_override=fascia_material
+					deck.add_child(fascia)
+
+	# Merge static sectors by material: the polygon split is construction-only,
+	# not an extra draw call or an internal visible apron seam per sector.
+	for selected_material in [material,fascia_material]:
+		var merged := SurfaceTool.new()
+		merged.begin(Mesh.PRIMITIVE_TRIANGLES)
+		for child in deck.get_children():
+			if child.material_override == selected_material:
+				merged.append_from(child.mesh,0,Transform3D.IDENTITY)
+				deck.remove_child(child)
+				child.free()
+		var instance := MeshInstance3D.new()
+		instance.mesh=merged.commit()
+		instance.material_override=selected_material
+		deck.add_child(instance)
+
+
 func _build_rails() -> void:
+	_build_rail_deck()
 	for segment in _table.rail_segments():
 		var a: Vector2 = segment["a"]
 		var b: Vector2 = segment["b"]
@@ -291,28 +386,29 @@ func _build_rails() -> void:
 		var inward: Vector2 = segment["inward"]
 		var midpoint := (a + b) * 0.5
 		var tangent := b - a
-		var rail_depth := 0.04 if jaw else 0.12
-		var rail := MeshInstance3D.new()
-		var mesh := BoxMesh.new()
-		mesh.size = Vector3(tangent.length(), 0.092, rail_depth)
-		rail.mesh = _beveled_box(mesh.size, 0.006)
-		rail.position = Vector3(midpoint.x - inward.x * rail_depth * 0.5, 0.048, midpoint.y - inward.y * rail_depth * 0.5)
-		rail.rotation.y = atan2(-tangent.y, tangent.x)
-		rail.material_override = _wood("#503928")
-		add_child(rail)
 		var cushion := MeshInstance3D.new()
-		cushion.mesh = _cushion_mesh(a,b,inward)
-		var rubber := _mat("#174e40", 0.88)
+		var cushion_end := b
+		if jaw:
+			var pocket: Dictionary = _table.pocket_definitions()[segment.pocket_id]
+			cushion_end = pocket.fall_a if a.distance_to(pocket.mouth_a)<.000001 else pocket.fall_b
+		cushion.mesh = _cushion_mesh(a,cushion_end,inward)
+		var rubber := _mat("#195448", 0.80)
 		rubber.cull_mode = BaseMaterial3D.CULL_DISABLED
 		cushion.material_override = rubber
 		add_child(cushion)
+		if jaw:
+			var facing := MeshInstance3D.new()
+			facing.name="RecessedJawFacing%d" % get_child_count()
+			facing.mesh=_cushion_mesh(cushion_end,b,inward)
+			facing.material_override=_mat("#33281f",.94)
+			add_child(facing)
 		if not jaw:
 			var inlay := MeshInstance3D.new()
 			var inlay_mesh := BoxMesh.new()
 			inlay_mesh.size = Vector3(tangent.length() * 0.93, 0.004, 0.007)
 			inlay.mesh = inlay_mesh
-			inlay.position = Vector3(rail.position.x, 0.096, rail.position.z)
-			inlay.rotation.y = rail.rotation.y
+			inlay.position = Vector3(midpoint.x-inward.x*.075, 0.053, midpoint.y-inward.y*.075)
+			inlay.rotation.y = atan2(-tangent.y,tangent.x)
 			inlay.material_override = _mat("#b39361", 0.25, 0.62)
 			add_child(inlay)
 
@@ -420,18 +516,22 @@ func _build_aim_and_cue() -> void:
 	_aim_material.vertex_color_use_as_albedo = true
 	_aim_material.no_depth_test = true
 	add_child(_aim_mesh)
-	var ghost_sphere := SphereMesh.new()
-	ghost_sphere.radius = BallState.RADIUS
-	ghost_sphere.height = BallState.RADIUS * 2.0
-	ghost_sphere.radial_segments = 24
-	ghost_sphere.rings = 12
+	var ghost_sphere := TorusMesh.new()
+	ghost_sphere.inner_radius = BallState.RADIUS - 0.0012
+	ghost_sphere.outer_radius = BallState.RADIUS
+	ghost_sphere.rings = 64
+	ghost_sphere.ring_segments = 8
+	_contact_marker_mesh = ghost_sphere
+	_placement_preview_mesh = SphereMesh.new()
+	_placement_preview_mesh.radius = BallState.RADIUS
+	_placement_preview_mesh.height = BallState.RADIUS*2
 	_ghost_ball = MeshInstance3D.new()
 	_ghost_ball.mesh = ghost_sphere
 	var ghost_material := StandardMaterial3D.new()
-	ghost_material.albedo_color = Color(0.93, 0.88, 0.74, 0.24)
+	ghost_material.albedo_color = Color(0.68, 0.89, 0.94, 0.9)
 	ghost_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	ghost_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	ghost_material.no_depth_test = true
+	ghost_material.no_depth_test = false
 	_ghost_ball.material_override = ghost_material
 	_ghost_ball.visible = false
 	add_child(_ghost_ball)
@@ -649,9 +749,7 @@ func zoom(amount: float) -> void:
 
 func _wood(color: String) -> ShaderMaterial:
 	var material := ShaderMaterial.new()
-	var shader := Shader.new()
-	shader.code = "shader_type spatial; uniform vec4 wood_color:source_color; varying vec3 p; void vertex(){p=VERTEX;} void fragment(){float g=sin(p.z*280.0+sin(p.x*3.0)*1.8+sin(p.x*8.0)*0.3); float fine=sin(p.z*830.0+sin(p.x*9.0)); ALBEDO=wood_color.rgb*(0.94+g*0.045+fine*0.012); ROUGHNESS=0.43; METALLIC=0.04; CLEARCOAT=0.18; CLEARCOAT_ROUGHNESS=0.38;}"
-	material.shader = shader
+	material.shader = preload("res://assets/shaders/wood_surface.gdshader")
 	material.set_shader_parameter("wood_color", Color(color))
 	return material
 

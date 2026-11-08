@@ -1,0 +1,27 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: zero power does not animate, fire or count
+PASS: negative power is rejected before animation, contact or stroke count
+PASS: NaN power is rejected before animation, contact or stroke count
+PASS: infinite power is rejected before animation, contact or stroke count
+PASS: NaN tip offset is rejected before animation, contact or stroke count
+PASS: infinite tip offset is rejected before animation, contact or stroke count
+PASS: tip offset beyond miscue limit is rejected before animation, contact or stroke count
+PASS: backswing precedes ball movement
+PASS: cue remains visible through the contact event
+PASS: visible tip touches ball surface at contact event
+PASS: physics starts at the same cue contact event
+PASS: pending stroke uses captured power and tip position
+PASS: one request produces exactly one contact and stroke
+PASS: menu cancels pending contact without ghost shot on resume
+PASS: new rack cancels pending contact
+PASS: window-focus probe begins during pending contact animation
+PASS: window focus loss cancels the pending stroke immediately
+PASS: resuming after window focus loss produces no phantom contact
+PASS: camera probe begins during pending contact animation
+PASS: camera switch is ignored without disturbing a pending stroke
+PASS: cue remains visible through the contact event
+PASS: visible tip touches ball surface at contact event
+PASS: physics starts at the same cue contact event
+PASS: ignored camera switch leaves pending stroke stable through contact
+STROKE CONTACT: 24 checks, 0 failures

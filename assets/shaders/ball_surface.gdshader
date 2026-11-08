@@ -16,8 +16,8 @@ void fragment() {
 		base = mix(base, texture(number_texture, cap / 0.94 + vec2(0.5)).rgb, mask);
 	}
 	ALBEDO = base;
-	ROUGHNESS = 0.16;
+	ROUGHNESS = 0.23;
 	METALLIC = 0.0;
-	CLEARCOAT = 0.65;
-	CLEARCOAT_ROUGHNESS = 0.12;
+	CLEARCOAT = 0.22;
+	CLEARCOAT_ROUGHNESS = 0.20;
 }

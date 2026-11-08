@@ -1,0 +1,779 @@
+[
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-rack-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-rack-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-rack-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-slice-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/tmp/longrail-i1-capture",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/before-rack-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-slice-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-rack-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--cluster",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-cluster-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--placement",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--placement",
+      "--invalid",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-invalid-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket0-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket1-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket2-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket3-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket4-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket5-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-slice-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-rack-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--cluster",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-cluster-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--placement",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--placement",
+      "--invalid",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-invalid-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket0-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket1-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket2-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket3-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket4-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket5-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-slice-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-rack-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--cluster",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-cluster-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--placement",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--placement",
+      "--invalid",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-invalid-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket0-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket1-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket2-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket3-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket4-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket5-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-slice-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--rack",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-rack-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--cluster",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-cluster-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--placement",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--placement",
+      "--invalid",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-placement-invalid-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket0-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket1-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket2-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket3-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket4-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-pocket5-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--unlit",
+      "--overlay",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-unlit-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--guide-off",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/after-guide-off-1600-lounge.png"
+    ],
+    "exit": 0
+  }
+]
