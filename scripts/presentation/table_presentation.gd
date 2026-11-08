@@ -288,6 +288,9 @@ func _rail_section_point(endpoint: Vector2, inward: Vector2, section: Vector2) -
 func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	# Godot uses clockwise front faces. Reversing a directed segment while
+	# retaining its inward normal must reverse every face, including end caps.
+	var reverse := (b-a).cross(inward) > 0.0
 	var section := [Vector2(0.0,_table.cushion_nose_height),Vector2(-.027,.051),Vector2(-.029,.049),Vector2(-.029,.007)]
 	for i in range(section.size()):
 		var next := (i+1)%section.size()
@@ -297,13 +300,17 @@ func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
 		var pb := _rail_section_point(b, inward, p)
 		var qa := _rail_section_point(a, inward, q)
 		var qb := _rail_section_point(b, inward, q)
-		_mesh_triangle(surface,pa,pb,qb)
-		_mesh_triangle(surface,pa,qb,qa)
+		if reverse:
+			_mesh_triangle(surface,pa,qb,pb)
+			_mesh_triangle(surface,pa,qa,qb)
+		else:
+			_mesh_triangle(surface,pa,pb,qb)
+			_mesh_triangle(surface,pa,qb,qa)
 	for endpoint in [a,b]:
 		var points: Array[Vector3] = []
 		for p in section: points.append(_rail_section_point(endpoint,inward,p))
 		for i in range(1,points.size()-1):
-			if endpoint == a: _mesh_triangle(surface,points[0],points[i+1],points[i])
+			if (endpoint == a) == reverse: _mesh_triangle(surface,points[0],points[i+1],points[i])
 			else: _mesh_triangle(surface,points[0],points[i],points[i+1])
 	surface.generate_normals()
 	return surface.commit()

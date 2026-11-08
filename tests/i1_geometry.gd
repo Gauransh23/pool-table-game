@@ -20,6 +20,24 @@ func run() -> void:
     if neighbor.a.distance_to(endpoint)<.000001 or neighbor.b.distance_to(endpoint)<.000001:
      for section in [Vector2(-.027,.051),Vector2(-.029,.049),Vector2(-.029,.007)]:
       check(view._rail_section_point(endpoint,segment.inward,section).distance_to(view._rail_section_point(endpoint,neighbor.inward,section))<.00005,"shared rail/jaw section seam <=0.05mm")
+ # A nose-edge-only oracle cannot see a backface-culled surface. Inspect the
+ # actual packed mesh normals and every face for each directed jaw interval.
+ for segment in table.rail_segments():
+  if not segment.jaw: continue
+  var pocket:Dictionary=table.pocket_definitions()[segment.pocket_id]
+  var fall:Vector2=pocket.fall_a if segment.a.distance_to(pocket.mouth_a)<.000001 else pocket.fall_b
+  for interval in [[segment.a,segment.b],[segment.b,segment.a],[fall,segment.b],[segment.b,fall]]:
+   var mesh:=view._cushion_mesh(interval[0],interval[1],segment.inward)
+   var normals:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_NORMAL]
+   check(normals[0].y>.3,"actual upper jaw face faces overhead under backface culling")
+   var faces:PackedVector3Array=mesh.get_faces()
+   var interior:=Vector3.ZERO
+   for vertex in faces: interior+=vertex
+   interior/=faces.size()
+   for i in range(0,faces.size(),3):
+    var center:Vector3=(faces[i]+faces[i+1]+faces[i+2])/3
+    var normal:Vector3=-(faces[i+1]-faces[i]).cross(faces[i+2]-faces[i]).normalized()
+    check(normal.dot(center-interior)>0.000001,"actual directed jaw face/endcap normal points outside its solid")
  for pocket in table.pocket_definitions():
   var mesh := view._pocket_liner_mesh(pocket)
   var vertices:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]

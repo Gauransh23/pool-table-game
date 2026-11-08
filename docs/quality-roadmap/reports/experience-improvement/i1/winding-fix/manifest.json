@@ -1,0 +1,328 @@
+{
+  "baseline": "8df0ed596c0b7692d44ba0ae6b0ae944c2851e2d",
+  "sources": {
+    "scripts/presentation/table_presentation.gd": "6ae73b990ec6ddf01b23db246fb7c5b695793bc9c79018c5a752cdca7dba6ca4",
+    "tests/i1_geometry.gd": "3e1e84d64956c055a38249a628ded3fd6d1c955441842be1f75195d8b9876075",
+    "tests/i1_capture.gd": "84fd71e9d0add0def6bd235156589fe6ca3cb0ebe57f1b3a8d09f3db56d0d8ca",
+    "assets/shaders/wood_surface.gdshader.uid": "4521a31eec6cc83146810ae12ffcaa1ccb3160edcc1b39a2e9163ac0c9301bfb",
+    "tests/i1_capture.gd.uid": "63c18ef1b53e81827838a696a4032ab8e1392b49b70c5cfb87fbe564d1118d94",
+    "tests/i1_geometry.gd.uid": "046b71a6f10d9af76ebffd5636d9904006c80232aacc2d34c2185d1907a0f7ba"
+  },
+  "evidence_root": "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix",
+  "captures": {
+    "capture-driver.py": {
+      "sha256": "4942360e2fb6718296a4eb3f19b22aff3ea2ff71953cb0b365c2e9b713d939a9",
+      "bytes": 1243
+    },
+    "commands.json": {
+      "sha256": "0e87758ff86e2cb11ac9da89c650e72788be1b260a292db7ad48c3ad3b8736f3",
+      "bytes": 10431
+    },
+    "invalid-timeout.txt": {
+      "sha256": "f095f4132aaa39cc48775fcb5aedc305c7b42eeaee0aba8344d92c33d67cc41e",
+      "bytes": 239
+    },
+    "pocket0-1100-lounge.log": {
+      "sha256": "b3e65f8c0575ec91e761b7461237ee566a90df9ac9c23c23c450c69c0739734c",
+      "bytes": 2480
+    },
+    "pocket0-1100-lounge.png": {
+      "sha256": "d849cbd00927e2df2b0986b6eab80891b3183210f89e43722f15a35d36badd72",
+      "bytes": 212710
+    },
+    "pocket0-1100-lounge.png.json": {
+      "sha256": "18d3d15851e2b45636a65b2c9e84ed85edc792ee5d715a417bcdb1e0fb46bc29",
+      "bytes": 2754
+    },
+    "pocket0-1100-overhead.log": {
+      "sha256": "6599d52e239946dfb21dff5dd01335888a02a474a7935f226b0980dbe17d8d63",
+      "bytes": 2465
+    },
+    "pocket0-1100-overhead.png": {
+      "sha256": "c1dff74e542a4f439cbfa9220bd60539158749cd19a8ccab83bea93c9e2fc274",
+      "bytes": 313744
+    },
+    "pocket0-1100-overhead.png.json": {
+      "sha256": "efa05f2485bf2b2e1d27cf38f5482d90dc7c13dbf75b2a1e5ea4a03ff2efe337",
+      "bytes": 2734
+    },
+    "pocket0-1600-lounge.log": {
+      "sha256": "9257a94e55827280f84e58d6f5332d07bd4318c9085d5a95d18985805b155155",
+      "bytes": 2471
+    },
+    "pocket0-1600-lounge.png": {
+      "sha256": "c6f4c78ed9b51d99255f0e9165ac9247929c82ad498e77c1482a459818e91e68",
+      "bytes": 390918
+    },
+    "pocket0-1600-lounge.png.json": {
+      "sha256": "0eb11b9f2993f00654f1cac784f75f0283ba453babce59082ff4103df75e9f6a",
+      "bytes": 2740
+    },
+    "pocket0-1600-overhead.log": {
+      "sha256": "cf629179a3421f7a1fb0c6bc14e3b4f3270d843f853c11e543674bce843d5caa",
+      "bytes": 2455
+    },
+    "pocket0-1600-overhead.png": {
+      "sha256": "2a6904f348d14dbc195c05079d70b01102e1b01e2e1baf900e96aa5ca71b4299",
+      "bytes": 527218
+    },
+    "pocket0-1600-overhead.png.json": {
+      "sha256": "29555c7aa23bd30b354f6bd714a106277b1fb7972692caeedd8ad8ab41dde529",
+      "bytes": 2719
+    },
+    "pocket1-1100-lounge.log": {
+      "sha256": "0c915f6f1cddf7acf517ff456ba2990ddc3f5b9ac99a5c325ebd7cc4fe816b0a",
+      "bytes": 2483
+    },
+    "pocket1-1100-lounge.png": {
+      "sha256": "d2d7aabaf44abff0dda672f02cb4b35108c0021bc5c988fcb760c09980159daa",
+      "bytes": 213266
+    },
+    "pocket1-1100-lounge.png.json": {
+      "sha256": "bccb8e6cba69bf7f7882c9749a6d0d2c1df6d03c4a24d307ccc0a769cbb5dc6a",
+      "bytes": 2757
+    },
+    "pocket1-1100-overhead.log": {
+      "sha256": "23bb7c37ee43c54a10e2506da55c52bd6c2bec27ce04c8fbe7a5342ebf29efa0",
+      "bytes": 2468
+    },
+    "pocket1-1100-overhead.png": {
+      "sha256": "98d1527bace5ceddd7b66ca6e26a3e5aecd856411ca90e399560f086a8779014",
+      "bytes": 314669
+    },
+    "pocket1-1100-overhead.png.json": {
+      "sha256": "5b2571bb627301d5a3099219f156a485ad37bbb40fcc2f81f521f5e5beccd403",
+      "bytes": 2737
+    },
+    "pocket1-1600-lounge.log": {
+      "sha256": "863e055d83dfd2ff751870a662a4cc67e227bfc1f9d0bf1185d0e4190d182d99",
+      "bytes": 2474
+    },
+    "pocket1-1600-lounge.png": {
+      "sha256": "56311a88c281608d963e2d9054835e2c11f791598b504ae2c7a05fd66ee35cbd",
+      "bytes": 392185
+    },
+    "pocket1-1600-lounge.png.json": {
+      "sha256": "cf2b2fc592a71eef911003ad4c559b1dbfa956f87ff1792e24ff01a807990f33",
+      "bytes": 2743
+    },
+    "pocket1-1600-overhead.log": {
+      "sha256": "00c1727c3aaceae12ee504f99abffd1ff32a5b314b96ae9e6882c921829ff9e4",
+      "bytes": 2458
+    },
+    "pocket1-1600-overhead.png": {
+      "sha256": "20a19884fc937f5c87d9934bd40c1ea6e78ba905cdeaedd49704306afa04bef9",
+      "bytes": 532253
+    },
+    "pocket1-1600-overhead.png.json": {
+      "sha256": "9dd5245b518b304fb56cbd18df26de3bb016b60ca05c263947df2b4f8cb7588f",
+      "bytes": 2722
+    },
+    "pocket2-1100-lounge.log": {
+      "sha256": "faed5f52e4380271ecbfbace52861e647f0d09a1a0a1efae198703672e04f742",
+      "bytes": 2477
+    },
+    "pocket2-1100-lounge.png": {
+      "sha256": "2ebb48640d55f2b3ee8ea56139c7984194440fadf6b1a4ab57383f62287bae5e",
+      "bytes": 212677
+    },
+    "pocket2-1100-lounge.png.json": {
+      "sha256": "4a242f42013887c61fce94bb3e76ce2cee8209ffeed5fbbd62afed45405ce426",
+      "bytes": 2751
+    },
+    "pocket2-1100-overhead.log": {
+      "sha256": "0877ebb1d9178a1f795bd0498d72d0c1cca1caf5458a7cdabf77d0bddca0b931",
+      "bytes": 2462
+    },
+    "pocket2-1100-overhead.png": {
+      "sha256": "a4d6816b42b894fcd7ec479e5b5d8e49a97e62bc01cb7e71ec66e7cebf91bd7c",
+      "bytes": 313444
+    },
+    "pocket2-1100-overhead.png.json": {
+      "sha256": "7f0277baab8e7300f6d783abc47d7c2af106c3aa49ab466fd42ad841d06043f1",
+      "bytes": 2731
+    },
+    "pocket2-1600-lounge.log": {
+      "sha256": "cab5b2d4e26159fc85cae831a4489f7b25ead4bc18acf411e756f305df9ea72d",
+      "bytes": 2466
+    },
+    "pocket2-1600-lounge.png": {
+      "sha256": "385921f55f5d887b4444bb8ef32d49a65b933158e978f0e98509a5039f6ce267",
+      "bytes": 389484
+    },
+    "pocket2-1600-lounge.png.json": {
+      "sha256": "36c75f080a59cf82237e71426ba60c2a06a36f28f0517517456508f8cb359ce8",
+      "bytes": 2735
+    },
+    "pocket2-1600-overhead.log": {
+      "sha256": "d7401c90e79b00732922fc5b8d41530c68f1682cdd521319491cd97a2d641e3b",
+      "bytes": 2449
+    },
+    "pocket2-1600-overhead.png": {
+      "sha256": "b97f21f09c7f223c2fb6bfb0321126b96f4b212351fdd5c6ae2167f3ab6b5fce",
+      "bytes": 527225
+    },
+    "pocket2-1600-overhead.png.json": {
+      "sha256": "9c496ab4b1c7345db6ddc10b829a803ccb74be203ba45bb2ad53c2a9d71aa2f6",
+      "bytes": 2713
+    },
+    "pocket3-1100-lounge.log": {
+      "sha256": "3e47dea239896946a14a726d1d56617e40bc2b5c3c0c8531b2d744f5d8703fce",
+      "bytes": 2480
+    },
+    "pocket3-1100-lounge.png": {
+      "sha256": "8fb28094acc583f73ad799a984e888b234f0099dff8aaeeae14a7057f2fa577f",
+      "bytes": 211340
+    },
+    "pocket3-1100-lounge.png.json": {
+      "sha256": "f55f068d251f5040869767e309baa0e045233bb18c4eb917ebc57b529c5737e8",
+      "bytes": 2754
+    },
+    "pocket3-1100-overhead.log": {
+      "sha256": "52ebf66c65c6a07c8e98464a417c47ae501d803ecdeb5a9495134707a5efc841",
+      "bytes": 2465
+    },
+    "pocket3-1100-overhead.png": {
+      "sha256": "139a092d2fb8da01f5a1620bd3729a7c46b432b18d98812b4446e4bf0b9415c0",
+      "bytes": 312551
+    },
+    "pocket3-1100-overhead.png.json": {
+      "sha256": "1948e1bc4c0f5ecb62903fd9ffc1f1fe668452bac5972ce42d6128ec7ef3f3bb",
+      "bytes": 2734
+    },
+    "pocket3-1600-lounge.log": {
+      "sha256": "2d607f9891911fd860f4908e5f9354b3627d430d48fcf892fbbf78baa23062d0",
+      "bytes": 2469
+    },
+    "pocket3-1600-lounge.png": {
+      "sha256": "156a5d38f5ae83aa303528e88f5e8db7ea6f33eb2ac1a63fdef256174c31ec3a",
+      "bytes": 388884
+    },
+    "pocket3-1600-lounge.png.json": {
+      "sha256": "c94c20e592bf957bcb35dadf9b085107fddce0318fc3aff917fa14b82d91fa3a",
+      "bytes": 2738
+    },
+    "pocket3-1600-overhead.log": {
+      "sha256": "41d64c90780d733414865d076a5e62931382e823812c9693e268599cf31ae83d",
+      "bytes": 2452
+    },
+    "pocket3-1600-overhead.png": {
+      "sha256": "626c6bca5d8a051ac796376f4212aa439fee61201d01cd739dd35df4596c0dad",
+      "bytes": 529362
+    },
+    "pocket3-1600-overhead.png.json": {
+      "sha256": "579f0da9f9931d479da26cdc1fe6582b5047bfa17cbb3c316b107012fda16883",
+      "bytes": 2716
+    },
+    "pocket4-1100-lounge.log": {
+      "sha256": "8264753cb1d5707dfd6dbfa4f7dc1cf9fa888e177462f9e7df56eb6b18895a87",
+      "bytes": 2460
+    },
+    "pocket4-1100-lounge.png": {
+      "sha256": "78ea990c3e42d80639192079f3c4eca7db5f2da13fbaed013c5f0d47d3c369f3",
+      "bytes": 212682
+    },
+    "pocket4-1100-lounge.png.json": {
+      "sha256": "a67a843e9bb1f0c02b03c9b35790cf8b183592796fe59d1e5bc8c36aa0a4c8f8",
+      "bytes": 2734
+    },
+    "pocket4-1100-overhead.log": {
+      "sha256": "0963797e3ec144f8414e8e19e61dfdf9f4af7462554ef460f00719906f19993b",
+      "bytes": 2445
+    },
+    "pocket4-1100-overhead.png": {
+      "sha256": "99530ba2ee03b99f99740d93333d80b26a9cd94f84bc52145c3acc09802549cf",
+      "bytes": 313890
+    },
+    "pocket4-1100-overhead.png.json": {
+      "sha256": "2197ebd95d9f9a83ec3ea78a06d23636c0b3b33eb12156d5c1210e08efb6423e",
+      "bytes": 2714
+    },
+    "pocket4-1600-lounge.log": {
+      "sha256": "a574205925d0146ec53fbdd8bf5ad8eede530043cfed22ce2d5996a42731497f",
+      "bytes": 2447
+    },
+    "pocket4-1600-lounge.png": {
+      "sha256": "12057e636c51eaf0ac2eebdf60ceb3d88a29371e193cd32071fcac504eb8deeb",
+      "bytes": 390098
+    },
+    "pocket4-1600-lounge.png.json": {
+      "sha256": "968c56d42b84d6462dfc589eb41c027b4bddc0a4794b6261780d89bd619bbf24",
+      "bytes": 2716
+    },
+    "pocket4-1600-overhead.log": {
+      "sha256": "bc4a54290732ff69d314b5d9ebfbccb96c7f862928c9f91503875ede8696d485",
+      "bytes": 2438
+    },
+    "pocket4-1600-overhead.png": {
+      "sha256": "17c9de24be919334ebbec775480d4df21620b54995e707cffd6cf700804a1193",
+      "bytes": 527976
+    },
+    "pocket4-1600-overhead.png.json": {
+      "sha256": "c908c3d8797ca1b5856496f232f4db8188232035058beb73c54c9d2b342fda4d",
+      "bytes": 2702
+    },
+    "pocket5-1100-lounge.log": {
+      "sha256": "6db1de543c70da623f220c3e8d07f1d137d981a9aaa07213bbab397ab18f566c",
+      "bytes": 2463
+    },
+    "pocket5-1100-lounge.png": {
+      "sha256": "35cb7f1574a27856c09143d09af5335a5647ceb3347ffa554678035fa9f2b55d",
+      "bytes": 213242
+    },
+    "pocket5-1100-lounge.png.json": {
+      "sha256": "76792edd0057e910ca2e4b0c645403d0982c50b3f5c621af44754d2fbd091938",
+      "bytes": 2737
+    },
+    "pocket5-1100-overhead.log": {
+      "sha256": "6d84244bfe4bfb9e4990464dab3f3c7ad02fb83dd5a4d96097ec398ac61e0388",
+      "bytes": 2448
+    },
+    "pocket5-1100-overhead.png": {
+      "sha256": "c98761131aa5ce9896b9c1f658beabdbdee9f8412c2ac0841cf6de7b8963ac1b",
+      "bytes": 314686
+    },
+    "pocket5-1100-overhead.png.json": {
+      "sha256": "88976bc950e4a3273e19f23cb10af263c053d6218045b7e6034806c80dac9ecd",
+      "bytes": 2717
+    },
+    "pocket5-1600-lounge.log": {
+      "sha256": "527b2d9b7abef0eb28cb30d23da4310ad32d971fb90e5a5967e5c1775a081a27",
+      "bytes": 2450
+    },
+    "pocket5-1600-lounge.png": {
+      "sha256": "877676c5ab72ad5cadacf6c0757526b75d08e77aa5035233b0cdaf3675a65378",
+      "bytes": 392145
+    },
+    "pocket5-1600-lounge.png.json": {
+      "sha256": "19988644f3aa97af0d1c279dc2f9e43f03125163a16dec7cc6622df8344a2522",
+      "bytes": 2719
+    },
+    "pocket5-1600-overhead.log": {
+      "sha256": "e15c02c3edf1ff776ce26c7d31e4e3852e1fff9e58955c8e7f8a2f4adf23f219",
+      "bytes": 2441
+    },
+    "pocket5-1600-overhead.png": {
+      "sha256": "25cbe72bcc91126aad594239f9d17c5e52dcc8970c8f9bac03f311b11b1e14bf",
+      "bytes": 532671
+    },
+    "pocket5-1600-overhead.png.json": {
+      "sha256": "068bbd5d9964ada2b688dd82722bc0e8344a1061178398956f095e824f51fac0",
+      "bytes": 2705
+    },
+    "source.tar.gz": {
+      "sha256": "5b704f4f0903cb9331cbd1f99f87a0e119df04438c57b959b54c03b024ec80e0",
+      "bytes": 13091
+    }
+  },
+  "checks": {
+    "exploratory-all-intervals.log": "8e05d9b61e664423de64274fb5de3024682fef79cefa06cbee7a95025cb435d0",
+    "red.log": "73a07b48d2d46d945b1b5323993458939c8aedc33e9adde85f19f4b90f48defa",
+    "visual.log": "5682c8fd38ab77bf29edebb561a49ca725217dacbac16129c12528b14d9d5ca6",
+    "green.log": "2cd876f86ad884b18da40298091f38d2ce8c33e65a48ce6c4afa49ec53876d3b",
+    "short-green-span-probe.log": "6743ebf8095d955f40f72b09b5f7bb54d4ef45149e843f8087c03605db7aa502",
+    "exploratory-all-intervals.gd": "1d552a8c1e9b3f26b6a9ed147e46e7163c786088a92788ae8eae9be70386290a",
+    "short-green-span-probe.gd": "7c00ce780954821e1e3cbf7626a6b9c4281dead8acaad6d04c8ebb9dbabda27b"
+  },
+  "remaining_failure": "Short green mouth-to-fall spans: pocket4a/4b/5a/5b; see retained probes. Full cushion-solid acceptance is not claimed."
+}

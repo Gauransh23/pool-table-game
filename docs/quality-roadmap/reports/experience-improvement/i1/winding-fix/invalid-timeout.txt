@@ -1,0 +1,1 @@
+Initial batch: pocket0-1600-lounge command exceeded30s subprocess timeout; process killed by subprocess.run. No completed capture counted. Partial stdout/stderr were not retained by the initial driver. Retried serially; see commands.json.

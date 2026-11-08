@@ -1,0 +1,59 @@
+[
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/tx/vjn4y65n68l2rkvyqlcnf8fw0000gp/T/longrail-i1-winding-before-byyogt60",
+      "--script",
+      "tests/i1_geometry.gd"
+    ],
+    "exit": 1
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_geometry.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/visual_geometry.gd"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/winding-fix/exploratory-all-intervals.gd"
+    ],
+    "exit": 1,
+    "meaning": "Retained failing counterexample, not an acceptance pass"
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/winding-fix/short-green-span-probe.gd"
+    ],
+    "exit": 1,
+    "meaning": "Retained failing counterexample, not an acceptance pass"
+  }
+]

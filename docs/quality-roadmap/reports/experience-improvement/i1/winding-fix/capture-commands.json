@@ -1,0 +1,362 @@
+[
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket0-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket1-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket2-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket3-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1600-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket0-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket1-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket2-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket3-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--lounge",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1600-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket0-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket1-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket2-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket3-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1100-overhead.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=0",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket0-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=1",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket1-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=2",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket2-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=3",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket3-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1100-lounge.png"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      "/Users/codex/Documents/My Public Repos/pool-table-game",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--small",
+      "--lounge",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1100-lounge.png"
+    ],
+    "exit": 0
+  }
+]
