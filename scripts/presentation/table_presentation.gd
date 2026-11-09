@@ -183,7 +183,7 @@ func _add_guide_arrow(points: PackedVector2Array, color: Color) -> void:
 
 func _add_guide_segment(first: Vector2, second: Vector2, color: Color) -> void:
 	if first.distance_squared_to(second) < 1.0e-12: return
-	# Screen-space ribbons keep a fine 1.5 logical-pixel line plus a dark edge.
+	# Screen-space ribbons keep a fine 1.5 viewport-unit line plus a dark edge.
 	# Projection on the guide plane works in both cameras and after resize.
 	var height := BallState.RADIUS + 0.003
 	var a := _camera.unproject_position(Vector3(first.x, height, first.y))

@@ -133,7 +133,7 @@ func run() -> void:
 		var first: Vector2 = scene.table_view._camera.unproject_position(vertices[6])
 		var second: Vector2 = scene.table_view._camera.unproject_position(vertices[7])
 		print("CAMERA RIBBON WIDTH ", overhead, " ", first.distance_to(second))
-		check(absf(first.distance_to(second) - 1.5) < 0.002, "camera transition preserves 1.5 logical-pixel inner ribbon width")
+		check(absf(first.distance_to(second) - 1.5) < 0.002, "camera transition preserves 1.5 viewport-unit inner ribbon width")
 		check(scene._guide_prediction == previous, "camera redraw reuses prediction without solver restart")
 	root.size = Vector2i(1100, 700)
 	await process_frame
