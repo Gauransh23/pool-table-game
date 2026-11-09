@@ -11,7 +11,8 @@ Developer ID notarization is not configured.
 
 Click and drag on the cloth to aim; release to retain your line. Choose power and
 tip position, then click **Take Shot** or press **Space**. Zero power does not fire; the low end supports delicate taps. Left/right arrows
-fine-tune aim; hold Shift for finer steps. Shift-drag the tip pad for small
+fine-tune aim; hold Shift for finer steps. Shift-drag horizontally on the cloth
+for fine mouse aiming. Shift-drag the tip pad for small
 adjustments; double-click it to center the tip.
 For keyboard play, **P** selects power and **S** selects tip position. Use arrow
 keys in the focused control, **Shift** for fine tip adjustments and **Home** to

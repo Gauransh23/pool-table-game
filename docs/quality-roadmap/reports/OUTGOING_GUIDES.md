@@ -99,3 +99,11 @@ The independent scoped re-review passed spec and code quality after correction; 
 The lead opened that exact exported bundle through CUA, resumed the saved practice table and inspected the native window. Both outgoing branches, hollow ring and speed readout were visible with 17 strokes / 10 balls potted and 42% power. No shot was fired in this check. A process-path check confirmed the versioned 0.3.2 executable. This is a successful exported GUI startup/display check, not a comprehensive installed-app interaction or latency acceptance test.
 
 Exact source/package/capture hashes, stage-specific test coverage and release observations are in `outgoing-guides-evidence/release-0.3.2.json`. The larger quality contract remains incomplete as detailed above.
+
+### Integration with newer main
+
+Final synchronization found remote `main` had advanced to `9be66f4` with deliberate Shift-drag fine aiming and measurement/research work. It was merged in place at `9b0295a`; all incoming work was preserved and no branch/worktree was created. Active simulation/strike/config sources were unchanged. An independent review of the combined controller/HUD interaction passed (`outgoing-guides-evidence/integration-review.txt`).
+
+The combined source passed outgoing guides **887 checks / 0 failures**, aim controls **0 failures** (same retained shutdown warning), practice input **200 / 0**, and stroke contact **24 / 0**. Raw results are `integration-*.txt`. Slice-count assertions vary with the soft CPU budget; the prior 888-check result remains evidence for its own source stage.
+
+The lead rebuilt the universal app and DMG, reverified signature/checksum, inspected the integrated 1100×700 source capture at `build/verification/outgoing-guides/integrated-small.png`, and reopened the rebuilt exported GUI. Fine-aim instructions and both outgoing guides were visible on the same saved table. No shot was fired. The release JSON now identifies the integrated source and final package hashes; earlier manifests and captures remain historical stage-specific records.

@@ -5,21 +5,23 @@
   "source_sha256": {
     "project.godot": "ae8aa490159c0e66f319d2365099acedebadd4a6c461bfd405d7fc2421bd3dc1",
     "export_presets.cfg": "cb3e98562499ccbde2ae9232b399bec0d6fdfd2fdf17bb81c2f8442de5d6f72a",
-    "scripts/app/game_controller.gd": "f421c84245615f8b8842916f97c96e53afa15169aaef3f3e53d7b1b341fbe64a",
+    "scripts/app/game_controller.gd": "3e6adfa38e0f00b1b01324c721b54fa0730d0bb5b5018e75ce4a05529c675943",
     "scripts/presentation/table_presentation.gd": "96cce910c2bdf78a8159572871c3f906e3f07b59a2015b4dcde93048c4e226ec",
-    "scripts/ui/game_hud.gd": "e9c00eebb93837bc8097269a367e65628af86507bd89322fdcefdd20047a0b94",
+    "scripts/ui/game_hud.gd": "d6068861f38776fddd89aa388f59255dcee5b300fb3a5d0a9a1b9b0590be3d72",
     "scripts/sim/outgoing_guide.gd": "10f96e7d5ec053c682f6afc4d710f7bbd6023c88b783f88fd609844a458c8da9",
     "scripts/sim/physics_stepper.gd": "f16b01423140524a9330daaac39011cca6757fc532ea4fce7dd6cf3fa230669b",
     "scripts/sim/physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
     "scripts/sim/cue_strike_model.gd": "eb1e66144f4f6ea6d188b32858c70da231c8a92a8658db2c4d8c4baa5cdd473f",
     "tests/outgoing_guides.gd": "7b5a17ca587e05f547cee3400595b295e1f08d1741c97268fe0bca40a8e5a37f",
-    "tests/capture_outgoing_guides.gd": "a8a55f2ee90d75c8ff5b0cb16b5efec6c7099ce7c85e1e346ca748071be945b1"
+    "tests/capture_outgoing_guides.gd": "a8a55f2ee90d75c8ff5b0cb16b5efec6c7099ce7c85e1e346ca748071be945b1",
+    "tests/aim_controls.gd": "d59dfff64a402960c2705fc4bb3cc5e0b03d5c72df9d7a14f6e53141fa53b8ef"
   },
   "artifact_sha256": {
-    "build/Long Rail-0.3.2-mac.dmg": "e33176969057d33c2fec30a49ec601cde33bda84610b1aa8f5be5eca2ea330b8",
-    "build/Long Rail-0.3.2.app/Contents/MacOS/Long Rail": "a767a7f5c8049d6b0a781a71e2021cd59d14d1ae540231000abf0cc56627a8d9",
-    "build/Long Rail-0.3.2.app/Contents/Resources/Long Rail.pck": "435ce8fc1a543f49c20a895e626adab124bde74476cf9566a939ed5e8a7af4c9",
-    "build/verification/outgoing-guides/small.png": "91fbc7cbe1b2563f1547976235432bf4e1610fdf3160802d66ec2423c0bb3ea5"
+    "build/Long Rail-0.3.2-mac.dmg": "f5b60ed0d50e2aeecc8051b59335bfa10e9d603714a005f6382c56388abe8d74",
+    "build/Long Rail-0.3.2.app/Contents/MacOS/Long Rail": "5eae7c1675f6da0d554f7a4dc71a00ad1b70911af771556f43ebea10d2661696",
+    "build/Long Rail-0.3.2.app/Contents/Resources/Long Rail.pck": "f5a13570b0e64ab4b2a572963fb27bb5028c0fe205b77d8f0c5a6d6067d39495",
+    "build/verification/outgoing-guides/small.png": "91fbc7cbe1b2563f1547976235432bf4e1610fdf3160802d66ec2423c0bb3ea5",
+    "build/verification/outgoing-guides/integrated-small.png": "14694dd90393e04825bf44a0db0cc4fae1280fd7710d7275e4be209f11725366"
   },
   "architectures": [
     "arm64",
@@ -37,12 +39,14 @@
     "cue_speed_readout_mps": 0.71,
     "object_ball": 11,
     "object_speed_readout_mps": 0.91,
-    "shots_fired_in_this_native_check": 0
+    "shots_fired_in_this_native_check": 0,
+    "integration_recheck": "Reopened rebuilt integrated 0.3.2 bundle; Shift-drag instructions and both outgoing paths visible, same settled table and settings. No shot fired."
   },
   "review": {
     "initial": "P2 collision marker used tick-end center; preserved 8.969989 mm counterexample",
     "correction": "Replay-only observer records registered collision centers",
-    "rereview": "PASS spec and code-quality; review-round1-correction.txt"
+    "rereview": "PASS spec and code-quality; review-round1-correction.txt",
+    "integration": "PASS; integration-review.txt"
   },
   "final_changed_code_tests": {
     "outgoing_guides": {
@@ -63,5 +67,33 @@
     "Preview estimates follow active model; not calibrated real-table guarantees.",
     "Full AIM-005 accuracy, DPI/recognition and frame-pacing acceptance remain open.",
     "Source render capture is separate from exported GUI observation."
-  ]
+  ],
+  "integration_commit": "9b0295afff3fed57c4c7daa5640c5f35bd9dff49",
+  "merged_remote_head": "9be66f4",
+  "integration_note": "Merged latest main in place; preserved Shift-drag fine aim and measurement work. No active solver changes.",
+  "integrated_source_tests": {
+    "outgoing_guides": {
+      "checks": 887,
+      "failures": 0
+    },
+    "aim_controls": {
+      "failures": 0,
+      "warning": "Same retained ObjectDB shutdown warnings"
+    },
+    "practice_input_flow": {
+      "checks": 200,
+      "failures": 0
+    },
+    "stroke_contact": {
+      "checks": 24,
+      "failures": 0
+    }
+  },
+  "evidence_sha256": {
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/integration-outgoing_guides.txt": "df665e5186e4880b2a85382a613646e28ed649f0d0c84dda206b1e8a91e6efc0",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/integration-aim_controls.txt": "9f54037f34da2d5698a22182646eddf67672b8884baa0f96a0617cb96702bae3",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/integration-practice_input_flow.txt": "6e69e4cfe29880280cf3bddcc5401f4f9ebd5b1e252bfe1b8ce5a905282d165e",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/integration-review.txt": "11e9c0a5682c25fca3f4daa291bbfd9e72b2072d71906e4ed8bd90fe364cbabe",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/integration-stroke_contact.txt": "7e8519f60dd8556688dbb07a3dba7f7479c867ba966407623479f9b5b70072f7"
+  }
 }

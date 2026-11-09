@@ -1,0 +1,10 @@
+# Integration-only review — merged main 9b0295a
+
+Verdict: **PASS**. No actionable integration finding in `git diff dbd5463..HEAD -- scripts/app/game_controller.gd scripts/ui/game_hud.gd`.
+
+- Shift-drag acquires fine mode without snapping `aim_direction` to the press location. Accepted finite horizontal motion rotates the same `aim_direction` consumed by the existing outgoing-guide cache key. The regular `_process` still calls `_refresh_aim`, so an actual angle change clears/restarts prediction and clears prior outgoing rendering/readout through the unchanged path. Motion does not write renderer paths directly or bypass cache invalidation.
+- Gesture flags themselves are appropriately absent from the physics cache key: entering/releasing fine mode without changing aim does not invalidate a physically identical prediction. Release/focus loss resets both gesture flags while retaining the selected direction; current prediction can finish or remain cached normally. Out-of-cloth motion does not change direction and therefore does not require prediction invalidation.
+- Menu, rack, shot start, undo, play-area change and session-related cancellation still call the shared cancellation path. Shot start clears the outgoing display through `set_aim` and clears the prediction readout; pending-stroke cancellation retains the existing forced cache reset. Placement and guide-off handling remain unchanged.
+- HUD imports alter instructions only. `set_status` still writes only `_status`; fine-mode status messages cannot overwrite `_prediction`, guide settings or shot inputs. Both the outgoing-guide controls/readout and new Shift-drag instructions survive the merge.
+
+Read-only source integration review. No edits, new branches/worktrees/subagents or redundant test runs. Parent owns merged-source outgoing/aim/input/stroke regression results and final native candidate rebuild; this source verdict does not replace those runtime checks or broader quality acceptance.
