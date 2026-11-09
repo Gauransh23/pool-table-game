@@ -1,3 +1,17 @@
+# Proportional momentum guides — 0.3.3 candidate
+
+Updated 2026-11-08. [Design and checks](docs/quality-roadmap/plans/PROPORTIONAL_GUIDES.md).
+
+Outgoing arrows now represent immediate post-collision planar momentum with one
+shared screen scale, rather than two independently capped travel paths. Guide
+length is adjustable through Menu → Guide length and persists separately from
+practice saves. Common obstruction clipping preserves the displayed ratio.
+Later spin curvature and stopping distance are outside this diagram's promise.
+
+See the implementation report for final test/review/release evidence. Full
+physical calibration, recognition/DPI and native performance acceptance remain
+open; older checkpoint results below retain their historical scope.
+
 # Two-ball outgoing guides — 0.3.2 candidate
 
 Updated 2026-11-08. [Implementation and evidence](docs/quality-roadmap/reports/OUTGOING_GUIDES.md).

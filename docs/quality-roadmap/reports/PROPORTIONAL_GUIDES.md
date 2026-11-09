@@ -73,3 +73,9 @@ The renderer relies on the two current orthographic cameras. Extreme subpixel ve
 ### Cleanup warnings, separate from assertion results
 
 The aim suite exits 0 but retains its existing exit cleanup warnings: 2 ObjectDB instances and 1 resource still in use. The recurring shell startup `/Users/gt/.zshenv:3` parse warning occurs outside Godot. Neither is hidden; no unrelated cleanup change was made. Other raw engine/audio warnings remain in their respective outputs. No assertion failure is classified as a cleanup warning.
+
+## Lead continuation — 2026-11-09
+
+The owner resumed and authorized the subsequent sound edit. Independent review of the guide slice passed spec and code quality; retained in `proportional-guides-evidence/independent-review.md`. The first review-agent launch failed for workspace-credit availability, not a code finding; a fresh available reviewer completed the review.
+
+A versioned 0.3.3 guide-stage app/DMG built successfully. Native UI automation could not connect (`Sky Computer Use native pipe startup failed`), so no native settings interaction is claimed for this continuation. Attempting an external fixture with `--main-pack` failed because the official release template disables path overrides; that failed invocation is not startup evidence. The exported app then launched normally without headless mode using `--quit-after 60`, exited 0 and logged Metal Forward+ on Apple M4 with no runtime errors. This establishes graphical startup only; the source PNG matrix and routed input tests remain separate evidence. Final packaging will include the subsequent audio work and has its own release record.
