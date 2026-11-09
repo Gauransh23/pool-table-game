@@ -17,6 +17,9 @@ var _stroke_pending := false
 var _shot_generation := 0
 var _placing := false
 var _aim_gesture := false
+var _fine_aim_gesture := false
+# Radians per logical viewport pixel; independent of distance to the cue ball.
+const FINE_AIM_RADIANS_PER_PIXEL := 0.00005
 var _placement_cursor := Vector2.ZERO
 var _placement_cursor_active := false
 var _guides := true
@@ -120,7 +123,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if _placing:
 			_place_cue(table_view.project_mouse_to_table(event.position,BallState.RADIUS))
-		elif not _aim_gesture and _begin_aim_gesture(event.position):
+		elif not _aim_gesture and _begin_aim_gesture(event.position, event.shift_pressed):
 			_aim_gesture = true
 	elif event is InputEventMouseMotion:
 		if _placing:
@@ -132,13 +135,21 @@ func _unhandled_input(event: InputEvent) -> void:
 			if (event.button_mask & MOUSE_BUTTON_MASK_LEFT) == 0:
 				_cancel_aim_gesture()
 			else:
-				_update_aim_from_pointer(event.position)
+				if _fine_aim_gesture:
+					if event.relative.is_finite() and _is_playable_cloth_position(table_view.project_mouse_to_table(event.position, BallState.RADIUS)):
+						aim_direction = aim_direction.rotated(event.relative.x * FINE_AIM_RADIANS_PER_PIXEL).normalized()
+				else:
+					_update_aim_from_pointer(event.position)
 
-func _begin_aim_gesture(screen_position: Vector2) -> bool:
+func _begin_aim_gesture(screen_position: Vector2, fine: bool = false) -> bool:
 	var target := table_view.project_mouse_to_table(screen_position,BallState.RADIUS)
 	if not _is_playable_cloth_position(target): return false
 	hud.release_control_focus()
-	_update_aim_direction(target)
+	_fine_aim_gesture = fine
+	if fine:
+		hud.set_status("Fine aim: drag horizontally. Release to retain your line.")
+	else:
+		_update_aim_direction(target)
 	return true
 
 func _update_aim_from_pointer(screen_position: Vector2) -> void:
@@ -153,7 +164,10 @@ func _update_aim_direction(target: Vector2) -> void:
 	if difference.length_squared() > .0004: aim_direction=difference.normalized()
 
 func _cancel_aim_gesture() -> void:
+	if _fine_aim_gesture:
+		hud.set_status("Aim retained. Shift-drag for fine adjustment; Space to shoot.")
 	_aim_gesture = false
+	_fine_aim_gesture = false
 
 func _open_menu() -> void:
 	_cancel_pending_stroke()
@@ -227,7 +241,7 @@ func _new_rack(persist: bool = true) -> void:
 	stepper=PhysicsStepper.new(); _shot_in_motion=false; _stroke_pending=false; _placing=false
 	_placement_cursor_active = false
 	_undo.clear(); _strokes=0; _pots=0
-	hud.reset_spin(); hud.set_status("Click and drag on the cloth to aim. Release to retain your line.")
+	hud.reset_spin(); hud.set_status("Drag cloth to aim. Shift-drag horizontally for fine adjustment.")
 	table_view.sync_balls(balls); _refresh_aim(); _update_score()
 	if persist: _save_session()
 

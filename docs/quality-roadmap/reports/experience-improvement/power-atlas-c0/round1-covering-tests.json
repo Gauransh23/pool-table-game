@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python3",
+    "tests/measurement/check_power_atlas.py",
+    "AtlasIntegrity.test_fixed_counts_and_geometry",
+    "AtlasIntegrity.test_python_fixture_identity_rejection",
+    "AtlasIntegrity.test_review_missing_rows_fields_and_consistency",
+    "AtlasIntegrity.test_revalidate_retained_chunks",
+    "AtlasIntegrity.test_preserved_product_counterexamples",
+    "AtlasIntegrity.test_actual_raw_negative_mutations",
+    "AtlasIntegrity.test_independent_torque_audit_and_adversarial_spin"
+  ],
+  "exit": 0,
+  "stdout": "",
+  "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 5.305s\n\nOK\n"
+}

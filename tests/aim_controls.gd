@@ -47,6 +47,7 @@ func run() -> void:
 		await test_left_drag_and_release(first, second)
 		await test_placement_click(third)
 		await test_keyboard_fine_aim()
+		await test_mouse_fine_aim(first, second)
 		await test_cancellation(first, second, third, "menu")
 		await test_cancellation(first, second, third, "new rack")
 		await test_cancellation(first, second, third, "undo")
@@ -66,11 +67,12 @@ func is_inside_viewport(point: Vector2) -> bool:
 	var rect := viewport.get_visible_rect()
 	return point.x >= 0.0 and point.y >= 0.0 and point.x < rect.size.x and point.y < rect.size.y
 
-func send_mouse_button(point: Vector2, pressed: bool, button: int = MOUSE_BUTTON_LEFT) -> void:
+func send_mouse_button(point: Vector2, pressed: bool, button: int = MOUSE_BUTTON_LEFT, fine: bool = false) -> void:
 	var event := InputEventMouseButton.new()
 	event.position = point
 	event.button_index = button
 	event.pressed = pressed
+	event.shift_pressed = fine
 	viewport.push_input(event, true)
 	await process_frame
 
@@ -257,3 +259,38 @@ func cleanup() -> void:
 	for path in [session_file, session_file + ".tmp"]:
 		if FileAccess.file_exists(path):
 			DirAccess.remove_absolute(path)
+
+func test_mouse_fine_aim(first: Vector2, second: Vector2) -> void:
+	for point in [first, second]:
+		for heading in [0.0, 1.4, PI - 0.0001]:
+			reset_aim(Vector2.from_angle(heading))
+			var original := game.aim_direction
+			await send_mouse_button(point, true, MOUSE_BUTTON_LEFT, true)
+			require(absf(original.angle_to(game.aim_direction)) < 1e-7, "fine press retains heading without pointer snap")
+			var bounded := true
+			var moved := false
+			for sign_value in [1.0, -1.0]:
+				for index in range(100):
+					var before := game.aim_direction
+					var event := InputEventMouseMotion.new()
+					event.position = point
+					event.relative = Vector2(sign_value, 0.0)
+					event.button_mask = MOUSE_BUTTON_MASK_LEFT
+					# Modifier intentionally absent: mode is latched at press.
+					viewport.push_input(event, true)
+					var change := before.angle_to(game.aim_direction)
+					bounded = bounded and absf(change) <= deg_to_rad(0.005) and change * sign_value > 0.0
+					moved = moved or absf(change) > 1e-7
+				await process_frame
+			require(bounded and moved, "100 positive/negative mouse increments stay within 0.005 degrees at heading %.3f" % heading)
+			require(absf(original.angle_to(game.aim_direction)) <= deg_to_rad(0.002), "reversed fine increments restore physical aim within 0.002 degrees")
+			await send_mouse_button(point, false)
+			var retained := game.aim_direction
+			await send_motion(second, MOUSE_BUTTON_MASK_LEFT)
+			require(absf(retained.angle_to(game.aim_direction)) < 1e-7, "fine release cancels held motion")
+	await send_mouse_button(first, true, MOUSE_BUTTON_LEFT, true)
+	root.propagate_notification(Window.NOTIFICATION_WM_WINDOW_FOCUS_OUT)
+	var retained := game.aim_direction
+	await send_motion(second, MOUSE_BUTTON_MASK_LEFT)
+	require(absf(retained.angle_to(game.aim_direction)) < 1e-7 and not game._stroke_pending, "fine focus loss retains aim and never fires")
+	await send_mouse_button(second, false)

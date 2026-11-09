@@ -1,0 +1,103 @@
+{
+  "schema": "long-rail-power-atlas-qualification/1",
+  "authoritative_for_interpretation": true,
+  "measurement_manifest_sha256": "fcd294f5b05629bf14da43d4e36e2ce81bff69bc6f3c258214de1dc3159efa68",
+  "scope_ledger": {
+    "PWR-001": {
+      "status": "PASS",
+      "scope": "units and frozen mapping identity in level source atlas; cue speed, impulse, launch energy separately stored"
+    },
+    "PWR-002": {
+      "status": "INCONCLUSIVE",
+      "scope": "all 201 HUD/controller callbacks; committed launch replayed on no-contact diagnostic table; manual tween clock, zero sound not independently captured"
+    },
+    "PWR-003": {
+      "status": "FAIL",
+      "scope": "all 201 reachable machine inputs; no human inference"
+    },
+    "PWR-004": {
+      "status": "PASS",
+      "scope": "center free response; 8m/s maximum preserved; contact maps categorical"
+    },
+    "PWR-005": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "PWR-006": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-001": {
+      "status": "INCONCLUSIVE",
+      "scope": "410 level resting-ball launches only; outgoing cue unobserved; moving-ball probe unsupported"
+    },
+    "CUE-002": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-003": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-004": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-005": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-006": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CUE-007": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CLT-001": {
+      "status": "FAIL",
+      "scope": "7 ideal pure-rolling speed endpoints; original 0.1% bound with 1um absolute floor; time/kinematics obligations remain open; discrepancies are versus an ideal with no sleep and exact resistance, not real-equipment calibration failures"
+    },
+    "CLT-002": {
+      "status": "INCONCLUSIVE",
+      "scope": "Exact slide-to-roll transition-root accuracy at the original 0.1% bound is unresolved: every one of the six analytic roots lies within its sampled fixed-tick crossing interval. Raw right-endpoint sampled-comparison FAIL labels are retained as historical instrument results, not established model/physical timing failures. A refined observer/reference is needed.",
+      "raw_runner_status": "FAIL",
+      "raw_sampled_comparison_failures": 6
+    },
+    "CLT-003": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CLT-004": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CLT-005": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CLT-006": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    },
+    "CLT-007": {
+      "status": "NOT_RUN",
+      "scope": "physical calibration/native delivery/human acceptance not established by C0"
+    }
+  },
+  "raw_analytic_metric_failures": {
+    "endpoint": 6,
+    "readiness_vs_ideal_stop_time": 10,
+    "sampled_transition_right_endpoint": 6
+  },
+  "actual_transition_root_status": "INCONCLUSIVE",
+  "raw_metric_note": "22 metric FAIL comparisons are not 22 independent physical failures. The six sampled crossing rows cannot establish exact-root failure. Seven intended pure-rolling fixtures have no qualified slide crossing; tiny float-vector slip remnants are not an exact transition reference.",
+  "round1_review": {
+    "parser_revalidation": "PASS; every original chunk revalidated, 52 missing/duplicate/incorrect field/record mutations rejected",
+    "torque_consistency": "PASS in 410 level/resting direct cue-speed matrix checks (369 positive launches,41 zero no-ops); geometric/arithmetic invariant only",
+    "postprocess_identity": "postprocess-identity-round1.json",
+    "torque_ledger": "torque-audit-round1.json",
+    "physical_calibration": "NOT_RUN / unproven; CUE-001 overall remains INCONCLUSIVE"
+  }
+}

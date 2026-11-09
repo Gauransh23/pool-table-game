@@ -1,0 +1,12 @@
+{
+  "baseline": "23cb30f",
+  "engine": "Godot 4.7.2",
+  "source_sha256": {
+    "scripts/app/game_controller.gd": "67d03831a85264cc7838dd238968dc8bd47dfebaaed5e2c5638f9745b6afab75",
+    "scripts/ui/game_hud.gd": "2c740297e10d5de8a0f1c22178d6ce3d8431981d6086052bd1c774a49021909c",
+    "tests/aim_controls.gd": "d59dfff64a402960c2705fc4bb3cc5e0b03d5c72df9d7a14f6e53141fa53b8ef"
+  },
+  "export": "/tmp/LongRail-fine-aim-candidate.app",
+  "native_capture": "/tmp/pool-fine-aim-small.png",
+  "evidence_scope": "Viewport-routed automated input and source native rendering; no human acquisition or installed-app input acceptance"
+}

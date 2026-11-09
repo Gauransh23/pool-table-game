@@ -150,7 +150,7 @@ func _build() -> void:
 	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
 	options.add_child(guides)
 	_focus_controls = [_power, _spin, _shoot, undo, camera, menu, sound, guides]
-	var footer := label("Drag aim · ← → fine aim · P power · S tip · Space shoot · U undo · V view · Esc table/menu", 12, Color("bcc4b9"))
+	var footer := label("Drag aim · Shift-drag fine aim · ← → adjust · P power · S tip · Space shoot · U undo · V view · Esc table/menu", 12, Color("bcc4b9"))
 	_footer = footer
 	footer.anchor_right = 1
 	footer.anchor_top = 1; footer.anchor_bottom = 1
@@ -257,7 +257,7 @@ func show_home(can_resume: bool = false) -> void:
 	_card.add_child(label("A quiet room. A precise stroke. One more rack.", 16, Color("b6b9aa")))
 	if can_resume: _card.add_child(button("Return to the table", func(): hide_menu(); resume_requested.emit(), true))
 	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
-	_card.add_child(label("Pure practice • Offline • 9-foot table\nDrag on the cloth to aim; release to keep the line.\nTab through controls, or P for power and S for tip position.\nEscape returns to table aim. After a scratch, arrows move\nthe cue-ball preview and Enter places it; a cloth click also works.", 13, Color("b6c0b6")))
+	_card.add_child(label("Pure practice • Offline • 9-foot table\nDrag cloth to aim; Shift-drag horizontally for fine aim.\nTab through controls, or P for power and S for tip position.\nEscape returns to table aim. After a scratch, arrows move\nthe cue-ball preview and Enter places it; a cloth click also works.", 13, Color("b6c0b6")))
 	_card.add_child(button("Quit", func(): get_tree().quit()))
 	call_deferred("_focus_menu")
 func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:

@@ -1,0 +1,3288 @@
+{
+  "scope": "Independent kinetic-energy accounting, not a copy of the strike-speed equation.\n\nUse the declared solid-sphere mass/radius, complete measured launch v/omega, and\nincoming cue kinetic energy. This checks the resting, level matrix only; it does\nnot observe outgoing cue momentum, contact duration or calibrated equipment.\n",
+  "checks": 410,
+  "failures": 0,
+  "max_instrument_energy_residual_J": 5.176578419252564e-07,
+  "rows": [
+    {
+      "id": "launch-00-00",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-01",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-02",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-03",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-04",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-05",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-06",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-07",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-08",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-09",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-10",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-11",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-12",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-13",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-14",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-15",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-16",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-17",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-18",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-19",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-20",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-21",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-22",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-23",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-24",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-25",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-26",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-27",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-28",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-29",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-30",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-31",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-32",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-33",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-34",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-35",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-36",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-37",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-38",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-39",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-00-40",
+      "measured_ball_energy_J": 0.0,
+      "incoming_cue_energy_J": 0.0,
+      "bound_J": 1e-09,
+      "status": "PASS",
+      "instrument_energy_residual_J": 0.0
+    },
+    {
+      "id": "launch-01-00",
+      "measured_ball_energy_J": 0.000340129195601363,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.4080982419558546e-11
+    },
+    {
+      "id": "launch-01-01",
+      "measured_ball_energy_J": 0.0003313185795922963,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.678599610131455e-12
+    },
+    {
+      "id": "launch-01-02",
+      "measured_ball_energy_J": 0.00033209706392899806,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.194073453955287e-13
+    },
+    {
+      "id": "launch-01-03",
+      "measured_ball_energy_J": 0.0003328782362520771,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.46418128728349e-12
+    },
+    {
+      "id": "launch-01-04",
+      "measured_ball_energy_J": 0.00033209706392899806,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.194073453955287e-13
+    },
+    {
+      "id": "launch-01-05",
+      "measured_ball_energy_J": 0.0003313185795922963,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.678599610131455e-12
+    },
+    {
+      "id": "launch-01-06",
+      "measured_ball_energy_J": 0.00033209706392899806,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.194073453955287e-13
+    },
+    {
+      "id": "launch-01-07",
+      "measured_ball_energy_J": 0.0003328782362520771,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.46418128728349e-12
+    },
+    {
+      "id": "launch-01-08",
+      "measured_ball_energy_J": 0.00033209706392899806,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.194073453955287e-13
+    },
+    {
+      "id": "launch-01-09",
+      "measured_ball_energy_J": 0.00028966199011234035,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.643437690841055e-12
+    },
+    {
+      "id": "launch-01-10",
+      "measured_ball_energy_J": 0.0002933092709876269,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0597977844698653e-11
+    },
+    {
+      "id": "launch-01-11",
+      "measured_ball_energy_J": 0.0002970393708256928,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.693725985140118e-12
+    },
+    {
+      "id": "launch-01-12",
+      "measured_ball_energy_J": 0.0002933092709876269,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0597977844698653e-11
+    },
+    {
+      "id": "launch-01-13",
+      "measured_ball_energy_J": 0.00028966199011234035,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.643437690841055e-12
+    },
+    {
+      "id": "launch-01-14",
+      "measured_ball_energy_J": 0.0002933092709876269,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0597977844698653e-11
+    },
+    {
+      "id": "launch-01-15",
+      "measured_ball_energy_J": 0.0002970393708256928,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.693725985140118e-12
+    },
+    {
+      "id": "launch-01-16",
+      "measured_ball_energy_J": 0.0002933092709876269,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0597977844698653e-11
+    },
+    {
+      "id": "launch-01-17",
+      "measured_ball_energy_J": 0.00020488267417234082,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.737092879417149e-13
+    },
+    {
+      "id": "launch-01-18",
+      "measured_ball_energy_J": 0.00021047852758658778,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1028979650124643e-12
+    },
+    {
+      "id": "launch-01-19",
+      "measured_ball_energy_J": 0.00021658474370806678,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.136520545180213e-12
+    },
+    {
+      "id": "launch-01-20",
+      "measured_ball_energy_J": 0.00021047852758658778,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1028979650124643e-12
+    },
+    {
+      "id": "launch-01-21",
+      "measured_ball_energy_J": 0.00020488267417234082,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.737092879417149e-13
+    },
+    {
+      "id": "launch-01-22",
+      "measured_ball_energy_J": 0.00021047852758658778,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1028979650124643e-12
+    },
+    {
+      "id": "launch-01-23",
+      "measured_ball_energy_J": 0.00021658474370806678,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.136520545180213e-12
+    },
+    {
+      "id": "launch-01-24",
+      "measured_ball_energy_J": 0.00021047852758658778,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1028979650124643e-12
+    },
+    {
+      "id": "launch-01-25",
+      "measured_ball_energy_J": 0.00018632550474229957,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.365779141196971e-12
+    },
+    {
+      "id": "launch-01-26",
+      "measured_ball_energy_J": 0.00019173847609296193,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.672015328522876e-12
+    },
+    {
+      "id": "launch-01-27",
+      "measured_ball_energy_J": 0.00019777569974498258,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.797278738937009e-13
+    },
+    {
+      "id": "launch-01-28",
+      "measured_ball_energy_J": 0.00019173847609296193,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.672015328522876e-12
+    },
+    {
+      "id": "launch-01-29",
+      "measured_ball_energy_J": 0.00018632550474229957,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.365779141196971e-12
+    },
+    {
+      "id": "launch-01-30",
+      "measured_ball_energy_J": 0.00019173847609296193,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.672015328522876e-12
+    },
+    {
+      "id": "launch-01-31",
+      "measured_ball_energy_J": 0.00019777569974498258,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.797278738937009e-13
+    },
+    {
+      "id": "launch-01-32",
+      "measured_ball_energy_J": 0.00019173847609296193,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.672015328522876e-12
+    },
+    {
+      "id": "launch-01-33",
+      "measured_ball_energy_J": 0.00018163508970455913,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.46701595783827e-12
+    },
+    {
+      "id": "launch-01-34",
+      "measured_ball_energy_J": 0.0001869733434043366,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.981329561820665e-12
+    },
+    {
+      "id": "launch-01-35",
+      "measured_ball_energy_J": 0.00019296372940288059,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.2989097564772862e-12
+    },
+    {
+      "id": "launch-01-36",
+      "measured_ball_energy_J": 0.0001869733434043366,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.981329561820665e-12
+    },
+    {
+      "id": "launch-01-37",
+      "measured_ball_energy_J": 0.00018163508970455913,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.46701595783827e-12
+    },
+    {
+      "id": "launch-01-38",
+      "measured_ball_energy_J": 0.0001869733434043366,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.981329561820665e-12
+    },
+    {
+      "id": "launch-01-39",
+      "measured_ball_energy_J": 0.00019296372940288059,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.2989097564772862e-12
+    },
+    {
+      "id": "launch-01-40",
+      "measured_ball_energy_J": 0.0001869733434043366,
+      "incoming_cue_energy_J": 0.0006500000000000002,
+      "bound_J": 0.0006500010000000002,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.981329561820665e-12
+    },
+    {
+      "id": "launch-02-00",
+      "measured_ball_energy_J": 0.001360516782405452,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.6323929678234186e-11
+    },
+    {
+      "id": "launch-02-01",
+      "measured_ball_energy_J": 0.0013252743183691852,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.871439844052582e-11
+    },
+    {
+      "id": "launch-02-02",
+      "measured_ball_energy_J": 0.0013283882557159922,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.677629381582115e-12
+    },
+    {
+      "id": "launch-02-03",
+      "measured_ball_energy_J": 0.0013315129450083083,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.385672514913396e-11
+    },
+    {
+      "id": "launch-02-04",
+      "measured_ball_energy_J": 0.0013283882557159922,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.677629381582115e-12
+    },
+    {
+      "id": "launch-02-05",
+      "measured_ball_energy_J": 0.0013252743183691852,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.871439844052582e-11
+    },
+    {
+      "id": "launch-02-06",
+      "measured_ball_energy_J": 0.0013283882557159922,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.677629381582115e-12
+    },
+    {
+      "id": "launch-02-07",
+      "measured_ball_energy_J": 0.0013315129450083083,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.385672514913396e-11
+    },
+    {
+      "id": "launch-02-08",
+      "measured_ball_energy_J": 0.0013283882557159922,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.677629381582115e-12
+    },
+    {
+      "id": "launch-02-09",
+      "measured_ball_energy_J": 0.0011586479604493614,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.457375076336422e-11
+    },
+    {
+      "id": "launch-02-10",
+      "measured_ball_energy_J": 0.0011732370839505075,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.239191137879461e-11
+    },
+    {
+      "id": "launch-02-11",
+      "measured_ball_energy_J": 0.0011881574833027713,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8774903940560472e-11
+    },
+    {
+      "id": "launch-02-12",
+      "measured_ball_energy_J": 0.0011732370839505075,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.239191137879461e-11
+    },
+    {
+      "id": "launch-02-13",
+      "measured_ball_energy_J": 0.0011586479604493614,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.457375076336422e-11
+    },
+    {
+      "id": "launch-02-14",
+      "measured_ball_energy_J": 0.0011732370839505075,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.239191137879461e-11
+    },
+    {
+      "id": "launch-02-15",
+      "measured_ball_energy_J": 0.0011881574833027713,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8774903940560472e-11
+    },
+    {
+      "id": "launch-02-16",
+      "measured_ball_energy_J": 0.0011732370839505075,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.239191137879461e-11
+    },
+    {
+      "id": "launch-02-17",
+      "measured_ball_energy_J": 0.0008195306966893633,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8948371517668594e-12
+    },
+    {
+      "id": "launch-02-18",
+      "measured_ball_energy_J": 0.0008419141103463511,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.411591860049857e-12
+    },
+    {
+      "id": "launch-02-19",
+      "measured_ball_energy_J": 0.0008663389748322671,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.4546082180720852e-11
+    },
+    {
+      "id": "launch-02-20",
+      "measured_ball_energy_J": 0.0008419141103463511,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.411591860049857e-12
+    },
+    {
+      "id": "launch-02-21",
+      "measured_ball_energy_J": 0.0008195306966893633,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8948371517668594e-12
+    },
+    {
+      "id": "launch-02-22",
+      "measured_ball_energy_J": 0.0008419141103463511,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.411591860049857e-12
+    },
+    {
+      "id": "launch-02-23",
+      "measured_ball_energy_J": 0.0008663389748322671,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.4546082180720852e-11
+    },
+    {
+      "id": "launch-02-24",
+      "measured_ball_energy_J": 0.0008419141103463511,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.411591860049857e-12
+    },
+    {
+      "id": "launch-02-25",
+      "measured_ball_energy_J": 0.0007453020189691983,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7463116564787884e-11
+    },
+    {
+      "id": "launch-02-26",
+      "measured_ball_energy_J": 0.0007669539043718477,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4688061314091505e-11
+    },
+    {
+      "id": "launch-02-27",
+      "measured_ball_energy_J": 0.0007911027989799303,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1189114955748036e-12
+    },
+    {
+      "id": "launch-02-28",
+      "measured_ball_energy_J": 0.0007669539043718477,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4688061314091505e-11
+    },
+    {
+      "id": "launch-02-29",
+      "measured_ball_energy_J": 0.0007453020189691983,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7463116564787884e-11
+    },
+    {
+      "id": "launch-02-30",
+      "measured_ball_energy_J": 0.0007669539043718477,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4688061314091505e-11
+    },
+    {
+      "id": "launch-02-31",
+      "measured_ball_energy_J": 0.0007911027989799303,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1189114955748036e-12
+    },
+    {
+      "id": "launch-02-32",
+      "measured_ball_energy_J": 0.0007669539043718477,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4688061314091505e-11
+    },
+    {
+      "id": "launch-02-33",
+      "measured_ball_energy_J": 0.0007265403588182365,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.86806383135308e-12
+    },
+    {
+      "id": "launch-02-34",
+      "measured_ball_energy_J": 0.0007478933736173464,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.592531824728266e-11
+    },
+    {
+      "id": "launch-02-35",
+      "measured_ball_energy_J": 0.0007718549176115223,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.3195639025909145e-11
+    },
+    {
+      "id": "launch-02-36",
+      "measured_ball_energy_J": 0.0007478933736173464,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.592531824728266e-11
+    },
+    {
+      "id": "launch-02-37",
+      "measured_ball_energy_J": 0.0007265403588182365,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.86806383135308e-12
+    },
+    {
+      "id": "launch-02-38",
+      "measured_ball_energy_J": 0.0007478933736173464,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.592531824728266e-11
+    },
+    {
+      "id": "launch-02-39",
+      "measured_ball_energy_J": 0.0007718549176115223,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.3195639025909145e-11
+    },
+    {
+      "id": "launch-02-40",
+      "measured_ball_energy_J": 0.0007478933736173464,
+      "incoming_cue_energy_J": 0.0026000000000000007,
+      "bound_J": 0.0026000026000000008,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.592531824728266e-11
+    },
+    {
+      "id": "launch-03-00",
+      "measured_ball_energy_J": 0.005442067129621808,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.2529571871293674e-10
+    },
+    {
+      "id": "launch-03-01",
+      "measured_ball_energy_J": 0.005301097273476741,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.5485759376210328e-10
+    },
+    {
+      "id": "launch-03-02",
+      "measured_ball_energy_J": 0.005313553022863969,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.471051752632846e-11
+    },
+    {
+      "id": "launch-03-03",
+      "measured_ball_energy_J": 0.005326051780033233,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.3542690059653584e-10
+    },
+    {
+      "id": "launch-03-04",
+      "measured_ball_energy_J": 0.005313553022863969,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.471051752632846e-11
+    },
+    {
+      "id": "launch-03-05",
+      "measured_ball_energy_J": 0.005301097273476741,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.5485759376210328e-10
+    },
+    {
+      "id": "launch-03-06",
+      "measured_ball_energy_J": 0.005313553022863969,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.471051752632846e-11
+    },
+    {
+      "id": "launch-03-07",
+      "measured_ball_energy_J": 0.005326051780033233,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.3542690059653584e-10
+    },
+    {
+      "id": "launch-03-08",
+      "measured_ball_energy_J": 0.005313553022863969,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.471051752632846e-11
+    },
+    {
+      "id": "launch-03-09",
+      "measured_ball_energy_J": 0.0046345918417974455,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.3829500305345688e-10
+    },
+    {
+      "id": "launch-03-10",
+      "measured_ball_energy_J": 0.00469294833580203,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.6956764551517844e-10
+    },
+    {
+      "id": "launch-03-11",
+      "measured_ball_energy_J": 0.004752629933211085,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.509961576224189e-11
+    },
+    {
+      "id": "launch-03-12",
+      "measured_ball_energy_J": 0.00469294833580203,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.6956764551517844e-10
+    },
+    {
+      "id": "launch-03-13",
+      "measured_ball_energy_J": 0.0046345918417974455,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.3829500305345688e-10
+    },
+    {
+      "id": "launch-03-14",
+      "measured_ball_energy_J": 0.00469294833580203,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.6956764551517844e-10
+    },
+    {
+      "id": "launch-03-15",
+      "measured_ball_energy_J": 0.004752629933211085,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.509961576224189e-11
+    },
+    {
+      "id": "launch-03-16",
+      "measured_ball_energy_J": 0.00469294833580203,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.6956764551517844e-10
+    },
+    {
+      "id": "launch-03-17",
+      "measured_ball_energy_J": 0.003278122786757453,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.579348607067438e-12
+    },
+    {
+      "id": "launch-03-18",
+      "measured_ball_energy_J": 0.0033676564413854045,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.764636744019943e-11
+    },
+    {
+      "id": "launch-03-19",
+      "measured_ball_energy_J": 0.0034653558993290685,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.818432872288341e-11
+    },
+    {
+      "id": "launch-03-20",
+      "measured_ball_energy_J": 0.0033676564413854045,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.764636744019943e-11
+    },
+    {
+      "id": "launch-03-21",
+      "measured_ball_energy_J": 0.003278122786757453,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.579348607067438e-12
+    },
+    {
+      "id": "launch-03-22",
+      "measured_ball_energy_J": 0.0033676564413854045,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.764636744019943e-11
+    },
+    {
+      "id": "launch-03-23",
+      "measured_ball_energy_J": 0.0034653558993290685,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.818432872288341e-11
+    },
+    {
+      "id": "launch-03-24",
+      "measured_ball_energy_J": 0.0033676564413854045,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.764636744019943e-11
+    },
+    {
+      "id": "launch-03-25",
+      "measured_ball_energy_J": 0.002981208075876793,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.985246625915154e-11
+    },
+    {
+      "id": "launch-03-26",
+      "measured_ball_energy_J": 0.003067815617487391,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.875224525636602e-11
+    },
+    {
+      "id": "launch-03-27",
+      "measured_ball_energy_J": 0.003164411195919721,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.4756459822992145e-12
+    },
+    {
+      "id": "launch-03-28",
+      "measured_ball_energy_J": 0.003067815617487391,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.875224525636602e-11
+    },
+    {
+      "id": "launch-03-29",
+      "measured_ball_energy_J": 0.002981208075876793,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.985246625915154e-11
+    },
+    {
+      "id": "launch-03-30",
+      "measured_ball_energy_J": 0.003067815617487391,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.875224525636602e-11
+    },
+    {
+      "id": "launch-03-31",
+      "measured_ball_energy_J": 0.003164411195919721,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.4756459822992145e-12
+    },
+    {
+      "id": "launch-03-32",
+      "measured_ball_energy_J": 0.003067815617487391,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.875224525636602e-11
+    },
+    {
+      "id": "launch-03-33",
+      "measured_ball_energy_J": 0.002906161435272946,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.947225532541232e-11
+    },
+    {
+      "id": "launch-03-34",
+      "measured_ball_energy_J": 0.0029915734944693856,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.370127298913064e-11
+    },
+    {
+      "id": "launch-03-35",
+      "measured_ball_energy_J": 0.0030874196704460894,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.278255610363658e-11
+    },
+    {
+      "id": "launch-03-36",
+      "measured_ball_energy_J": 0.0029915734944693856,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.370127298913064e-11
+    },
+    {
+      "id": "launch-03-37",
+      "measured_ball_energy_J": 0.002906161435272946,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.947225532541232e-11
+    },
+    {
+      "id": "launch-03-38",
+      "measured_ball_energy_J": 0.0029915734944693856,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.370127298913064e-11
+    },
+    {
+      "id": "launch-03-39",
+      "measured_ball_energy_J": 0.0030874196704460894,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.278255610363658e-11
+    },
+    {
+      "id": "launch-03-40",
+      "measured_ball_energy_J": 0.0029915734944693856,
+      "incoming_cue_energy_J": 0.010400000000000003,
+      "bound_J": 0.010400010400000003,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.370127298913064e-11
+    },
+    {
+      "id": "launch-04-00",
+      "measured_ball_energy_J": 0.0340129211531214,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.542734340420076e-10
+    },
+    {
+      "id": "launch-04-01",
+      "measured_ball_energy_J": 0.033131855737044844,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.5822290214129175e-09
+    },
+    {
+      "id": "launch-04-02",
+      "measured_ball_energy_J": 0.03320971360850652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.022100945020533e-09
+    },
+    {
+      "id": "launch-04-03",
+      "measured_ball_energy_J": 0.033287826845111175,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2087403994387458e-10
+    },
+    {
+      "id": "launch-04-04",
+      "measured_ball_energy_J": 0.03320971360850652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.022100945020533e-09
+    },
+    {
+      "id": "launch-04-05",
+      "measured_ball_energy_J": 0.033131855737044844,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.5822290214129175e-09
+    },
+    {
+      "id": "launch-04-06",
+      "measured_ball_energy_J": 0.03320971360850652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.022100945020533e-09
+    },
+    {
+      "id": "launch-04-07",
+      "measured_ball_energy_J": 0.033287826845111175,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2087403994387458e-10
+    },
+    {
+      "id": "launch-04-08",
+      "measured_ball_energy_J": 0.03320971360850652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.022100945020533e-09
+    },
+    {
+      "id": "launch-04-09",
+      "measured_ball_energy_J": 0.028966205409310608,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0073212368399975e-09
+    },
+    {
+      "id": "launch-04-10",
+      "measured_ball_energy_J": 0.029330929133644094,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.388165600141772e-10
+    },
+    {
+      "id": "launch-04-11",
+      "measured_ball_energy_J": 0.02970394325324937,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.942621213508083e-10
+    },
+    {
+      "id": "launch-04-12",
+      "measured_ball_energy_J": 0.029330929133644094,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.388165600141772e-10
+    },
+    {
+      "id": "launch-04-13",
+      "measured_ball_energy_J": 0.028966205409310608,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0073212368399975e-09
+    },
+    {
+      "id": "launch-04-14",
+      "measured_ball_energy_J": 0.029330929133644094,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.388165600141772e-10
+    },
+    {
+      "id": "launch-04-15",
+      "measured_ball_energy_J": 0.02970394325324937,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.942621213508083e-10
+    },
+    {
+      "id": "launch-04-16",
+      "measured_ball_energy_J": 0.029330929133644094,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.388165600141772e-10
+    },
+    {
+      "id": "launch-04-17",
+      "measured_ball_energy_J": 0.020488267677972738,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.947222708937769e-10
+    },
+    {
+      "id": "launch-04-18",
+      "measured_ball_energy_J": 0.021047851742395488,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.012005241915695e-10
+    },
+    {
+      "id": "launch-04-19",
+      "measured_ball_energy_J": 0.02165847266604439,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.766716172448064e-11
+    },
+    {
+      "id": "launch-04-20",
+      "measured_ball_energy_J": 0.021047851742395488,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.012005241915695e-10
+    },
+    {
+      "id": "launch-04-21",
+      "measured_ball_energy_J": 0.020488267677972738,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.947222708937769e-10
+    },
+    {
+      "id": "launch-04-22",
+      "measured_ball_energy_J": 0.021047851742395488,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.012005241915695e-10
+    },
+    {
+      "id": "launch-04-23",
+      "measured_ball_energy_J": 0.02165847266604439,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.766716172448064e-11
+    },
+    {
+      "id": "launch-04-24",
+      "measured_ball_energy_J": 0.021047851742395488,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.012005241915695e-10
+    },
+    {
+      "id": "launch-04-25",
+      "measured_ball_energy_J": 0.018632545897926282,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.295160725506733e-10
+    },
+    {
+      "id": "launch-04-26",
+      "measured_ball_energy_J": 0.019173849404867046,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.0174906190106867e-10
+    },
+    {
+      "id": "launch-04-27",
+      "measured_ball_energy_J": 0.019777564677542235,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.2985262998487244e-11
+    },
+    {
+      "id": "launch-04-28",
+      "measured_ball_energy_J": 0.019173849404867046,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.0174906190106867e-10
+    },
+    {
+      "id": "launch-04-29",
+      "measured_ball_energy_J": 0.018632545897926282,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.295160725506733e-10
+    },
+    {
+      "id": "launch-04-30",
+      "measured_ball_energy_J": 0.019173849404867046,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.0174906190106867e-10
+    },
+    {
+      "id": "launch-04-31",
+      "measured_ball_energy_J": 0.019777564677542235,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.2985262998487244e-11
+    },
+    {
+      "id": "launch-04-32",
+      "measured_ball_energy_J": 0.019173849404867046,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.0174906190106867e-10
+    },
+    {
+      "id": "launch-04-33",
+      "measured_ball_energy_J": 0.018163511920005652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.890628316355787e-10
+    },
+    {
+      "id": "launch-04-34",
+      "measured_ball_energy_J": 0.018697332203151243,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.839796250739493e-10
+    },
+    {
+      "id": "launch-04-35",
+      "measured_ball_energy_J": 0.01929637388152927,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.5850753749299145e-10
+    },
+    {
+      "id": "launch-04-36",
+      "measured_ball_energy_J": 0.018697332203151243,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.839796250739493e-10
+    },
+    {
+      "id": "launch-04-37",
+      "measured_ball_energy_J": 0.018163511920005652,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.890628316355787e-10
+    },
+    {
+      "id": "launch-04-38",
+      "measured_ball_energy_J": 0.018697332203151243,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.839796250739493e-10
+    },
+    {
+      "id": "launch-04-39",
+      "measured_ball_energy_J": 0.01929637388152927,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.5850753749299145e-10
+    },
+    {
+      "id": "launch-04-40",
+      "measured_ball_energy_J": 0.018697332203151243,
+      "incoming_cue_energy_J": 0.065,
+      "bound_J": 0.065000065,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.839796250739493e-10
+    },
+    {
+      "id": "launch-05-00",
+      "measured_ball_energy_J": 0.1360516846124856,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.61709373616803e-09
+    },
+    {
+      "id": "launch-05-01",
+      "measured_ball_energy_J": 0.13252742294817937,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.32891608565167e-09
+    },
+    {
+      "id": "launch-05-02",
+      "measured_ball_energy_J": 0.13283885443402607,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.088403780082132e-09
+    },
+    {
+      "id": "launch-05-03",
+      "measured_ball_energy_J": 0.1331513073804447,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.834961597754983e-10
+    },
+    {
+      "id": "launch-05-04",
+      "measured_ball_energy_J": 0.13283885443402607,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.088403780082132e-09
+    },
+    {
+      "id": "launch-05-05",
+      "measured_ball_energy_J": 0.13252742294817937,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.32891608565167e-09
+    },
+    {
+      "id": "launch-05-06",
+      "measured_ball_energy_J": 0.13283885443402607,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.088403780082132e-09
+    },
+    {
+      "id": "launch-05-07",
+      "measured_ball_energy_J": 0.1331513073804447,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.834961597754983e-10
+    },
+    {
+      "id": "launch-05-08",
+      "measured_ball_energy_J": 0.13283885443402607,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -8.088403780082132e-09
+    },
+    {
+      "id": "launch-05-09",
+      "measured_ball_energy_J": 0.11586482163724243,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.02928494735999e-09
+    },
+    {
+      "id": "launch-05-10",
+      "measured_ball_energy_J": 0.11732371653457638,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.9552662400567087e-09
+    },
+    {
+      "id": "launch-05-11",
+      "measured_ball_energy_J": 0.11881577301299748,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.1770484854032333e-09
+    },
+    {
+      "id": "launch-05-12",
+      "measured_ball_energy_J": 0.11732371653457638,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.9552662400567087e-09
+    },
+    {
+      "id": "launch-05-13",
+      "measured_ball_energy_J": 0.11586482163724243,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.02928494735999e-09
+    },
+    {
+      "id": "launch-05-14",
+      "measured_ball_energy_J": 0.11732371653457638,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.9552662400567087e-09
+    },
+    {
+      "id": "launch-05-15",
+      "measured_ball_energy_J": 0.11881577301299748,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.1770484854032333e-09
+    },
+    {
+      "id": "launch-05-16",
+      "measured_ball_energy_J": 0.11732371653457638,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.9552662400567087e-09
+    },
+    {
+      "id": "launch-05-17",
+      "measured_ball_energy_J": 0.08195307071189095,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1788890835751076e-09
+    },
+    {
+      "id": "launch-05-18",
+      "measured_ball_energy_J": 0.08419140696958195,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.604802096766278e-09
+    },
+    {
+      "id": "launch-05-19",
+      "measured_ball_energy_J": 0.08663389066417757,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.5066864689792254e-10
+    },
+    {
+      "id": "launch-05-20",
+      "measured_ball_energy_J": 0.08419140696958195,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.604802096766278e-09
+    },
+    {
+      "id": "launch-05-21",
+      "measured_ball_energy_J": 0.08195307071189095,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1788890835751076e-09
+    },
+    {
+      "id": "launch-05-22",
+      "measured_ball_energy_J": 0.08419140696958195,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.604802096766278e-09
+    },
+    {
+      "id": "launch-05-23",
+      "measured_ball_energy_J": 0.08663389066417757,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.5066864689792254e-10
+    },
+    {
+      "id": "launch-05-24",
+      "measured_ball_energy_J": 0.08419140696958195,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.604802096766278e-09
+    },
+    {
+      "id": "launch-05-25",
+      "measured_ball_energy_J": 0.07453018359170513,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.918064290202693e-09
+    },
+    {
+      "id": "launch-05-26",
+      "measured_ball_energy_J": 0.07669539761946818,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.069962476042747e-10
+    },
+    {
+      "id": "launch-05-27",
+      "measured_ball_energy_J": 0.07911025871016894,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.194105199394897e-11
+    },
+    {
+      "id": "launch-05-28",
+      "measured_ball_energy_J": 0.07669539761946818,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.069962476042747e-10
+    },
+    {
+      "id": "launch-05-29",
+      "measured_ball_energy_J": 0.07453018359170513,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.918064290202693e-09
+    },
+    {
+      "id": "launch-05-30",
+      "measured_ball_energy_J": 0.07669539761946818,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.069962476042747e-10
+    },
+    {
+      "id": "launch-05-31",
+      "measured_ball_energy_J": 0.07911025871016894,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.194105199394897e-11
+    },
+    {
+      "id": "launch-05-32",
+      "measured_ball_energy_J": 0.07669539761946818,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.069962476042747e-10
+    },
+    {
+      "id": "launch-05-33",
+      "measured_ball_energy_J": 0.07265404768002261,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.956251326542315e-09
+    },
+    {
+      "id": "launch-05-34",
+      "measured_ball_energy_J": 0.07478932881260497,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.335918500295797e-09
+    },
+    {
+      "id": "launch-05-35",
+      "measured_ball_energy_J": 0.07718549552611707,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.8340301499719658e-09
+    },
+    {
+      "id": "launch-05-36",
+      "measured_ball_energy_J": 0.07478932881260497,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.335918500295797e-09
+    },
+    {
+      "id": "launch-05-37",
+      "measured_ball_energy_J": 0.07265404768002261,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.956251326542315e-09
+    },
+    {
+      "id": "launch-05-38",
+      "measured_ball_energy_J": 0.07478932881260497,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.335918500295797e-09
+    },
+    {
+      "id": "launch-05-39",
+      "measured_ball_energy_J": 0.07718549552611707,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.8340301499719658e-09
+    },
+    {
+      "id": "launch-05-40",
+      "measured_ball_energy_J": 0.07478932881260497,
+      "incoming_cue_energy_J": 0.26,
+      "bound_J": 0.26000026,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.335918500295797e-09
+    },
+    {
+      "id": "launch-06-00",
+      "measured_ball_energy_J": 0.5442067384499424,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.046837494467212e-08
+    },
+    {
+      "id": "launch-06-01",
+      "measured_ball_energy_J": 0.5301096917927175,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.531566434260668e-08
+    },
+    {
+      "id": "launch-06-02",
+      "measured_ball_energy_J": 0.5313554177361043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.235361512032853e-08
+    },
+    {
+      "id": "launch-06-03",
+      "measured_ball_energy_J": 0.5326052295217788,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.9339846391019933e-09
+    },
+    {
+      "id": "launch-06-04",
+      "measured_ball_energy_J": 0.5313554177361043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.235361512032853e-08
+    },
+    {
+      "id": "launch-06-05",
+      "measured_ball_energy_J": 0.5301096917927175,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.531566434260668e-08
+    },
+    {
+      "id": "launch-06-06",
+      "measured_ball_energy_J": 0.5313554177361043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.235361512032853e-08
+    },
+    {
+      "id": "launch-06-07",
+      "measured_ball_energy_J": 0.5326052295217788,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.9339846391019933e-09
+    },
+    {
+      "id": "launch-06-08",
+      "measured_ball_energy_J": 0.5313554177361043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.235361512032853e-08
+    },
+    {
+      "id": "launch-06-09",
+      "measured_ball_energy_J": 0.46345928654896973,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.611713978943996e-08
+    },
+    {
+      "id": "launch-06-10",
+      "measured_ball_energy_J": 0.4692948661383055,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1821064960226835e-08
+    },
+    {
+      "id": "launch-06-11",
+      "measured_ball_energy_J": 0.4752630920519899,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.2708193941612933e-08
+    },
+    {
+      "id": "launch-06-12",
+      "measured_ball_energy_J": 0.4692948661383055,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1821064960226835e-08
+    },
+    {
+      "id": "launch-06-13",
+      "measured_ball_energy_J": 0.46345928654896973,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.611713978943996e-08
+    },
+    {
+      "id": "launch-06-14",
+      "measured_ball_energy_J": 0.4692948661383055,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1821064960226835e-08
+    },
+    {
+      "id": "launch-06-15",
+      "measured_ball_energy_J": 0.4752630920519899,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.2708193941612933e-08
+    },
+    {
+      "id": "launch-06-16",
+      "measured_ball_energy_J": 0.4692948661383055,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.1821064960226835e-08
+    },
+    {
+      "id": "launch-06-17",
+      "measured_ball_energy_J": 0.3278122828475638,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.71555633430043e-09
+    },
+    {
+      "id": "launch-06-18",
+      "measured_ball_energy_J": 0.3367656278783278,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.419208387065112e-09
+    },
+    {
+      "id": "launch-06-19",
+      "measured_ball_energy_J": 0.34653556265671026,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4026745875916902e-09
+    },
+    {
+      "id": "launch-06-20",
+      "measured_ball_energy_J": 0.3367656278783278,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.419208387065112e-09
+    },
+    {
+      "id": "launch-06-21",
+      "measured_ball_energy_J": 0.3278122828475638,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.71555633430043e-09
+    },
+    {
+      "id": "launch-06-22",
+      "measured_ball_energy_J": 0.3367656278783278,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.419208387065112e-09
+    },
+    {
+      "id": "launch-06-23",
+      "measured_ball_energy_J": 0.34653556265671026,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4026745875916902e-09
+    },
+    {
+      "id": "launch-06-24",
+      "measured_ball_energy_J": 0.3367656278783278,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.419208387065112e-09
+    },
+    {
+      "id": "launch-06-25",
+      "measured_ball_energy_J": 0.2981207343668205,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1672257160810773e-08
+    },
+    {
+      "id": "launch-06-26",
+      "measured_ball_energy_J": 0.30678159047787273,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.2279849904170987e-09
+    },
+    {
+      "id": "launch-06-27",
+      "measured_ball_energy_J": 0.31644103484067576,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.677642079757959e-10
+    },
+    {
+      "id": "launch-06-28",
+      "measured_ball_energy_J": 0.30678159047787273,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.2279849904170987e-09
+    },
+    {
+      "id": "launch-06-29",
+      "measured_ball_energy_J": 0.2981207343668205,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1672257160810773e-08
+    },
+    {
+      "id": "launch-06-30",
+      "measured_ball_energy_J": 0.30678159047787273,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.2279849904170987e-09
+    },
+    {
+      "id": "launch-06-31",
+      "measured_ball_energy_J": 0.31644103484067576,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -3.677642079757959e-10
+    },
+    {
+      "id": "launch-06-32",
+      "measured_ball_energy_J": 0.30678159047787273,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.2279849904170987e-09
+    },
+    {
+      "id": "launch-06-33",
+      "measured_ball_energy_J": 0.29061619072009043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.582500530616926e-08
+    },
+    {
+      "id": "launch-06-34",
+      "measured_ball_energy_J": 0.2991573152504199,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.343674001183189e-09
+    },
+    {
+      "id": "launch-06-35",
+      "measured_ball_energy_J": 0.3087419821044683,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.336120599887863e-09
+    },
+    {
+      "id": "launch-06-36",
+      "measured_ball_energy_J": 0.2991573152504199,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.343674001183189e-09
+    },
+    {
+      "id": "launch-06-37",
+      "measured_ball_energy_J": 0.29061619072009043,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.582500530616926e-08
+    },
+    {
+      "id": "launch-06-38",
+      "measured_ball_energy_J": 0.2991573152504199,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.343674001183189e-09
+    },
+    {
+      "id": "launch-06-39",
+      "measured_ball_energy_J": 0.3087419821044683,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.336120599887863e-09
+    },
+    {
+      "id": "launch-06-40",
+      "measured_ball_energy_J": 0.2991573152504199,
+      "incoming_cue_energy_J": 1.04,
+      "bound_J": 1.04000104,
+      "status": "PASS",
+      "instrument_energy_residual_J": 9.343674001183189e-09
+    },
+    {
+      "id": "launch-07-00",
+      "measured_ball_energy_J": 2.1768269537997695,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.187349977868848e-08
+    },
+    {
+      "id": "launch-07-01",
+      "measured_ball_energy_J": 2.12043876717087,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0126265737042672e-07
+    },
+    {
+      "id": "launch-07-02",
+      "measured_ball_energy_J": 2.125421670944417,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.294144604813141e-07
+    },
+    {
+      "id": "launch-07-03",
+      "measured_ball_energy_J": 2.130420918087115,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.735938556407973e-09
+    },
+    {
+      "id": "launch-07-04",
+      "measured_ball_energy_J": 2.125421670944417,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.294144604813141e-07
+    },
+    {
+      "id": "launch-07-05",
+      "measured_ball_energy_J": 2.12043876717087,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0126265737042672e-07
+    },
+    {
+      "id": "launch-07-06",
+      "measured_ball_energy_J": 2.125421670944417,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.294144604813141e-07
+    },
+    {
+      "id": "launch-07-07",
+      "measured_ball_energy_J": 2.130420918087115,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 7.735938556407973e-09
+    },
+    {
+      "id": "launch-07-08",
+      "measured_ball_energy_J": 2.125421670944417,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.294144604813141e-07
+    },
+    {
+      "id": "launch-07-09",
+      "measured_ball_energy_J": 1.853837146195879,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.446855915775984e-08
+    },
+    {
+      "id": "launch-07-10",
+      "measured_ball_energy_J": 1.877179464553222,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.728425984090734e-08
+    },
+    {
+      "id": "launch-07-11",
+      "measured_ball_energy_J": 1.9010523682079596,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.083277576645173e-08
+    },
+    {
+      "id": "launch-07-12",
+      "measured_ball_energy_J": 1.877179464553222,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.728425984090734e-08
+    },
+    {
+      "id": "launch-07-13",
+      "measured_ball_energy_J": 1.853837146195879,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.446855915775984e-08
+    },
+    {
+      "id": "launch-07-14",
+      "measured_ball_energy_J": 1.877179464553222,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.728425984090734e-08
+    },
+    {
+      "id": "launch-07-15",
+      "measured_ball_energy_J": 1.9010523682079596,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.083277576645173e-08
+    },
+    {
+      "id": "launch-07-16",
+      "measured_ball_energy_J": 1.877179464553222,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 4.728425984090734e-08
+    },
+    {
+      "id": "launch-07-17",
+      "measured_ball_energy_J": 1.3112491313902552,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.886222533720172e-08
+    },
+    {
+      "id": "launch-07-18",
+      "measured_ball_energy_J": 1.3470625115133112,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.5676833548260447e-08
+    },
+    {
+      "id": "launch-07-19",
+      "measured_ball_energy_J": 1.386142250626841,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.610698350366761e-09
+    },
+    {
+      "id": "launch-07-20",
+      "measured_ball_energy_J": 1.3470625115133112,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.5676833548260447e-08
+    },
+    {
+      "id": "launch-07-21",
+      "measured_ball_energy_J": 1.3112491313902552,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.886222533720172e-08
+    },
+    {
+      "id": "launch-07-22",
+      "measured_ball_energy_J": 1.3470625115133112,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.5676833548260447e-08
+    },
+    {
+      "id": "launch-07-23",
+      "measured_ball_energy_J": 1.386142250626841,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.610698350366761e-09
+    },
+    {
+      "id": "launch-07-24",
+      "measured_ball_energy_J": 1.3470625115133112,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.5676833548260447e-08
+    },
+    {
+      "id": "launch-07-25",
+      "measured_ball_energy_J": 1.192482937467282,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.668902864324309e-08
+    },
+    {
+      "id": "launch-07-26",
+      "measured_ball_energy_J": 1.227126361911491,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2911939961668395e-08
+    },
+    {
+      "id": "launch-07-27",
+      "measured_ball_energy_J": 1.265764139362703,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.4710568319031836e-09
+    },
+    {
+      "id": "launch-07-28",
+      "measured_ball_energy_J": 1.227126361911491,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2911939961668395e-08
+    },
+    {
+      "id": "launch-07-29",
+      "measured_ball_energy_J": 1.192482937467282,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.668902864324309e-08
+    },
+    {
+      "id": "launch-07-30",
+      "measured_ball_energy_J": 1.227126361911491,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2911939961668395e-08
+    },
+    {
+      "id": "launch-07-31",
+      "measured_ball_energy_J": 1.265764139362703,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.4710568319031836e-09
+    },
+    {
+      "id": "launch-07-32",
+      "measured_ball_energy_J": 1.227126361911491,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2911939961668395e-08
+    },
+    {
+      "id": "launch-07-33",
+      "measured_ball_energy_J": 1.1624647628803617,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.330002122467704e-08
+    },
+    {
+      "id": "launch-07-34",
+      "measured_ball_energy_J": 1.1966292610016795,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.7374696004732755e-08
+    },
+    {
+      "id": "launch-07-35",
+      "measured_ball_energy_J": 1.2349679284178732,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.9344482399551453e-08
+    },
+    {
+      "id": "launch-07-36",
+      "measured_ball_energy_J": 1.1966292610016795,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.7374696004732755e-08
+    },
+    {
+      "id": "launch-07-37",
+      "measured_ball_energy_J": 1.1624647628803617,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -6.330002122467704e-08
+    },
+    {
+      "id": "launch-07-38",
+      "measured_ball_energy_J": 1.1966292610016795,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.7374696004732755e-08
+    },
+    {
+      "id": "launch-07-39",
+      "measured_ball_energy_J": 1.2349679284178732,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.9344482399551453e-08
+    },
+    {
+      "id": "launch-07-40",
+      "measured_ball_energy_J": 1.1966292610016795,
+      "incoming_cue_energy_J": 4.16,
+      "bound_J": 4.16000416,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.7374696004732755e-08
+    },
+    {
+      "id": "launch-08-00",
+      "measured_ball_energy_J": 4.8978612577557845,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.5110426444571203e-08
+    },
+    {
+      "id": "launch-08-01",
+      "measured_ball_energy_J": 4.770987213734197,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.7202365398816255e-07
+    },
+    {
+      "id": "launch-08-02",
+      "measured_ball_energy_J": 4.782198447483555,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.109503848795157e-07
+    },
+    {
+      "id": "launch-08-03",
+      "measured_ball_energy_J": 4.793446753169273,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2216759603944638e-07
+    },
+    {
+      "id": "launch-08-04",
+      "measured_ball_energy_J": 4.782198447483555,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.109503848795157e-07
+    },
+    {
+      "id": "launch-08-05",
+      "measured_ball_energy_J": 4.770987213734197,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.7202365398816255e-07
+    },
+    {
+      "id": "launch-08-06",
+      "measured_ball_energy_J": 4.782198447483555,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.109503848795157e-07
+    },
+    {
+      "id": "launch-08-07",
+      "measured_ball_energy_J": 4.793446753169273,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2216759603944638e-07
+    },
+    {
+      "id": "launch-08-08",
+      "measured_ball_energy_J": 4.782198447483555,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.109503848795157e-07
+    },
+    {
+      "id": "launch-08-09",
+      "measured_ball_energy_J": 4.171132515614192,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.3033182561249532e-07
+    },
+    {
+      "id": "launch-08-10",
+      "measured_ball_energy_J": 4.223654582857579,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.60835900340362e-08
+    },
+    {
+      "id": "launch-08-11",
+      "measured_ball_energy_J": 4.277367501893115,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0028536578943203e-07
+    },
+    {
+      "id": "launch-08-12",
+      "measured_ball_energy_J": 4.223654582857579,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.60835900340362e-08
+    },
+    {
+      "id": "launch-08-13",
+      "measured_ball_energy_J": 4.171132515614192,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.3033182561249532e-07
+    },
+    {
+      "id": "launch-08-14",
+      "measured_ball_energy_J": 4.223654582857579,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.60835900340362e-08
+    },
+    {
+      "id": "launch-08-15",
+      "measured_ball_energy_J": 4.277367501893115,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.0028536578943203e-07
+    },
+    {
+      "id": "launch-08-16",
+      "measured_ball_energy_J": 4.223654582857579,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.60835900340362e-08
+    },
+    {
+      "id": "launch-08-17",
+      "measured_ball_energy_J": 2.9503106824547753,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.759428305969095e-08
+    },
+    {
+      "id": "launch-08-18",
+      "measured_ball_energy_J": 3.0308908636128615,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7000451268955885e-08
+    },
+    {
+      "id": "launch-08-19",
+      "measured_ball_energy_J": 3.1188202099641127,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.436717070457121e-08
+    },
+    {
+      "id": "launch-08-20",
+      "measured_ball_energy_J": 3.0308908636128615,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7000451268955885e-08
+    },
+    {
+      "id": "launch-08-21",
+      "measured_ball_energy_J": 2.9503106824547753,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.759428305969095e-08
+    },
+    {
+      "id": "launch-08-22",
+      "measured_ball_energy_J": 3.0308908636128615,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7000451268955885e-08
+    },
+    {
+      "id": "launch-08-23",
+      "measured_ball_energy_J": 3.1188202099641127,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 6.436717070457121e-08
+    },
+    {
+      "id": "launch-08-24",
+      "measured_ball_energy_J": 3.0308908636128615,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.7000451268955885e-08
+    },
+    {
+      "id": "launch-08-25",
+      "measured_ball_energy_J": 2.6830869074318753,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.433391401358904e-08
+    },
+    {
+      "id": "launch-08-26",
+      "measured_ball_energy_J": 2.761033926206987,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.209271307180188e-08
+    },
+    {
+      "id": "launch-08-27",
+      "measured_ball_energy_J": 2.847970022304305,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.4033593721005673e-09
+    },
+    {
+      "id": "launch-08-28",
+      "measured_ball_energy_J": 2.761033926206987,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.209271307180188e-08
+    },
+    {
+      "id": "launch-08-29",
+      "measured_ball_energy_J": 2.6830869074318753,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -9.433391401358904e-08
+    },
+    {
+      "id": "launch-08-30",
+      "measured_ball_energy_J": 2.761033926206987,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.209271307180188e-08
+    },
+    {
+      "id": "launch-08-31",
+      "measured_ball_energy_J": 2.847970022304305,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.4033593721005673e-09
+    },
+    {
+      "id": "launch-08-32",
+      "measured_ball_energy_J": 2.761033926206987,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 8.209271307180188e-08
+    },
+    {
+      "id": "launch-08-33",
+      "measured_ball_energy_J": 2.6155458833162837,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.9174400228981767e-08
+    },
+    {
+      "id": "launch-08-34",
+      "measured_ball_energy_J": 2.692416308050974,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2748748945412558e-07
+    },
+    {
+      "id": "launch-08-35",
+      "measured_ball_energy_J": 2.778678011923779,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.9950290752746014e-08
+    },
+    {
+      "id": "launch-08-36",
+      "measured_ball_energy_J": 2.692416308050974,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2748748945412558e-07
+    },
+    {
+      "id": "launch-08-37",
+      "measured_ball_energy_J": 2.6155458833162837,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.9174400228981767e-08
+    },
+    {
+      "id": "launch-08-38",
+      "measured_ball_energy_J": 2.692416308050974,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2748748945412558e-07
+    },
+    {
+      "id": "launch-08-39",
+      "measured_ball_energy_J": 2.778678011923779,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.9950290752746014e-08
+    },
+    {
+      "id": "launch-08-40",
+      "measured_ball_energy_J": 2.692416308050974,
+      "incoming_cue_energy_J": 9.36,
+      "bound_J": 9.36000936,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.2748748945412558e-07
+    },
+    {
+      "id": "launch-09-00",
+      "measured_ball_energy_J": 8.707307815199078,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.6749399911475393e-07
+    },
+    {
+      "id": "launch-09-01",
+      "measured_ball_energy_J": 8.48175506868348,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.050506294817069e-07
+    },
+    {
+      "id": "launch-09-02",
+      "measured_ball_energy_J": 8.501686683777669,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.176578419252564e-07
+    },
+    {
+      "id": "launch-09-03",
+      "measured_ball_energy_J": 8.52168367234846,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.094375422563189e-08
+    },
+    {
+      "id": "launch-09-04",
+      "measured_ball_energy_J": 8.501686683777669,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.176578419252564e-07
+    },
+    {
+      "id": "launch-09-05",
+      "measured_ball_energy_J": 8.48175506868348,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -4.050506294817069e-07
+    },
+    {
+      "id": "launch-09-06",
+      "measured_ball_energy_J": 8.501686683777669,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.176578419252564e-07
+    },
+    {
+      "id": "launch-09-07",
+      "measured_ball_energy_J": 8.52168367234846,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 3.094375422563189e-08
+    },
+    {
+      "id": "launch-09-08",
+      "measured_ball_energy_J": 8.501686683777669,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.176578419252564e-07
+    },
+    {
+      "id": "launch-09-09",
+      "measured_ball_energy_J": 7.415348584783516,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.5787423663103937e-07
+    },
+    {
+      "id": "launch-09-10",
+      "measured_ball_energy_J": 7.508717858212888,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8913703936362936e-07
+    },
+    {
+      "id": "launch-09-11",
+      "measured_ball_energy_J": 7.604209472831839,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.0333110306580693e-07
+    },
+    {
+      "id": "launch-09-12",
+      "measured_ball_energy_J": 7.508717858212888,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8913703936362936e-07
+    },
+    {
+      "id": "launch-09-13",
+      "measured_ball_energy_J": 7.415348584783516,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.5787423663103937e-07
+    },
+    {
+      "id": "launch-09-14",
+      "measured_ball_energy_J": 7.508717858212888,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8913703936362936e-07
+    },
+    {
+      "id": "launch-09-15",
+      "measured_ball_energy_J": 7.604209472831839,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.0333110306580693e-07
+    },
+    {
+      "id": "launch-09-16",
+      "measured_ball_energy_J": 7.508717858212888,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.8913703936362936e-07
+    },
+    {
+      "id": "launch-09-17",
+      "measured_ball_energy_J": 5.244996525561021,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.544890134880688e-08
+    },
+    {
+      "id": "launch-09-18",
+      "measured_ball_energy_J": 5.388250046053245,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.0270733419304179e-07
+    },
+    {
+      "id": "launch-09-19",
+      "measured_ball_energy_J": 5.544569002507364,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.2442793401467043e-08
+    },
+    {
+      "id": "launch-09-20",
+      "measured_ball_energy_J": 5.388250046053245,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.0270733419304179e-07
+    },
+    {
+      "id": "launch-09-21",
+      "measured_ball_energy_J": 5.244996525561021,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -7.544890134880688e-08
+    },
+    {
+      "id": "launch-09-22",
+      "measured_ball_energy_J": 5.388250046053245,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.0270733419304179e-07
+    },
+    {
+      "id": "launch-09-23",
+      "measured_ball_energy_J": 5.544569002507364,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 2.2442793401467043e-08
+    },
+    {
+      "id": "launch-09-24",
+      "measured_ball_energy_J": 5.388250046053245,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.0270733419304179e-07
+    },
+    {
+      "id": "launch-09-25",
+      "measured_ball_energy_J": 4.769931749869128,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.8675611457297236e-07
+    },
+    {
+      "id": "launch-09-26",
+      "measured_ball_energy_J": 4.908505447645964,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.164775984667358e-08
+    },
+    {
+      "id": "launch-09-27",
+      "measured_ball_energy_J": 5.063056557450812,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.884227327612734e-09
+    },
+    {
+      "id": "launch-09-28",
+      "measured_ball_energy_J": 4.908505447645964,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.164775984667358e-08
+    },
+    {
+      "id": "launch-09-29",
+      "measured_ball_energy_J": 4.769931749869128,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.8675611457297236e-07
+    },
+    {
+      "id": "launch-09-30",
+      "measured_ball_energy_J": 4.908505447645964,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.164775984667358e-08
+    },
+    {
+      "id": "launch-09-31",
+      "measured_ball_energy_J": 5.063056557450812,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -5.884227327612734e-09
+    },
+    {
+      "id": "launch-09-32",
+      "measured_ball_energy_J": 4.908505447645964,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 5.164775984667358e-08
+    },
+    {
+      "id": "launch-09-33",
+      "measured_ball_energy_J": 4.649859051521447,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.5320008489870816e-07
+    },
+    {
+      "id": "launch-09-34",
+      "measured_ball_energy_J": 4.786517044006718,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4949878401893102e-07
+    },
+    {
+      "id": "launch-09-35",
+      "measured_ball_energy_J": 4.939871713671493,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1737792959820581e-07
+    },
+    {
+      "id": "launch-09-36",
+      "measured_ball_energy_J": 4.786517044006718,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4949878401893102e-07
+    },
+    {
+      "id": "launch-09-37",
+      "measured_ball_energy_J": 4.649859051521447,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -2.5320008489870816e-07
+    },
+    {
+      "id": "launch-09-38",
+      "measured_ball_energy_J": 4.786517044006718,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4949878401893102e-07
+    },
+    {
+      "id": "launch-09-39",
+      "measured_ball_energy_J": 4.939871713671493,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": -1.1737792959820581e-07
+    },
+    {
+      "id": "launch-09-40",
+      "measured_ball_energy_J": 4.786517044006718,
+      "incoming_cue_energy_J": 16.64,
+      "bound_J": 16.64001664,
+      "status": "PASS",
+      "instrument_energy_residual_J": 1.4949878401893102e-07
+    }
+  ]
+}

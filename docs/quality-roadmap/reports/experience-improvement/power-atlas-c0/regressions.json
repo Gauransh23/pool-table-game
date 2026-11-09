@@ -1,0 +1,50 @@
+[
+  {
+    "test": "run",
+    "exit": 0,
+    "script_error": false,
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "GDScript cut sweep: speed=0.2 m/s points=81 max_error=0.00000202 rad",
+      "GDScript cut sweep: speed=8.0 m/s points=81 max_error=0.00000009 rad",
+      "PASS: 950 simulation and rules assertions"
+    ]
+  },
+  {
+    "test": "stroke_contact",
+    "exit": 0,
+    "script_error": false,
+    "tail": [
+      "PASS: camera switch is ignored without disturbing a pending stroke",
+      "PASS: cue remains visible through the contact event",
+      "PASS: visible tip touches ball surface at contact event",
+      "PASS: physics starts at the same cue contact event",
+      "PASS: ignored camera switch leaves pending stroke stable through contact",
+      "STROKE CONTACT: 24 checks, 0 failures"
+    ]
+  },
+  {
+    "test": "spin_precision",
+    "exit": 0,
+    "script_error": false,
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "SPIN PRECISION: 5 checks, 0 failures"
+    ]
+  },
+  {
+    "test": "save_recovery",
+    "exit": 0,
+    "script_error": false,
+    "tail": [
+      "PASS: rejects inconsistent terminal phase",
+      "PASS: inconsistent terminal phase rejection leaves the live game unchanged",
+      "PASS: truncated JSON is rejected",
+      "PASS: truncated-file rejection leaves the live game unchanged",
+      "PASS: save does not replace a good file with moving state",
+      "SAVE RECOVERY: 39 checks, 0 failures"
+    ]
+  }
+]

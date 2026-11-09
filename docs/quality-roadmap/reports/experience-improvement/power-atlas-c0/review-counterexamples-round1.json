@@ -1,0 +1,28 @@
+{
+  "original_wrapper_sha256": "1cfb0691423a0df687fc11771b544e93b48c0a875d2d2ba549a6dc288b6405b6",
+  "updated_wrapper_sha256": "ed934c8cf1c94e969beb51245fb07397e10d6b4048358df551f0ce4bfbfb56ea",
+  "results": [
+    {
+      "mutation": "missing_all_7_unsupported_and_13_boundary_rows",
+      "original": {
+        "accepted": true,
+        "rows": 201
+      },
+      "updated": {
+        "accepted": false,
+        "reason": "missing/duplicate/unknown record kind counts"
+      }
+    },
+    {
+      "mutation": "missing_accepted_committed_power_hud_tip_readback_provenance",
+      "original": {
+        "accepted": true,
+        "rows": 201
+      },
+      "updated": {
+        "accepted": false,
+        "reason": "missing result provenance/domain/outcome fields"
+      }
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+GDScript cut sweep: speed=0.2 m/s points=81 max_error=0.00000202 rad
+GDScript cut sweep: speed=8.0 m/s points=81 max_error=0.00000009 rad
+PASS: 950 simulation and rules assertions
