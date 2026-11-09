@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-09",
+  "version": "0.3.3",
+  "source_commit": "78ca44464b0a4a31d8aaa4c446e203699b21dba7",
+  "source_sha256": {
+    "project.godot": "47f29b4dbabbec09d8d1b5cdef83d1aa4ec1d2858a1544a69d67af24448cba19",
+    "export_presets.cfg": "b6fb5c6822890820e08876163798cdbee048720b9f3d9396ecf096dc68dfdcf5",
+    "scripts/sim/outgoing_guide.gd": "4e04d969ffd76151b3c11a48fe2051c97363a02d96fc87385615db184e3963b0",
+    "scripts/presentation/table_presentation.gd": "08e53206a7319eed6c4024e9f6b6414f8a60f755ddbeb5ccd68728b8281e3c87",
+    "scripts/app/game_controller.gd": "76f4991607bbe0913e0ee0b8310bb896002b32779b9373fa773ea659add3bc2c",
+    "scripts/ui/game_hud.gd": "25f70ae372fe31e0bf13f2aab2d4332f8bc60bc5f1034f0570ccd0738381d186",
+    "scripts/presentation/table_audio.gd": "3bff9a1608dd0ed12064d215764ce6cfbe5eb91eb3c743a8ed731aff4f270c8b",
+    "assets/audio/recorded_contacts.json": "17b141972494be96a24eefa7a9cc39560bfb02c00494797aad993e2c818bf062",
+    "assets/audio/CREDITS.txt": "0b48beade3f97fa90f4b983f9e39bd2494560880f2dbcf1ca853b61b437c42cd",
+    "assets/audio/qa-evidence.json": "8b90c8de124911875df8d8887c94f7483605270bb7bb9e91bbed166a023bf9e3",
+    "tests/proportional_guides.gd": "657eeff97350bff7bb81fdee9235344a75fc780b69db8ae9ae75d582f7dba7f3",
+    "tests/audio_contacts.gd": "8528f2eb1418a348cfbb4dc3e61a7590d84ff75007c54d38723a15a638611def"
+  },
+  "artifact_sha256": {
+    "build/Long Rail-0.3.3-mac.dmg": "2277dfd2232bb5f0286a8bc9efbf2b4dd804d1411ead546b54d11f04947e04e9",
+    "build/Long Rail-0.3.3.app/Contents/MacOS/Long Rail": "572311f58bd9c83bc1e5f52ba96dd07bb908863ea47b0656cb5a90ee54eeec46",
+    "build/Long Rail-0.3.3.app/Contents/Resources/Long Rail.pck": "f701cef3343241d02dbfc31b486af95fa5c45f13d90cae659633364553e0578c",
+    "captures/audio/after-recorded.wav": "734c808d38ed6855b00369194831a2db7d32b40d50ef46c2cef03c99c9a5caec",
+    "captures/audio/before-synthetic.wav": "bfbe1fcf5d95b12bfe31443ff71a33f1028174e2bdcff551513da31027098f49",
+    "captures/audio/physics-break.wav": "f8c69861c6f1f5af5717a5adbdee9bd6ba64f5af9c8670e79a4abf31dd7607ad"
+  },
+  "architectures": [
+    "arm64",
+    "x86_64"
+  ],
+  "signature": "PASS codesign --verify --deep --strict",
+  "installer_checksum": "PASS shasum -a256 -c",
+  "exported_attribution_payload": "PASS complete CREDITS.txt present in pack",
+  "exported_graphical_startup": {
+    "command": "build/Long Rail-0.3.3.app/Contents/MacOS/Long Rail --quit-after 60",
+    "exit_code": 0,
+    "log": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\nMetal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)\n\n",
+    "scope": "Metal graphical startup only, not native input or listening acceptance"
+  },
+  "review": {
+    "guides": "PASS bounded spec/code; proportional-guides-evidence/independent-review.md",
+    "audio": "No important blocker; real-audio-review.md; 16 assets independently reconstructed byte-for-byte"
+  },
+  "tests": {
+    "proportional_guides": "106 checks,0fail",
+    "audio_contacts": "0fail",
+    "outgoing_guides": "878 checks,0fail at guide checkpoint",
+    "practice_input_flow": "200 checks,0fail",
+    "practice_flow": "42 checks,0fail",
+    "save_recovery": "39 checks,0fail at guide checkpoint",
+    "stroke_contact": "24 checks,0fail at guide checkpoint"
+  },
+  "audio_mix": {
+    "method": "Actual Godot offline MovieMaker output, 120fps/48000Hz stereo; not device capture",
+    "true_peak_estimate_dbTP": -1.9566,
+    "clipped_pcm_samples": 0,
+    "later_mute_region": "digital zero"
+  },
+  "limits": [
+    "Native CUA pipe unavailable; actual native menu interaction in this continuation not established.",
+    "No model or tool actually heard the audio; owner audition and full human listening acceptance remain open.",
+    "One phone-quality rail take; lossy public HQ preview sources.",
+    "6ms tween is frame-scheduled, not <=10ms device mute proof.",
+    "Full quality contract remains unverified."
+  ]
+}

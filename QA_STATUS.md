@@ -1,12 +1,19 @@
-# Proportional momentum guides — 0.3.3 candidate
+# Proportional guides and recorded audio — 0.3.3 candidate
 
-Updated 2026-11-08. [Design and checks](docs/quality-roadmap/plans/PROPORTIONAL_GUIDES.md).
+Updated 2026-11-09. [Guide design and checks](docs/quality-roadmap/plans/PROPORTIONAL_GUIDES.md), [audio research and evidence](docs/quality-roadmap/reports/REAL_AUDIO.md).
 
 Outgoing arrows now represent immediate post-collision planar momentum with one
 shared screen scale, rather than two independently capped travel paths. Guide
 length is adjustable through Menu → Guide length and persists separately from
 practice saves. Common obstruction clipping preserves the displayed ratio.
 Later spin curvature and stopping distance are outside this diagram's promise.
+
+Recorded audio replaces the previous sine/noise effects: five ball, five cue,
+five pocket and one rail take. The rail recording's phone-source quality and
+single-take limit are explicit. Attribution is available in the installed app.
+The actual engine offline mix deck measures about -1.96 dBTP with no clipped
+PCM and later digital silence after mute. This does not establish human sound
+quality, speaker/headphone parity, device latency or a sample-accurate mute bound.
 
 See the implementation report for final test/review/release evidence. Full
 physical calibration, recognition/DPI and native performance acceptance remain

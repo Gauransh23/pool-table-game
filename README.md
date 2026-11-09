@@ -36,7 +36,7 @@ shorten together when one reaches the table boundary or another obstruction.
 These are impact-direction diagrams; later spin can curve the actual paths.
 Ambiguous clusters and bank-first shots omit outgoing diagrams.
 
-The preview includes original procedural table/ball materials and contact sounds,
+The preview includes procedural table/ball materials and licensed recorded contact sounds,
 soft-to-hard stroke control, follow/draw/english, collision and friction models,
 ball-in-hand recovery, shot undo, and aim-assistance and sound toggles.
 
@@ -86,3 +86,5 @@ selected; public visibility does not itself grant reuse rights.
 ## Quality targets for implementation
 
 Read the [high-fidelity contract](docs/quality-roadmap/QUALITY_TARGETS.md), its domain target pages and [test protocols](docs/quality-roadmap/TEST_PROTOCOLS.md) before further quality work. The 140 target IDs are acceptance obligations, not a statement that the current preview meets them.
+
+Sound recordings, attribution and processing details are listed in [audio credits](assets/audio/CREDITS.md). The installed app also provides **Menu → Sound credits**.
