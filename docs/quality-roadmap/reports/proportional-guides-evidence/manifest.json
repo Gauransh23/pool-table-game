@@ -1,0 +1,39 @@
+{
+  "baseline_commit": "c2a048700cb0972419a55bae4eddc496bb7a87d1",
+  "engine": "Godot 4.7.2.stable.official.ed1daf0bf",
+  "source_sha256": {
+    "scripts/sim/outgoing_guide.gd": "4e04d969ffd76151b3c11a48fe2051c97363a02d96fc87385615db184e3963b0",
+    "scripts/sim/physics_stepper.gd": "f16b01423140524a9330daaac39011cca6757fc532ea4fce7dd6cf3fa230669b",
+    "scripts/sim/physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
+    "scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff",
+    "scripts/presentation/table_presentation.gd": "08e53206a7319eed6c4024e9f6b6414f8a60f755ddbeb5ccd68728b8281e3c87",
+    "scripts/app/game_controller.gd": "76f4991607bbe0913e0ee0b8310bb896002b32779b9373fa773ea659add3bc2c",
+    "scripts/ui/game_hud.gd": "d4e357df374640e76886d5b7003cabbb418c336a70c817622d5300b87c0b7be4",
+    "tests/proportional_guides.gd": "657eeff97350bff7bb81fdee9235344a75fc780b69db8ae9ae75d582f7dba7f3",
+    "tests/capture_proportional_guides.gd": "0feff5c7560b65428cd108e94e78af1b8e04cb2b1dc4203e74f364fb02ad254e"
+  },
+  "captures_sha256": {
+    "head-long.png": "c5fdeb175807b919dc76f3666680b63730bdbdd5c2c37db006c66cafef56c174",
+    "lounge.png": "012185d1ca9be68361b45b81e70f2ad2ecc9942e8025e0b034ce8a45e38c8207",
+    "settings.png": "de3c51fa7a0af7bc7a3c7cc13d3d40c2ad20e256e22bc1d23e8b127dd8ecda95",
+    "thin-short.png": "435f23de3953b4b088691a2a356d5497884b2b2cef8dde66b859a3b4a3d502f7",
+    "30deg-short.png": "f07eac39d3ed5b82659ca4667b86514c5f946efc870d1f3b8aa53e0b37e87433",
+    "head-short.png": "4ad207b5e9900b6e7bbba4cc254f97a3e528e615f4f0f92f939f281644c78e46",
+    "30deg-default.png": "20e79c198004adc0491161249c1f07e532523a436c20e3b335a6ba9735ca15b5",
+    "head-default.png": "0c031b8da90f9a8647203540f2980be1f0e4094c95065e7d2937f731bd01f3d3",
+    "thin-long.png": "e4e1e81891a37a45ec42436ef5f4bdf89299cc7781fe8f2944547024fc495090",
+    "30deg-long.png": "747d01386f5fe07702234899c9f780ab9dc6d6b9aff4cf7ad739364f2555341b",
+    "thin-default.png": "08cadac1ec81c253c8222f340b56f32351e5c25681b734cb8fbeac99d6d6d9de"
+  },
+  "suite_exit_codes": {
+    "proportional_guides": 0,
+    "outgoing_guides": 0,
+    "aim_controls": 0,
+    "practice_input_flow": 0,
+    "stroke_contact": 0,
+    "practice_flow": 0,
+    "save_recovery": 0
+  },
+  "physics_algorithm_or_coefficients_modified": false,
+  "capture_mode": "source GUI 1100x700 Metal Forward+, fixed isolated layouts; not exported app evidence"
+}

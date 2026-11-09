@@ -2,7 +2,8 @@ extends RefCounted
 class_name OutgoingGuide
 
 # This is a disposable replay of the ACTIVE engine, never an ideal collision oracle.
-# Every result is tick sampled and deliberately ends before another interaction.
+# Historical travel paths remain tick sampled and end before another interaction.
+# Separate impact velocities are captured immediately after pair resolution.
 const MAX_TICKS := 1920
 const BEFORE_CONTACT_SECONDS := 2.5
 const AFTER_CONTACT_SECONDS := 0.8
@@ -15,6 +16,16 @@ const FRAME_BUDGET_USEC := 2500
 class ContactStepper extends PhysicsStepper:
 	var observed: Array = []
 	var first_contact: Dictionary = {}
+	func _resolve_ball_pair(first: BallState, second: BallState, config: PhysicsConfig,
+		previous_separation: Vector3, previous_relative_velocity: Vector3, sub_delta: float) -> bool:
+		var first_before := first.velocity
+		var second_before := second.velocity
+		var waiting := first_contact.is_empty()
+		var resolved := super._resolve_ball_pair(first, second, config, previous_separation, previous_relative_velocity, sub_delta)
+		if waiting and not first_contact.is_empty():
+			first_contact["velocities"] = {first.number: first.velocity, second.number: second.velocity}
+			first_contact["incoming"] = {first.number: first_before, second.number: second_before}
+		return resolved
 	func _record_event(event: Dictionary) -> void:
 		super._record_event(event)
 		if event.kind != "ball_contact" or not first_contact.is_empty(): return
@@ -107,6 +118,13 @@ func _tick() -> void:
 			result.contact = _stepper.first_contact.centers[0]
 			result.contact_event_position = _stepper.first_contact.position
 			result.object_number = number
+			result.impact_cue_velocity = _stepper.first_contact.velocities[0]
+			result.impact_object_velocity = _stepper.first_contact.velocities[number]
+			result.impact_incoming_speed = _stepper.first_contact.incoming[0].length()
+			result.impact_centers = _stepper.first_contact.centers
+			result.blockers = []
+			for source_ball in _balls:
+				if source_ball.number not in [0, number] and source_ball.is_on_table(): result.blockers.append(source_ball.position)
 			result.cue_speed = _cue.velocity.length()
 			result.object_speed = _object.velocity.length()
 			for index in range(2):

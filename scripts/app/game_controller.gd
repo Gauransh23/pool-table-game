@@ -51,6 +51,8 @@ func _ready() -> void:
 	hud.view_requested.connect(_toggle_view)
 	hud.sound_changed.connect(func(value: bool): _audio.enabled = value)
 	hud.guide_changed.connect(func(value: bool): _guides = value; _refresh_aim())
+	hud.guide_length_changed.connect(func(value: float): table_view.set_guide_length(value); _update_momentum_readout())
+	table_view.set_guide_length(hud.guide_length)
 	hud.play_area_changed.connect(_on_play_area_changed)
 	_new_rack(false)
 	var resumed := _load_session()
@@ -176,7 +178,6 @@ func _open_menu() -> void:
 
 func _on_play_area_changed(area: Rect2) -> void:
 	_cancel_aim_gesture()
-	_last_aim_state.clear()
 	table_view.set_play_area(area)
 
 func _refresh_aim() -> void:
@@ -194,6 +195,7 @@ func _refresh_aim() -> void:
 		for ball in balls: layout.append(ball.canonical_state())
 	var state: Array = [aim_direction, _cue_ball().position, power, spin, _shot_in_motion, _placing, _stroke_pending, _guides, layout, _guide_settings_state()]
 	if state == _last_aim_state:
+		_update_momentum_readout()
 		_advance_guide_prediction()
 		return
 	_last_aim_state = state
@@ -221,16 +223,22 @@ func _advance_guide_prediction() -> void:
 	if not _guides or _placing or _shot_in_motion or _stroke_pending or _guide_applied: return
 	_guide_prediction.advance()
 	if not _guide_prediction.done:
-		hud.set_prediction("Calculating outgoing paths…")
+		hud.set_prediction("Calculating momentum at impact…")
 		return
 	_guide_applied = true
 	var prediction := _guide_prediction.result
 	if prediction.is_empty(): return
 	if prediction.status == "predicted":
 		table_view.set_outgoing_guide(prediction)
-		hud.set_prediction("After contact · estimated\nCue %.2f m/s · ball %d %.2f m/s\nIvory cue · dashed cyan target\nUp to 0.8 s / 0.45 m; stops before next impact/pocket." % [prediction.cue_speed, prediction.object_number, prediction.object_speed])
+		_update_momentum_readout()
 	else:
 		hud.set_prediction("Launch / first-contact geometry only\nOutgoing omitted: %s" % prediction.status)
+
+func _update_momentum_readout() -> void:
+	if not _guides or not _guide_applied or _guide_prediction.result.get("status") != "predicted": return
+	var prediction := _guide_prediction.result
+	var limit := " · limited by obstacle" if table_view.momentum_geometry.get("limited", false) else ""
+	hud.set_prediction("Relative momentum at impact%s\nCue %.2f · ball %d %.2f m/s\nIvory cue · dashed cyan target\n%.2fx display · follow/draw can curve later" % [limit, prediction.impact_cue_velocity.length(), prediction.object_number, prediction.impact_object_velocity.length(), hud.guide_length])
 
 func _new_rack(persist: bool = true) -> void:
 	table_view.cancel_stroke()

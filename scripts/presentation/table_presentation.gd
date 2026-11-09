@@ -31,6 +31,48 @@ var _fit_zoom := -1.0
 var _display_prediction: Dictionary = {}
 var _aim_geometry: Array = []
 var _guide_projection: Array = []
+var guide_length := 1.5
+# Shared geometry used directly by the mesh renderer and projected-ratio tests.
+var momentum_geometry: Dictionary = {}
+
+func set_guide_length(value: float) -> void:
+	guide_length = clampf(value, 0.25, 3.0) if is_finite(value) else 1.5
+	if not _display_prediction.is_empty(): set_outgoing_guide(_display_prediction)
+
+func _screen_point(point: Vector2) -> Vector2:
+	return _camera.unproject_position(Vector3(point.x, BallState.RADIUS + 0.003, point.y))
+
+func _momentum_geometry(prediction: Dictionary) -> Dictionary:
+	var paths: Array[PackedVector2Array] = []
+	var common := 1.0
+	var speeds := [prediction.impact_cue_velocity.length(), prediction.impact_object_velocity.length()]
+	var reference := maxf(1.0e-9, maxf(prediction.impact_incoming_speed, maxf(speeds[0], speeds[1])))
+	var width := _play_area.size.x if _play_area.size.x > 0 else get_viewport().get_visible_rect().size.x
+	for index in range(2):
+		var number: int = 0 if index == 0 else prediction.object_number
+		var origin: Vector2 = prediction.impact_centers[number]
+		var velocity: Vector2 = prediction.impact_cue_velocity if index == 0 else prediction.impact_object_velocity
+		if speeds[index] <= 1.0e-9:
+			paths.append(PackedVector2Array())
+			continue
+		var direction := velocity.normalized()
+		var projected := _screen_point(origin + direction) - _screen_point(origin)
+		var pixels: float = width * 0.25 * guide_length * speeds[index] / reference
+		var world_length := pixels / maxf(projected.length(), 1.0e-9)
+		var available := _first_rail_distance(origin, direction)
+		for blocker in prediction.get("blockers", []):
+			var offset: Vector2 = blocker - origin
+			var along := offset.dot(direction)
+			var perpendicular := offset.length_squared() - along * along
+			var radius := 2.0 * BallState.RADIUS
+			if along > 0.0 and perpendicular < radius * radius:
+				available = minf(available, maxf(0.0, along - sqrt(maxf(0.0, radius * radius - perpendicular))))
+		common = minf(common, maxf(0.0, available - 0.002) / maxf(world_length, 1.0e-9))
+		paths.append(PackedVector2Array([origin, origin + direction * world_length]))
+	for index in range(paths.size()):
+		if paths[index].size() == 2: paths[index][1] = paths[index][0].lerp(paths[index][1], common)
+	return {"paths": paths, "common_factor": common, "limited": common < 0.995}
+
 
 
 func _process(_delta: float) -> void:
@@ -117,6 +159,7 @@ func sync_balls(balls: Array) -> void:
 
 func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool, tip_offset: Vector2 = Vector2.ZERO, launch_direction: Vector2 = Vector2.ZERO) -> void:
 	_display_prediction = {}
+	momentum_geometry = {}
 	_aim_geometry = []
 	_aim_immediate.clear_surfaces()
 	var ghost_material := _ghost_ball.material_override as StandardMaterial3D
@@ -159,11 +202,19 @@ func set_outgoing_guide(prediction: Dictionary) -> void:
 	_aim_immediate.surface_begin(Mesh.PRIMITIVE_TRIANGLES, _aim_material)
 	_add_guide_path(prediction.incoming, Color("aeb5b0"), true)
 	_add_contact_ring(prediction.contact)
-	_add_guide_path(prediction.cue_path, Color("fff2ce"), false)
-	_add_guide_path(prediction.object_path, Color("8cdce3"), true)
-	_add_guide_arrow(prediction.cue_path, Color("fff2ce"))
-	_add_guide_arrow(prediction.object_path, Color("8cdce3"))
+	momentum_geometry = _momentum_geometry(prediction)
+	_add_guide_path(momentum_geometry.paths[0], Color("fff2ce"), false)
+	_add_vector_dashes(momentum_geometry.paths[1], Color("8cdce3"))
+	_add_guide_arrow(momentum_geometry.paths[0], Color("fff2ce"))
+	_add_guide_arrow(momentum_geometry.paths[1], Color("8cdce3"))
 	_aim_immediate.surface_end()
+
+func _add_vector_dashes(points: PackedVector2Array, color: Color) -> void:
+	if points.size() != 2: return
+	var pixels := _screen_point(points[0]).distance_to(_screen_point(points[1]))
+	var count := maxi(1, ceili(pixels / 10.0))
+	for index in range(count):
+		_add_guide_segment(points[0].lerp(points[1], float(index) / count), points[0].lerp(points[1], (1.0 if index == count - 1 else (index + 0.65) / count)), color)
 
 func _add_guide_path(points: PackedVector2Array, color: Color, dashed: bool) -> void:
 	# Tick sampling is retained for physics; a distance based dash separates paths.
