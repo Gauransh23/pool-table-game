@@ -19,6 +19,7 @@ var selected_spin := Vector2.ZERO
 var called_ball := 1
 var called_pocket := 0
 var safety := false
+var _prediction: Label
 var _status: Label
 var _score: Label
 var _detail: Label
@@ -76,6 +77,9 @@ func _build() -> void:
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_status.custom_minimum_size.y = 50
 	column.add_child(_status)
+	_prediction = label("", 12, Color("c4d9d9"))
+	_prediction.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(_prediction)
 	var power_row := HBoxContainer.new()
 	column.add_child(power_row)
 	power_row.add_child(label("POWER", 11, Color("b6b9aa")))
@@ -142,7 +146,7 @@ func _build() -> void:
 	guides.custom_minimum_size.y = 32
 	guides.add_theme_font_size_override("font_size", 14)
 	guides.add_theme_stylebox_override("focus", focus_ring())
-	guides.tooltip_text = "Shows launch direction and first contact. Later spin, throw and rebounds are not predicted."; guides.button_pressed = true
+	guides.tooltip_text = "Active-solver preview: ivory cue, dashed cyan object. Up to 0.8 s / 0.45 m after first contact; each stops before its next contact, rail or pocket. Tick-sampled estimate; clusters omitted. Speeds are planar m/s at the first-contact tick endpoint, not instantaneous impact speeds or momentum percentages."; guides.button_pressed = true
 	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
 	options.add_child(guides)
 	_focus_controls = [_power, _spin, _shoot, undo, camera, menu, sound, guides]
@@ -302,3 +306,6 @@ func focus_ring() -> StyleBoxFlat:
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(7)
 	return style
+
+func set_prediction(text: String) -> void:
+	_prediction.text = text
