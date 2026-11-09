@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+REVIEWER HARD CUT: registered (-0.022624, 0.11912); old tick end (-0.014804, 0.114725); former drift 8.969989 mm; corrected 0.000000000 mm
+REGISTERED CONTACT: max old tick-end displacement 9.070454 mm; registered error <0.0001 mm
+CAMERA RIBBON WIDTH false 1.49999618530273
+CAMERA RIBBON WIDTH true 1.5
+RESIZE RIBBON WIDTH 1.5
+OUTGOING GUIDES: 888 checks, 0 failures; max slice 3515 us, max total 45949 us
+exit_code=0

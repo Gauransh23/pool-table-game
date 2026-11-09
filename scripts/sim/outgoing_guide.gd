@@ -10,13 +10,26 @@ const MAX_PATH_METERS := 0.45
 const FRAME_TICKS := 32
 const FRAME_BUDGET_USEC := 2500
 
+# Observe the exact active-engine event registration without changing its solver.
+# Positions are captured after its positional correction, before later substeps.
+class ContactStepper extends PhysicsStepper:
+	var observed: Array = []
+	var first_contact: Dictionary = {}
+	func _record_event(event: Dictionary) -> void:
+		super._record_event(event)
+		if event.kind != "ball_contact" or not first_contact.is_empty(): return
+		var centers: Dictionary = {}
+		for ball in observed:
+			if ball.number == event.a or ball.number == event.b: centers[ball.number] = ball.position
+		first_contact = {"centers": centers, "position": event.position}
+
 var done := true
 var ticks := 0
 var result: Dictionary = {}
 var _balls: Array[BallState] = []
 var _config: PhysicsConfig
 var _table: TableSpec
-var _stepper := PhysicsStepper.new()
+var _stepper := ContactStepper.new()
 var _cue: BallState
 var _object: BallState
 var _hit_tick := -1
@@ -35,7 +48,8 @@ func begin(source: Array, direction: Vector2, cue_speed: float, spin: Vector2, c
 	_cue = null
 	_config = config
 	_table = table
-	_stepper = PhysicsStepper.new()
+	_stepper = ContactStepper.new()
+	_stepper.observed = _balls
 	for ball in source:
 		var copy: BallState = ball.duplicate_state()
 		_balls.append(copy)
@@ -90,13 +104,22 @@ func _tick() -> void:
 					_finish("cluster: outgoing omitted")
 					return
 			_hit_tick = ticks
-			result.contact = _cue.position
+			result.contact = _stepper.first_contact.centers[0]
+			result.contact_event_position = _stepper.first_contact.position
 			result.object_number = number
 			result.cue_speed = _cue.velocity.length()
 			result.object_speed = _object.velocity.length()
-			result.cue_path.append(_cue.position)
-			result.object_path.append(_object.position)
-		result.incoming.append(_cue.position)
+			for index in range(2):
+				var ball: BallState = _cue if index == 0 else _object
+				var key := "cue_path" if index == 0 else "object_path"
+				var registered: Vector2 = _stepper.first_contact.centers[ball.number]
+				result[key].append(registered)
+				if registered != ball.position:
+					result[key].append(ball.position)
+					_distance[index] = registered.distance_to(ball.position)
+			result.incoming.append(result.contact)
+		else:
+			result.incoming.append(_cue.position)
 		if not _cue.is_on_table():
 			_finish("pocket before ball")
 			return

@@ -1,7 +1,7 @@
 {
   "baseline": "23cb30fd26085b678ad9dd9d73058b7c065a4dd4",
   "sha256": {
-    "scripts/sim/outgoing_guide.gd": "245f7466ad2093f2e14d59fef37d503f98566db132f90a69fe4965435dc24cd8",
+    "scripts/sim/outgoing_guide.gd": "10f96e7d5ec053c682f6afc4d710f7bbd6023c88b783f88fd609844a458c8da9",
     "scripts/app/game_controller.gd": "f421c84245615f8b8842916f97c96e53afa15169aaef3f3e53d7b1b341fbe64a",
     "scripts/presentation/table_presentation.gd": "96cce910c2bdf78a8159572871c3f906e3f07b59a2015b4dcde93048c4e226ec",
     "scripts/ui/game_hud.gd": "e9c00eebb93837bc8097269a367e65628af86507bd89322fdcefdd20047a0b94",
@@ -9,7 +9,7 @@
     "scripts/sim/cue_strike_model.gd": "eb1e66144f4f6ea6d188b32858c70da231c8a92a8658db2c4d8c4baa5cdd473f",
     "scripts/sim/physics_config.gd": "2399412b4328859fc1e317405e479dd64c2009de176f99c6644dfe1088082ee2",
     "scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff",
-    "tests/outgoing_guides.gd": "0d44bfb504cb5d13ac2601694162d6bd12b7f5de378f0760b038289802c75192",
+    "tests/outgoing_guides.gd": "7b5a17ca587e05f547cee3400595b295e1f08d1741c97268fe0bca40a8e5a37f",
     "tests/capture_outgoing_guides.gd": "a8a55f2ee90d75c8ff5b0cb16b5efec6c7099ce7c85e1e346ca748071be945b1",
     "docs/quality-roadmap/reports/outgoing-guides-evidence/capture-small-overhead.txt": "a92e12a326314d63667d508d312afd5d95bb6764b0dd5b18c2558075c7a470b7",
     "docs/quality-roadmap/reports/outgoing-guides-evidence/small-lounge.png": "2f7463de2485355f61d076385688b21dfa9c3189d99f540febb0c5d6577a6c3e",
@@ -23,6 +23,12 @@
     "docs/quality-roadmap/reports/outgoing-guides-evidence/save_recovery.txt": "ad77d5fce77559e7a3ec02b96497aeb47b3686e7db256280a5cc0fd4c25bbefd",
     "docs/quality-roadmap/reports/outgoing-guides-evidence/stroke_contact.txt": "c5f7fb25e535a34db632ca4a1fc52f7bce56f35ce653198390bec6174a0d576b",
     "docs/quality-roadmap/reports/outgoing-guides-evidence/practice_flow.txt": "f0ce2cd39df6a5a2ff9f909a9cdeadfb9268df6cd24a6a2baeefe0d533313111",
-    "docs/quality-roadmap/reports/outgoing-guides-evidence/outgoing_guides.txt": "8ed75eb636d101da6cbc63da056a4d7f0b13dd0c45980bdc5f5e8a89b4bcb357"
-  }
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/outgoing_guides.txt": "8ed75eb636d101da6cbc63da056a4d7f0b13dd0c45980bdc5f5e8a89b4bcb357",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/fix1-aim_controls.txt": "82f5ba22734235f8e7e1cb6807e07938488022eb870a99c0343278ec7e0ce247",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/pre-fix-manifest.json": "9ae0af7f92ddf731799c11e0041cc1d1a3cdf58d32b6cf6450e137f8d58b044b",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/fix1-practice_input_flow.txt": "c97e605eb3a1516137e0d0bc6356524c84c06c99ab026ae41a2482bce4b794a6",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/review-round1.txt": "b4ce9a1ea4312178b2ae0a6c38d2ab1d80331fdd212906ebe9abf7eee92942a3",
+    "docs/quality-roadmap/reports/outgoing-guides-evidence/fix1-outgoing_guides.txt": "08662eb8e63ad9c69fac1a8bb8de8df8f14641c49688c5fec4a3c616839b64fc"
+  },
+  "review_fix_parent": "bed2aa1"
 }

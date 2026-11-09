@@ -1,5 +1,17 @@
 extends SceneTree
 
+# Separate event observer: oracle is the active solver's registration, not tick end.
+class EventOracle extends PhysicsStepper:
+	var layout: Array = []
+	var centers: Dictionary = {}
+	var midpoint := Vector2.ZERO
+	func _record_event(event: Dictionary) -> void:
+		super._record_event(event)
+		if event.kind == "ball_contact" and centers.is_empty():
+			for ball in layout:
+				if ball.number == event.a or ball.number == event.b: centers[ball.number] = ball.position
+			midpoint = event.position
+
 var checks := 0
 var failed := 0
 var maximum_slice_usec := 0
@@ -57,6 +69,36 @@ func run() -> void:
 			stepper.step_fixed([cue, target], config.fixed_step, config, TableSpec.new())
 			if not stepper.drain_events().is_empty(): break
 		check((cue.velocity + target.velocity - preview.velocity).length() * config.ball_mass < 0.000001, "ideal vector momentum conserved within 1 micro N s")
+	# Reviewer counterexample and tiny gaps: origin must equal registered contact,
+	# never a later endpoint after the remaining high-speed tick substeps.
+	var worst_old_displacement := 0.0
+	for speed in [0.5, 2.0, 8.0]:
+		for gap in [0.000001, 0.003, 0.35]:
+			var offset := 0.05
+			var initial_x := -0.35 if gap == 0.35 else -sqrt(pow(2.0 * BallState.RADIUS + gap, 2.0) - offset * offset)
+			var layout: Array = [BallState.new(0, 0, Vector2(initial_x, 0.12)), BallState.new(1, 1, Vector2(0.0, 0.17))]
+			var before: Array = [layout[0].canonical_state(), layout[1].canonical_state()]
+			var guide := predict(layout, Vector2.ZERO, speed)
+			check(guide.result.status == "predicted", "hard cut produces registered contact preview")
+			var replay: Array = [layout[0].duplicate_state(), layout[1].duplicate_state()]
+			var config := PhysicsConfig.new()
+			CueStrikeModel.new().apply(replay[0], Vector2.RIGHT, speed, Vector2.ZERO, 0.0, config)
+			var oracle := EventOracle.new()
+			oracle.layout = replay
+			for unused in range(1920):
+				oracle.step_fixed(replay, config.fixed_step, config, TableSpec.new())
+				if not oracle.centers.is_empty(): break
+			check(guide.result.contact.distance_to(oracle.centers[0]) < 1.0e-7, "marker equals registered cue center within 0.1 micrometer")
+			check(guide.result.incoming[-1] == guide.result.contact and guide.result.cue_path[0] == guide.result.contact, "incoming endpoint and cue origin share registered contact")
+			check(guide.result.object_path[0].distance_to(oracle.centers[1]) < 1.0e-7, "object origin equals registered object center")
+			check(guide.result.contact_event_position.distance_to(oracle.midpoint) < 1.0e-7, "registered centers retain event midpoint identity")
+			check(layout[0].canonical_state() == before[0] and layout[1].canonical_state() == before[1], "registered-contact replay preserves source state")
+			var old_displacement: float = replay[0].position.distance_to(oracle.centers[0])
+			if speed == 8.0 and gap == 0.35:
+				print("REVIEWER HARD CUT: registered %s; old tick end %s; former drift %.6f mm; corrected %.9f mm" % [oracle.centers[0], replay[0].position, old_displacement * 1000.0, guide.result.contact.distance_to(oracle.centers[0]) * 1000.0])
+				check(old_displacement > 0.008, "retained high-speed counterexample distinguishes registration from tick endpoint")
+			worst_old_displacement = maxf(worst_old_displacement, old_displacement)
+	print("REGISTERED CONTACT: max old tick-end displacement %.6f mm; registered error <0.0001 mm" % (worst_old_displacement * 1000.0))
 	var layout := pair()
 	var original: Array = []
 	for ball in layout: original.append(ball.canonical_state())
@@ -76,18 +118,24 @@ func run() -> void:
 	var stepper := PhysicsStepper.new()
 	var contact_tick := -1
 	var matched := 0
+	var cue_offset := 0
+	var object_offset := 0
 	for tick in range(cut.ticks):
 		var before_cue: Vector2 = replay[0].position
 		var before_object: Vector2 = replay[1].position
 		stepper.step_fixed(replay, config.fixed_step, config, TableSpec.new())
 		var events := stepper.drain_events()
 		for event in events:
-			if event.kind == "ball_contact" and contact_tick < 0: contact_tick = tick
+			if event.kind == "ball_contact" and contact_tick < 0:
+				contact_tick = tick
+				cue_offset = 1 if cut.result.cue_path[0] != replay[0].position else 0
+				object_offset = 1 if cut.result.object_path[0] != replay[1].position else 0
 		if contact_tick >= 0:
-			var index := tick - contact_tick
+			var index := tick - contact_tick + cue_offset
 			if index < cut.result.cue_path.size():
 				check(replay[0].position.distance_to(cut.result.cue_path[index]) < 1.0e-7 or index == cut.result.cue_path.size() - 1 and Geometry2D.get_closest_point_to_segment(cut.result.cue_path[index], before_cue, replay[0].position).distance_to(cut.result.cue_path[index]) < 1.0e-7, "cue sample matches active replay (final length-cap interpolation within tick)")
 				matched += 1
+			index = tick - contact_tick + object_offset
 			if index < cut.result.object_path.size(): check(replay[1].position.distance_to(cut.result.object_path[index]) < 1.0e-7 or index == cut.result.object_path.size() - 1 and Geometry2D.get_closest_point_to_segment(cut.result.object_path[index], before_object, replay[1].position).distance_to(cut.result.object_path[index]) < 1.0e-7, "object sample matches active replay (final length-cap interpolation within tick)")
 	check(matched > 100, "parity covers post-contact cloth evolution")
 	var draw := predict(pair(0.035), Vector2(0.0, -0.45))
