@@ -38,6 +38,76 @@ func run() -> void:
     var center:Vector3=(faces[i]+faces[i+1]+faces[i+2])/3
     var normal:Vector3=-(faces[i+1]-faces[i]).cross(faces[i+2]-faces[i]).normalized()
     check(normal.dot(center-interior)>0.000001,"actual directed jaw face/endcap normal points outside its solid")
+ # Inspect production green and brown meshes, including the retained 6.184mm
+ # pocket4/5 counterexamples. Full endpoints define the loft, never subspans.
+ view._build_rails()
+ var jaw_index:=0
+ var built_meshes:Array=[]
+ for child in view.get_children():
+  if child is MeshInstance3D: built_meshes.append(child.mesh)
+ var mesh_index:=0
+ for segment in table.rail_segments():
+  var green:ArrayMesh=built_meshes[mesh_index]
+  mesh_index+=1
+  if not segment.jaw:
+   mesh_index+=1 # rail inlay
+   continue
+  var brown:ArrayMesh=built_meshes[mesh_index]
+  mesh_index+=1
+  var pocket:Dictionary=table.pocket_definitions()[segment.pocket_id]
+  var fall:Vector2=pocket.fall_a if segment.a.distance_to(pocket.mouth_a)<.000001 else pocket.fall_b
+  var fraction:float=segment.a.distance_to(fall)/segment.a.distance_to(segment.b)
+  var full:=view._cushion_mesh(segment.a,segment.b,segment.inward)
+  var full_faces:PackedVector3Array=full.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+  var section:=[Vector2(0,table.cushion_nose_height),Vector2(-.027,.051),Vector2(-.029,.049),Vector2(-.029,.007)]
+  var green_faces:PackedVector3Array=green.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+  var brown_faces:PackedVector3Array=brown.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+  for cross_point in section:
+   var start:=view._rail_section_point(segment.a,segment.inward,cross_point)
+   var end:=view._rail_section_point(segment.b,segment.inward,cross_point)
+   var cut:=start.lerp(end,fraction)
+   for pair in [[green_faces,start],[green_faces,cut],[brown_faces,cut],[brown_faces,end]]:
+    var nearest:=INF
+    for vertex in pair[0]: nearest=minf(nearest,vertex.distance_to(pair[1]))
+    check(nearest<.0000002,"production jaw preserves endpoints and identical interpolated split section")
+  for mesh in [green,brown]:
+   var faces:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+   var normals:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_NORMAL]
+   check(normals[0].y>.3,"production short-span upper normal faces overhead")
+   var interior:=Vector3.ZERO
+   for vertex in faces: interior+=vertex
+   interior/=faces.size()
+   for vertex in faces:
+    check((Vector2(vertex.x,vertex.z)-segment.a).dot(segment.inward)<.0000002,"jaw remains behind physical nose half-plane outside pocket cavity")
+   var edges:Dictionary={}
+   for i in range(0,faces.size(),3):
+    var center:Vector3=(faces[i]+faces[i+1]+faces[i+2])/3
+    var cross:Vector3=-(faces[i+1]-faces[i]).cross(faces[i+2]-faces[i])
+    check(cross.length()>1e-9,"production jaw triangle is nondegenerate")
+    check(cross.normalized().dot(center-interior)>.000001,"production jaw face points outside its convex loft")
+    # Side triangles must stay on the original full-jaw surface. End caps
+    # intentionally lie inside that solid at the material cut.
+    if i<24:
+     for sample in [faces[i],faces[i+1],faces[i+2],center]:
+      var distance:=INF
+      for j in range(0,24,3):
+       distance=minf(distance,sample.distance_to(closest_triangle(sample,full_faces[j],full_faces[j+1],full_faces[j+2])))
+      check(distance<.0000002,"split side lies on original full-jaw triangle surface")
+    for j in range(3):
+     var a:Vector3=faces[i+j]
+     var b:Vector3=faces[i+(j+1)%3]
+     var key:=str(a)+"|"+str(b)
+     edges[key]=int(edges.get(key,0))+1
+   for edge in edges:
+    var ends:PackedStringArray=edge.split("|")
+    check(edges.get(ends[1]+"|"+ends[0],0)==1 and edges[edge]==1,"production jaw is a closed consistently oriented manifold")
+   # A convex outward loft plus exact surface coincidence excludes new
+   # self-intersection or cavity intrusion relative to the original full jaw.
+  jaw_index+=1
+ check(jaw_index==12,"all twelve production jaw pairs inspected")
+ for child in view.get_children():
+  view.remove_child(child)
+  child.free()
  for pocket in table.pocket_definitions():
   var mesh := view._pocket_liner_mesh(pocket)
   var vertices:PackedVector3Array=mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
@@ -94,3 +164,17 @@ func run() -> void:
  view.free()
  print("I1 GEOMETRY: %d checks, %d failures" % [checks,failures])
  quit(1 if failures else 0)
+
+# Orthogonal projection inside a triangle, otherwise closest boundary point.
+func closest_triangle(p:Vector3,a:Vector3,b:Vector3,c:Vector3)->Vector3:
+ var normal:Vector3=(b-a).cross(c-a).normalized()
+ var projected:=p-normal*(p-a).dot(normal)
+ var inside:=true
+ for edge in [[a,b],[b,c],[c,a]]:
+  if (edge[1]-edge[0]).cross(projected-edge[0]).dot(normal)<-1e-12: inside=false
+ if inside: return projected
+ var nearest:=a
+ for edge in [[a,b],[b,c],[c,a]]:
+  var point:=Geometry3D.get_closest_point_to_segment(p,edge[0],edge[1])
+  if p.distance_squared_to(point)<p.distance_squared_to(nearest): nearest=point
+ return nearest

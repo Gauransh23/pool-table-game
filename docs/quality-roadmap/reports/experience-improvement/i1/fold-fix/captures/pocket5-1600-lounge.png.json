@@ -1,0 +1,71 @@
+{
+  "arguments": [
+    "--pocket",
+    "--pocket=5",
+    "--lounge",
+    "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-lounge.png"
+  ],
+  "balls": [
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 22.35986328125,
+      "height": 0.028575,
+      "number": 0,
+      "orientation": "(0, 0, 0, 1)",
+      "phase": 0,
+      "position": "(-0.075, -0.465)",
+      "velocity": "(0.0, 0.0)"
+    },
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 22.35986328125,
+      "height": 0.028575,
+      "number": 8,
+      "orientation": "(0, 0, 0, 1)",
+      "phase": 0,
+      "position": "(0.0, -0.465)",
+      "velocity": "(0.0, 0.0)"
+    },
+    {
+      "angular_velocity": "(0.0, 0.0, 0.0)",
+      "diameter_px": 22.35986328125,
+      "height": 0.028575,
+      "number": 14,
+      "orientation": "(0.707107, 0, 0, 0.707107)",
+      "phase": 0,
+      "position": "(0.075, -0.465)",
+      "velocity": "(0.0, 0.0)"
+    }
+  ],
+  "camera_size": 2.30032515525818,
+  "camera_transform": "[X: (1.0, 0.0, 0.0), Y: (0.0, 0.621658, -0.783289), Z: (0.0, 0.783289, 0.621658), O: (0.0, 3.8, 3.0)]",
+  "capture": "/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-lounge.png",
+  "design_size": "(1600, 900)",
+  "draw_calls": 228.0,
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "fixture_sha256": "84fd71e9d0add0def6bd235156589fe6ca3cb0ebe57f1b3a8d09f3db56d0d8ca",
+  "framebuffer": "(1600, 900)",
+  "native_os_transform": "NOT_MEASURED; native window framebuffer capture",
+  "play_area": "[P: (24.0, 112.0), S: (1242.0, 740.0)]",
+  "primitives": 32744.0,
+  "source_sha256": "bc6c366839e92042cf60c564c084bd5d6d0b8aade9bbd4e0cb264fa3017d1e29",
+  "sources": {
+    "res://assets/shaders/ball_surface.gdshader": "e5f9b7445a19a82ce8547dd4f93703199c87bed06ac629a78dba88f79bb24f00",
+    "res://assets/shaders/cloth_surface.gdshader": "8243bf51c50f3702abaa5c6e46a7fa51c7537e9ddb1aeca7498e32e7a3e70359",
+    "res://assets/shaders/wood_surface.gdshader": "ffbf54abb01975d0e0990a2003ad3079982397e2d51648ccdc79819d337e9c7b",
+    "res://scripts/presentation/ball_visual.gd": "e4915e3b0651106ead7319d42e056fed6845c0b7c2fc300536307730c6756a90",
+    "res://scripts/presentation/table_presentation.gd": "bc6c366839e92042cf60c564c084bd5d6d0b8aade9bbd4e0cb264fa3017d1e29",
+    "res://scripts/sim/table_spec.gd": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff"
+  },
+  "viewport": "(1600.0, 900.0)"
+}

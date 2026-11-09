@@ -285,7 +285,7 @@ func _rail_section_point(endpoint: Vector2, inward: Vector2, section: Vector2) -
 	return Vector3(endpoint.x+shift.x,section.y,endpoint.y+shift.y)
 
 
-func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
+func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2, start_fraction: float = 0.0, end_fraction: float = 1.0) -> ArrayMesh:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	# Godot uses clockwise front faces. Reversing a directed segment while
@@ -296,21 +296,28 @@ func _cushion_mesh(a: Vector2, b: Vector2, inward: Vector2) -> ArrayMesh:
 		var next := (i+1)%section.size()
 		var p: Vector2 = section[i]
 		var q: Vector2 = section[next]
-		var pa := _rail_section_point(a, inward, p)
-		var pb := _rail_section_point(b, inward, p)
-		var qa := _rail_section_point(a, inward, q)
-		var qb := _rail_section_point(b, inward, q)
+		# Subdivide the complete loft: independently mitering a short mouth-to-
+		# fall span folds its rear section beyond the opposite endpoint.
+		var full_pa := _rail_section_point(a, inward, p)
+		var full_pb := _rail_section_point(b, inward, p)
+		var full_qa := _rail_section_point(a, inward, q)
+		var full_qb := _rail_section_point(b, inward, q)
+		var pa := full_pa.lerp(full_pb,start_fraction)
+		var pb := full_pa.lerp(full_pb,end_fraction)
+		var qa := full_qa.lerp(full_qb,start_fraction)
+		var qb := full_qa.lerp(full_qb,end_fraction)
 		if reverse:
 			_mesh_triangle(surface,pa,qb,pb)
 			_mesh_triangle(surface,pa,qa,qb)
 		else:
 			_mesh_triangle(surface,pa,pb,qb)
 			_mesh_triangle(surface,pa,qb,qa)
-	for endpoint in [a,b]:
+	for fraction in [start_fraction,end_fraction]:
 		var points: Array[Vector3] = []
-		for p in section: points.append(_rail_section_point(endpoint,inward,p))
+		for p in section:
+			points.append(_rail_section_point(a,inward,p).lerp(_rail_section_point(b,inward,p),fraction))
 		for i in range(1,points.size()-1):
-			if (endpoint == a) == reverse: _mesh_triangle(surface,points[0],points[i+1],points[i])
+			if (fraction == start_fraction) == reverse: _mesh_triangle(surface,points[0],points[i+1],points[i])
 			else: _mesh_triangle(surface,points[0],points[i],points[i+1])
 	surface.generate_normals()
 	return surface.commit()
@@ -398,7 +405,8 @@ func _build_rails() -> void:
 		if jaw:
 			var pocket: Dictionary = _table.pocket_definitions()[segment.pocket_id]
 			cushion_end = pocket.fall_a if a.distance_to(pocket.mouth_a)<.000001 else pocket.fall_b
-		cushion.mesh = _cushion_mesh(a,cushion_end,inward)
+		var fall_fraction := a.distance_to(cushion_end)/a.distance_to(b)
+		cushion.mesh = _cushion_mesh(a,b,inward,0.0,fall_fraction)
 		var rubber := _mat("#195448", 0.80)
 		rubber.cull_mode = BaseMaterial3D.CULL_DISABLED
 		cushion.material_override = rubber
@@ -406,7 +414,7 @@ func _build_rails() -> void:
 		if jaw:
 			var facing := MeshInstance3D.new()
 			facing.name="RecessedJawFacing%d" % get_child_count()
-			facing.mesh=_cushion_mesh(cushion_end,b,inward)
+			facing.mesh=_cushion_mesh(a,b,inward,fall_fraction,1.0)
 			facing.material_override=_mat("#33281f",.94)
 			add_child(facing)
 		if not jaw:

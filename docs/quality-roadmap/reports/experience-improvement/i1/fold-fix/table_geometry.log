@@ -1,0 +1,156 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: TableSpec exposes pocket definitions
+PASS: TableSpec exposes one cloth outline
+PASS: TableSpec exposes support membership
+PASS: exactly six pocket definitions exist
+PASS: pocket 0 defines fall and back endpoints
+PASS: pocket 0 has a four-corner opening polygon
+PASS: pocket 0 exposes the three shelf boundary edges
+PASS: pocket 0 outward vector is unit length
+PASS: pocket 0 has the defined mouth center and endpoints
+PASS: pocket 0 keeps its configured mouth width
+PASS: pocket 0 fall edge is at its configured shelf depth
+PASS: pocket 0 finite back edge uses pocket_depth
+PASS: pocket 0 jaw direction follows its symmetric WPA cut angle
+PASS: pocket 1 defines fall and back endpoints
+PASS: pocket 1 has a four-corner opening polygon
+PASS: pocket 1 exposes the three shelf boundary edges
+PASS: pocket 1 outward vector is unit length
+PASS: pocket 1 has the defined mouth center and endpoints
+PASS: pocket 1 keeps its configured mouth width
+PASS: pocket 1 fall edge is at its configured shelf depth
+PASS: pocket 1 finite back edge uses pocket_depth
+PASS: pocket 1 jaw direction follows its symmetric WPA cut angle
+PASS: pocket 2 defines fall and back endpoints
+PASS: pocket 2 has a four-corner opening polygon
+PASS: pocket 2 exposes the three shelf boundary edges
+PASS: pocket 2 outward vector is unit length
+PASS: pocket 2 has the defined mouth center and endpoints
+PASS: pocket 2 keeps its configured mouth width
+PASS: pocket 2 fall edge is at its configured shelf depth
+PASS: pocket 2 finite back edge uses pocket_depth
+PASS: pocket 2 jaw direction follows its symmetric WPA cut angle
+PASS: pocket 3 defines fall and back endpoints
+PASS: pocket 3 has a four-corner opening polygon
+PASS: pocket 3 exposes the three shelf boundary edges
+PASS: pocket 3 outward vector is unit length
+PASS: pocket 3 has the defined mouth center and endpoints
+PASS: pocket 3 keeps its configured mouth width
+PASS: pocket 3 fall edge is at its configured shelf depth
+PASS: pocket 3 finite back edge uses pocket_depth
+PASS: pocket 3 jaw direction follows its symmetric WPA cut angle
+PASS: pocket 4 defines fall and back endpoints
+PASS: pocket 4 has a four-corner opening polygon
+PASS: pocket 4 exposes the three shelf boundary edges
+PASS: pocket 4 outward vector is unit length
+PASS: pocket 4 has the defined mouth center and endpoints
+PASS: pocket 4 keeps its configured mouth width
+PASS: pocket 4 fall edge is at its configured shelf depth
+PASS: pocket 4 finite back edge uses pocket_depth
+PASS: pocket 4 jaw direction follows its symmetric WPA cut angle
+PASS: pocket 5 defines fall and back endpoints
+PASS: pocket 5 has a four-corner opening polygon
+PASS: pocket 5 exposes the three shelf boundary edges
+PASS: pocket 5 outward vector is unit length
+PASS: pocket 5 has the defined mouth center and endpoints
+PASS: pocket 5 keeps its configured mouth width
+PASS: pocket 5 fall edge is at its configured shelf depth
+PASS: pocket 5 finite back edge uses pocket_depth
+PASS: pocket 5 jaw direction follows its symmetric WPA cut angle
+PASS: pocket ids cover four corners and two sides
+PASS: corner pocket pair 0/2 mirrors across table length
+PASS: corner pocket pair 0/2 mirrors jaw endpoints
+PASS: corner pocket pair 1/3 mirrors across table length
+PASS: corner pocket pair 1/3 mirrors jaw endpoints
+PASS: side pocket pair mirrors across table width
+PASS: side pocket jaw endpoints mirror across table width
+PASS: jaw 0 has finite nonzero length
+PASS: jaw 0 has finite nonzero length
+PASS: jaw 1 has finite nonzero length
+PASS: jaw 1 has finite nonzero length
+PASS: jaw 2 has finite nonzero length
+PASS: jaw 2 has finite nonzero length
+PASS: jaw 3 has finite nonzero length
+PASS: jaw 3 has finite nonzero length
+PASS: jaw 4 has finite nonzero length
+PASS: jaw 4 has finite nonzero length
+PASS: jaw 5 has finite nonzero length
+PASS: jaw 5 has finite nonzero length
+PASS: pocket 0 generates two finite jaw segments
+PASS: pocket 0 jaws do not converge to a throat point
+PASS: pocket 1 generates two finite jaw segments
+PASS: pocket 1 jaws do not converge to a throat point
+PASS: pocket 2 generates two finite jaw segments
+PASS: pocket 2 jaws do not converge to a throat point
+PASS: pocket 3 generates two finite jaw segments
+PASS: pocket 3 jaws do not converge to a throat point
+PASS: pocket 4 generates two finite jaw segments
+PASS: pocket 4 jaws do not converge to a throat point
+PASS: pocket 5 generates two finite jaw segments
+PASS: pocket 5 jaws do not converge to a throat point
+PASS: rail segment list contains jaws for every pocket
+PASS: cloth outline includes all six shelf extensions
+PASS: cloth outline has a consistent counterclockwise winding
+PASS: cloth outline triangulates as one simple polygon
+PASS: center of slate is supported
+PASS: ordinary near-rail cloth remains supported
+PASS: corner pocket opening does not gain a triangle of false slate support
+PASS: pocket 0 fall edge is support-inclusive
+PASS: pocket 0 shelf center remains supported
+PASS: pocket 0 is unsupported just beyond its fall edge
+PASS: pocket 1 fall edge is support-inclusive
+PASS: pocket 1 shelf center remains supported
+PASS: pocket 1 is unsupported just beyond its fall edge
+PASS: pocket 2 fall edge is support-inclusive
+PASS: pocket 2 shelf center remains supported
+PASS: pocket 2 is unsupported just beyond its fall edge
+PASS: pocket 3 fall edge is support-inclusive
+PASS: pocket 3 shelf center remains supported
+PASS: pocket 3 is unsupported just beyond its fall edge
+PASS: pocket 4 fall edge is support-inclusive
+PASS: pocket 4 shelf center remains supported
+PASS: pocket 4 is unsupported just beyond its fall edge
+PASS: pocket 5 fall edge is support-inclusive
+PASS: pocket 5 shelf center remains supported
+PASS: pocket 5 is unsupported just beyond its fall edge
+PASS: pocket 0 owns its mouth center
+PASS: pocket 0 owns the opening from shelf to back
+PASS: pocket 0 opening has no support
+PASS: pocket 0 volume is not classified off-table before its back
+PASS: pocket 0 volume ends at its finite back edge
+PASS: pocket 0 beyond-back position is outside the table lifecycle
+PASS: pocket 1 owns its mouth center
+PASS: pocket 1 owns the opening from shelf to back
+PASS: pocket 1 opening has no support
+PASS: pocket 1 volume is not classified off-table before its back
+PASS: pocket 1 volume ends at its finite back edge
+PASS: pocket 1 beyond-back position is outside the table lifecycle
+PASS: pocket 2 owns its mouth center
+PASS: pocket 2 owns the opening from shelf to back
+PASS: pocket 2 opening has no support
+PASS: pocket 2 volume is not classified off-table before its back
+PASS: pocket 2 volume ends at its finite back edge
+PASS: pocket 2 beyond-back position is outside the table lifecycle
+PASS: pocket 3 owns its mouth center
+PASS: pocket 3 owns the opening from shelf to back
+PASS: pocket 3 opening has no support
+PASS: pocket 3 volume is not classified off-table before its back
+PASS: pocket 3 volume ends at its finite back edge
+PASS: pocket 3 beyond-back position is outside the table lifecycle
+PASS: pocket 4 owns its mouth center
+PASS: pocket 4 owns the opening from shelf to back
+PASS: pocket 4 opening has no support
+PASS: pocket 4 volume is not classified off-table before its back
+PASS: pocket 4 volume ends at its finite back edge
+PASS: pocket 4 beyond-back position is outside the table lifecycle
+PASS: pocket 5 owns its mouth center
+PASS: pocket 5 owns the opening from shelf to back
+PASS: pocket 5 opening has no support
+PASS: pocket 5 volume is not classified off-table before its back
+PASS: pocket 5 volume ends at its finite back edge
+PASS: pocket 5 beyond-back position is outside the table lifecycle
+PASS: changing a shelf parameter rebuilds cached pocket definitions
+PASS: changing a shelf parameter rebuilds the shared cloth outline
+PASS: changing table dimensions rebuilds cached pocket definitions
+PASS: shared pocket geometry definitions, support, volume, and finite jaws

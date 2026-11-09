@@ -1,0 +1,177 @@
+{
+  "baseline": "ccf61f2",
+  "files": {
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/capture-commands.json": {
+      "sha256": "385f8149899d33dd5e73273970cdee45f81be8c4bacde3f1fb09875ecce8feb7",
+      "bytes": 3487
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-lounge.png": {
+      "sha256": "a76eeea85b14a73a0c482ad27cddfb286e71b5e4525947b55e84b909bb528601",
+      "bytes": 212532
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-lounge.png.json": {
+      "sha256": "173e23cba934667a26fb8cde0d3eb831add01278ab1286975526fb969fee80ed",
+      "bytes": 2832
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-overhead.png": {
+      "sha256": "e3167c2010210f4ca1773d35a6b30bce40a361189fd944ab59c349db2984d25c",
+      "bytes": 313892
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-overhead.png.json": {
+      "sha256": "547e775b2124774616f4cb8336cc1d7d6a5af78eeb24c179b5db04e9a533181b",
+      "bytes": 2812
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-lounge.png": {
+      "sha256": "17c11516eb87c2a5a726b687304111050f3302d4d1fdeb5d61ae35a7da10df92",
+      "bytes": 389787
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-lounge.png.json": {
+      "sha256": "4471fb380b4f6d1eb683c22026872362d5884a5d3ca5b35db261fab3321e8778",
+      "bytes": 2814
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-overhead.png": {
+      "sha256": "8ffc52e686d4f709303a633e866129b3b1ad60b816633fd3b94f9db0713dc5cb",
+      "bytes": 527768
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-overhead.png.json": {
+      "sha256": "e1b8ae04d2e121549e633601aa338ce1703b6101044d2ff618b7d1f392418c1f",
+      "bytes": 2800
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-lounge.png": {
+      "sha256": "d548751b3af8019a040f854f29d171bd0a82836755675ba238dfb9ab057a999a",
+      "bytes": 213042
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-lounge.png.json": {
+      "sha256": "1dc627e11c85b13bf3cf742ab06ea06628f4d0b54b40d1b97b23525ffcc56970",
+      "bytes": 2835
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-overhead.png": {
+      "sha256": "ac3d475a5643be2d7c68084301263a9e562b6d741791452b9586515a7de7485d",
+      "bytes": 314605
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-overhead.png.json": {
+      "sha256": "df9239fdaf373aab5f1e3a930437aef4c32ab87d7b33810784f53a5a96644c60",
+      "bytes": 2815
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-lounge.png": {
+      "sha256": "adfbe609e1744d376cc2ea4f870246c6a14478ba9b565e59ec69059c3def620c",
+      "bytes": 391728
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-lounge.png.json": {
+      "sha256": "b530001d71445f22091b59a57f0cc52e9144ebdf876aab90a499d722bb2b2f65",
+      "bytes": 2817
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-overhead.png": {
+      "sha256": "3c7367db1fdb3217ea6554df8a6e246849587565cbebb360ebf099bd1a512b2f",
+      "bytes": 532217
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-overhead.png.json": {
+      "sha256": "c61ea3c452141ed47e16556aa712cacdbbf859125ef032b1af528f8f54f6d9ad",
+      "bytes": 2803
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/i1_geometry.log": {
+      "sha256": "a67cfeb7e3bc0bbbed11cc35129126bf89d0f1f42d785146a17a58fcf773c14f",
+      "bytes": 110
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/invalid-parse.log": {
+      "sha256": "b57e4d084c27f032abdb550711b3de42b87b935d83a4c658dd6e62f85a3217b0",
+      "bytes": 395
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket4-1100-lounge.log": {
+      "sha256": "484a2b78d7f4b4b00dd60455e879d089ce3b3b7084863dbf5888a99b95c78309",
+      "bytes": 2558
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket4-1100-overhead.log": {
+      "sha256": "7a0a3bab79a21240690bde311939f4b775cbe011ae851d9b48a9e06c20a0d96f",
+      "bytes": 2543
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket4-1600-lounge.log": {
+      "sha256": "3831cbbefa2946f201e8f4220031d67f0e33dd81dbe042478d2883875333d412",
+      "bytes": 2545
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket4-1600-overhead.log": {
+      "sha256": "aff277efe68d24969214136caad433f230a779054ea59dfdf7eef2e027615a70",
+      "bytes": 2536
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket5-1100-lounge.log": {
+      "sha256": "14ab5fbb9ed0b769c4c814d6a23cc6b3c9b63070ff4bf96bb2c4fe70e3d22192",
+      "bytes": 2561
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket5-1100-overhead.log": {
+      "sha256": "bdf8dfb9fb18cde6a103ec7517e7aff0c08f21ef95fc958ff1420862f913a638",
+      "bytes": 2546
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket5-1600-lounge.log": {
+      "sha256": "d5da09eed5427ec7b5f00e6d2237fd73447d90f2220d064bc40b9f0b10277ac3",
+      "bytes": 2548
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket5-1600-overhead.log": {
+      "sha256": "880ccd3d633b802788aa0f6148b7dd6f90a1513c5729c4056e1994287e09b42a",
+      "bytes": 2539
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/pocket_support.log": {
+      "sha256": "fec45d53ca514b12e9be9d8ff758a854a80a64b24b50ceb97dd9c6ff831084a7",
+      "bytes": 111
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/red.log": {
+      "sha256": "2420cb56788ddcb82b97dbc820ce5e1f83638bfbe7456e8765706bcdf312821f",
+      "bytes": 14520
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/table_geometry.log": {
+      "sha256": "e396395facf20cf27d9b0fcac0319bf7ae3199dd0a5e4e2ee681ef27bb1bca0f",
+      "bytes": 7947
+    },
+    "docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/visual_geometry.log": {
+      "sha256": "5682c8fd38ab77bf29edebb561a49ca725217dacbac16129c12528b14d9d5ca6",
+      "bytes": 113
+    },
+    "scripts/presentation/table_presentation.gd": {
+      "sha256": "bc6c366839e92042cf60c564c084bd5d6d0b8aade9bbd4e0cb264fa3017d1e29",
+      "bytes": 33202
+    },
+    "tests/i1_capture.gd": {
+      "sha256": "84fd71e9d0add0def6bd235156589fe6ca3cb0ebe57f1b3a8d09f3db56d0d8ca",
+      "bytes": 5350
+    },
+    "tests/i1_geometry.gd": {
+      "sha256": "bbd90462cbd6d95a0f7a6c1187740c415d6b5c1d2f779f0c624cbbdc158d268a",
+      "bytes": 9910
+    },
+    "scripts/sim/table_spec.gd": {
+      "sha256": "73b6b76c711104084e6cd94d95dbe2887da494a608e55c415c33293c5df505ff",
+      "bytes": 8991
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1100-overhead.png": {
+      "sha256": "99530ba2ee03b99f99740d93333d80b26a9cd94f84bc52145c3acc09802549cf",
+      "bytes": 313890
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1100-lounge.png": {
+      "sha256": "78ea990c3e42d80639192079f3c4eca7db5f2da13fbaed013c5f0d47d3c369f3",
+      "bytes": 212682
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1600-overhead.png": {
+      "sha256": "17c9de24be919334ebbec775480d4df21620b54995e707cffd6cf700804a1193",
+      "bytes": 527976
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket4-1600-lounge.png": {
+      "sha256": "12057e636c51eaf0ac2eebdf60ceb3d88a29371e193cd32071fcac504eb8deeb",
+      "bytes": 390098
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1100-overhead.png": {
+      "sha256": "c98761131aa5ce9896b9c1f658beabdbdee9f8412c2ac0841cf6de7b8963ac1b",
+      "bytes": 314686
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1100-lounge.png": {
+      "sha256": "35cb7f1574a27856c09143d09af5335a5647ceb3347ffa554678035fa9f2b55d",
+      "bytes": 213242
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1600-overhead.png": {
+      "sha256": "25cbe72bcc91126aad594239f9d17c5e52dcc8970c8f9bac03f311b11b1e14bf",
+      "bytes": 532671
+    },
+    "/Users/codex/Documents/My Public Repos/pool-table-game-i1-evidence/winding-fix/pocket5-1600-lounge.png": {
+      "sha256": "877676c5ab72ad5cadacf6c0757526b75d08e77aa5035233b0cdaf3675a65378",
+      "bytes": 392145
+    }
+  }
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--small",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-overhead.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--small",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1100-lounge.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-overhead.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=4",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket4-1600-lounge.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--small",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-overhead.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--small",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1100-lounge.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-overhead.png"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "/Users/codex/Applications/Godot-4.7.2.app/Contents/MacOS/Godot",
+      "--path",
+      ".",
+      "--script",
+      "tests/i1_capture.gd",
+      "--",
+      "--pocket",
+      "--pocket=5",
+      "--lounge",
+      "--output=/Users/codex/Documents/My Public Repos/pool-table-game/docs/quality-roadmap/reports/experience-improvement/i1/fold-fix/captures/pocket5-1600-lounge.png"
+    ],
+    "exit_code": 0
+  }
+]
