@@ -38,3 +38,25 @@ A accepted at08199fe. C0 implemented at92f09ba; independent review in progress, 
 ## Accepted measurement foundations and active visual slice
 
 Task A accepted at08199fe. Task C0 and review corrections accepted atbec74bf (base92f09ba): both reviewer findings addressed, scoped spec/quality PASS. Product power/ideal-cloth failures remain open; acceptance here certifies the scoped tooling, not game quality. Sol visual_slice_implementation now owns I1 (connected rail/pocket construction, hollow contact marker, matched material alternatives). No production physics changes authorized in I1.
+
+## Safe pause at user request — 2026-11-08
+
+Active visual_slice_review interrupted; implementation worker completed. Do not resume until user asks.
+
+I1 base8df0ed5 and winding fixccf61f2 are local, not pushed. Existing pushed main9be66f4 contains acceptedA/C0. Independent I1 original review foundP2 backface winding; worker corrected full jaw/brown recessed facing winding and endcaps without moving vertices.1241geometry+157visual checks pass; same revised test312fails on8df.24fresh native pocket captures; compact4 images/hash/log evidence committed.
+
+Scoped re-review was running on .superpowers/sdd/EXPERIENCE_IMPROVEMENT_EXECUTION_PLAN/task-i1-fix-review.diff and updated task-i1-report.md. Original finding needs final verdict. Separate preservedGEO006FAIL: short green side-pocket spans4a/4b/5a/5b have folded rear-miter triangles (40production probe faces, exploratory88fail); source/results retained in report packet. Do not claim all geometry passes. Lead suggested possible remedy for independent assessment: derive green/dark split sections from one full mouth-to-back jaw solid, interpolate section vertices at fall fraction to preserve full miter and exact nose while avoiding a miter longer than tiny green span. No remedy implemented.
+
+Resume: continue existing reviewer on scoped winding fix and severity/next correction for short spans; then dispatch bounded fix if warranted. Do not repeat completed54base/24fix captures or A/C0 sweeps. Candidate build/LongRail-I1-8df0ed5.app exported/signature verified but is older than winding fix. Packaged script capture did not produce an image; native main-menu window observed viaCUA, no shot played. Candidate needs rebuild after final accepted code.
+
+Five measurement/power .uid files remain untracked from engine import; preserve them and deliberately include at integration. Working code is committed. No push of I1 pending review.
+
+## Brief review-only resumption complete; stopped
+
+Reviewer finished task-i1-fix-review.md. Original recessed-facing winding P2 ADDRESSED. Both overall verdicts remain CHANGES REQUIRED for side-pocket green-span folds, severityP2. Full-jaw interpolated cross-section split is a credible next bounded fix hypothesis, not implemented or accepted. Durable review copied to i1/WINDING_REVIEW_AND_REMAINING_FOLDS.md. No new tests, captures, implementation or push. On explicit resume, dispatch narrow fix for four short green spans, preserve nose/full-jaw geometry and shared split seam, then independent re-review. All agents stopped/completed.
+
+## I1 bounded slice accepted — 2026-11-09
+
+Final correction95676c6 independently accepted: retained short-span foldP2 addressed, bounded spec/code-quality PASS. Initial8df0ed5 + windingccf61f2 + fold95676c6 implement joined deck/fascia, selected walnut/teal materials, hollow contact marker and separate placement sphere. Physical sources unchanged. Final4530 focused geometry checks0fail (baseline216fail); affected existing regressions and matched captures recorded. Rebuilt build/LongRail-I1-95676c6.app exports, signature verifies, headless30-frame startup exit0; native GUI menu/table rendering inspected through CUA. No shot played in that final GUI check.
+
+A andC0 already accepted/pushed. I1 now ready for integration push. Five generated measurement UID sidecars included for stable Godot resource identity. Broader numerical/calibration, human recognition, temporal/DPI/performance and full installed interaction gates remain open. Next implementation package: D power gesture/expressive cue delivery, informed byC0 atlas; preserve existing mapping until a separately evidenced mapping decision. Do not repeat completed A/C0/I1 work.

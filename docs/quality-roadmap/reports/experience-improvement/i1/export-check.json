@@ -1,0 +1,18 @@
+{
+  "source_commit": "95676c6bd1ad6c2cd7377cb45d7c52ade55d05e4",
+  "artifact": "/Users/codex/Documents/My Public Repos/pool-table-game/build/LongRail-I1-95676c6.app",
+  "export": "PASS",
+  "codesign_deep_strict": "PASS",
+  "headless_30_frame_startup": "PASS exit0",
+  "native_gui": "Opened same candidate, inspected menu, clicked Return to table and observed rendered table via CUA. No shot played. Auto-quit launch bounds runtime.",
+  "limits": "No frame-pacing, device input/audio latency, full native interaction or human perception acceptance. Previous8df0ed5 scripted capture produced no image and is superseded.",
+  "artifact_sha256": {
+    "Contents/Info.plist": "c8bb5fd68b645433c7b118d3ac2bc76a61b6cc5542c24461a55854f92dd1d95b",
+    "Contents/PkgInfo": "7e50a30efad50208a173203ced60818d693bb61266b75aa10927d1a2adce80cb",
+    "Contents/_CodeSignature/CodeResources": "3ff499c79fbd17285cd46ef20034c0c39ce839bd0cb5ffe5392968397982800f",
+    "Contents/MacOS/Long Rail": "c3fa429ca0ddbe792027fdb29fb4a852a775e94623f113968c373150b1680d11",
+    "Contents/Resources/icon.icns": "e6f14d2739821a62cc4498cfb60f4bac6c13409dcd7292ae21fb48a8b3945c8f",
+    "Contents/Resources/PrivacyInfo.xcprivacy": "0535353bb08c25b8ce5ed9ac7e442a5994f402e0f6cbc4bed668cfc63c2ceac3",
+    "Contents/Resources/Long Rail.pck": "fe7bc7ca16e4fd5a7a54a5061ed283e88bf059f501b814aa9e18a4431e679690"
+  }
+}
