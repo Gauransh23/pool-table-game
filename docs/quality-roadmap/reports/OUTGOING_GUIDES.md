@@ -89,3 +89,13 @@ New oracle coverage uses a separate event observer on an independent active repl
 Commands: `bash tools/godot.sh --headless --path . --script tests/outgoing_guides.gd`, then the same command for `aim_controls.gd` and `practice_input_flow.gd`. Raw results: `outgoing-guides-evidence/fix1-*.txt`. Earlier full nine-suite logs and pre-fix manifest/captures are preserved as historical evidence; the unchanged solver does not justify rerunning all 950 physics assertions solely for this observer fix. Native release verification remains with the lead. Full AIM-005 numerical/physical acceptance remains unestablished despite exact tested agreement with **registered engine events**.
 
 Fix-round final results: outgoing guides **888 checks, 0 failures**, maximum CPU slice **3515 µs**, maximum replay **45949 µs**; aim controls **0 failures** with the same 2 ObjectDB / 1 resource shutdown warning; practice input **200 checks, 0 failures**. All three exit 0. Exact reviewer fixture: former marker drift **8.969989 mm**, corrected registered-center difference **0.000000000 mm** in the retained float32 replay. This zero is an implementation equality result, not a claim of zero physical/model uncertainty.
+
+## Lead release verification — 0.3.2
+
+The independent scoped re-review passed spec and code quality after correction; retained in `outgoing-guides-evidence/review-round1-correction.txt`. The lead inspected a fresh corrected-source 1100×700 capture at `build/verification/outgoing-guides/small.png`. Earlier committed captures remain explicitly pre-correction evidence.
+
+`bash tools/build_mac.sh` produced `build/Long Rail-0.3.2.app` and `build/Long Rail-0.3.2-mac.dmg`. The universal arm64/x86_64 app passed `codesign --verify --deep --strict`; the installer passed `shasum -a 256 -c build/SHA256SUMS.txt`. Bundle version is 0.3.2. This is a locally ad-hoc signed preview; notarization is not configured.
+
+The lead opened that exact exported bundle through CUA, resumed the saved practice table and inspected the native window. Both outgoing branches, hollow ring and speed readout were visible with 17 strokes / 10 balls potted and 42% power. No shot was fired in this check. A process-path check confirmed the versioned 0.3.2 executable. This is a successful exported GUI startup/display check, not a comprehensive installed-app interaction or latency acceptance test.
+
+Exact source/package/capture hashes, stage-specific test coverage and release observations are in `outgoing-guides-evidence/release-0.3.2.json`. The larger quality contract remains incomplete as detailed above.

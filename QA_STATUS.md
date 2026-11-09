@@ -1,3 +1,18 @@
+# Two-ball outgoing guides — 0.3.2 candidate
+
+Updated 2026-11-08. [Implementation and evidence](docs/quality-roadmap/reports/OUTGOING_GUIDES.md).
+
+The candidate adds ivory cue-ball and dashed cyan object-ball paths, a hollow
+first-contact ring and estimated outgoing planar speeds. A cloned replay uses the
+active solver and current power/spin settings. Each outgoing preview is bounded
+to 0.8 seconds / 0.45 meters and ends before another interaction; ambiguous
+clusters and unsupported cases omit outgoing paths. These are estimates within
+the active model, not exact real-table predictions or momentum percentages.
+
+Full guide accuracy sweeps, calibrated physics, DPI/user recognition and native
+performance gates remain open. See the implementation report for source tests,
+raw output, preserved failures, review corrections and release evidence.
+
 # Practice interaction fixes — 0.3.1
 
 Updated 2026-11-06. [Fix report](docs/quality-roadmap/reports/PRACTICE_FLOW_FIXES.md).

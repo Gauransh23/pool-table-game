@@ -5,7 +5,7 @@ on practice-table quality and expressive stroke control rather than a complete m
 
 ## Try the Mac preview
 
-Build output: `build/Long Rail-0.3.1-mac.dmg`. Open it and drag **Long Rail** into
+Build output: `build/Long Rail-0.3.2-mac.dmg`. Open it and drag **Long Rail** into
 **Applications**, then open the app. This local preview uses an ad-hoc signature;
 Developer ID notarization is not configured.
 
@@ -22,6 +22,13 @@ press it again to open the menu. Focus has a visible gold outline.
 cameras. After a scratch, click clear cloth to place the cue ball, or use arrows
 to move its preview (**Shift** for fine movement) and **Enter** to confirm.
 The last settled table saves automatically.
+
+With Path guide enabled, an isolated first hit previews two outgoing paths: ivory
+for the cue ball and dashed cyan for the object ball. The hollow ring marks contact.
+Paths include the current spin/cloth model and stop before the next interaction,
+or at 0.8 seconds / 0.45 meters. The readout shows estimated planar speeds at the
+first-contact simulation tick; it is not a momentum percentage. Ambiguous clusters,
+bank-first shots and predictions beyond the bounded horizon omit outgoing paths.
 
 The preview includes original procedural table/ball materials and contact sounds,
 soft-to-hard stroke control, follow/draw/english, collision and friction models,
@@ -61,6 +68,7 @@ bash tools/godot.sh --headless --path . --script tests/pocket_support.gd
 bash tools/godot.sh --headless --path . --script tests/aim_controls.gd
 bash tools/godot.sh --headless --path . --script tests/practice_input_flow.gd
 bash tools/godot.sh --headless --path . --script tests/audio_contacts.gd
+bash tools/godot.sh --headless --path . --script tests/outgoing_guides.gd
 ```
 
 See [Project state](PROJECT_STATE.md), [Physics validation](PHYSICS_VALIDATION.md),

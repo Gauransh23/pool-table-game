@@ -1,0 +1,25 @@
+# Scoped independent rereview — 0903ba2
+
+Reviewed `/tmp/pool-outgoing-fix.patch`, current `scripts/sim/outgoing_guide.gd`, updated focused tests, OUTGOING_GUIDES.md fix section and raw fix1 logs. Scope is the previous P2 contact-marker defect and regressions introduced by its correction. Repository remained read-only; no unchanged passing suite reruns, branches, worktrees or subagents.
+
+## Previous P2: ADDRESSED
+
+`ContactStepper._record_event` (`scripts/sim/outgoing_guide.gd:15-24`) delegates event registration to the active PhysicsStepper and snapshots both participating cloned-ball centers at that registration point. It does not replace integration, collision equations, coefficients or event schema. The snapshot stores Vector2 values rather than ball references, so later substeps cannot move the captured centers.
+
+`outgoing_guide.gd:106-120` now uses the captured cue center for the ring and incoming endpoint, and the captured per-ball centers for outgoing origins. A distinct tick-end sample is retained when needed and its travel enters the path-length accounting. Speed values still come from the tick endpoint. Ambiguous/mixed first-contact rejection remains ahead of applying the snapshot. The recorded contact therefore cannot silently refer to some unrelated earlier collision in an accepted isolated prediction.
+
+The nine new hard-cut/gap cases compare with an independent active replay observer rather than the old tick endpoint. Tests retain the exact previous counterexample and require the former endpoint to differ by >8 mm, making an accidental return to the original implementation fail. Raw `fix1-outgoing_guides.txt` reports old drift **8.969989 mm**, corrected difference **0.000000000 mm**, and the nine-case registered-center bound <0.0001 mm. This demonstrates equality to registered engine contact, not to an ideal continuous-time collision.
+
+## Spec verdict: PASS for this bounded correction
+
+The marker now represents the active engine's registered collision center. Documentation clearly distinguishes registered contact geometry from tick-end planar speeds and leaves full AIM-005 numerical/physical acceptance open. No additional spec blocker found in the correction.
+
+## Code-quality verdict: PASS for this bounded correction
+
+No new critical or important defect found in the changed code. Replay-only observation preserves the requested single active engine, does not mutate live balls, and adds bounded work only at the first ball contact. The previous path sampling, truncation and cache/render behavior remain intact; initial within-tick travel is accounted for.
+
+Retained evidence inspected: focused **888 checks / 0 failures**, max replay slice **3515 us**, total **45949 us**; practice input **200 / 0**; aim controls **0 failures**. All exit 0. Aim controls still reports the previously documented 2 ObjectDB / 1 resource shutdown warning; it is not a new correction regression. No need to rerun these unchanged suites for this source/evidence rereview.
+
+## Limits
+
+This closes the identified marker-placement defect only. Full contact-accuracy sweeps, physical calibration, OS-coordinate/DPI mapping, human identity/readability trials and exported/native performance acceptance remain outside this scoped verdict. Native candidate rebuild/reverification remains with the primary agent.
