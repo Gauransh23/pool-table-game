@@ -1,0 +1,19 @@
+Long Rail — sound credits
+
+KVV Audio — recorded cue hits, billiard ball impacts and empty-pocket drops.
+SPRTIndor-BILLIARDS_Billiard Ball Cue Hit 01_KVV AUDIO_FREE
+https://freesound.org/people/KVV_Audio/sounds/851086/
+SPRTIndor-BILLIARDS_Billiard Ball Impact 01_KVV AUDIO_FREE
+https://freesound.org/people/KVV_Audio/sounds/851087/
+SPRTIndor-BILLIARDS_Dropping Ball In Pocket 01_KVV AUDIO_FREE
+https://freesound.org/people/KVV_Audio/sounds/851090/
+Licensed under Creative Commons Attribution 4.0 International:
+https://creativecommons.org/licenses/by/4.0/
+
+mccarthy@bedmas.com — pool-ball-bounce-off-rail.wav
+https://freesound.org/people/mccarthy%40bedmas.com/sounds/42364/
+CC0 1.0 Universal: https://creativecommons.org/publicdomain/zero/1.0/
+
+Adapted for Long Rail: separate recorded hits trimmed from public HQ previews,
+downmixed/resampled, DC removed, short fades and gain matching applied.
+The original creators do not endorse Long Rail. Freesound: https://freesound.org/

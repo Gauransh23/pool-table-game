@@ -311,8 +311,23 @@ func show_home(can_resume: bool = false) -> void:
 	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
 	_card.add_child(label("Pure practice • Offline • 9-foot table\nDrag cloth to aim; Shift-drag horizontally for fine aim.\nTab through controls, or P for power and S for tip position.\nEscape returns to table aim. After a scratch, arrows move\nthe cue-ball preview and Enter places it; a cloth click also works.", 13, Color("b6c0b6")))
 	_card.add_child(button("Guide length", show_guide_length))
+	_card.add_child(button("Sound credits", show_sound_credits))
 	_card.add_child(button("Quit", func(): get_tree().quit()))
 	call_deferred("_focus_menu")
+func show_sound_credits() -> void:
+	_open_card()
+	_card.add_child(label("Sound credits", 28, Color("e9d9b8")))
+	var credits := RichTextLabel.new()
+	credits.name = "SoundCredits"
+	credits.bbcode_enabled = true
+	credits.custom_minimum_size = Vector2(480, 290)
+	credits.add_theme_font_size_override("normal_font_size", 15)
+	credits.text = "[b]KVV Audio[/b]\nRecorded cue hits, ball impacts and pocket drops.\n[url=https://freesound.org/people/KVV_Audio/sounds/851086/]Cue recording[/url] · [url=https://freesound.org/people/KVV_Audio/sounds/851087/]Ball recording[/url] · [url=https://freesound.org/people/KVV_Audio/sounds/851090/]Pocket recording[/url]\n[url=https://creativecommons.org/licenses/by/4.0/]Creative Commons Attribution 4.0[/url]\n\n[b]mccarthy@bedmas.com[/b]\n[url=https://freesound.org/people/mccarthy%40bedmas.com/sounds/42364/]Pool-ball-bounce-off-rail.wav[/url] · [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0[/url]\n\nEdited for Long Rail: hits trimmed, downmixed,\nresampled, faded and gain matched.\nNo creator endorsement is implied."
+	credits.meta_clicked.connect(func(link): OS.shell_open(str(link)))
+	_card.add_child(credits)
+	_card.add_child(button("Back", func(): show_home(true)))
+	call_deferred("_focus_menu")
+
 func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:
 	_open_card()
 	_card.add_child(label(title, 28, Color("e9d9b8")))
