@@ -1,0 +1,167 @@
+{
+  "meaning": "Objective sample/envelope/digital-mix evidence; no listening or hardware timing claim.",
+  "assets": [
+    {
+      "file": "ball_01.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -31.40366808668405,
+      "peak_time_ms": 0.9070294784580499,
+      "energy_90_ms": 1.927437641723356
+    },
+    {
+      "file": "ball_02.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -31.642427077223584,
+      "peak_time_ms": 0.8843537414965986,
+      "energy_90_ms": 1.927437641723356
+    },
+    {
+      "file": "ball_03.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -31.377292576858164,
+      "peak_time_ms": 0.9523809523809523,
+      "energy_90_ms": 1.8594104308390023
+    },
+    {
+      "file": "ball_04.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -31.485136062497933,
+      "peak_time_ms": 0.9750566893424036,
+      "energy_90_ms": 4.625850340136054
+    },
+    {
+      "file": "ball_05.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -31.85033088154331,
+      "peak_time_ms": 0.9297052154195011,
+      "energy_90_ms": 1.564625850340136
+    },
+    {
+      "file": "cue_01.wav",
+      "peak_dbfs": -6.470481664965635,
+      "rms_dbfs": -25.416448490022386,
+      "peak_time_ms": 5.464852607709751,
+      "energy_90_ms": 103.99092970521542
+    },
+    {
+      "file": "cue_02.wav",
+      "peak_dbfs": -6.574391183348136,
+      "rms_dbfs": -25.711742684875347,
+      "peak_time_ms": 2.0181405895691613,
+      "energy_90_ms": 50.06802721088435
+    },
+    {
+      "file": "cue_03.wav",
+      "peak_dbfs": -4.70608507210993,
+      "rms_dbfs": -25.639787899288557,
+      "peak_time_ms": 3.764172335600907,
+      "energy_90_ms": 68.3219954648526
+    },
+    {
+      "file": "cue_04.wav",
+      "peak_dbfs": -5.891153714803973,
+      "rms_dbfs": -25.74357452384205,
+      "peak_time_ms": 3.7868480725623583,
+      "energy_90_ms": 59.84126984126984
+    },
+    {
+      "file": "cue_05.wav",
+      "peak_dbfs": -6.153619304395884,
+      "rms_dbfs": -25.626658984372845,
+      "peak_time_ms": 4.603174603174603,
+      "energy_90_ms": 65.62358276643991
+    },
+    {
+      "file": "rail_01.wav",
+      "peak_dbfs": -6.685280016629762,
+      "rms_dbfs": -26.984215610032038,
+      "peak_time_ms": 5.804988662131519,
+      "energy_90_ms": 22.063492063492063
+    },
+    {
+      "file": "pocket_01.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -35.227518120426446,
+      "peak_time_ms": 60.40816326530612,
+      "energy_90_ms": 69.22902494331065
+    },
+    {
+      "file": "pocket_02.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -35.76549016936126,
+      "peak_time_ms": 59.09297052154195,
+      "energy_90_ms": 61.609977324263035
+    },
+    {
+      "file": "pocket_03.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -33.89317566953478,
+      "peak_time_ms": 75.07936507936508,
+      "energy_90_ms": 81.13378684807256
+    },
+    {
+      "file": "pocket_04.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -35.83945522677726,
+      "peak_time_ms": 75.91836734693877,
+      "energy_90_ms": 88.2766439909297
+    },
+    {
+      "file": "pocket_05.wav",
+      "peak_dbfs": -4.01354244787326,
+      "rms_dbfs": -32.705128142486906,
+      "peak_time_ms": 66.03174603174604,
+      "energy_90_ms": 121.04308390022676
+    }
+  ],
+  "nine_levels": [
+    {
+      "speed": 0.005,
+      "gain_db": -45.612359947967775
+    },
+    {
+      "speed": 0.012574334296829356,
+      "gain_db": -40.80617997398389
+    },
+    {
+      "speed": 0.0316227766016838,
+      "gain_db": -36.0
+    },
+    {
+      "speed": 0.07952707287670506,
+      "gain_db": -31.193820026016112
+    },
+    {
+      "speed": 0.2,
+      "gain_db": -26.387640052032225
+    },
+    {
+      "speed": 0.5029733718731741,
+      "gain_db": -21.581460078048337
+    },
+    {
+      "speed": 1.2649110640673518,
+      "gain_db": -16.77528010406445
+    },
+    {
+      "speed": 3.1810829150682025,
+      "gain_db": -11.969100130080564
+    },
+    {
+      "speed": 8.0,
+      "gain_db": -7.162920156096678
+    }
+  ],
+  "runtime_capture": {
+    "file": "/Users/gt/Documents/My Public repos/Pool table game/captures/audio/real-contact-audition.wav",
+    "sha256": "634e7b1736f835c9b5081129c5e47439a57a67bce3a7f0de5369ade25eeb9ac6",
+    "rate": 48000,
+    "channels": 2,
+    "duration_s": 27.0,
+    "rms_dbfs": -40.52836673331285,
+    "sample_peak_dbfs": -2.0001827379579966,
+    "oversampled_8x_peak_dbtp": -1.9565993547439575,
+    "clipped_samples": 0,
+    "post_mute_max": 0.0
+  }
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "file": "ball_01.wav",
+    "source": 851087,
+    "take_peak_s": 0.04,
+    "source_start_s": 0.04619047619047619,
+    "duration_s": 0.2,
+    "gain": 1.0214004098230562,
+    "sha256": "59a0303f1b69d61451cd8ea3ce482840487b0f2609ed094a6f9c4f555ab9998e"
+  },
+  {
+    "file": "ball_02.wav",
+    "source": 851087,
+    "take_peak_s": 1.02,
+    "source_start_s": 1.0284807256235828,
+    "duration_s": 0.2,
+    "gain": 0.9025674204895294,
+    "sha256": "dcda47fdd5f8cb9a7a5e1c9cf4b0544d6a4151e08b6606bcd19a294b6c45085f"
+  },
+  {
+    "file": "ball_03.wav",
+    "source": 851087,
+    "take_peak_s": 2.04,
+    "source_start_s": 2.0392290249433107,
+    "duration_s": 0.2,
+    "gain": 1.2749418704340674,
+    "sha256": "cdae81b21f404985649b479f9ce2ff3e525a755036e684a8d844083b7b737e52"
+  },
+  {
+    "file": "ball_04.wav",
+    "source": 851087,
+    "take_peak_s": 3.02,
+    "source_start_s": 3.019047619047619,
+    "duration_s": 0.2,
+    "gain": 1.9283149661627323,
+    "sha256": "14bc917afc22c2fc70b7a4336e26018a6b61a5860ee9fae55fca0883d113668d"
+  },
+  {
+    "file": "ball_05.wav",
+    "source": 851087,
+    "take_peak_s": 4.02,
+    "source_start_s": 4.021224489795919,
+    "duration_s": 0.2,
+    "gain": 0.6615238901658235,
+    "sha256": "46797249a600aee819a39669ca78b716bffb63dae1cf1fdd2991e61283903698"
+  },
+  {
+    "file": "cue_01.wav",
+    "source": 851086,
+    "take_peak_s": 0.05,
+    "source_start_s": 0.046281179138322,
+    "duration_s": 0.23,
+    "gain": 0.9528826344705725,
+    "sha256": "f2692b4cca6f62c7ca65355a9e167ad528458bb3dd31953ac6e78954a046c299"
+  },
+  {
+    "file": "cue_02.wav",
+    "source": 851086,
+    "take_peak_s": 1.55,
+    "source_start_s": 1.550657596371882,
+    "duration_s": 0.23,
+    "gain": 1.3972429840216667,
+    "sha256": "d8421d545099b7633fea7a5b5ad376024da8f4a6ec6c6ca3e3db6fa18c2a8eea"
+  },
+  {
+    "file": "cue_03.wav",
+    "source": 851086,
+    "take_peak_s": 3.05,
+    "source_start_s": 3.0539455782312923,
+    "duration_s": 0.23,
+    "gain": 1.2877129718817766,
+    "sha256": "2fda1e8ed5f9268af8adb289ff3469b4d5a181354f5ecb2538f62bd045eb3008"
+  },
+  {
+    "file": "cue_04.wav",
+    "source": 851086,
+    "take_peak_s": 4.59,
+    "source_start_s": 4.588888888888889,
+    "duration_s": 0.23,
+    "gain": 1.7386580520618176,
+    "sha256": "03791a2dce09dab17ca1df2832b02f8fa20033ba6c905fce198cb449ecaa3954"
+  },
+  {
+    "file": "cue_05.wav",
+    "source": 851086,
+    "take_peak_s": 5.98,
+    "source_start_s": 5.979637188208617,
+    "duration_s": 0.23,
+    "gain": 0.8880526308689498,
+    "sha256": "02750f82e6fb5cbc3751c7669b6f5962debffea40999ecf5f8f5f562528839a0"
+  },
+  {
+    "file": "rail_01.wav",
+    "source": 42364,
+    "take_peak_s": 0.38,
+    "source_start_s": 0.3790702947845805,
+    "duration_s": 0.29,
+    "gain": 1.6726383312248965,
+    "sha256": "3c32e8f8a095c8809126ad954af5645fbde5782de7143a540b8f743937fec2bd"
+  },
+  {
+    "file": "pocket_01.wav",
+    "source": 851090,
+    "take_peak_s": 0.15,
+    "source_start_s": 0.0946485260770975,
+    "duration_s": 0.65,
+    "gain": 0.6309527822245115,
+    "sha256": "7af621834fcae35bad03c5bcef4c8032b3df7d85429619b7775e565bd14a582a"
+  },
+  {
+    "file": "pocket_02.wav",
+    "source": 851090,
+    "take_peak_s": 1.66,
+    "source_start_s": 1.6081859410430839,
+    "duration_s": 0.65,
+    "gain": 0.7705009710910393,
+    "sha256": "9ebd99fe6855798cf0afa0d748808500ef033c8c93b7645c2a144239c4d9e59c"
+  },
+  {
+    "file": "pocket_03.wav",
+    "source": 851090,
+    "take_peak_s": 3.17,
+    "source_start_s": 3.1005442176870748,
+    "duration_s": 0.65,
+    "gain": 0.8430993114238321,
+    "sha256": "7ec30a2cc59da569a84f456de3fcf199b50b82089d46e17b079d8d1c33457676"
+  },
+  {
+    "file": "pocket_04.wav",
+    "source": 851090,
+    "take_peak_s": 4.66,
+    "source_start_s": 4.592040816326531,
+    "duration_s": 0.65,
+    "gain": 1.3130734222558114,
+    "sha256": "e58db589ee3e471c72e4eaa364d82fd7244cd080165d95da4c55817ea8c12784"
+  },
+  {
+    "file": "pocket_05.wav",
+    "source": 851090,
+    "take_peak_s": 6.13,
+    "source_start_s": 6.068503401360545,
+    "duration_s": 0.65,
+    "gain": 1.089482982933414,
+    "sha256": "36c601e6761f289ec8561798d56e754ea5cca257655f24c0a356df7a8477b74e"
+  }
+]

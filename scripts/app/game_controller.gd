@@ -31,6 +31,8 @@ var _strokes := 0
 var _pots := 0
 var session_path := "user://practice.json"
 var _last_aim_state: Array = []
+var _guide_prediction := OutgoingGuide.new()
+var _guide_applied := false
 var _audio: TableAudio
 const StrokePowerModel = preload("res://scripts/sim/stroke_power.gd")
 
@@ -49,6 +51,8 @@ func _ready() -> void:
 	hud.view_requested.connect(_toggle_view)
 	hud.sound_changed.connect(func(value: bool): _audio.enabled = value)
 	hud.guide_changed.connect(func(value: bool): _guides = value; _refresh_aim())
+	hud.guide_length_changed.connect(func(value: float): table_view.set_guide_length(value); _update_momentum_readout())
+	table_view.set_guide_length(hud.guide_length)
 	hud.play_area_changed.connect(_on_play_area_changed)
 	_new_rack(false)
 	var resumed := _load_session()
@@ -174,23 +178,67 @@ func _open_menu() -> void:
 
 func _on_play_area_changed(area: Rect2) -> void:
 	_cancel_aim_gesture()
-	_last_aim_state.clear()
 	table_view.set_play_area(area)
 
 func _refresh_aim() -> void:
 	table_view.set_play_area(hud.table_area_rect())
 	hud.set_can_shoot(not _shot_in_motion and not _placing and not _stroke_pending)
 	if _placing:
+		hud.set_prediction("")
 		_ensure_placement_cursor()
 		table_view.set_aim(balls, aim_direction, _cue_ball(), power, false)
 		table_view.set_placement_preview(_placement_cursor, _can_place_cue(_placement_cursor))
 		return
 	_placement_cursor_active = false
-	var state: Array = [aim_direction, _cue_ball().position, power, spin, _shot_in_motion, _placing, _stroke_pending, _guides]
-	if state == _last_aim_state: return
+	var layout: Array = []
+	if not _shot_in_motion and not _stroke_pending:
+		for ball in balls: layout.append(ball.canonical_state())
+	var state: Array = [aim_direction, _cue_ball().position, power, spin, _shot_in_motion, _placing, _stroke_pending, _guides, layout, _guide_settings_state()]
+	if state == _last_aim_state:
+		_update_momentum_readout()
+		_advance_guide_prediction()
+		return
 	_last_aim_state = state
 	table_view.set_aim(balls,aim_direction,_cue_ball(),power,not _shot_in_motion and not _placing and not _stroke_pending, spin, _launch_direction(aim_direction, power, spin))
-	if "_aim_mesh" in table_view and not _guides: table_view._aim_mesh.hide(); table_view._ghost_ball.hide()
+	_guide_applied = false
+	_guide_prediction = OutgoingGuide.new()
+	hud.set_prediction("")
+	if not _guides:
+		table_view._aim_mesh.hide()
+		table_view._ghost_ball.hide()
+	elif not _shot_in_motion and not _stroke_pending:
+		_guide_prediction.begin(balls, aim_direction, StrokePowerModel.cue_speed(power), spin, physics_config, table)
+		_advance_guide_prediction()
+
+func _guide_settings_state() -> Array:
+	var settings: Array = []
+	# Public authored parameters only; TableSpec's lazy geometry caches are derived.
+	for source in [physics_config, table]:
+		for property in source.get_property_list():
+			if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE and not String(property.name).begins_with("_"):
+				settings.append(source.get(property.name))
+	return settings
+
+func _advance_guide_prediction() -> void:
+	if not _guides or _placing or _shot_in_motion or _stroke_pending or _guide_applied: return
+	_guide_prediction.advance()
+	if not _guide_prediction.done:
+		hud.set_prediction("Calculating momentum at impact…")
+		return
+	_guide_applied = true
+	var prediction := _guide_prediction.result
+	if prediction.is_empty(): return
+	if prediction.status == "predicted":
+		table_view.set_outgoing_guide(prediction)
+		_update_momentum_readout()
+	else:
+		hud.set_prediction("Launch / first-contact geometry only\nOutgoing omitted: %s" % prediction.status)
+
+func _update_momentum_readout() -> void:
+	if not _guides or not _guide_applied or _guide_prediction.result.get("status") != "predicted": return
+	var prediction := _guide_prediction.result
+	var limit := " · limited by obstacle" if table_view.momentum_geometry.get("limited", false) else ""
+	hud.set_prediction("Relative momentum at impact%s\nCue %.2f · ball %d %.2f m/s\nIvory cue · dashed cyan target\n%.2fx display · follow/draw can curve later" % [limit, prediction.impact_cue_velocity.length(), prediction.object_number, prediction.impact_object_velocity.length(), hud.guide_length])
 
 func _new_rack(persist: bool = true) -> void:
 	table_view.cancel_stroke()
@@ -231,6 +279,7 @@ func _on_shoot_requested(selected_power: float, selected_spin: Vector2) -> void:
 		table_view._aim_mesh.hide()
 		table_view._ghost_ball.hide()
 	_stroke_pending = true
+	hud.set_prediction("")
 	hud.set_can_shoot(false)
 	table_view.play_stroke(func():
 		if generation != _shot_generation or not _stroke_pending: return

@@ -1,0 +1,167 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (3 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | TablePresentation[39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mexport[22m | Started Exporting for macOS (3 steps)[39m[0m
+[   0% ] [90m[1mexport[22m | Creating app bundle[39m[0m
+[  25% ] [90m[1mexport[22m | Making PKG[39m[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball.wav-efbd209bed5e53519d94608e9e023936.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/audio/baseline/ball.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue.wav-42805218c95c2830ea6a5d321f418ca0.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/audio/baseline/cue.wav.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket.wav-dfee906a394bc8d95f7e5484de29e7af.sample[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/audio/baseline/pocket.wav.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rail.wav-cba389265523371ed9e1328ba794e4ec.sample[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/audio/baseline/rail.wav.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/42364.json[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/62331.json[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/108615.json[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/147578.json[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/241373.json[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/350918.json[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/365525.json[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/539854.json[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/851086.json[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/851087.json[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/851089.json[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/audio/sources/851090.json[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball.wav-3da761b6bd813009bbf0163746f74f35.sample[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball.wav.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball_01.wav-6af129e2e8a0066722a4e8ac3324553a.sample[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball_01.wav.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball_02.wav-f9e5dbac5305a92610f521ff5fb22778.sample[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball_02.wav.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball_03.wav-63d7170665afefbced2032d906d04cb1.sample[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball_03.wav.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball_04.wav-cf7f766b29580b342ea33efb3cf5efe7.sample[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball_04.wav.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball_05.wav-f835e16cf97c7d22934e09c25c127816.sample[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/audio/ball_05.wav.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue.wav-23d1291c9d14f915b3e1c9b183d9439a.sample[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue.wav.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue_01.wav-36685937caa8735d57703dd9a4d74a50.sample[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue_01.wav.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue_02.wav-295b108dd34b1f1d3c2c59af65e7440f.sample[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue_02.wav.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue_03.wav-2f9c07b3464e8fcae6c89232beb68ee0.sample[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue_03.wav.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue_04.wav-270a6fe587b42834c29d239e04003e9d.sample[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue_04.wav.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/cue_05.wav-a901d585c7fdc88a591df691c3b5646d.sample[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/audio/cue_05.wav.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-36e0aa144432810a2cc7a86d6a9370c9-default_bus_layout.res[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket.wav-4015a72f16ac751c22f0ca4cc7910cda.sample[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket.wav.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket_01.wav-e2df37cf59dc06e540999aeeeab9d166.sample[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket_01.wav.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket_02.wav-bd9afbff4b32b45eef4464e0ce50dcb2.sample[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket_02.wav.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket_03.wav-3f0680505d48874dbfe8f993433b3264.sample[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket_03.wav.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket_04.wav-e124f213972912f061cd4ce145019c55.sample[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket_04.wav.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/pocket_05.wav-ad286648d7b579d473edd121993f0f5a.sample[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/audio/pocket_05.wav.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/audio/qa-evidence.json[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rail.wav-864b0dc97e40dbf811f905cf38e24e92.sample[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/audio/rail.wav.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rail_01.wav-fad06adee00cfe7f76ec1ab116a78632.sample[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/audio/rail_01.wav.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/audio/recorded_contacts.json[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-01.png-890c321e43aa99ff99905299daa0f154.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-01.png.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-02.png-cbf4355e849223e517eeda128f2e846c.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-02.png.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-03.png-58d0c1aea7b6d5b38aa14d93bbb53a01.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-03.png.import[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-04.png-3a78b144ffb82cbaeb1a94ad07d10d33.ctex[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-04.png.import[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-05.png-1e156fecb87d751cfacec96ec64608b0.ctex[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-05.png.import[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-06.png-635e09bad808dcb02b442067d1643b1c.ctex[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-06.png.import[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-07.png-8c06c811525f07c44dbb199b1c2c92c9.ctex[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-07.png.import[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-08.png-afb74aca478066af925a5bb372e5e854.ctex[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-08.png.import[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-09.png-e707fc32bce9ce5cd8cca502bffec3ff.ctex[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-09.png.import[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-10.png-48b10a6bbd6bdbf5f87366e0769d7490.ctex[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-10.png.import[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-11.png-bbf7a2aeac51f30c1dbae9ea1ba1b0d1.ctex[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-11.png.import[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-12.png-9d563ee2c62d68fe65df77c4c758dd7b.ctex[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-12.png.import[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-13.png-b9de80b1b317239f69c238ff9d62dcfe.ctex[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-13.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-14.png-9b1838c2e0c6d705b3dfda881ee566ed.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-14.png.import[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ball-15.png-5d954b45e2215fd745dbc1ee02b61320.ctex[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://assets/markings/ball-15.png.import[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/ball_surface.gdshader[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/cloth_surface.gdshader[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/room_reflections.gdshader[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/wood_surface.gdshader[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/icon.svg-56083ea2a1f1a4f1e49773bdc6d7826c.ctex[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg.import[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/spin_pad.gdc[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/stroke_power.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/outgoing_guide.gdc[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://assets/audio/CREDITS.txt[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/game_hud.gdc[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/table_spec.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/physics_stepper.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/physics_config.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/app/game_controller.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_match.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_rules.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_shot_event.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/game/rack_builder.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/ball_visual.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/table_audio.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/table_presentation.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/ball_state.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/cue_strike_model.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/audio/default_bus_layout.tres.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/spin_pad.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/stroke_power.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/outgoing_guide.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/game_hud.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/table_spec.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/physics_stepper.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/physics_config.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/app/game_controller.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_match.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_rules.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game/eight_ball_shot_event.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/game/rack_builder.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/ball_visual.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/table_audio.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/table_presentation.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/ball_state.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/sim/cue_strike_model.gd.remap[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/icon.svg[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+[  50% ] [90m[1mexport[22m | Code signing bundle[39m[0m
+[92m[ DONE ][39m [1mexport[22m
+[0m

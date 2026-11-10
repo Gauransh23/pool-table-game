@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+MOMENTUM CAPTURE: /Users/gt/Documents/My Public repos/Pool table game/docs/quality-roadmap/reports/proportional-guides-evidence/thin-default.png cut=75.0 multiplier=1.5 geometry={ "paths": [[(-0.012496, -0.055395), (1.023395, -0.323927)], [(0.000043, 0.000192), (0.088003, 0.268724)]], "common_factor": 1.0, "limited": false }

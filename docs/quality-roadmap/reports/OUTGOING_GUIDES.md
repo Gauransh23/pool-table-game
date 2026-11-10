@@ -1,0 +1,109 @@
+# Two-ball outgoing guides — bounded implementation
+
+2026-11-08. Baseline `23cb30fd26085b678ad9dd9d73058b7c065a4dd4`, original checkout `/Users/gt/Documents/My Public repos/Pool table game`, `main`. Owner resumed after the explicit pause; no branch/worktree was created. This report covers only outgoing guides, not the separate presentation rebuild. No engine/coefficient, strike/power mapping, save format or undo changes.
+
+## Design and physical meaning
+
+`OutgoingGuide` clones every `BallState`, applies a separate `CueStrikeModel` with the current shot direction, `StrokePower.cue_speed`, tip offset and active `PhysicsConfig`, then replays **the active PhysicsStepper** with its authored fixed step and the same table. The experimental impact stepper is not used. Cloth friction, rotational evolution, throw, restitution, squirt and the active model's small vertical responses come from that replay, not a duplicated ideal collision formula. Live ball canonical states are checked unchanged.
+
+Incoming samples end at the registered first-contact cue center. Outgoing paths begin at each ball's distinct registered center, then include the first-contact tick endpoint when it differs. A replay-only PhysicsStepper subclass observes `_record_event` to snapshot both centers exactly when the active engine registers the collision, after its positional correction and before later substeps. This is a registered collision marker, not a universal continuous-time exact-contact solution. Cue is solid ivory, object is dashed pale cyan; compact arrowheads indicate motion. A hollow ball-radius contact ring replaces the filled aiming ghost; the filled placement preview remains separate. Fine screen-space ribbons use a 1.5 viewport-unit inner line and a 2-viewport-unit total dark edge, reprojected on camera movement and resize without restarting prediction. Initial geometric launch/contact guides receive the same redraw handling.
+
+The readout exposes estimated **planar speeds in m/s at the endpoint of the first-contact fixed tick**. These are not exact instantaneous impact speeds, momentum percentages or energy shares. Momentum is a vector; no scalar percentages or fake sum-to-100 division are displayed. Ideal stationary equal-mass frictionless stun gives object speed `v*cos(cut)` and cue speed `v*sin(cut)`, with translational-energy ratios `cos²`/`sin²`; actual coefficients, spin, friction and cloth evolution differ. The right-angle rule is not imposed on follow/draw.
+
+Reference grounding supplied and inspected by the lead: [Dr. Dave 90-degree rule](https://drdavepoolinfo.com/faq/stun/90-degree-rule/), [TP3.2](https://drdavepoolinfo.com/technical_proofs/TP_3-2.pdf), [TP A.5](https://drdavepoolinfo.com/technical_proofs/new/TP_A-5.pdf). Visual inspiration: the official Miniclip table/control images and [combined-spin gameplay GIF](https://support.miniclip.com/hc/article_attachments/41975201180817) inspected by the lead: fine light guides with dark edge and a hollow contact ring. No commercial or exact visual/physical parity is claimed; no third-party image or code is included.
+
+## Bounds, caching and uncertainty
+
+- Search before first contact: at most 2.5 simulated seconds. After contact: at most 0.8 seconds and 0.45 m per outgoing path, also bounded by 1920 total ticks. The final length-cap endpoint interpolates along its actual last replay segment.
+- Each ball's path ends before the tick containing its next ball/cushion/pocket/off-table event, or when cloth support is lost. No reflected or second-collision leg is drawn.
+- Multiple/mixed first-contact events and near-frozen neighbours within `diameter + 3 mm` omit outgoing prediction. A rack does not receive a confident isolated-ball forecast. Moving layouts, airborne/falling initial layouts, invalid/zero strokes and rail/pocket-before-ball cases are qualified/omitted. No-hit/timeout cases retain only the visibly qualified geometric guide.
+- Ordinary active-model sub-mm hops on cut shots are projected to the guide plane. Paths stop for height above `R + 2 mm` or vertical speed above 0.2 m/s. These conservative preview limits do not change physical behavior or claim intentional jump/masse coverage.
+- Work is incremental: at most 32 ticks per frame, checking a **soft** 2500 µs budget after each tick. A single tick can overrun that budget; it is not a preemptive time guarantee. Results remain cached until aim, power, spin, canonical ball layout, public authored table/config parameters or readiness/guide state changes. Changed setup clears old outgoing paths immediately; guide-off hides paths/readout. Camera redraw reuses cached world paths.
+- Runtime estimates match the current engine; they are not calibrated real-table predictions. Tick sampling does not establish the contract's full 0.25 mm / 0.02° contact accuracy across its named corpus. Horizon endpoints/arrowheads are previews, not promised landing positions.
+
+## Requirement ledger
+
+| ID | Current evidence | Result within this checkpoint / remaining acceptance |
+|---|---|---|
+| AIM-005 | Independent frictionless 0/30/45/60° speed references; active-replay sample parity and declared scope | PASS for bounded tested consistency; full final geometric/angular corpus INCONCLUSIVE / not established |
+| AIM-006 | Cluster/mixed/unsupported omission; hollow marker; separate placement ghost; guide-off/stale-cache checks | PASS for tested categorical behavior; blinded >=95% identity study NOT_RUN |
+| VIS-007 | Projected 1.5-viewport-unit inner ribbon checks after both camera transitions and resize; 2-viewport-unit dark outer width by construction; native small-window captures | PASS for tested inner-width/reprojection; OS logical-coordinate/DPI mapping, difficult-ball deck and human legibility NOT_RUN |
+| AIM-001/008/009 | Existing actual Viewport-routing aim/practice/stroke suites | PASS for those existing tested gestures; native input latency/perceptual trials NOT_RUN |
+| PER-002/003 | Predictor CPU slices recorded, finite tick bounds | No exported frame-pacing claim; final release protocols NOT_RUN |
+
+## Commands and retained evidence
+
+Run from the original checkout with Godot `4.7.2.stable.official.ed1daf0bf` (native captures: Apple M4, Metal). Raw stdout/stderr and exit codes are retained in [outgoing-guides-evidence](outgoing-guides-evidence/). For every named source suite:
+
+```sh
+bash tools/godot.sh --headless --path . --script tests/SUITE.gd
+```
+
+Suites: `outgoing_guides`, `run`, `aim_controls`, `practice_input_flow`, `practice_flow`, `stroke_contact`, `spin_precision`, `save_recovery`, `audio_contacts`.
+
+Pre-review source results (retained evidence for commits `34a3472` / `bed2aa1`):
+
+- `outgoing_guides`: OUTGOING GUIDES: 742 checks, 0 failures; max slice 3536 us, max total 47085 us; exit 0.
+- `run`: PASS: 950 simulation and rules assertions; exit 0.
+- `aim_controls`: AIM CONTROLS: 0 failure(s); exit 0.
+- `practice_input_flow`: PRACTICE INPUT FLOW: 200 checks, 0 failure(s); exit 0.
+- `practice_flow`: PRACTICE FLOW: 42 checks, 0 failures; exit 0.
+- `stroke_contact`: STROKE CONTACT: 24 checks, 0 failures; exit 0.
+- `spin_precision`: SPIN PRECISION: 5 checks, 0 failures; exit 0.
+- `save_recovery`: SAVE RECOVERY: 39 checks, 0 failures; exit 0.
+- `audio_contacts`: AUDIO CONTACTS: 0 failure(s); tests event delivery, not acoustic fidelity; exit 0.
+
+See `manifest.json` for source/physics/evidence SHA-256 identity. Predictor CPU measurements exclude final guide mesh generation and native display latency.
+
+Focused checks cover head-on/cut/signed follow/draw/side spin, independent ideal sin/cos speed references (0.2 mm/s tolerance), vector momentum (1 micro N·s tolerance), exact retained active-replay samples (0.1 µm tolerance, final capped endpoint on the actual last segment), no-hit/zero power, rail-before-hit, cluster rejection, next-rail truncation, clone nonmutation, finite tick/slice caps, cached completion, layout/config invalidation, guide-off, placement ghost, camera transitions and resize. Assertion totals vary because a check runs per timing-budgeted slice. This is not additional physical calibration.
+
+Native capture commands:
+
+```sh
+bash tools/godot.sh --path . --script tests/capture_outgoing_guides.gd -- --small --output=/tmp/pool-outgoing-small.png
+bash tools/godot.sh --path . --script tests/capture_outgoing_guides.gd -- --small --lounge --output=/tmp/pool-outgoing-small-lounge.png
+```
+
+The fixture assigns a fresh isolated session path **before** scene attachment, waits for camera settling and completed prediction, and fails on prediction/PNG-write errors. `--small` selects 1100×700; omit it for the default size. Both small-window camera captures were inspected: hollow ring, distinct branches/arrows, scope/speeds and all sidebar controls were visible without overflow. Screenshots do not establish native timing, full difficult-context legibility or listening quality.
+
+## Preserved failures and rulings
+
+1. First 0.45 m cap implementation yielded two parity failures because the former all-samples-equal oracle rejected the intentional final interpolated point. Retained rule: interior samples remain exact; only the final capped endpoint may lie on the actual last tick segment. No engine tolerance/target changed.
+2. Blanket rejection of every AIRBORNE post-contact state erased ordinary cut cue paths (two failures: cut sampled path/parity duration). Observed active-model hops: about 0.04–0.12 mm height and 0.017–0.056 m/s vertical speed. Ruling: retain ordinary small responses, omit substantial flight using explicit preview bounds above; do not modify the active engine.
+3. Capture fixture initially failed because SceneTree lacks `get_viewport()` and an untyped Array could not assign typed `game.balls`. Corrected to root texture access and `Array[BallState]`. Session-path isolation was then moved before scene attachment. Failed captures were not treated as successful evidence.
+4. Initial camera-width tests using `ImmediateMesh.get_faces()` reported widths 1.917 and 15.945 pixels after redraw. That API returned a stale cached triangulation. Current tests inspect the active `surface_get_arrays(0)[Mesh.ARRAY_VERTEX]` buffer instead; observed inner widths are approximately 1.500 pixels in both views and after resize. The actual camera invalidation defect was independently fixed by rendering-only reprojection.
+5. `aim_controls` assertions pass/exit 0 but Godot reports 2 ObjectDB instances and 1 resource still in use at shutdown in the recorded run. This cleanup warning is retained separately from assertion results; no warning is silently counted as an acceptance pass.
+
+## Residual limits / handoff
+
+Full contract gates remain open: dense sweep contact-error quantification, calibrated physical data, difficult/occluded identity trials, full DPI/zoom/native interaction, release frame pacing and independent review. CPU soft-budget overshoot and conservative cluster omission are explicit tradeoffs. The 3 mm neighbour guard can omit otherwise usable isolated predictions; the bounded guide intentionally stops early. No solver promotion, coefficient adjustment, art rebuild, packaging or push is part of this implementation checkpoint. Primary owns independent review and release actions.
+
+## Independent review fix round 1 — registered collision origins
+
+Independent review found one P2 blocker: using the cue center after the entire contact tick displaced the hollow contact marker downstream. The preserved fixture uses cue `(-0.35, 0.12)`, target `(0, 0.17)`, direction right, cue speed 8 m/s, zero spin/default config. The registered cue center was approximately `(-0.022624, 0.119120)` while the old tick-end marker was `(-0.014804, 0.114725)`, an **8.97 mm** discrepancy. This is a real representation defect, distinct from any preexisting active-engine versus continuous geometric-contact error. The retained reviewer report is `outgoing-guides-evidence/review-round1.txt`.
+
+Correction: a nested replay-only `ContactStepper` calls the existing active `_record_event` and snapshots both cloned ball centers at the first registered ball contact. The ring, incoming endpoint and outgoing origins use those centers. Distinct tick-end samples follow the origins so no remaining within-tick outgoing motion disappears. Initial within-tick travel counts toward each 0.45 m length budget. Speeds retain their declared first-contact tick-end planar meaning. No active engine, physics event schema, coefficients or live state changed.
+
+New oracle coverage uses a separate event observer on an independent active replay, across cue speeds 0.5/2/8 m/s and 1 micrometer / 3 mm initial gaps plus the exact reviewer hard cut. It compares both registered centers, incoming/cue origin identity, event midpoint and live-state nonmutation within 0.1 micrometer. The retained counterexample must still distinguish the old endpoint by >8 mm. Existing tick-end replay parity now accounts for the additional registered-origin sample; the final capped endpoint remains constrained to its actual last replay segment. No acceptance thresholds were relaxed.
+
+Commands: `bash tools/godot.sh --headless --path . --script tests/outgoing_guides.gd`, then the same command for `aim_controls.gd` and `practice_input_flow.gd`. Raw results: `outgoing-guides-evidence/fix1-*.txt`. Earlier full nine-suite logs and pre-fix manifest/captures are preserved as historical evidence; the unchanged solver does not justify rerunning all 950 physics assertions solely for this observer fix. Native release verification remains with the lead. Full AIM-005 numerical/physical acceptance remains unestablished despite exact tested agreement with **registered engine events**.
+
+Fix-round final results: outgoing guides **888 checks, 0 failures**, maximum CPU slice **3515 µs**, maximum replay **45949 µs**; aim controls **0 failures** with the same 2 ObjectDB / 1 resource shutdown warning; practice input **200 checks, 0 failures**. All three exit 0. Exact reviewer fixture: former marker drift **8.969989 mm**, corrected registered-center difference **0.000000000 mm** in the retained float32 replay. This zero is an implementation equality result, not a claim of zero physical/model uncertainty.
+
+## Lead release verification — 0.3.2
+
+The independent scoped re-review passed spec and code quality after correction; retained in `outgoing-guides-evidence/review-round1-correction.txt`. The lead inspected a fresh corrected-source 1100×700 capture at `build/verification/outgoing-guides/small.png`. Earlier committed captures remain explicitly pre-correction evidence.
+
+`bash tools/build_mac.sh` produced `build/Long Rail-0.3.2.app` and `build/Long Rail-0.3.2-mac.dmg`. The universal arm64/x86_64 app passed `codesign --verify --deep --strict`; the installer passed `shasum -a 256 -c build/SHA256SUMS.txt`. Bundle version is 0.3.2. This is a locally ad-hoc signed preview; notarization is not configured.
+
+The lead opened that exact exported bundle through CUA, resumed the saved practice table and inspected the native window. Both outgoing branches, hollow ring and speed readout were visible with 17 strokes / 10 balls potted and 42% power. No shot was fired in this check. A process-path check confirmed the versioned 0.3.2 executable. This is a successful exported GUI startup/display check, not a comprehensive installed-app interaction or latency acceptance test.
+
+Exact source/package/capture hashes, stage-specific test coverage and release observations are in `outgoing-guides-evidence/release-0.3.2.json`. The larger quality contract remains incomplete as detailed above.
+
+### Integration with newer main
+
+Final synchronization found remote `main` had advanced to `9be66f4` with deliberate Shift-drag fine aiming and measurement/research work. It was merged in place at `9b0295a`; all incoming work was preserved and no branch/worktree was created. Active simulation/strike/config sources were unchanged. An independent review of the combined controller/HUD interaction passed (`outgoing-guides-evidence/integration-review.txt`).
+
+The combined source passed outgoing guides **887 checks / 0 failures**, aim controls **0 failures** (same retained shutdown warning), practice input **200 / 0**, and stroke contact **24 / 0**. Raw results are `integration-*.txt`. Slice-count assertions vary with the soft CPU budget; the prior 888-check result remains evidence for its own source stage.
+
+The lead rebuilt the universal app and DMG, reverified signature/checksum, inspected the integrated 1100×700 source capture at `build/verification/outgoing-guides/integrated-small.png`, and reopened the rebuilt exported GUI. Fine-aim instructions and both outgoing guides were visible on the same saved table. No shot was fired. The release JSON now identifies the integrated source and final package hashes; earlier manifests and captures remain historical stage-specific records.

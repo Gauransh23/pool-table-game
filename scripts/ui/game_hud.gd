@@ -11,6 +11,7 @@ signal menu_requested
 signal view_requested
 signal sound_changed(enabled: bool)
 signal guide_changed(enabled: bool)
+signal guide_length_changed(value: float)
 signal resume_requested
 signal play_area_changed(area: Rect2)
 
@@ -19,6 +20,7 @@ var selected_spin := Vector2.ZERO
 var called_ball := 1
 var called_pocket := 0
 var safety := false
+var _prediction: Label
 var _status: Label
 var _score: Label
 var _detail: Label
@@ -37,8 +39,59 @@ var _side: PanelContainer
 var _footer: Label
 var _focus_controls: Array[Control] = []
 var _previous_focus: WeakRef
+var guide_length := 1.5
+var guide_settings_path := "user://guide-settings.cfg"
+var _guide_length_slider: HSlider
+
+func _load_guide_settings() -> void:
+	var config := ConfigFile.new()
+	if config.load(guide_settings_path) != OK: return
+	var value = config.get_value("guides", "length", 1.5)
+	if (value is float or value is int) and is_finite(float(value)):
+		guide_length = snappedf(clampf(float(value), 0.25, 3.0), 0.05)
+
+func _set_guide_length(value: float) -> void:
+	if not is_finite(value): return
+	guide_length = snappedf(clampf(value, 0.25, 3.0), 0.05)
+	var config := ConfigFile.new()
+	config.set_value("guides", "length", guide_length)
+	var error := config.save(guide_settings_path)
+	if error != OK: push_warning("Guide preference could not be saved: " + error_string(error))
+	guide_length_changed.emit(guide_length)
+
+func show_guide_length() -> void:
+	_open_card()
+	_card.add_child(label("Guide length", 28, Color("e9d9b8")))
+	_card.add_child(label("Momentum at impact · ivory cue / dashed cyan target", 15))
+	_card.add_child(label("Display magnification, independent of shot power.
+Both vectors share one scale and one obstruction limit.
+Follow/draw can curve later; these are not travel paths.", 14))
+	var readout := label("%.2fx" % guide_length, 18)
+	_card.add_child(readout)
+	_guide_length_slider = HSlider.new()
+	_guide_length_slider.name = "GuideLength"
+	_guide_length_slider.min_value = 0.25
+	_guide_length_slider.max_value = 3.0
+	_guide_length_slider.step = 0.05
+	_guide_length_slider.value = guide_length
+	_guide_length_slider.custom_minimum_size = Vector2(460, 40)
+	_guide_length_slider.tooltip_text = "Guide length: Left/Right adjusts 0.05x; Escape returns to table."
+	var focus := Panel.new()
+	focus.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	focus.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	focus.add_theme_stylebox_override("panel", focus_ring())
+	_guide_length_slider.add_child(focus)
+	focus.hide()
+	_guide_length_slider.focus_entered.connect(focus.show)
+	_guide_length_slider.focus_exited.connect(focus.hide)
+	_guide_length_slider.value_changed.connect(func(value: float): readout.text = "%.2fx" % value; _set_guide_length(value))
+	_card.add_child(_guide_length_slider)
+	_card.add_child(button("Back", func(): show_home(true)))
+	call_deferred("_focus_menu")
+
 
 func _ready() -> void:
+	_load_guide_settings()
 	_build()
 	_root.resized.connect(_layout_hud)
 	_layout_hud()
@@ -76,6 +129,9 @@ func _build() -> void:
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_status.custom_minimum_size.y = 50
 	column.add_child(_status)
+	_prediction = label("", 12, Color("c4d9d9"))
+	_prediction.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(_prediction)
 	var power_row := HBoxContainer.new()
 	column.add_child(power_row)
 	power_row.add_child(label("POWER", 11, Color("b6b9aa")))
@@ -138,11 +194,11 @@ func _build() -> void:
 	options.add_child(sound)
 	var guides := CheckBox.new()
 	guides.focus_mode = Control.FOCUS_ALL
-	guides.text = "Path guide"
+	guides.text = "Momentum"
 	guides.custom_minimum_size.y = 32
 	guides.add_theme_font_size_override("font_size", 14)
 	guides.add_theme_stylebox_override("focus", focus_ring())
-	guides.tooltip_text = "Shows launch direction and first contact. Later spin, throw and rebounds are not predicted."; guides.button_pressed = true
+	guides.tooltip_text = "Momentum at impact: ivory cue, dashed cyan target. Lengths show relative planar momentum with a common scale and shared obstruction limit. Follow/draw can curve later. Menu → Guide length adjusts display magnification. Clusters omitted."; guides.button_pressed = true
 	guides.toggled.connect(func(value: bool): guide_changed.emit(value))
 	options.add_child(guides)
 	_focus_controls = [_power, _spin, _shoot, undo, camera, menu, sound, guides]
@@ -208,7 +264,7 @@ func _focus_menu() -> void:
 	if not menu_visible(): return
 	var buttons: Array[Control] = []
 	for child in _card.get_children():
-		if child is Button: buttons.append(child)
+		if child is Button or child is Range: buttons.append(child)
 	for index in range(buttons.size()):
 		var control := buttons[index]
 		var next := buttons[(index + 1) % buttons.size()]
@@ -254,8 +310,24 @@ func show_home(can_resume: bool = false) -> void:
 	if can_resume: _card.add_child(button("Return to the table", func(): hide_menu(); resume_requested.emit(), true))
 	_card.add_child(button("Start a fresh rack", func(): hide_menu(); mode_requested.emit("practice"), true))
 	_card.add_child(label("Pure practice • Offline • 9-foot table\nDrag cloth to aim; Shift-drag horizontally for fine aim.\nTab through controls, or P for power and S for tip position.\nEscape returns to table aim. After a scratch, arrows move\nthe cue-ball preview and Enter places it; a cloth click also works.", 13, Color("b6c0b6")))
+	_card.add_child(button("Guide length", show_guide_length))
+	_card.add_child(button("Sound credits", show_sound_credits))
 	_card.add_child(button("Quit", func(): get_tree().quit()))
 	call_deferred("_focus_menu")
+func show_sound_credits() -> void:
+	_open_card()
+	_card.add_child(label("Sound credits", 28, Color("e9d9b8")))
+	var credits := RichTextLabel.new()
+	credits.name = "SoundCredits"
+	credits.bbcode_enabled = true
+	credits.custom_minimum_size = Vector2(480, 290)
+	credits.add_theme_font_size_override("normal_font_size", 15)
+	credits.text = "[b]KVV Audio[/b]\nRecorded cue hits, ball impacts and pocket drops.\n[url=https://freesound.org/people/KVV_Audio/sounds/851086/]Cue recording[/url] · [url=https://freesound.org/people/KVV_Audio/sounds/851087/]Ball recording[/url] · [url=https://freesound.org/people/KVV_Audio/sounds/851090/]Pocket recording[/url]\n[url=https://creativecommons.org/licenses/by/4.0/]Creative Commons Attribution 4.0[/url]\n\n[b]mccarthy@bedmas.com[/b]\n[url=https://freesound.org/people/mccarthy%40bedmas.com/sounds/42364/]Pool-ball-bounce-off-rail.wav[/url] · [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0[/url]\n\nEdited for Long Rail: hits trimmed, downmixed,\nresampled, faded and gain matched.\nNo creator endorsement is implied."
+	credits.meta_clicked.connect(func(link): OS.shell_open(str(link)))
+	_card.add_child(credits)
+	_card.add_child(button("Back", func(): show_home(true)))
+	call_deferred("_focus_menu")
+
 func show_choices(title: String, detail: String, choices: Array, callback: Callable) -> void:
 	_open_card()
 	_card.add_child(label(title, 28, Color("e9d9b8")))
@@ -302,3 +374,6 @@ func focus_ring() -> StyleBoxFlat:
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(7)
 	return style
+
+func set_prediction(text: String) -> void:
+	_prediction.text = text

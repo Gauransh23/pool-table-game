@@ -9,6 +9,7 @@ func check(value: bool, message: String) -> void:
 func _initialize() -> void: call_deferred("run")
 func run() -> void:
  var view := TablePresentation.new()
+ root.add_child(view)
  var table := TableSpec.new()
  view._table=table
  for segment in table.rail_segments():
@@ -147,6 +148,7 @@ func run() -> void:
    for edge in all_edges:
     nearest=minf(nearest,point.distance_to(Geometry3D.get_closest_point_to_segment(point,edge[0],edge[1])))
    check(nearest<.00005,"built full mouth-to-back jaw/rail nose remains visible at physical height")
+ view._build_camera()
  view._build_aim_and_cue()
  check(view._ghost_ball.mesh is TorusMesh,"marker is hollow topology")
  check(not view._ghost_ball.material_override.no_depth_test,"marker respects target occlusion")
@@ -155,12 +157,20 @@ func run() -> void:
  view.set_aim([cue,target],Vector2.RIGHT,cue,.4,true)
  check(view._ghost_ball.visible,"first contact marker remains visible")
  check(absf(view._ghost_ball.position.x-(.3-2*BallState.RADIUS))<.000001,"contact marker retains first-contact algorithm")
+ var cached_marker:=view._ghost_ball.mesh
+ view._camera.size+=.1
+ view._process(0.0)
+ check(view._ghost_ball.visible and view._ghost_ball.mesh==cached_marker,"fallback camera refresh retains cached contact marker")
  view.set_aim([cue,target],Vector2.LEFT,cue,.4,true)
  check(not view._ghost_ball.visible,"no marker without target")
  view.set_placement_preview(Vector2(.3,.2),true)
  check(view._ghost_ball.mesh is SphereMesh,"placement retains translucent sphere semantics")
  view.set_aim([cue,target],Vector2.RIGHT,cue,.4,true)
  check(view._ghost_ball.mesh is TorusMesh,"aim restores cached hollow marker after placement")
+ check(view._ghost_ball.visible,"restored aim marker is visible after placement")
+ check(view._ghost_ball.mesh==cached_marker and view._ghost_ball.material_override.albedo_color.is_equal_approx(Color(.68,.89,.94,.9)),"aim reuses cached marker and restores aim color after placement")
+ view.set_aim([cue,target],Vector2.RIGHT,cue,.4,false)
+ check(not view._ghost_ball.visible and not view._aim_mesh.visible,"guide-off hides marker and ribbons")
  view.free()
  print("I1 GEOMETRY: %d checks, %d failures" % [checks,failures])
  quit(1 if failures else 0)

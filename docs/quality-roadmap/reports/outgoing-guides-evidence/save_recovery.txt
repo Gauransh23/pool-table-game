@@ -1,0 +1,43 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: settled sixteen-ball session saves
+PASS: valid v1 session loads
+PASS: round trip restores all ball fields and counters
+PASS: settled ball in a pocket shelf region remains compatible
+PASS: pocketed cue restores with ball in hand
+PASS: pending-stroke save pairs undo counters with undo balls
+PASS: pending-stroke save stores the settled pre-shot state
+PASS: moving-shot save stores the settled pre-shot state
+PASS: moving IN_PLAY save is rejected
+PASS: moving-save rejection leaves the live game unchanged
+PASS: rejects boolean version
+PASS: boolean version rejection leaves the live game unchanged
+PASS: rejects overflowing stroke counter
+PASS: overflowing stroke counter rejection leaves the live game unchanged
+PASS: rejects fractional id
+PASS: fractional id rejection leaves the live game unchanged
+PASS: rejects fractional phase
+PASS: fractional phase rejection leaves the live game unchanged
+PASS: rejects fractional pocket id
+PASS: fractional pocket id rejection leaves the live game unchanged
+PASS: rejects duplicate number
+PASS: duplicate number rejection leaves the live game unchanged
+PASS: rejects unsupported airborne phase
+PASS: unsupported airborne phase rejection leaves the live game unchanged
+PASS: rejects invalid pocket id
+PASS: invalid pocket id rejection leaves the live game unchanged
+PASS: rejects out-of-table position
+PASS: out-of-table position rejection leaves the live game unchanged
+PASS: rejects overlapping on-table balls
+PASS: overlapping on-table balls rejection leaves the live game unchanged
+PASS: rejects fractional stroke counter
+PASS: fractional stroke counter rejection leaves the live game unchanged
+PASS: rejects negative pot counter
+PASS: negative pot counter rejection leaves the live game unchanged
+PASS: rejects inconsistent terminal phase
+PASS: inconsistent terminal phase rejection leaves the live game unchanged
+PASS: truncated JSON is rejected
+PASS: truncated-file rejection leaves the live game unchanged
+PASS: save does not replace a good file with moving state
+SAVE RECOVERY: 39 checks, 0 failures
+exit_code=0

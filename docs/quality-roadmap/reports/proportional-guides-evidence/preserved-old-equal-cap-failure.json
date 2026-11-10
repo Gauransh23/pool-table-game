@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "scope": "historical individually capped travel paths interpreted as instantaneous relative momentum",
+  "fixture": {
+    "ideal_cut_degrees": 30,
+    "cue_speed_mps": 8,
+    "ball_restitution": 1,
+    "ball_friction": 0,
+    "cloth_friction": 0
+  },
+  "old_centerline_lengths_m": [
+    0.44999998901039,
+    0.44999999366701
+  ],
+  "old_display_ratio": 0.9999999896519555,
+  "expected_momentum_ratio": 0.57735021366488,
+  "production_fix": "shared projected momentum-vector scale; old travel-path data retained unchanged"
+}

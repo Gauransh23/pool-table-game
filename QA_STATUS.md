@@ -1,3 +1,39 @@
+# Proportional guides and recorded audio — 0.3.3 candidate
+
+Updated 2026-11-09. [Guide design and checks](docs/quality-roadmap/plans/PROPORTIONAL_GUIDES.md), [audio research and evidence](docs/quality-roadmap/reports/REAL_AUDIO.md).
+
+Outgoing arrows now represent immediate post-collision planar momentum with one
+shared screen scale, rather than two independently capped travel paths. Guide
+length is adjustable through Menu → Guide length and persists separately from
+practice saves. Common obstruction clipping preserves the displayed ratio.
+Later spin curvature and stopping distance are outside this diagram's promise.
+
+Recorded audio replaces the previous sine/noise effects: five ball, five cue,
+five pocket and one rail take. The rail recording's phone-source quality and
+single-take limit are explicit. Attribution is available in the installed app.
+The actual engine offline mix deck measures about -1.96 dBTP with no clipped
+PCM and later digital silence after mute. This does not establish human sound
+quality, speaker/headphone parity, device latency or a sample-accurate mute bound.
+
+See the implementation report for final test/review/release evidence. Full
+physical calibration, recognition/DPI and native performance acceptance remain
+open; older checkpoint results below retain their historical scope.
+
+# Two-ball outgoing guides — 0.3.2 candidate
+
+Updated 2026-11-08. [Implementation and evidence](docs/quality-roadmap/reports/OUTGOING_GUIDES.md).
+
+The candidate adds ivory cue-ball and dashed cyan object-ball paths, a hollow
+first-contact ring and estimated outgoing planar speeds. A cloned replay uses the
+active solver and current power/spin settings. Each outgoing preview is bounded
+to 0.8 seconds / 0.45 meters and ends before another interaction; ambiguous
+clusters and unsupported cases omit outgoing paths. These are estimates within
+the active model, not exact real-table predictions or momentum percentages.
+
+Full guide accuracy sweeps, calibrated physics, DPI/user recognition and native
+performance gates remain open. See the implementation report for source tests,
+raw output, preserved failures, review corrections and release evidence.
+
 # Practice interaction fixes — 0.3.1
 
 Updated 2026-11-06. [Fix report](docs/quality-roadmap/reports/PRACTICE_FLOW_FIXES.md).

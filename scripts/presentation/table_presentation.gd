@@ -30,10 +30,61 @@ var _fit_viewport := Vector2.ZERO
 var _fit_transform := Transform3D()
 var _view_zoom := 1.0
 var _fit_zoom := -1.0
+var _display_prediction: Dictionary = {}
+var _aim_geometry: Array = []
+var _guide_projection: Array = []
+var guide_length := 1.5
+# Shared geometry used directly by the mesh renderer and projected-ratio tests.
+var momentum_geometry: Dictionary = {}
+
+func set_guide_length(value: float) -> void:
+	guide_length = clampf(value, 0.25, 3.0) if is_finite(value) else 1.5
+	if not _display_prediction.is_empty(): set_outgoing_guide(_display_prediction)
+
+func _screen_point(point: Vector2) -> Vector2:
+	return _camera.unproject_position(Vector3(point.x, BallState.RADIUS + 0.003, point.y))
+
+func _momentum_geometry(prediction: Dictionary) -> Dictionary:
+	var paths: Array[PackedVector2Array] = []
+	var common := 1.0
+	var speeds := [prediction.impact_cue_velocity.length(), prediction.impact_object_velocity.length()]
+	var reference := maxf(1.0e-9, maxf(prediction.impact_incoming_speed, maxf(speeds[0], speeds[1])))
+	var width := _play_area.size.x if _play_area.size.x > 0 else get_viewport().get_visible_rect().size.x
+	for index in range(2):
+		var number: int = 0 if index == 0 else prediction.object_number
+		var origin: Vector2 = prediction.impact_centers[number]
+		var velocity: Vector2 = prediction.impact_cue_velocity if index == 0 else prediction.impact_object_velocity
+		if speeds[index] <= 1.0e-9:
+			paths.append(PackedVector2Array())
+			continue
+		var direction := velocity.normalized()
+		var projected := _screen_point(origin + direction) - _screen_point(origin)
+		var pixels: float = width * 0.25 * guide_length * speeds[index] / reference
+		var world_length := pixels / maxf(projected.length(), 1.0e-9)
+		var available := _first_rail_distance(origin, direction)
+		for blocker in prediction.get("blockers", []):
+			var offset: Vector2 = blocker - origin
+			var along := offset.dot(direction)
+			var perpendicular := offset.length_squared() - along * along
+			var radius := 2.0 * BallState.RADIUS
+			if along > 0.0 and perpendicular < radius * radius:
+				available = minf(available, maxf(0.0, along - sqrt(maxf(0.0, radius * radius - perpendicular))))
+		common = minf(common, maxf(0.0, available - 0.002) / maxf(world_length, 1.0e-9))
+		paths.append(PackedVector2Array([origin, origin + direction * world_length]))
+	for index in range(paths.size()):
+		if paths[index].size() == 2: paths[index][1] = paths[index][0].lerp(paths[index][1], common)
+	return {"paths": paths, "common_factor": common, "limited": common < 0.995}
+
 
 
 func _process(_delta: float) -> void:
 	_fit_camera()
+	if _guide_projection != _guide_projection_state():
+		if not _display_prediction.is_empty(): set_outgoing_guide(_display_prediction)
+		elif not _aim_geometry.is_empty(): _draw_aim_geometry()
+
+func _guide_projection_state() -> Array:
+	return [_camera.global_transform, _camera.size, _camera.h_offset, _camera.v_offset, get_viewport().get_visible_rect().size]
 
 
 func set_play_area(area: Rect2) -> void:
@@ -109,10 +160,11 @@ func sync_balls(balls: Array) -> void:
 
 
 func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float, visible: bool, tip_offset: Vector2 = Vector2.ZERO, launch_direction: Vector2 = Vector2.ZERO) -> void:
+	_display_prediction = {}
+	momentum_geometry = {}
+	_aim_geometry = []
 	_aim_immediate.clear_surfaces()
 	_ghost_ball.mesh = _contact_marker_mesh
-	var ghost_material := _ghost_ball.material_override as StandardMaterial3D
-	ghost_material.albedo_color = Color(0.68, 0.89, 0.94, 0.9)
 	_cue_root.visible = _cue_delivery_visible or (visible and cue_ball != null and cue_ball.is_on_table())
 	_ghost_ball.visible = false
 	if not visible or cue_ball == null or not cue_ball.is_on_table() or direction.length_squared() < 0.9:
@@ -128,17 +180,80 @@ func set_aim(balls: Array, direction: Vector2, cue_ball: BallState, power: float
 	if has_object_hit:
 		guide_distance = minf(guide_distance, float(object_hit["distance"]))
 	var guide_end := start + Vector3(guide_direction.x, 0.0, guide_direction.y) * guide_distance
-	_aim_immediate.surface_begin(Mesh.PRIMITIVE_LINES, _aim_material)
-	_aim_immediate.surface_set_color(Color("#eee5cf"))
-	_aim_immediate.surface_add_vertex(start)
-	_aim_immediate.surface_add_vertex(guide_end)
-	if has_object_hit:
-		# Show the initial contact only; an outgoing ray would omit frictional throw.
-		_ghost_ball.position = guide_end
-		_ghost_ball.visible = true
+	if has_object_hit: _show_contact_marker(Vector2(guide_end.x, guide_end.z))
+	_aim_geometry = [Vector2(start.x, start.z), Vector2(guide_end.x, guide_end.z), has_object_hit]
+	_draw_aim_geometry()
+	_update_cue(Vector3(cue_ball.position.x, cue_ball.height, cue_ball.position.y), direction, power, tip_offset)
+
+func _draw_aim_geometry() -> void:
+	_guide_projection = _guide_projection_state()
+	_aim_immediate.clear_surfaces()
+	_aim_immediate.surface_begin(Mesh.PRIMITIVE_TRIANGLES, _aim_material)
+	_add_guide_segment(_aim_geometry[0], _aim_geometry[1], Color("eee5cf"))
 	_aim_immediate.surface_end()
 	_aim_mesh.mesh = _aim_immediate
-	_update_cue(Vector3(cue_ball.position.x, cue_ball.height, cue_ball.position.y), direction, power, tip_offset)
+
+
+# Called only with the current completed replay; a fresh set_aim clears all paths.
+func set_outgoing_guide(prediction: Dictionary) -> void:
+	if not prediction.has("contact"): return
+	_display_prediction = prediction
+	_guide_projection = _guide_projection_state()
+	_aim_immediate.clear_surfaces()
+	_aim_immediate.surface_begin(Mesh.PRIMITIVE_TRIANGLES, _aim_material)
+	_add_guide_path(prediction.incoming, Color("aeb5b0"), true)
+	_show_contact_marker(prediction.contact)
+	momentum_geometry = _momentum_geometry(prediction)
+	_add_guide_path(momentum_geometry.paths[0], Color("fff2ce"), false)
+	_add_vector_dashes(momentum_geometry.paths[1], Color("8cdce3"))
+	_add_guide_arrow(momentum_geometry.paths[0], Color("fff2ce"))
+	_add_guide_arrow(momentum_geometry.paths[1], Color("8cdce3"))
+	_aim_immediate.surface_end()
+
+func _add_vector_dashes(points: PackedVector2Array, color: Color) -> void:
+	if points.size() != 2: return
+	var pixels := _screen_point(points[0]).distance_to(_screen_point(points[1]))
+	var count := maxi(1, ceili(pixels / 10.0))
+	for index in range(count):
+		_add_guide_segment(points[0].lerp(points[1], float(index) / count), points[0].lerp(points[1], (1.0 if index == count - 1 else (index + 0.65) / count)), color)
+
+func _add_guide_path(points: PackedVector2Array, color: Color, dashed: bool) -> void:
+	# Tick sampling is retained for physics; a distance based dash separates paths.
+	var distance := 0.0
+	for index in range(1, points.size()):
+		var length := points[index].distance_to(points[index - 1])
+		if not dashed or int(distance / 0.025) % 2 == 0:
+			_add_guide_segment(points[index - 1], points[index], color)
+		distance += length
+
+func _add_guide_arrow(points: PackedVector2Array, color: Color) -> void:
+	if points.size() < 2 or points[0].distance_to(points[-1]) < 0.015: return
+	var end := points[-1]
+	var direction := (end - points[maxi(0, points.size() - 4)]).normalized()
+	_add_guide_segment(end, end - direction.rotated(0.48) * 0.014, color)
+	_add_guide_segment(end, end - direction.rotated(-0.48) * 0.014, color)
+
+func _add_guide_segment(first: Vector2, second: Vector2, color: Color) -> void:
+	if first.distance_squared_to(second) < 1.0e-12: return
+	# Screen-space ribbons keep a fine 1.5 viewport-unit line plus a dark edge.
+	# Projection on the guide plane works in both cameras and after resize.
+	var height := BallState.RADIUS + 0.003
+	var a := _camera.unproject_position(Vector3(first.x, height, first.y))
+	var b := _camera.unproject_position(Vector3(second.x, height, second.y))
+	var normal := Vector2(-(b - a).y, (b - a).x).normalized()
+	for layer in range(2):
+		var width := 1.0 if layer == 0 else 0.75
+		_aim_immediate.surface_set_color(Color("25322f") if layer == 0 else color)
+		var corners := [project_mouse_to_table(a + normal * width, height), project_mouse_to_table(a - normal * width, height), project_mouse_to_table(b + normal * width, height), project_mouse_to_table(b - normal * width, height)]
+		for index in [0, 1, 2, 2, 1, 3]:
+			_aim_immediate.surface_add_vertex(Vector3(corners[index].x, height, corners[index].y))
+
+func _show_contact_marker(at: Vector2) -> void:
+	_ghost_ball.mesh = _contact_marker_mesh
+	_ghost_ball.position = Vector3(at.x, BallState.RADIUS + 0.002, at.y)
+	var material := _ghost_ball.material_override as StandardMaterial3D
+	material.albedo_color = Color(0.68, 0.89, 0.94, 0.9)
+	_ghost_ball.visible = true
 
 
 func set_placement_preview(position: Vector2, valid: bool) -> void:
@@ -529,6 +644,7 @@ func _build_aim_and_cue() -> void:
 	_aim_material = StandardMaterial3D.new()
 	_aim_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	_aim_material.vertex_color_use_as_albedo = true
+	_aim_material.cull_mode = BaseMaterial3D.CULL_DISABLED
 	_aim_material.no_depth_test = true
 	add_child(_aim_mesh)
 	var ghost_sphere := TorusMesh.new()

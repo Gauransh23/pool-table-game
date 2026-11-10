@@ -1,0 +1,4 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+MUTE: active=0 fades=0 reserved=0 steals=32 drops=36
+AUDIO CONTACTS: 0 failure(s); tests event delivery, not acoustic fidelity
